@@ -1,0 +1,36 @@
+body {
+background: #AB8;
+}
+
+#header {
+position: absolute;
+height: 50px; right: 0; left: 0; top: 0;
+box-shadow: 0px 0px 2px #000 inset;
+/*
+*/
+}
+
+#footer {
+position: absolute;
+height: 50px; right: 0; left: 0; bottom: 0;
+box-shadow: 0px 0px 2px #000 inset;
+/*
+*/
+}
+
+#navig {
+position: absolute;
+width: 250px; left: 0;
+top: 50px; bottom: 50px;
+box-shadow: 0px 0px 2px #000 inset;
+/*
+*/
+}
+
+#content {
+position: absolute;
+top: 50px; bottom: 50px; left: 250px; right: 0;
+box-shadow: 0px 0px 2px #000 inset;
+/*
+*/
+}
