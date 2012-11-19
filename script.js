@@ -17,6 +17,8 @@ function g_Init()
 	window.onhashchange = g_PathChanged;
 
 	g_PathChanged();
+
+	g_Analytics();
 }
 
 function g_PathChanged()
@@ -40,7 +42,7 @@ function g_NavClick( i_evt)
 
 function GO( i_path)
 {
-	g_Info( g_path);
+//	g_Info( g_path);
 	g_path = i_path;
 
 	for( var i = 0; i < g_navs.length; i++ )
@@ -84,27 +86,20 @@ function GET()
 				g_SetContent( xhr.responseText);
 			else
 				g_Error('File '+g_path+' is empty.');
-/*
-			if(( xhr.status == 200 ) && xhr.responseText.length )
-			{
-				var newobj = null;
-				try { newobj = JSON.parse( xhr.responseText);}
-				catch( err)
-				{
-					g_Log(err.message+'\n\n'+xhr.responseText);
-					newobj = null;
-				}
-
-				if( newobj )
-					g_ProcessMsg( JSON.parse( xhr.responseText));
-			}
-			else
-				}
-			}
-			g_Log( log, 'netlog');
-*/
 		}
 		else
 			g_Info('Can`t get file '+g_path);
 	}
+}
+
+function g_Analytics()
+{
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36436411-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
 }

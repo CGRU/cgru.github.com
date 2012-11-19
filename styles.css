@@ -26,8 +26,10 @@ box-shadow: 0px 0px 4px #341 inset;
 
 #navig {
 font-size: 14px;
+font-weight: bold;
 padding: 4px 1px;
 box-shadow: 0px 0px 4px #000 inset;
+opacity: 0.8;
 }
 
 #header > div {
@@ -64,11 +66,11 @@ background: rgba(255,255,100,.2);
 box-shadow: 0px 0px 5px #FFA inset;
 }
 
-#footer a {
+#footer > * {
 display: block;
 float: left;
 text-align: center;
-width: 25%;
+width: 20%;
 opacity: 0.8;
 padding: 2px 0px;
 /*box-shadow: 0px 0px 2px #000 inset;*/
@@ -102,7 +104,7 @@ font-weight: bold;
 text-align: center;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, b {
 font-family: Verdana;
 font-weight: bold;
 opacity: 0.8;
@@ -110,26 +112,29 @@ opacity: 0.8;
 code {
 color: Navy;
 font-weight: bold;
+opacity: 0.8;
 }
 kbd {
-color: Purple;
+color: #403;
 font-weight: bold;
+opacity: 0.8;
 }
 pre {
-background-color: #001000;
-color: #70FF40;
+background-color: #010;
+color: #7F4;
 font-weight: bold;
+opacity: 0.8;
 }
 a:link {
 color: #000060;
 }
 a:visited {
-color: #000060;
+color: #006;
 }
 a:hover {
-color: #500000;
+color: #500;
 }
 a:active {
-color: #D00000;
+color: #D00;
 }
 
