@@ -29,18 +29,23 @@ function g_PathChanged()
 	else
 		path = path.replace('#','');
 
-	GO( path);
+	g_Navigate( path);
 }
 
 function g_NavClick( i_evt)
 {
 	var nav = i_evt.currentTarget;
 	var path = nav.getAttribute('file');
-	document.location.hash = path;
 	GO( path);
 }
 
 function GO( i_path)
+{
+	document.location.hash = i_path;
+	g_Navigate( i_path);
+}
+
+function g_Navigate( i_path)
 {
 //	g_Info( g_path);
 	g_path = i_path;

@@ -46,20 +46,22 @@ text-transform: uppercase;
 margin: 1px 4px;
 padding: 1px 4px;
 }
-.navig, #navig div {
+.navig, #navig div, #content .cnav {
 cursor: pointer;
-border-radius: 4px;
 -o-transition: all .3s ease-in-out;
 -moz-transition: all .3s ease-in-out;
 -webkit-transition: all .3s ease-in-out;
 }
+.navig, #navig div {
+border-radius: 4px;
+}
 .navig:hover, #navig div:hover {
 background: rgba(255,255,100,.1);
-box-shadow: 0px 0px 5px #FFA inset;
+box-shadow: 0px 0px 5px #000 inset;
 }
 .navig.current, #navig div.current {
-background: rgba(255,255,100,.2);
-box-shadow: 0px 0px 5px #FFA inset;
+background: rgba(255,255,100,.4);
+box-shadow: 0px 0px 6px #000 inset;
 }
 
 #footer > * {
@@ -106,6 +108,9 @@ font-family: Verdana;
 font-weight: bold;
 opacity: 0.8;
 }
+#content .cnav { margin:20px; padding:10px 20px; border-radius:12px; box-shadow:0 0 10px #000 inset;}
+#content .cnav:hover { box-shadow:0 0 20px #000 inset;}
+
 code {
 color: Navy;
 font-weight: bold;
