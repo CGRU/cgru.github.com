@@ -6,7 +6,7 @@ font-size: 16px;
 text-align: justify;
 }
 /** { margin: 0; padding: 0; overflow: hidden; */
-.navig, #navig div, #content .cnav, #footer > * {
+.navig, #navig div, .cnavlink, #footer > * {
 -o-transition: all .3s ease-in-out;
 -moz-transition: all .3s ease-in-out;
 -webkit-transition: all .3s ease-in-out;
@@ -45,11 +45,10 @@ text-align: center;
 margin: 1px;
 padding: 3px;
 text-transform: uppercase;
-hyphenation: manual;
 }
 
 #navig div { margin: 1px 4px; padding: 1px 4px;}
-.navig, #navig div, #content .cnav { cursor: pointer;}
+.navig, #navig div, .cnavlink { cursor: pointer;}
 .navig, #navig div { border-radius: 4px;}
 .navig:hover, #navig div:hover {
 background: rgba(255,255,100,.1);
@@ -84,9 +83,15 @@ padding: 20px;
 background: #AB7;
 border: 3px #442 solid;
 overflow: hidden;
+/*
 position: absolute;
 left: 42%; right: 42%;
 top: 45%; bottom: 45%;
+*/
+position: relative;
+float: right;
+top: 45%;
+right: 45%;
 box-shadow: 0px 0px 8px #000;
 border-radius: 6px;
 padding: 10px;
@@ -106,8 +111,12 @@ font-family: Verdana;
 font-weight: bold;
 opacity: 0.8;
 }
-#content .cnav { margin:20px; padding:10px 20px; border-radius:12px; box-shadow:0 0 10px #000 inset;}
-#content .cnav:hover { box-shadow:0 0 20px #000 inset;}
+.cnavlink, .cnavblock {
+overflow:hidden;
+position: absolute;
+padding:10px 20px;
+border-radius:12px; box-shadow:0 0 10px #000 inset;}
+.cnavlink:hover { box-shadow:0 0 20px #000 inset;}
 
 code {
 color: Navy;
@@ -138,3 +147,14 @@ a:active {
 color: #D00;
 }
 
+#notfound {
+overflow: hidden;
+margin: 50px;
+padding: 20px;
+display: none;
+text-align: center;
+box-shadow: 0px 0px 18px #000 inset,  0px 0px 18px #000;
+border-radius: 50px;
+}
+#notfound_file {
+}

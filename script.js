@@ -4,7 +4,7 @@ g_navs = [];
 
 function g_Init()
 {
-	g_Info('g_Init()');
+//g_Info('Initializing...');
 
 	var navs = document.body.getElementsByClassName('navig');
 	for( var i = 0; i < navs.length; i++ ) g_navs.push( navs[i]);
@@ -47,7 +47,7 @@ function GO( i_path)
 
 function g_Navigate( i_path)
 {
-//	g_Info( g_path);
+//g_Info( g_path);
 	g_path = i_path;
 
 	for( var i = 0; i < g_navs.length; i++ )
@@ -56,14 +56,21 @@ function g_Navigate( i_path)
 		else
 			g_navs[i].classList.remove('current');
 
-	document.getElementById('loading').style.display = 'block';
+	g_DisplayLoading();
 	GET();
+}
+
+function g_DisplayLoading( i_display)
+{
+	if( i_display == null ) i_display = true;
+	document.getElementById('loading').style.display = i_display ? 'block':'none';
 }
 
 function g_SetContent( i_data)
 {
+	g_DisplayLoading( false);
+	g_DisplayNotFound( false);
 	document.getElementById('content').innerHTML = i_data;
-	document.getElementById('loading').style.display = 'none';
 }
 
 function g_Info( i_msg)
@@ -73,6 +80,14 @@ function g_Info( i_msg)
 function g_Error( i_msg)
 {
 	g_Info('Error: '+i_msg);
+}
+
+function g_DisplayNotFound( i_display)
+{
+	if( i_display == null ) i_display = true;
+	if( i_display ) g_SetContent('');
+	document.getElementById('notfound').style.display = i_display ? 'block':'none';
+	document.getElementById('notfound_file').innerHTML = '<b>'+g_path+'</b>';
 }
 
 function GET()
@@ -86,14 +101,20 @@ function GET()
 	{
 		if( xhr.readyState == 4 )
 		{
-			g_Info( xhr.status + ':' + xhr.statusText);
+			if(( window.location.protocol == 'http:' ) && ( xhr.status != 200 ))
+			{
+				g_DisplayNotFound();
+				return;
+			}
+
+//g_Info( xhr.status + ':' + xhr.statusText);
 			if( xhr.responseText.length )
 				g_SetContent( xhr.responseText);
 			else
 				g_Error('File '+g_path+' is empty.');
 		}
-		else
-			g_Info('Can`t get file '+g_path);
+//		else
+//			g_Info('Can`t get file '+g_path);
 	}
 }
 

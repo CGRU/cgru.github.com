@@ -1,22 +1,39 @@
-<div style="margin:20px;padding:10px 20px;border-radius:12px;box-shadow:0 0 10px #000 inset;">
+<div class="cnavblock" style="height:1000px;left:40px;right:40px;">
 <h1>CGRU</h1>
-<p>Free And Open Source CG Tools Pack.</p>
+<h3>Free And Open Source CG Tools Pack.</h3>
 
-<div onclick="GO('about.html')" class="cnav">
-<h2>AFANASY</h2>
-<p>Render Farm Manager.</p>
+<div class="cnavblock" style="left:20px;right:20px;height:400px">
+	<h2>AFANASY</h2>
+
+	<div onclick="GO('about.html')" class="cnavlink">
+	<h2>Render Farm Manager.</h2>
+	</div>
+
+	<div onclick="GO('moviemaker.html')" style="left:65%;width:20%;height:120px;" class="cnavlink">
+	<h3>Starter</h3>
+	<p>Stand alone dialog to send jobs (scenes) to Afanasy.</p>
+	</div>
+
+	<div class="cnavblock" style="left:20px;right:20px;top:300px">
+	<h3>Software Integration:</h3>
+		<div style="float:left;" class="cnavlink"><h3>AE</h3></div>
+		<div style="float:left;" class="cnavlink"><h3>Blender</h3></div>
+		<div style="float:left;" class="cnavlink"><h3>Cinema4D</h3></div>
+		<div style="float:left;" class="cnavlink"><h3>Houdini</h3></div>
+		<div style="float:left;" class="cnavlink"><h3>Maya</h3></div>
+		<div style="float:left;" class="cnavlink"><h3>Max</h3></div>
+		<div style="float:left;" class="cnavlink"><h3>Nuke</h3></div>
+		<div style="float:left;" class="cnavlink"><h3>XSI</h3></div>
+	</div>
+
 </div>
 
-<div style="float:right;" onclick="GO('moviemaker.html')" class="cnav">
-<h3>Starter</h3>
-</div>
-
-<div onclick="GO('moviemaker.html')" class="cnav">
+<div onclick="GO('moviemaker.html')" style="top:600px" class="cnavlink">
 <h2>Movie Maker</h2>
 <p>Make dailies, search for sequences for encode.<p>
 </div>
 
-<div class="cnav">
+<div class="cnavlink" style="top:800px">
 <h2>Keeper</h2>
 <p>CGRU tools launcher</p>
 </div>
@@ -25,7 +42,7 @@
 
 
 
-<div style="padding:20px 40px;">
+<div style="position:absolute;top:1200px;left:40px;right:40px">
 
 <p>
 <b>2012.11.13: <a href="doc/changes_log.html#release167">Version 1.6.7</a> Released.</b>
