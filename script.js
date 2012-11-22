@@ -18,7 +18,7 @@ function g_Init()
 
 	g_PathChanged();
 
-	g_Analytics();
+//	g_Analytics();
 }
 
 function g_PathChanged()
