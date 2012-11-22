@@ -121,7 +121,7 @@ function GET()
 function g_Analytics()
 {
 var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-36436411-1']);
+_gaq.push(['_setAccount', 'UA-36528898-1']);
 _gaq.push(['_trackPageview']);
 (function() {
 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;

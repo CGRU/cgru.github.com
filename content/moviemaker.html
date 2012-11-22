@@ -1,0 +1,79 @@
+<h2>Movie Maker</h2>
+<p>
+Movie Maker is an utility to create movie file from image sequence. It consists of some scripts and GUI for it.
+Scripts are written on Python and GUI is written on PyQt, so Python and PyQt must be installed.
+Scripts use other utilities:
+<a href="http://www.imagemagick.org">ImageMagick</a> to draw annotations and
+<a href="http://www.ffmpeg.org">ffmpeg</a> to encode.
+</p>
+<p>
+Mavishky dialog constructs and launches <kbd>makemovie.py</kbd> script. It is a GUI for this command.
+</p>
+<p>
+<table width="99%">
+<tr align="center"><td>
+   <a name="mm_tab_general">General Tab:</a><br/>
+   <img src="images/moviemaker/dialog.png" alt="dialog.png"/>
+</td></tr>
+<tr align="center"><td>
+   <a name="mm_tab_drawing">Drawing Tab:</a><br/>
+   <img src="images/moviemaker/dialog_drawing.png" alt="dialog_drawing.png"/>
+</td></tr>
+<tr align="center"><td>
+   <a name="mm_tab_parameters">Parameters Tab:</a><br/>
+   <img src="images/moviemaker/dialog_parameters.png" alt="dialog_parameters.png"/>
+</td></tr>
+<tr align="center"><td>
+   <a name="mm_tab_stereo">Stereo Tab:</a><br/>
+   <img src="images/moviemaker/dialog_stereo.png" alt="dialog_stereo.png"/>
+</td></tr>
+<tr align="center"><td>
+   <a name="mm_tab_afanasy">Afanasy Tab:</a><br/>
+   <img src="images/moviemaker/dialog_afanasy.png" alt="dialog_afanasy.png"/>
+</td></tr>
+</table>
+</p>
+
+<a name="makemovie"><h3>makemovie.py</h3></a>
+<p>
+This script creates a movie from images sequence.
+It consists of two stages.
+Reformat, annotate input images and store them in temporary directory.
+Encode temporary images into the movie.
+</p>
+<p>
+<kbd>makemovie.py</kbd> script uses <kbd>makeframe.py</kbd> script to reformat and annotate each frame.
+It passes all information through command line arguments to this script.
+There are some templates how to annotate images.
+This templates are command arguments to ImageMagick <kbd>convert</kbd> utility.
+Templates stored in <code>cgru/utilities/moviemaker/templates</code> folder.
+You can choose template in GUI or specify it in command argument.
+It can also produce a slate, if you specify a slate template.
+</p>
+<p>
+Codec presets are stored in movemaker folder.
+First line is the name of a preset, second is an encode command.
+You can choose preset in GUI or specify it in command argument.
+</p>
+
+<a name="scan"><h2>Scan Scan</h2></a>
+<p>
+It is an utility to scan folder and its sub-folders for an images sequences, and to create moves from them.
+It consists of a <kbd>scanscan.py</kbd> command and a <kbd>scandialog.py</kbd> GUI for it.
+Both are Python scripts, GUI is on PyQt.
+Command script scans folders for images and launches <kbd>makemovie.py</kbd> for each sequence.
+</p>
+
+<p>
+<table width="99%">
+<tr align="center"><td>
+   <a name="ss_tab_general">General Tab:</a><br/>
+   <img src="images/moviemaker/scandialog.png" alt="scandialog.png"/>
+   </td></tr>
+<tr align="center"><td>
+   <a name="ss_tab_parameters">Parameters Tab:</a><br/>
+   <img src="images/moviemaker/scandialog_parameters.png" alt="scandialog_parameters.png"/>
+   </td></tr>
+</table>
+</p>
+

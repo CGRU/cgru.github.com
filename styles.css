@@ -26,10 +26,11 @@ box-shadow: 0px 0px 4px #341 inset;
 #framenavig { width: 192px; left: 0; top: 36px; bottom: 36px;}
 #framecontent { top: 36px; bottom: 36px; left: 192px; right: 0; }
 #header, #footer, #navig, #content { position: absolute; overflow: hidden;}
-#navig, #content { top: 10px; bottom: 10px; left: 10px; right: 10px;}
+#navig, #content { top: 10px; bottom: 10px; left: 10px; right: 10px; border-radius: 4px;}
 #header, #footer { top: 3px; bottom: 3px; left: 10px; right: 10px;}
 
 #navig {
+overflow: auto;
 font-size: 14px;
 padding: 4px 1px;
 box-shadow: 0px 0px 4px #000 inset;
@@ -105,9 +106,8 @@ font-weight: bold;
 text-align: center;
 }
 
-.navig, #navig div, h1, h2, h3, h4, h5, b {
+.navig, #navig div, h1, h2, h3, h4, h5, b, code, kbd {
 text-shadow: 0px 0px 10px rgba(255,255,255,.5), 0px 0px 1px rgba(255,255,255,.9);
-font-family: Verdana;
 font-weight: bold;
 opacity: 0.8;
 }
@@ -119,21 +119,27 @@ padding:10px 20px;
 border-radius:12px; box-shadow:0 0 10px #000 inset;}
 .cnavlink:hover { box-shadow:0 0 20px #000 inset;}
 
-code {
-color: Navy;
+code, kbd {
+font-family: Arial;
 font-weight: bold;
-opacity: 0.8;
+}
+code {
+color: #004;
 }
 kbd {
 color: #403;
-font-weight: bold;
-opacity: 0.8;
 }
 pre {
 background-color: #010;
 color: #7F4;
 font-weight: bold;
-opacity: 0.8;
+padding: 10px 20px;
+margin: 20px 30px;
+opacity: 0.9;
+box-shadow: 0px 0px 50px #030 inset;
+border-radius: 10px;
+border: 3px solid #000;
+text-shadow: 0px 0px 20px #0A0, 20px 1px 2px #010;
 }
 a:link {
 color: #000060;

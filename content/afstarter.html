@@ -1,0 +1,67 @@
+<p>A dialog to submit a job to Afanasy.</p>
+
+<p>
+<h3>Supported software:</h3>
+<ul>
+<li><i>Adobe After Effects</i></li>
+<li><i>Autodesk 3D Studio Max</i>
+   <ul>
+      <li><i>Software</i></li>
+      <li><i>VRay</i></li>
+   </ul>
+   </li>
+<li><i>Autodesk Maya</i>
+   <ul>
+      <li><i>Software</i></li>
+      <li><i>Mental Ray</i></li>
+      <li><i>3DeLight</i></li>
+   </ul>
+   </li>
+<li><i>Autodesk SoftImage XSI</i></li>
+<li><i>Blender</i></li>
+<li><i>Cinema 4D</i></li>
+<li><i>SideFX Houdini</i>
+   <ul>
+      <li><i>HBatch (hython)</i></li>
+      <li><i>Mantra (standalone)</i></li>
+   </ul>
+   </li>
+<li><i>The Foundry Nuke</i></li>
+</ul>
+</p>
+
+<h3>Scene Settings:</h3>
+<p><img src="images/afstarter/dialog_scene.png"/></p>
+<ul>
+<li><b>File</b>: Scene file path. IFD files sequence for <i>Mantra</i>.</li>
+<li><b>Working Directory/Project</b>: Tasks process working folder, default is scene folder. Project path for <i>Maya</i>.</li>
+<li><b>Output Images</b>: Some software allows to override output images in command line arguments.</li>
+<li><b>Frames</b>: Frame range to render, 'by' - frames step or increment, 'per task' - number of frames in one task.</li>
+<li><b>Node/Camera</b>:
+   <i>Houdini</i> ROP,
+   <i>Nuke</i> write node,
+   <i>Max, Maya</i> camera to render,
+   <i>After FX</i> composition.
+   </li>
+<li><b>Take/Layer/Pass/Batch</b>:
+   <i>Houdini</i> take,
+   <i>SoftImage</i> pass,
+   <i>Maya</i> layer,
+   <i>Max</i> batch to render,
+   <i>After FX</i> render settings template.
+   </li>
+<li><b>Recent</b>: Store recent sent jobs settings.</li>
+<li><b>Start</b>: Submit job to Afanasy server. It can be started in off-line state ("paused").</li>
+</ul>
+
+<h3>Afanasy Job Settings:</h3>
+<p><img src="images/afstarter/dialog_job.png"/></p>
+<ul>
+<li><b>Name</b>: Job name. By default scene file name is used.</li>
+<li><b>Capacity</b>: Tasks capacity attribute value. '-1' means use the default.</li>
+<li><b>Priority</b>: Job order in user jobs list.</li>
+<li><b>Maximum Running Tasks</b>: Maximum number of tasks can be running at the same time.</li>
+<li><b>Depend Mask</b>: Job(s) name <a href="#regexp.html">pattern</a> to wait to. <b>Global</b>: wait job(s) of any user.</li>
+<li><b>Hosts Mask</b>: Host(s) name <a href="#regexp.html">pattern</a> to run on. <b>Exclude</b>: not to run on such hosts.</li>
+</ul>
+
