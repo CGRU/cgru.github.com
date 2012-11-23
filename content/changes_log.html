@@ -8,13 +8,11 @@ You can use this command to perform it:<br/>
 <code>afcmd db_resetall</code>
 </p>
 <ol>
-<li>The first number in version means some major changes in the project architecture (this can never happen at all).</li>
-<li>The second number means changes in network protocol or (and) database schema.
-Clients and server with another second number are incompatible.
+<li>The first number in version means some major changes in the project.</li>
+<li>The second number means compatibility lost.
 You should upgrade all clients and server at the same.</li>
-<li>The third number in version can have new features and bugs fixes.
-But is fully compatible with other versions with the same first two numbers.
-You can upgrade only one client to check changes, the is no need to update all clients and server.</li>
+<li>The third number versions are fully compatible.
+You can upgrade only one client or server to check changes.</li>
 </ol>
 
 

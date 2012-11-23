@@ -1,0 +1,220 @@
+<h2>Afanasy in Nuke</h2>
+
+<p>
+Nuke Afanasy interface consists of 'afanasy' nodes (gizmos) and menu items in main CGRU menu.
+</p>
+
+<p>
+'afanasy' nodes need to render connected 'Write' nodes and to store render settings.
+You can connect one 'afanasy' node to other 'afanasy' node to render other 'Write' node with different settings at the same time.
+Each connected node will produce a block - an array of tasks (frames) to render.
+You can specify dependence between connected nodes.
+One 'Write' node(s) can wait all frames of other "Write" node(s) to be rendered.
+Or one frame(s) from one 'Write' node can wait special frame(s) of other 'Write' node(s) to be rendered.
+</p>
+
+<p>
+Also 'afanasy' nodes can send dailies jobs to farm.
+</p>
+
+<table width="99%" align="center">
+<tr>
+<td>
+   <p align="center">Network:<br/>
+   <img src="images/nuke/example_network.png" alt="images/nuke/example_network.png" /></p>
+</td>
+<td>
+   <p align="center">Job: Composition rendering (dailies waiting)<br/>
+   <img src="images/nuke/example_job_0.png" alt="images/nuke/example_job_0.png" />
+   </p>
+   <p align="center">Job: Rendering dailies from completed composition<br/>
+   <img src="images/nuke/example_job_1.png" alt="images/nuke/example_job_1.png" />
+   </p>
+</td>
+</tr>
+</table>
+
+<p>
+For example, each <i>preview</i> frame will wait the same <i>final</i> frame. And each <i>final</i> frame, will wait the same <i>key</i> and <i>back</i> frame to be rendered, <i>key</i> and <i>back</i> frames are independent and the same frames can be rendered at the same time ('same frame' - frame with the same number).
+</p>
+
+
+<h3>'Render Selected...':</h3>
+
+<p>
+You can send selected node(s) using a window.
+</p>
+
+<table width="99%" align="center">
+<tr>
+<td>
+   <p align="center">Selected nodes has the same frame settings,<br/>or just one node selected:<br/>
+   <img src="images/nuke/render_selected.png" alt="images/nuke/render_selected.png" /></p>
+</td>
+<td>
+   <p align="center">Selected nodes has different frame settings:<br/>
+   <img src="images/nuke/render_selected_multi.png" alt="images/nuke/render_selected_multi.png" /></p>
+</td>
+</tr>
+</table>
+<p>
+<ul>
+<li><b>Nodes</b> - Selected nodes names. You can check and edit selection.</li>
+<li><b>First Frame</b> - First frame to render.</li>
+<li><b>Last Frame</b> - Last frame to render.</li>
+<li><b>Frames Per Task</b> - Number of frames in task.</li>
+<li><b>Store Frames Settings</b> - Store frame settings on selected nodes.</li>
+<li><b>Start Paused</b> - Job will be paused.</li>
+</ul>
+<b><i>'1..5'</i></b> - two numbers, separated with two points means the lowest and highest value from all selected nodes. Type one number in input field to override frame settings on selected nodes.
+</p>
+
+<h3>'afanasy' node properties:</h3>
+
+<p>
+<p align="center">'General' Tab:<br/>
+<img src="images/nuke/afanasy_general.png" alt="images/nuke/afanasy_general.png" /></p>
+<ul>
+<li><b>Job Name</b> - Name to add to job or blocks names. If empty, 'afanasy' node name will be used.</li>
+<li><b>Use Time Range</b> - Set 'First Frame' and 'Last Frame' fields to project settings.</li>
+<li><b>First Frame</b> - First frame to render.</li>
+<li><b>Last Frame</b> - Last frame to render.</li>
+<li><b>Frames Per Task</b> - Number of frames in task.</li>
+<li><b>Render</b> - Send job to Afanasy server.</li>
+<li><b>Start Paused</b> - Job will be paused.</li>
+</ul>
+</p>
+
+<p>
+<p align="center">'Parameters' Tab:<br/>
+<img src="images/nuke/afanasy_parameters.png" alt="images/nuke/afanasy_parameters.png" /></p>
+<ul>
+<li><b>Platform</b> - OS type the job can launch tasks on: 'Any' - any OS, 'Native' - the same as the script was launched on.</li>
+<li><b>Maximum Hosts</b> - Maximum number of hosts to run job tasks on. '-1' means no limit.</li>
+<li><b>Priority</b> - Job priority. '-1' - set default priority value.</li>
+<li><b>Hosts Mask</b> - If not empty, job can run only on hosts which name matches this pattern.</li>
+<li><b>Exclude Hosts Mask</b> - If not empty, job can not run on hosts which name matches pattern.</li>
+<li><b>Depend mask</b> - If not empty, job will wait job(s) to be done, which name(s) matches pattern.</li>
+<li><b>Global Depend mask</b> - The same, but will wait for jobs from any user.</li>
+<li><b>Capacity</b> - Tasks capacity. '-1' - set this value to default.</li>
+<li><b>Minimum Capacity Coeff</b> - Variable capacity minimum multiplier. '-1' - means no minimum level.</li>
+<li><b>Maximum Capacity Coeff</b> - Variable capacity minimum multiplier. '-1' - means no maximum level.<br/>
+If and minimum and maximum capacity coefficients are '-1' - tasks can't variate capacity, all tasks will have constant capacity value in any case.</li>
+</ul>
+</p>
+
+<p>
+<p align="center">'MultiWrite' Tab:<br/>
+<img src="images/nuke/afanasy_multiwrite.png" alt="images/nuke/afanasy_multiwrite.png" /></p>
+<ul>
+<li><b>Connected nodes are independent</b> - nodes can run at the same time, they will not wait each other.</li>
+<li><b>Reverse dependences on connected nodes</b> - First block will wait second block. Most depended "Write" node usually produces more final result, and it will be executed as soon as possible.</li>
+<li><b>Down stream will wait for whole frame range rendered</b> - Down stream connected node(s) will wait until whole specified frame range will be rendered. If not checked, each frame will be wait only corresponding frame(s) from this node.</li>
+<li><b>Force upstream frame settings</b> - All upstream connected nodes will use this node frame range. Connected upstream node can re-force it, if this parameter is checked too.</li>
+<li><b>Construct single job from all connected write nodes</b> - Constuct a block from each connected 'Write' node and put them into one job. If not checked, each connected 'Write' node will produce a job.</li>
+</ul>
+</p>
+
+<p align="center">Test Network:<br/>
+<img src="images/nuke/test_network.png" alt="images/nuke/test_network.png" /></p>
+
+<table width="99%" align="center">
+<tr>
+<td>
+   <p align="center">Single Job:<br/>
+   <img src="images/nuke/test_singlejob.png" alt="images/nuke/test_singlejob.png" /></p>
+</td>
+<td>
+   <p align="center">Multiply Jobs:<br/>
+   <img src="images/nuke/test_multijobs.png" alt="images/nuke/test_multijobs.png" /></p>
+</td>
+</tr>
+</table>
+
+
+<h3>Example Scene:</h3>
+<p>
+<code> $ cd afanasy/examples/nuke</code><br/>
+<code> $ ./nuke scene.nk</code><br/>
+</p>
+
+<h2>Dailies</h2>
+
+<p>
+Dailies node (gizmo) is another interface to
+<a href="#moviemaker.html">Movie Maker</a>.
+The command can be launched locally or sent to farm by connecting 'dailies' with 'afanasy' gizmo.
+</p>
+
+<table width="99%" align="center">
+<tr>
+<td>
+   <p align="center">General Tab:<br/>
+   <img src="images/nuke/dailies_general.png" alt="images/nuke/dailies_general.png" /></p>
+</td>
+<td>
+   <p align="center">Parameters Tab:<br/>
+   <img src="images/nuke/dailies_parameters.png" alt="images/nuke/dailies_parameters.png" /></p>
+</td>
+</tr>
+</table>
+
+
+<h2>Render Script</h2>
+
+<p>
+In command line Nuke can execute a python script in your scene. Script, scene, nuke and script options can be passed in command line arguments. So you can render scenes through a script.
+</p>
+<p>
+This script will open a scene, render specified node in temporary folder, copy (with overwrite) images in destination folder, delete temporary folder. This can reduce your network traffic a bit. As normally nuke open an empty temporary file and often write there some portions of an image. This script copy an entire image only once, on successful render.
+</p>
+
+<h4>Command:</h4>
+<p>
+<kbd>cgru/plugins/nuke/render.py</kbd><br/>
+</p>
+
+<h4>Arguments:</h4>
+<p>
+Arguments are like in Nuke:
+</p>
+<p>
+'-x', '--xscene' - Path to scene to execute<br/>
+'-X', '--xnode' - The name of node to execute<br/>
+'-F', '--frange', - Frame range to render (Nuke syntax: 'A-BxC' every C'th frame from A to last one less or equal to B)<br/>
+</p>
+
+<h4>Usage:</h4>
+<p>
+As arguments are like in Nuke, you can simple insert in your render command a string, to use script render:<br/>
+<kbd> -t render_script.py</kbd>
+</p>
+<p>
+Common Nuke render command:<br/>
+<code>
+nuke -i -X Write1 -F1-10x1 -x scene.nk
+</code>
+</p>
+<p>
+Modified Nuke render command, to use a render script:<br/>
+<code>
+nuke -i <u><i>-t render_script.py</i></u> -X Write1 -F1-10x1 -x scene.nk
+</code>
+</p>
+
+<p>
+In afanasy examples, Nuke render launch command is customized in bash script, which launches Nuke:
+</p>
+
+<pre>
+# Nuke render launcher:
+export NUKE_AF_RENDER="nuke -i -m %(threads)s"
+if [ ! -z "${CGRU_LOCATION}" ]; then
+	export NUKE_AF_RENDER="${NUKE_AF_RENDER} -t ${CGRU_LOCATION}/plugins/nuke/render.py"
+fi
+</pre>
+
+<p>
+* string '<i>%(threads)s</i>' will be replaced to a number later, in other python scripts.
+<p>
+
