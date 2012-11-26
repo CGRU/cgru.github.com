@@ -8,8 +8,6 @@ function g_Init()
 
 	var navs = document.body.getElementsByClassName('navig');
 	for( var i = 0; i < navs.length; i++ ) g_navs.push( navs[i]);
-	navs = document.getElementById('navig').getElementsByTagName('div');
-	for( var i = 0; i < navs.length; i++ ) g_navs.push( navs[i]);
 
 	for( var i = 0; i < g_navs.length; i++ )
 		g_navs[i].onclick = g_NavClick;
@@ -17,8 +15,6 @@ function g_Init()
 	window.onhashchange = g_PathChanged;
 
 	g_PathChanged();
-
-//	g_Analytics();
 }
 
 function g_PathChanged()
@@ -27,7 +23,7 @@ function g_PathChanged()
 	if( path.indexOf('#') == -1 )
 		path = g_path;
 	else
-		path = path.replace('#','');
+		path = path.substr(1);
 
 	g_Navigate( path);
 }
@@ -42,16 +38,18 @@ function g_NavClick( i_evt)
 function GO( i_path)
 {
 	document.location.hash = i_path;
-	g_Navigate( i_path);
+//	g_Navigate( i_path);
 }
 
 function g_Navigate( i_path)
 {
 //g_Info( g_path);
+	
 	g_path = i_path;
 
+	path = g_path.split('#')[0];
 	for( var i = 0; i < g_navs.length; i++ )
-		if( i_path == g_navs[i].getAttribute('file'))
+		if( path == g_navs[i].getAttribute('file'))
 			g_navs[i].classList.add('current');
 		else
 			g_navs[i].classList.remove('current');
@@ -71,6 +69,17 @@ function g_SetContent( i_data)
 	g_DisplayLoading( false);
 	g_DisplayNotFound( false);
 	document.getElementById('content').innerHTML = i_data;
+
+	var paths = g_path.split('#');
+	if( paths.length > 1 )
+		document.getElementById(paths[1]).scrollIntoView(true);
+
+	var anchors = document.getElementById('content').getElementsByClassName('anchor');
+	for( var i = 0; i < anchors.length; i++)
+		anchors[i].onclick = function(e){
+				var hash = g_path.split('#')[0];
+				document.location.hash = hash+'#'+e.currentTarget.getAttribute('id');
+			};
 }
 
 function g_Info( i_msg)
@@ -92,9 +101,11 @@ function g_DisplayNotFound( i_display)
 
 function GET()
 {
+	var path = g_path.split('#')[0];
+
 	var xhr = new XMLHttpRequest();
 	xhr.overrideMimeType('application/json');
-	xhr.open('GET', g_content+g_path, true);
+	xhr.open('GET', g_content+path, true);
 	xhr.send(null);
 
 	xhr.onreadystatechange = function()
@@ -118,14 +129,3 @@ function GET()
 	}
 }
 
-function g_Analytics()
-{
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-36528898-1']);
-_gaq.push(['_trackPageview']);
-(function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-}

@@ -1,0 +1,61 @@
+<h2>Afanasy SQL Database</h2>
+
+<p>Afanasy uses <b><a href="http://www.postgresql.org" target="_blank">PostgreSQL</a></b> engine</p>
+
+<p>
+You don't need to install it on clients.
+SQL database server is needed for Afanasy server only.
+It is better to install it on the same host as Afanasy server.
+</p>
+<p>
+Database server needed to store jobs, renders, users state.
+Afanasy reads information from database on start.
+You can use Afanasy without any database, but server will start with no data.
+So you can skip this stage if you want just to try Afanasy.
+</p>
+
+<h5>Database Setup</h5>
+<ul>
+   <li>
+      Edit Postgre SQL client authentication configuration file <kbd>pg_hba.conf</kbd>.<br/>
+      Its location depends on Linux distributive. For example:<br/>
+      Debian, Ubuntu: <kbd>/etc/postgresql/ [version] /main/pg_hba.conf</kbd><br/>
+      CentOS, Fedora, openSUSE: <kbd>/var/lib/pgsql/data/pg_hba.conf</kbd><br/>
+      <i>make install</i>:<kbd>/usr/local/pgsql/data/pg_hba.conf</kbd><br/>
+      Add this line<br/>
+      <kbd>local afanasy afadmin password</kbd><br/>
+      Read comments in this file to know what does it mean.<br/>
+      (If problems with authentication try <kbd>trust</kbd> for all methods.)
+   </li>
+   <li>
+      Restart database<br/>
+   </li>
+   <li>
+      Create afanasy database and user<br/>
+      <code>
+      # su - postgres<br/>
+      $ createdb afanasy<br/>
+      $ psql afanasy<br/>
+      CREATE USER afadmin PASSWORD 'AfPassword';<br/>
+      </code>
+   </li>
+</ul>
+<h5>Create Tables</h5>
+<ul>
+   <li>
+      Go into CGRU commands directory:<br />
+      <code>$ cd cgru/afanasy/bin</code><br />
+   </li>
+   <li>
+      Check database connection:<br />
+      <code>$ ./afcmd db_check</code><br />
+      Program will output error or print "Database connection is working" if everything is ok.<br />
+   </li>
+   <li>
+      Create required tables:<br />
+      <code>$ ./afcmd db_resetall</code><br />
+      This command also delete old tables if they exists.<br />
+   </li>
+</ul>
+<p>
+

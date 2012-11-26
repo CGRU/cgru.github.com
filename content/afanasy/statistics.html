@@ -1,0 +1,78 @@
+<h2>Afanasy Database Statistics</h2>
+
+<h3>Web Interface to Afanasy SQL database</h3>
+<p>You can watch all users jobs, users activity and various statistics tables and diagrams.</p>
+<p>All you need is any web browser and connection with afanasy server.
+No database connection or browser plugins need, all calculations are on server side,
+you browser will receive plain html text and png images.</p>
+
+<h3>Web Visor Setup</h3>
+You need to install a web server with PHP, PGSQL and GD (to draw chart images) plugins.
+Any UNIX have this packages.
+<br/>
+In most Linux-es all this can be provided by packages:
+<br/>
+<code>
+apache2 libapache2-mod-php5 php5 php5-pgsql php5-gd
+</code>
+<br/>
+Site is located in <kbd>cgru/afanasy/webvisor</kbd> folder.
+
+<h3>Screenshots</h3>
+
+<table>
+   <caption><b>Users Table</b></caption>
+   <tr>
+      <td align="center" width="20%">
+         <img src="images/afanasy/visor/statistics_users.jpg" alt="statistics_users" />
+      </td>
+   </tr>
+</table>
+<br/>
+<table>
+   <caption><b>Services Table</b></caption>
+   <tr>
+      <td align="center" width="20%">
+         <img src="images/afanasy/visor/statistics_services.jpg" alt="statistics_services" />
+      </td>
+   </tr>
+</table>
+
+<h3>Table columns can be represent as a chart.</h3>
+
+<table align="center">
+   <caption><b>User Name / Jobs Number</b></caption>
+   <tr>
+      <td align="center" width="20%">
+         <img src="images/afanasy/visor/chart_user_jobs.png" alt="chart_user_jobs" />
+      </td>
+   </tr>
+</table>
+
+<table align="center">
+   <caption><b>User Name / Jobs Running Time Sum</b></caption>
+   <tr>
+      <td align="center" width="20%">
+         <img src="images/afanasy/visor/chart_user_runtime.png" alt="chart_user_runtime" />
+      </td>
+   </tr>
+</table>
+
+<table align="center">
+   <caption><b>Service Type/ Tasks Quantity</b></caption>
+   <tr>
+      <td align="center" width="20%">
+         <img src="images/afanasy/visor/chart_service_tasks.png" alt="chart_service_tasks" />
+      </td>
+   </tr>
+</table>
+
+<table align="center">
+   <caption><b>Service Type / Tasks Running Time Sum</b></caption>
+   <tr>
+      <td align="center" width="20%">
+         <img src="images/afanasy/visor/chart_service_runtime.png" alt="chart_service_runtime" />
+      </td>
+   </tr>
+</table>
+

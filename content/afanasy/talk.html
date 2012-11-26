@@ -1,0 +1,76 @@
+<h3>Talk - Exchange messages through AFANASY server</h3>
+
+<p>You can launch several Talks on the same machine (to talk with different people for example).</p>
+<p>Same user can launch several Talks on different machines, and send messages to himself
+(it's useful to send some text on your other computer).</p>
+
+<p>
+Launch script:<br/>
+<code>$ afanasy/launch/aftalk.sh</code>
+</p>
+
+<p>
+Launch command (when Afanasy environment set):<br/>
+<code>$ aftalk</code>
+</p>
+
+<table width="99%">
+<tr align="center">
+<td>
+   Main Dialog<br/>
+   <img src="images/afanasy/talk/talk.png" alt="talk" /><br/>
+   Select user to send message to. You can select several users to chat with them.<br/>
+</td>
+<td>
+   System Tray Icon (a green star with &quot;T&quot;)<br/>
+   <img src="images/afanasy/talk/talk_tray.png" alt="talk_tray_msg" /><br/>
+   It has a menu on a right mouse button (RMB) and a tooltip.<br/>
+   Double-click on icon will hide Talk dialog window or raise it if already hidden.<br/>
+   <br/>
+   Tray icon RMB menu and tooltip<br/>
+   <img src="images/afanasy/talk/talk_tray_rmb.png" alt="talk_tray_msg" />
+   <img src="images/afanasy/talk/talk_tray_tooltip.png" alt="talk_tray_msg" /><br/>
+   Talk owner name has a @[hostname]:[port] suffix.<br/>
+   (It can helps you to find other talks launched by you on different machines.)<br/>
+   <br/>
+   Icon flashing<br/>
+   <img src="images/afanasy/talk/talk_tray_flash.png" alt="talk_tray_msg" /><br/>
+   Talk flashes tray icon on new message if dialog is not the active window.<br/>
+   <br/>
+   Incoming message<br/>
+   <img src="images/afanasy/talk/talk_tray_msg.png" alt="talk_tray_msg" /><br/>
+   Tray shows an incoming message if dialog window is hidden (closed).<br/>
+<td>
+</tr>
+<table>
+<p>Talk works in <kbd>utf8</kbd> encoding.</p>
+
+<h4><a name="Config"/>Configuration:</h4>
+<p>See <a href="server_config.html">server configuration</a> about XML configuration files.</p>
+<ul>
+<li><p>
+<code>talk_updateperiod</code> = 5 (seconds)<br/>
+Period to send dummy message to server to keep alive.
+</p></li>
+<li><p>
+<code>talk_zombietime</code> = 18 (seconds)<br/>
+Time to server to delete monitor if there is no update (even no dummy message) for this period.
+</p></li>
+<li><p>
+<code>talk_connectretries</code> = 3<br/>
+Connection fails times to consider to Talk that there is no connection to server.
+</p></li>
+<li><p>
+<code>talk_waitforconnected</code> = 8000 (milliseconds)<br/>
+Time to wait for connection establishing to consider that connection is available.
+</p></li>
+<li><p>
+<code>talk_waitforreadyread</code> = 8000 (milliseconds)<br/>
+Time to wait for incoming data to consider that connection is not lost.
+</p></li>
+<li><p>
+<code>talk_waitforbyteswritten</code> = 8000 (milliseconds)<br/>
+Time to wait for writing data to consider that connection is not lost.
+</p></li>
+</ul>
+

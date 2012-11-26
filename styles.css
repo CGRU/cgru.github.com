@@ -6,7 +6,7 @@ font-size: 16px;
 text-align: justify;
 }
 /** { margin: 0; padding: 0; overflow: hidden; */
-.navig, #navig div, .cnavlink, #footer > * {
+.navig, .cnavlink, #footer > * {
 -o-transition: all .3s ease-in-out;
 -moz-transition: all .3s ease-in-out;
 -webkit-transition: all .3s ease-in-out;
@@ -23,8 +23,8 @@ box-shadow: 0px 0px 4px #341 inset;
 }
 #frameheader { height: 36px; right: 0; left: 0; top: 0; }
 #framefooter { height: 36px; right: 0; left: 0; bottom: 0;}
-#framenavig { width: 192px; left: 0; top: 36px; bottom: 36px;}
-#framecontent { top: 36px; bottom: 36px; left: 192px; right: 0; }
+#framenavig { width: 182px; left: 0; top: 36px; bottom: 36px;}
+#framecontent { top: 36px; bottom: 36px; left: 182px; right: 0; }
 #header, #footer, #navig, #content { position: absolute; overflow: hidden;}
 #navig, #content { top: 10px; bottom: 10px; left: 10px; right: 10px; border-radius: 4px;}
 #header, #footer { top: 3px; bottom: 3px; left: 10px; right: 10px;}
@@ -42,20 +42,16 @@ width: 20%;
 text-align: center;
 /*box-shadow: 0px 0px 2px #000 inset;*/
 }
-.navig {
-margin: 1px;
-padding: 3px;
-text-transform: uppercase;
-}
-
-#navig div { margin: 1px 4px; padding: 1px 4px;}
-.navig, #navig div, .cnavlink { cursor: pointer;}
-.navig, #navig div { border-radius: 4px;}
-.navig:hover, #navig div:hover {
+#header .navig { margin: 1px; padding: 3px; text-transform: uppercase; }
+#navig .navig { margin: 1px 4px; padding: 1px 4px;}
+.navig, .cnavlink, .anchor { cursor: pointer;}
+.navig { border-radius: 4px;}
+.navig:hover {
 background: rgba(255,255,100,.1);
 box-shadow: 0px 0px 5px #000 inset;
 }
-.navig.current, #navig div.current {
+.navgrp { padding: 4px 8px; }
+.navig.current {
 background: rgba(255,255,100,.4);
 box-shadow: 0px 0px 6px #000 inset;
 }
@@ -106,7 +102,7 @@ font-weight: bold;
 text-align: center;
 }
 
-.navig, #navig div, h1, h2, h3, h4, h5, b, code, kbd {
+.navig, h1, h2, h3, h4, h5, b, code, kbd {
 text-shadow: 0px 0px 10px rgba(255,255,255,.5), 0px 0px 1px rgba(255,255,255,.9);
 font-weight: bold;
 opacity: 0.8;

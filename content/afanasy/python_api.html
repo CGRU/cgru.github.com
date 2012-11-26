@@ -1,0 +1,365 @@
+<h2>Afanasy Python API</h2>
+
+<p>
+You can create jobs within Python, that exists in most common CG software.
+Afanasy Python module uses the same JSON protocol, it helps you to construct and send JSON job data.
+</p>
+
+<h3 id="example" class="anchor">Example:</h3>
+
+<pre>
+#!/usr/bin/env python
+
+# Import afanasy python module ( must be in PYTHONPATH)
+import af
+
+# Create a job
+job = af.Job('somejob')
+
+# Set job depend mask
+job.setDependMask('another_job_name')
+
+# Set maximum hosts job can run on.
+job.setMaxHosts( 15)
+
+# Set job hosts mask.
+job.setHostsMask('r.*')
+
+# Start job paused.
+job.offLine()
+
+# Create a block with provided name and service type
+block = af.Block('back', 'nuke')
+
+# Set block tasks working directory.
+block.setWorkingDirectory('/projects/test/nuke')
+
+# Set block tasks command.
+block.setCommand('nuke -i -X WriteBack -x scene.nk.tmp.nk %1,%2')
+
+# Set block tasks preview command arguments.
+block.setFiles('jpg/img.%04d.jpg')
+
+# Set block to numeric type, providing first, last frame and frames per host
+block.setNumeric( 1, 100, 10)
+
+# Add block to the job
+job.blocks.append( block)
+
+# Set command to execute by server after a job is deleted.
+job.setCmdPost('rm /projects/test/nuke/scene.nk.tmp.nk')
+
+# Send job to Afanasy server.
+job.send()
+</pre>
+
+<h2 id="afjob" class="anchor">afjob.py - CLI Job Interface</h2>
+
+<p>This is a python program. It constructs job from command line arguments and send to server.</p>
+<p><code>cgru/afanasy/python/afjob.py</code></p>
+<p>This script without or with invalid arguments prints help.</p>
+
+
+<h2 id="job" class="anchor">Job Object</h2>
+
+<h3>Constructor:</h3>
+<ul>
+<li>job = af.<b>Job([</b><i>name</i><b>])</b>
+<p>
+Takes job name as a parameter (optional).
+</p></li>
+</ul>
+
+<h3>Variables:</h3>
+<ul>
+<li>job.<b>blocks</b> = [ ]
+<p>
+Blocks list.<br/>
+</p></li>
+</ul>
+
+<h3>Functions:</h3>
+<ul>
+
+<li>job.<b>offline()</b>
+<p>
+Set job to <a href="job.html#State">Offline</a> state.
+</p></li>
+
+<li>job.<b>output([</b><i>True</i><b>])</b>
+<p>
+Print job information. If <i>True</i> print job blocks information too.
+</p></li>
+
+<li>job.<b>send()</b>
+<p>
+Send job to Afanasy server.
+</p></li>
+
+<li>job.<b>setCmdPost(</b><i>command</i><b>)</b>
+<p>
+Set job <a href="job.html#CmdPost">Post Command</a>.
+</p></li>
+
+<li>job.<b>setCmdPre(</b><i>command</i><b>)</b>
+<p>
+Set job <a href="job.html#CmdPre">Pre Command</a>.
+</p></li>
+
+<li>job.<b>setDependMask(</b><i>mask</i><b>)</b>
+<p>
+Set job <a href="job.html#DependMask">Depend Mask</a>.
+</p></li>
+
+<li>job.<b>setDependMaskGlobal(</b><i>mask</i><b>)</b>
+<p>
+Set job <a href="job.html#DependMaskGlobal">Global Depend Mask</a>.
+</p></li>
+
+<li>job.<b>setDescription(</b><i>description</i><b>)</b>
+<p>
+Set job <a href="job.html#Description">Description</a>.
+</p></li>
+
+<li>job.<b>setHostsMask(</b><i>mask</i><b>)</b>
+<p>
+Set job <a href="job.html#HostsMask">Hosts Mask</a>.
+</p></li>
+
+<li>job.<b>setHostsMaskExclude(</b><i>mask</i><b>)</b>
+<p>
+Set job <a href="job.html#HostsMaskExclude">Exclude Hosts Mask</a>.
+</p></li>
+
+<li>job.<b>setMaxRunningTasks(</b><i>number</i><b>)</b>
+<p>
+Set job <a href="job.html#MaxRunningTasks">Maximum Running Tasks</a> number.
+</p></li>
+
+<li>job.<b>setMaxRunTasksPerHost(</b><i>number</i><b>)</b>
+<p>
+Set job <a href="job.html#MaxRunTasksPerHost">Maximum Running Tasks Per Host</a> number.
+</p></li>
+
+<li>job.<b>setName(</b><i>name</i><b>)</b>
+<p>
+Set job <a href="job.html#Name">Name</a>.
+</p></li>
+
+<li>job.<b>setNeedOS(</b><i>mask</i><b>)</b>
+<p>
+Set job <a href="job.html#NeedOS">Needed Operating System</a> mask. When Python af.Job class constructs it detects OS, and set it by this method. So use this function to override it.
+</p></li>
+
+<li>job.<b>setNeedProperties(</b><i>mask</i><b>)</b>
+<p>
+Set job <a href="job.html#NeedProperties">Needed Host Properties</a> mask.
+</p></li>
+
+<li>job.<b>setPriority(</b><i>priority</i><b>)</b>
+<p>
+Set job <a href="job.html#Priority">Priority</a>.
+</p></li>
+
+<li>job.<b>setWaitTime(</b><i>time_int</i><b>)</b>
+<p>
+Set job <a href="job.html#WaitTime">Wait Time</a> (in seconds since epoch).
+</p></li>
+
+</ul>
+
+
+<h2 id="block" class="anchor">Block Object</h2>
+
+<h3>Constructor:</h3>
+<ul>
+<li>block = af.<b>Block(</b><i>blockname, blocktype</i><b>)</b>
+<p>
+Construct a new block and return it.
+</p></li>
+</ul>
+
+<h3>Variables:</h3>
+<ul>
+<li>block.<b>tasks</b> = [ ]
+<p>
+Tasks list. Not used in numeric block.<br/>
+</p></li>
+</ul>
+
+<h3>Functions:</h3>
+<ul>
+
+<li>block.<b>setCapacity(</b><i>number</i><b>)</b>
+<p>
+Set block <a href="job_block.html#Capacity">Capacity</a> value.
+</p></li>
+
+<li>block.<b>setCmdPost(</b><i>command</i><b>)</b>
+<p>
+Set block <a href="job_block.html#CmdPost">Post command</a>.
+</p></li>
+
+<li>block.<b>setCmdPre(</b><i>command</i><b>)</b>
+<p>
+Set block <a href="job_block.html#CmdPre">Pre command</a>.
+</p></li>
+
+<li>block.<b>setCommand(</b><i>command</i><b>)</b>
+<p>
+Set block <a href="job_block.html#Command">Command</a>.
+</p></li>
+
+<li>block.<b>setDependMask(</b><i>mask</i><b>)</b>
+<p>
+Set block <a href="job_block.html#DependMask">Depend Mask</a>.
+</p></li>
+
+<li>block.<b>setDependSubTask()</b>
+<p>
+Allow block <a href="job_block.html#SubTaskDepend">Sub Tasks Dependence</a>.
+</p></li>
+
+<li>block.<b>setErrorsAvoidHost(</b><i>number</i><b>)</b>
+<p>
+Set block <a href="job_block.html#ErrorsAvoidHost">Errors Avoid Host</a> - maximum number or errors on same host for job NOT to avoid host.
+</p></li>
+
+<li>block.<b>setErrorsRetries(</b><i>number</i><b>)</b>
+<p>
+Set block <a href="job_block.html#ErrorRetries">Error Retries</a> - maximum number of errors in task to retry it automatically.
+</p></li>
+
+<li>block.<b>setErrorsTaskSameHost(</b><i>number</i><b>)</b>
+<p>
+Set block <a href="job_block.html#ErrorsTaskSameHost">Errors Task Same Host</a> - maximum number or errors on same host for task NOT to avoid host.
+</p></li>
+
+<li>block.<b>setErrorsForgiveTime(</b><i>number</i><b>)</b>
+<p>
+Set block <a href="job_block.html#ErrorsForgiveTime">Errors Forgive Time</a> - time to forgive error host.
+</p></li>
+
+<li>block.<b>setFiles(</b><i>image file name</i><b>)</b>
+<p>
+Set block <a href="job_block.html#Files">Files</a> argument.
+</p></li>
+
+<li>block.<b>setFramesPerTask(</b><i>number</i><b>)</b>
+<p>
+Set block <a href="job_block.html#FramesPerTask">Frames Per Task</a> number.
+</p></li>
+
+<li>block.<b>setHostsMask(</b><i>mask</i><b>)</b>
+<p>
+Set block <a href="job_block.html#HostsMask">Hosts Mask</a>.
+</p></li>
+
+<li>block.<b>setHostsMaskExclude(</b><i>mask</i><b>)</b>
+<p>
+Set block <a href="job_block.html#HostsMaskExclude">Exclude Hosts Mask</a>.
+</p></li>
+
+<li>block.<b>setMaxRunningTasks(</b><i>number</i><b>)</b>
+<p>
+Set block <a href="job_block.html#MaxRunningTasks">Maximum Running Tasks</a> parameter.
+</p></li>
+
+<li>block.<b>setMaxRunTasksPerHost(</b><i>number</i><b>)</b>
+<p>
+Set block <a href="job_block.html#MaxRunTasksPerHost">Maximum Running Tasks Per Host</a> parameter.
+</p></li>
+
+<li>block.<b>setMultiHost(</b><i>int min, int max, int waitmax, bool sameHostMaster, const char * service, int waitsrv</i><b>)</b>
+<p>
+Set block tasks to be able to run on several hosts and set <a href="job_block.html#MultiHost">Multi Hosts Tasks</a> parameters.
+</p></li>
+
+<li>block.<b>setNeedHDD(</b><i>gigabytes</i><b>)</b>
+<p>
+Set block <a href="job_block.html#NeedHDD">Disk Space Needed</a> in gigabytes.
+</p></li>
+
+<li>block.<b>setNeedMemory(</b><i>megabytes</i><b>)</b>
+<p>
+Set block <a href="job_block.html#NeedMemory">Memory Needed</a> in megabytes.
+</p></li>
+
+<li>block.<b>setNeedPower(</b><i>power</i><b>)</b>
+<p>
+Set block <a href="job_block.html#NeedPower">Needed Host Power</a> mask.
+</p></li>
+
+<li>block.<b>setNeedProperties(</b><i>mask</i><b>)</b>
+<p>
+Set block <a href="job_block.html#NeedProperties">Needed Host Properties</a> mask.
+</p></li>
+
+<li>block.<b>setNumeric(</b><i>start, end, [perTask=1]</i><b>)</b>
+<p>
+Set block to numeric <a href="job_block.html#Numeric">Numeric</a> type.
+</p></li>
+
+<li>block.<b>setParser(</b><i>type</i><b>)</b>
+<p>
+Set block tasks <a href="job_block.html#ParserType">Parser Type</a> name.
+</p></li>
+
+<li>block.<b>setTasksDependMask(</b><i>mask</i><b>)</b>
+<p>
+Set block <a href="job_block.html#TasksDependMask">Tasks Depend Mask</a>.
+</p></li>
+
+<li>block.<b>setTasksMaxRunTime(</b><i>seconds</i><b>)</b>
+<p>
+Set block <a href="job_block.html#TasksMaxRunTime">Tasks Maximum Running Time</a> limit (in seconds).
+</p></li>
+
+<li>block.<b>setTasksName(</b><i>name</i><b>)</b>
+<p>
+Set block <a href="job_block.html#TasksName">Tasks Name</a>.
+</p></li>
+
+<li>block.<b>setVariableCapacity(</b><i>min, max</i><b>)</b>
+<p>
+Set block capacity to variable, through <a href="job_block.html#Capacity">Capacity Coefficients</a> - maximum and minimun values.
+</p></li>
+
+<li>block.<b>setWorkingDirectory(</b><i>directory</i><b>)</b>
+<p>
+Set block tasks <a href="job_block.html#WorkingDirectory">Working Directory</a>.
+</p></li>
+
+</ul>
+
+
+<h2 id="task" class="anchor">Task Object</h2>
+
+<h3>Constructor:</h3>
+<ul>
+<li>task = af.<b>Task(</b><i>taskname</i><b>)</b>
+<p>
+Construct a new task and return it.
+</p></li>
+</ul>
+
+<h3>Functions:</h3>
+<ul>
+
+<li>task.<b>setCommand(</b><i>command</i><b>)</b>
+<p>
+Set task <a href="job_task.html#Command">Command</a>.
+</p></li>
+
+<li>task.<b>setFiles(</b><i>image file name</i><b>)</b>
+<p>
+Set task <a href="job_task.html#CommandView">View Command</a> argument.
+</p></li>
+
+<li>task.<b>setName(</b><i>name</i><b>)</b>
+<p>
+Set task <a href="job_task.html#Name">Name</a>.
+</p></li>
+
+</ul>
+
