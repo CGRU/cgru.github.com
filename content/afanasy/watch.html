@@ -1,0 +1,515 @@
+<h2>Watch - Afanasy Qt GUI</h2>
+
+<p>
+Watch - afanasy monitor. It can be in three modes - USER, VISOR and GOD.<br/>
+<ul>
+<li><b>USER</b> ( common mode ) - user can change parameters only of its own nodes - jobs, user and render(s).</li>
+<li><b>VISOR</b> ( super user mode ) - can do same as user but he change jobs of any user.</li>
+<li><b>GOD</b> ( super user mode ) - can do anything.
+Change any parameter of any user, job or host. Add or delete hosts, users. Restart, shutdown any render host.</li>
+</ul>
+
+To switch user mode you need to type password in active Watch window (you do not need to relogin to switch between modes).
+To reset super user mode you can type password again.
+</p>
+
+<h3>Super user mode:</h3>
+<p>
+Type password to switch to it. You can see and manipulate all users jobs.<br />
+</p>
+<table width="99%">
+   <caption><b>Jobs Tab</b></caption>
+   <tr>
+      <td align="center">
+         <b>&quot;Visor&quot; Mode</b> (yellow border)
+         <br/>
+         <img src="images/afanasy/watch/jobs_visor.png" alt="jobs_visor"/>
+         <br/>
+         Default password is "idkfa"
+      </td>
+      <td align="center">
+         Sort&amp;Filter Control Widget<br />
+         <img src="images/afanasy/watch/sortfilterctrl.png" alt="sortfilterctrl"/><br />
+         Right Mouse Button (RMB) Menu<br />
+         <img src="images/afanasy/watch/jobs_sortfilter.png" alt="jobs_sortfilter"/><br />
+         Sort&amp;Filter Control allows you to define items sorting and filtering conditions.<br />
+         You can choose sorting parameter and direction or disable sorting at all
+         (disabling is equivalent to empty filter expression string).<br />
+         Choose filtering parameter and condition (to include or exclude pattern) or disable filtering at all.<br />
+         When filtering is working Sort&amp;Filter Control highlights its widget background color.<br />
+     </td>
+      <td align="center">
+         <b>&quot;GOD&quot; Mode</b> (white border)
+         <br/>
+         <img src="images/afanasy/watch/jobs_filtered.png" alt="jobs_filtered"/>
+         <br/>
+         Default password is "iddqd"
+      </td>
+   </tr>
+</table>
+
+
+<h2 id="config" class="anchor">Configuration</h2>
+
+<ul>
+<li><p>
+<code>pswd_visor</code> = 1832116180fdc61b64fd978401e462e9<br/>
+MD5 of Visor rights password. You can use <kbd>afcmd passwd [string]</kbd> to get password digits key.
+</p></li>
+<li><p>
+<code>pswd_visor</code> = 73bcaaa458bff0d27989ed331b68b64d<br/>
+MD5 of GOD rights password.<br/>
+(This default values are very common passwords which exists in any MD5 database)<br/>
+Password length must be <b>five characters</b>.
+</p></li>
+<li><p>
+<code>previewcmds</code> :<br/>
+<i>
+nuke -v @ARG@<br/>
+imf_disp @ARG@<br/>
+mplay @ARG@<br/>
+</i>
+Programs to view images.<br/>
+"@ARG@" - will be replaced with filename.<br/>
+To clear a list specify an empty element text.<br/>
+</p></li>
+<li><p>
+<code>rendercmds</code> :<br/>
+<i>
+vncviewer @ARG@<br/>
+xterm -e "ssh @ARG@; read -s -n 1"<br/>
+xterm -e "ssh @ARG@ \"@ASK@\"; read -s -n 1"<br/>
+xterm -e "ping @ARG@; read -s -n 1"<br/>
+</i>
+Commands for watch to launch with selected render as an argument.<br/>
+"@ARG@" - This pattern will be replaced with hostname.<br/>
+"@ASK@" - Dialog will be raised to enter string to replace this pattern.<br/>
+To clear a list specify an empty element text.<br/>
+</p></li>
+<li><p>
+<code>watch_font_family</code> = SansSerif<br/>
+GUI font.
+</p></li>
+<li><p>
+<code>watch_font_sizename</code> = 8<br/>
+Font size for nodes names and important information.
+</p></li>
+<li><p>
+<code>watch_font_sizeinfo</code> = 7<br/>
+Font size for nodes common information.
+</p></li>
+<li><p>
+<code>watch_font_sizemin</code> = 5<br/>
+Smallest font for nodes state.
+</p></li>
+<li><p>
+<code>watch_connectretries</code> = 3<br/>
+Connection fails times to consider to Watch that there is no connection to server.
+</p></li>
+<li><p>
+<code>watch_waitforconnected</code> = 8000 (milliseconds)<br/>
+Time to wait for connection establishing to consider that connection is available.
+</p></li>
+<li><p>
+<code>watch_waitforreadyread</code> = 8000 (milliseconds)<br/>
+Time to wait for incoming data to consider that connection is not lost.
+</p></li>
+<li><p>
+<code>watch_waitforbyteswritten</code> = 8000 (milliseconds)<br/>
+Time to wait for writing data to consider that connection is not lost.
+</p></li>
+<li><p>
+<code>watch_refreshinterval</code> = 5 (seconds)<br/>
+Force update some widgets painting, even if there is no information change ( they can display a timer, for example).
+</p></li>
+</ul>
+
+<h4>Monitor:</h4>
+<ul>
+<li><p>
+<code>monitor_updateperiod</code> = 10 (seconds)<br/>
+Period to send dummy message to server to keep alive.
+</p></li>
+<li><p>
+<code>monitor_zombietime</code> = 40 (seconds)<br/>
+Time to server to delete monitor if there is no update (even no dummy message) for this period.
+</p></li>
+<li><p>
+<code>monitor_connectretries</code> = 3<br/>
+Connection fails times to consider to Monitor that there is no connection to server.
+</p></li>
+<li><p>
+<code>monitor_waitforconnected</code> = 8000 (milliseconds)<br/>
+Time to wait for connection establishing to consider that connection is available.
+</p></li>
+<li><p>
+<code>monitor_waitforreadyread</code> = 8000 (milliseconds)<br/>
+Time to wait for incoming data to consider that connection is not lost.
+</p></li>
+<li><p>
+<code>monitor_waitforbyteswritten</code> = 8000 (milliseconds)<br/>
+Time to wait for writing data to consider that connection is not lost.
+</p></li>
+</ul>
+
+
+<h2 id="jobs" class="anchor">Jobs Monitor</h2>
+
+<div style="float:right;text-align:center;margin:20px">
+<p>
+<img src="images/afanasy/watch/jobs.png" alt="jobs"/>
+</p>
+<p>RMB Menu<br />
+<img src="images/afanasy/watch/jobs_rmb.png" alt="jobs_rmb"/>
+</p>
+<p>
+Tooltip<br />
+<img src="images/afanasy/watch/jobs_tooltip.png" alt="jobs_tooltip"/>
+</p>
+</div>
+
+<p>
+<font color="#FF5010" size="5">&#9733;</font> with a number means running tasks number.
+</p>
+<p><code>0:01.28 - tima</code> - Tima's job started 0 hours 1 minutes and 28 second ago.</p>
+<p><code>m-1_p99</code> - Maximum hosts = -1 (no limit), job priority = 99.</p>
+<p>
+Running Time:<br/>
+<code>RT-s12:18/46a</code><br/>
+All done tasks running time sum = 0 hours 12 minutes 18 seconds.<br/>
+Average done tasks running time = 0 hours 0 minutes 46 seconds.<br/>
+</p>
+<p>
+Errors solving:<br/>
+<code>E-2b|2t|0h|3r</code><br/>
+For block to avoid host = 2.<br/>
+For task to avoid host = 2.<br/>
+Automatic task error retries = 2.<br/>
+Tasks maximum run time = 0 hours (unlimited).<br/>
+</p>
+<p>
+Error hosts &amp Avoiding hosts:<br/>
+<code>no err hosts</code> - no hosts produced errors ( so no hosts to avoid too).<br/>
+<code>e1/0a</code> - 1 host produced error(s), no hosts to avoid.<br/>
+<code>e1/1A</code> - 1 host produced error(s), 1 host to avoid.<br/>
+</p>
+<p><code>61% infdept_87_tif</code> - in block named 'infdept_87_tif' 89% done tasks.</p>
+<p><code>b2-t18 r6/2 d10/0e</code><br/>
+block number '0' has 123 tasks.<br/>
+4 tasks running and 12 ready.<br/>
+107 tasks done and 0 errors.<br/>
+</p>
+
+<h3>Right mouse button (RMB) menu:</h3>
+<p><b>Show log</b> - request job log from server.</p>
+<p>Move Jobs:<br />
+You can move jobs in user jobs list. Note that job can move only jobs with the same priority.</p>
+<p><b>Move up</b> - move job one position up in user list.</p>
+<p><b>Move down</b> - move job one position down in user list.</p>
+<p><b>Move top</b> - move job top in user list.</p>
+<p><b>Move bottom</b> - move job bottom in user list.</p>
+<p><b>Set max hosts</b> - set <a href="#afanasy/job.html#MaxHosts">job maximum hosts</a>.</p>
+<p><b>Set hosts mask</b> - set <a href="#afanasy/job.html#HostsMask">job hosts mask</a>.</p>
+<p><b>Set hosts exclude mask</b> - set <a href="#afanasy/job.html#HostsMaskExclude">job exclude hosts mask</a>.</p>
+<p><b>Set priority</b> - set <a href="#afanasy/job.html#Priority">job priority</a>.</p>
+<p><b>Set depend mask</b> - set <a href="#afanasy/job.html#DependMask">job depend mask</a>.</p>
+<p><b>Set global depend mask</b> - set <a href="#afanasy/job.html#DependMaskGlobal">job depend mask</a>.</p>
+<p><b>Set wait time</b> - set <a href="#afanasy/job.html#DependMaskGlobal">job wait time</a>.</p>
+<p><b>Set OS needed</b> - set <a href="#afanasy/job.html#NeedOS">job needed OS</a>.</p>
+<p><b>Set properties needed</b> - set <a href="#afanasy/job.html#NeedProperties">job needed properties</a>.</p>
+<p><b>Start</b> - start offline (<small>OFF</small>) job.</p>
+<p><b>Pause</b> - set job offline (<small>OFF</small>).</p>
+<p><b>Restart errors</b> - restart all job error(<small>ERR</small>) tasks.</p>
+<p><b>Stop</b> - set job offline (<small>OFF</small>) and stop all running tasks.</p>
+<p><b>Restart</b> - restart all tasks.</p>
+<p><b>Restart&amp;Pause</b> - set job offline (<small>OFF</small>) and stop all tasks.</p>
+<p><b>Listen</b> - ask renders to send all job running tasks output to watch.</p>
+<p><b>Set blocks avoid errors</b> - Set <a href="#afanasy/job.html#ErrorsAvoidHost">Errors Avoid Host</a> for all job blocks.</p>
+<p><b>Set tasks avoid errors</b> - Set <a href="#afanasy/job.html#ErrorsTaskSameHost">Errors Task Same Host</a> for all job blocks.</p>
+<p><b>Set task errors retries</b> - Set <a href="#afanasy/job.html#ErrorRetries">Error Retries</a> for all job blocks.</p>
+<p><b>Set task maximum run time</b> - Set <a href="#afanasy/job.html#ErrorsTaskSameHost">Errors Task Same Host</a> for all job blocks.</p>
+<p><b>Show error hosts</b> - Show hosts list where tasks have errors.</p>
+<p><b>Reset error hosts</b> - Reset all blocks error hosts list.</p>
+<p><b>Delete</b> - Delete job (it deletes from database too, minimum information put into statistics tables).</p>
+
+
+<h2 id="tasks" class="anchor">Tasks Monitor</h2>
+
+<p>
+Mouse double click on a job in jobs list will open its tasks window.
+</p>
+<table>
+   <caption><b>Jobs Tasks - Block Selection</b></caption>
+   <tr>
+      <td align="right" width="40%">
+         Block RMB Menu<br />
+         <img src="images/afanasy/watch/block_rmb.png" alt="block_rmb" /><br />
+      </td>
+      <td align="center" width="10%">
+         <img src="images/afanasy/watch/job_tasks_block.png" alt="job_tasks_block" /><br />
+      </td>
+      <td align="left" width="40%">
+         Block Tooltip<br />
+         <img src="images/afanasy/watch/block_tooltip.png" alt="block_tooltip" /><br />
+      </td>
+   </tr>
+</table>
+<br />
+
+<table>
+   <caption><b>Jobs Tasks - Task Selection</b></caption>
+   <tr>
+      <td align="right" width="40%">
+         Task RMB Menu<br />
+         <img src="images/afanasy/watch/task_rmb.png" alt="task_rmb" /><br />
+      </td>
+      <td align="center" width="10%">
+         <img src="images/afanasy/watch/job_tasks_task.png" alt="job_tasks_task" /><br />
+      </td>
+      <td align="left" width="40%">
+         Task Tooltip<br />
+         <img src="images/afanasy/watch/task_tooltip.png" alt="task_tooltip" /><br />
+         <br/><br/>
+         Task Information Window<br />
+         <img src="images/afanasy/watch/task_info.png" alt="task_info" /><br />
+      </td>
+   </tr>
+</table>
+
+<p>
+<span style="color:#A31;font-size:25px">&#9733;</span> signs a running task.
+</p>
+
+<p>Running task: <code>18%</code> - Render progress = 18 percents.<br/>
+<p>Running multi-frame task: <code> - f5/1-90%</code> - 90% of frame 1 of 5 (frames per host parameter) rendered.<br/>
+<p><code>9: 45-49</code> - Task number-'9' and name-'45-49' (automatically generated by block).</p>
+<p><code>s2/0e r10-1</code><br/>
+Task has been started 2 times and has 0 errors (failed sessions).<br/>
+Last start was on render named 'r10-1'.<br/>
+</p>
+
+<h3>Right mouse button (RMB) menu:</h3>
+<p><b>Output</b> - Request task output from server (from last launch, or current if it is running).</p>
+<p><b>outputs</b> - Choose task launch (session number) to request task output from.</p>
+<p><b>Log</b> - Request task log from server.</p>
+<p><b>Info</b> - Request task data from server, command line, working directory, etc.</p>
+<p><b>Listen</b> - Request receiving output from render.</p>
+<p><b>Error Hosts</b> - Request task error hosts list.</p>
+<p><b>Preview</b> - Choose a program to launch (see watch configuration to edit this programs list).</p>
+<p><b>Skip</b> - Skip task. Server will stop task if it is running.</p>
+<p><b>Restart</b> - Restart task.</p>
+
+
+<h2 id="renders" class="anchor">Renders Monitor</h2>
+
+<p>
+To open renders list in a separate window uses RMB on 'RENDERS' button.
+</p>
+<table width="99%">
+   <tr>
+      <td align="center" width="50%">
+         <b>Renders Tab</b>
+         <br/>
+         <br/>
+         <img src="images/afanasy/watch/renders.png" alt="renders" />
+         <br/>
+         <table width="100%" cellpadding="0" cellspacing="0" bgcolor="#609050">
+         <br/>
+         <tr>
+            <td width="5%"/>
+            <td align="left">
+               <font color="#FF6010" size="3">&#9733;</font>
+               <font color="#000000"><b>name</b></font> version
+               <br/>
+               <font color="#D0FFA0">capacity: jobname.blockname.taskname</font>
+               <br/>
+               <br/>
+               <br/>
+            </td>
+            <td align="left">
+               <small><b>CPU MEM SWAP NET HDD I/O</b></small>
+               <br/>
+               <br/>
+               custom resources meters if preset
+               <br/>
+               annotation if not empty
+               <br/>
+            </td>
+            <td align="right">
+               <font color="#000000"><b>user - priority</b></font>
+               <br/>
+               <font color="#D0FFA0">task owner - running time</font>
+               <br/>
+               <br/>
+               <br/>
+            </td>
+            <td width="5%"/>
+         </tr>
+         </table>
+      </td>
+      <td align="left" width="50%">
+         RMB Menu<br />
+         <img src="images/afanasy/watch/renders_rmb.png" alt="renders_rmb" />
+         <br/><br/><br/><br/>
+         Tooltip<br />
+         <img src="images/afanasy/watch/renders_tooltip.png" alt="renders_tooltip" />
+         <br/><br/><br/><br/>
+         Sort&amp;Filter Control<br />
+         <img src="images/afanasy/watch/renders_sortfilter.png" alt="renders_sortfilter" />
+      </td>
+   </tr>
+</table>
+
+<p>
+<font color="#FF5010" size="5">&#9733;</font> - means running task.
+</p>
+<p>
+User-Priority:<br/>
+<code>renderer-180</code>: user name = 'renderer', priority = '180'.<br/>
+<code>n(tima)-99</code>: user name = 'tima', priority = '99', <a href="render.html#State">nimby</a> is set.<br/>
+<code>N(renderer)-99</code>: user name = 'renderer', priority = '99', <a href="render.html#State">NIMBY</a> is set.<br/>
+</p>
+<p>
+<font color="#FFFF00"><b>C</b></font> : CPU from 0% to 100%<br/>
+<font color="green">Green: user + nice</font> (user processes with low priority (nice>0))<br/>
+<font color="red">Red: system + IO wait + irq + softirq</font><br/>
+</p>
+<p>
+<font color="#FFFF00"><b>M</b></font> : Memory from 0 to total amount<br/>
+<font color="#004000">Dark: cache + buffers</font><br/>
+<font color="green">Green: used by applications</font><br/>
+</p>
+<p>
+<font color="#FFFF00"><b>S</b></font> : Used swap from 0 to total space.<br/>
+</p>
+<p>
+<font color="#FFFF00"><b>H</b></font> : Used HDD from 0 to total space.<br/>
+</p>
+<p>
+<font color="#FFFF00"><b>N</b></font> : <font color="#00B050"><b>Send</b></font> and <font color="#00B000"><b>Received</b></font>
+traffic through all network interfaces exclude 'lo'.<br/>
+<font color="#FFFF00"><b>.001 - 100</b></font> : Shows graph scale in megabytes per second.
+</p>
+<p>
+<font color="#FFFF00"><b>D</b></font> : <font color="#00B050"><b>Read</b></font> and <font color="#00B000"><b>Write</b></font>
+read and write data on disk.<br/>
+<font color="#FFFF00"><b>.001 - 100</b></font> : Shows graph scale in megabytes per second.
+</p>
+
+<p>
+You can open renders list in a separate window (RMB on 'RENDERS' button).<br />
+</p>
+
+<table>
+   <tr>
+      <td align="center">
+         Renders Separate Window<br />
+         <img src="images/afanasy/watch/renders_filtered.png" alt="users_filtered" />
+      </td>
+   </tr>
+</table>
+
+<p>
+This is an example of renders list filtered by their name.<br />
+You can test job hosts mask with Sort&amp;Filter.<br />
+</p>
+
+
+<h2 id="users" class="anchor">Users Monitor</h2>
+
+<p>
+To open users list in a separate window uses RMB on 'USERS' button.
+</p>
+<table>
+   <caption><b>Users Tab</b></caption>
+   <tr>
+      <td align="right" width="40%">
+         RMB Menu<br />
+         <img src="images/afanasy/watch/users_rmb.png" alt="users_rmb" />
+      </td>
+      <td align="center" width="10%">
+         <img src="images/afanasy/watch/users.png" alt="users" />
+      </td>
+      <td align="left" width="10%">
+         Tooltip<br />
+         <img src="images/afanasy/watch/users_tooltip.png" alt="users_tooltip" />
+      </td>
+      <td align="left" width="40%">
+         Sort&amp;Filter Control<br />
+         <img src="images/afanasy/watch/users_sortfilter.png" alt="users_sortfilter" />
+      </td>
+   </tr>
+</table>
+
+<p>
+<font color="#FF5010" size="5">&#9733;</font> signs a running task.
+</p>
+<code>tima-99</code> User 'tima' has a priority = '99'.<br/>
+<code>j8/1</code> Jobs number: 8 total / 1 running.<br/>
+<p>
+<code>h-1/17</code> User took '17' hosts of '-1' maximum ('-1' means no limit).<br/>
+<code>E-2b|2t|3r</code> Jobs Errors Default Settings:<br/>
+For jobs blocks to avoid host = '2'.<br/>
+For blocks tasks to avoid host = '2'.<br/>
+Automatic task errors retries = '3'.<br/>
+</p>
+
+<p><code>n1138.9_S</code><br/>
+User <a href="user.html#Need">need</a>.<br/>
+</p>
+
+<table>
+   <tr>
+      <td align="center">
+         <b>Users Separate Window</b><br />
+         <img src="images/afanasy/watch/users_filtered.png" alt="users_filtered" />
+      </td>
+      <td align="left">
+         You can open users list in a separate window (RMB on 'RENDERS' button).<br />
+         <br />
+         This is an example of users list filtered by name<br />
+      </td>
+   </tr>
+</table>
+
+
+
+<h2 id="styles" class="anchor">GUI Styles</h2>
+
+<table>
+<tr align="center">
+	<td><b><i>Civil</i>:</b></td>
+</tr>
+<tr>
+	<td><img src="images/afanasy/watch/style_civil.png"/></td>
+	<td>
+		<table><tr>
+			<td><img src="images/afanasy/watch/gui_menu.png"/></td>
+			<td><img src="images/afanasy/watch/style_menu.png"/></td>
+		</tr></table>
+		<p>
+			You can choose Watch GUI Style in dialog RMB menu (click in any empty space in dialog border),
+			change colors, create you own style from existing one.
+		</p>
+		<p>
+			Styles are located in:<br/>
+			<code>cgru/afanasy/icons/watch</code><br/>
+			Menu refreshes every time you entering GUI menu.
+		</p>
+	</td>
+</tr>
+</table>
+
+<br/><br/>
+
+<table>
+<tr align="center">
+	<td><b><i>Military</i>:</b></td>
+	<td><b><i>Hello Kitty</i>:</b></td>
+</tr>
+<tr align="center">
+	<td><img src="images/afanasy/watch/style_military.png"/></td>
+	<td><img src="images/afanasy/watch/style_hellokitty.png"/></td>
+</tr>
+</table>
+

@@ -114,8 +114,8 @@ overflow:hidden;
 /*position: absolute;*/
 margin:10px 10px;
 padding:10px 20px;
-border-radius:12px; box-shadow:0 0 10px #000 inset;}
-.cnavlink:hover { box-shadow:0 0 20px #000 inset;}
+border-radius:12px; box-shadow:0 0 4px #000 inset;}
+.cnavlink:hover { box-shadow:0 0 8px #000 inset;}
 
 code, kbd {
 font-family: Arial;
