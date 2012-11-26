@@ -3,38 +3,45 @@
 Movie Maker is an utility to create movie file from image sequence. It consists of some scripts and GUI for it.
 Scripts are written on Python and GUI is written on PyQt, so Python and PyQt must be installed.
 Scripts use other utilities:
-<a href="http://www.imagemagick.org">ImageMagick</a> to draw annotations and
-<a href="http://www.ffmpeg.org">ffmpeg</a> to encode.
+<a href="http://www.imagemagick.org" target="_blank">ImageMagick</a> to draw annotations and
+<a href="http://www.ffmpeg.org" target="_blank">ffmpeg</a> to encode.
 </p>
 <p>
 Mavishky dialog constructs and launches <kbd>makemovie.py</kbd> script. It is a GUI for this command.
 </p>
-<p>
-<table width="99%">
-<tr align="center"><td>
-   <a name="mm_tab_general">General Tab:</a><br/>
-   <img src="images/moviemaker/dialog.png" alt="dialog.png"/>
-</td></tr>
-<tr align="center"><td>
-   <a name="mm_tab_drawing">Drawing Tab:</a><br/>
-   <img src="images/moviemaker/dialog_drawing.png" alt="dialog_drawing.png"/>
-</td></tr>
-<tr align="center"><td>
-   <a name="mm_tab_parameters">Parameters Tab:</a><br/>
-   <img src="images/moviemaker/dialog_parameters.png" alt="dialog_parameters.png"/>
-</td></tr>
-<tr align="center"><td>
-   <a name="mm_tab_stereo">Stereo Tab:</a><br/>
-   <img src="images/moviemaker/dialog_stereo.png" alt="dialog_stereo.png"/>
-</td></tr>
-<tr align="center"><td>
-   <a name="mm_tab_afanasy">Afanasy Tab:</a><br/>
-   <img src="images/moviemaker/dialog_afanasy.png" alt="dialog_afanasy.png"/>
-</td></tr>
-</table>
-</p>
 
-<a name="makemovie"><h3>makemovie.py</h3></a>
+<div style="text-align:center">
+<p>
+<b id="dailies_general" class="anchor">General Tab:</b><br/>
+<img src="images/moviemaker/dailies_general.png" alt="dailies_general.png"/>
+</p>
+<p>
+<b id="dailies_drawing" class="anchor">Drawing Tab:</b><br/>
+<img src="images/moviemaker/dailies_drawing.png" alt="dailies_drawing.png"/>
+</p>
+<p>
+<b id="dailies_parameters" class="anchor">Parameters Tab:</b><br/>
+<img src="images/moviemaker/dailies_parameters.png" alt="dailies_parameters.png"/>
+</p>
+<p>
+<b id="dailies_stereo" class="anchor">Stereo Tab:</b><br/>
+<img src="images/moviemaker/dailies_stereo.png" alt="dailies_stereo.png"/>
+</p>
+<p>
+<b id="dailies_decode" class="anchor">Decode Tab:</b><br/>
+<img src="images/moviemaker/dailies_decode.png" alt="dailies_decode.png"/>
+</p>
+<p>
+<b id="dailies_audio" class="anchor">Audio Tab:</b><br/>
+<img src="images/moviemaker/dailies_audio.png" alt="dailies_audio.png"/>
+</p>
+<p>
+<b id="dailies_afanasy" class="anchor">Afanasy Tab:</b><br/>
+<img src="images/moviemaker/dailies_afanasy.png" alt="dailies_afanasy.png"/>
+</p>
+</div>
+
+<h3 id="makemovie" class="anchor">makemovie.py</h3>
 <p>
 This script creates a movie from images sequence.
 It consists of two stages.
@@ -56,7 +63,7 @@ First line is the name of a preset, second is an encode command.
 You can choose preset in GUI or specify it in command argument.
 </p>
 
-<a name="scan"><h2>Scan Scan</h2></a>
+<h2 id="scan" class="anchor">Scan Scan</h2>
 <p>
 It is an utility to scan folder and its sub-folders for an images sequences, and to create moves from them.
 It consists of a <kbd>scanscan.py</kbd> command and a <kbd>scandialog.py</kbd> GUI for it.
@@ -64,16 +71,14 @@ Both are Python scripts, GUI is on PyQt.
 Command script scans folders for images and launches <kbd>makemovie.py</kbd> for each sequence.
 </p>
 
+<div style="text-align:center">
 <p>
-<table width="99%">
-<tr align="center"><td>
-   <a name="ss_tab_general">General Tab:</a><br/>
-   <img src="images/moviemaker/scandialog.png" alt="scandialog.png"/>
-   </td></tr>
-<tr align="center"><td>
-   <a name="ss_tab_parameters">Parameters Tab:</a><br/>
-   <img src="images/moviemaker/scandialog_parameters.png" alt="scandialog_parameters.png"/>
-   </td></tr>
-</table>
+<b id="scan_general" class="anchor">General Tab:</b><br/>
+<img src="images/moviemaker/scan_general.png" alt="scan_general.png"/>
 </p>
+<p>
+<b id="scan_parameters" class="anchor">Parameters Tab:</b><br/>
+<img src="images/moviemaker/scan_parameters.png" alt="scan_parameters.png"/>
+</p>
+</div>
 

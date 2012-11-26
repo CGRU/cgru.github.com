@@ -1,0 +1,312 @@
+<h2>Afanasy Job</h2>
+
+<h3>Job Attributes:</h3>
+<ul>
+<li><b class="anchor" id="Name">Name</b> - Each job has an unique name.
+   If new job comes to server with the name which already exists, server change it's name by adding a number.
+   Jobs dependence bases on their names and depend masks to match it.
+   Afanasy standard <a href="../../doc/regexp.html">Regular Expressions</a>.
+   The same expressions are in Pythob, PHP, Perl and other languages.</li>
+<li><b class="anchor" id="NameUser">User Name</b> - User name who has created the Job.</li>
+<li><b class="anchor" id="NameHost">Host Name</b> - Host name where job was created.</li>
+<li><b class="anchor" id="TimeCreation">Creation Time</b> - Time when the job was created.</li>
+<li><b class="anchor" id="TimeStarted">Started Time</b> - Time when the job was started (produced first task).</li>
+<li><b class="anchor" id="TimeDone">Time Done</b> - Time when the job was done (last task finished).</li>
+<li><b class="anchor" id="Description">Description</b> - Any custom description. For database statistics queries only.</li>
+<li><b class="anchor" id="Blocks">Blocks</b> - Jobs consist of block which can produce tasks.</li>
+</ul>
+
+<h3>Job Editable Parameters:</h3>
+<ul>
+<li><b class="anchor" id="Priority">Priority</b> - Jobs with greater priority run first.</li>
+<li><b class="anchor" id="MaxRunningTasks">Maximum Running Tasks</b> - Maximum number of running tasks at the same time.</li>
+<li><b class="anchor" id="MaxRunTasksPerHost">Maximum Running Tasks Per Host</b> - Maximum number of running tasks at the same time at the same host.</li>
+<li><b class="anchor" id="HostsMask">Hosts Mask</b> - Job run only on renders which host name matches this
+<a href="../../doc/regexp.html">mask</a>.</li>
+<li><b class="anchor" id="HostsMaskExclude">Exclude Hosts Mask</b> - Job can not run on renders which host name matches this
+<a href="../../doc/regexp.html">mask</a>.</li>
+<li><b class="anchor" id="DependMask">Depend Mask</b> - Job will wait other user jobs which name matches this
+<a href="../../doc/regexp.html">mask</a>.</li>
+<li><b class="anchor" id="DependMaskGlobal">Global Depend Mask</b> - Job will wait other jobs from any user which name matches this
+<a href="../../doc/regexp.html">mask</a>.</li>
+<li><b class="anchor" id="WaitTime">Wait Time</b> - Time to wait to start a job.</li>
+<li><b class="anchor" id="NeedOS">OS Needed</b> - A <a href="../../doc/regexp.html">mask</a> to contain render host OS name to run on it.</li>
+<li><b class="anchor" id="NeedProperties">Properties Needed</b> - A <a href="../../doc/regexp.html">mask</a> to contain render host properties to run on it. It's custom host parameter can be defined in farm description.</li>
+
+<li><b class="anchor" id="CmdPre">Pre Command</b> - Command to execute on job registration.
+Note, that this <b><i>command is executed by server</i></b>, and not from tasks working directory.
+Use absolute paths here or even transfer paths if you server has another file system than renders.<br/>
+Commands are executed in a special thread with commands queue.
+This means if somebody executes 'sleep 1000', other commands execution (and jobs registration) will be delayed on 1000 seconds (only delayed, not lost).<br/>
+Try not use Pre Command at all. You always can create one more task(block) and make other tasks(blocks) depend on it.
+</li>
+<li><b class="anchor" id="CmdPost">Post Command</b> - Command executed on job deletion.
+This commands are executed on render farm hosts by special system job.
+Working directory of such system task will be the first block working folder.
+</li>
+<li><b class="anchor" id="LifeTime">Life Time</b> - Maximum job age in seconds.
+When job age becomes greater then life time if will be automatically deleted in any case.
+It is useful for some technical jobs to prevent their amount rise.
+You can user default <a href="user.html#JobsLifeTime">life time</a> value for all its jobs.
+</li>
+<li><b class="anchor" id="Annotation">Annotation</b> - Job annotation. Does not influence anything. This string will be shown in GUI item.</li>
+</ul>
+
+<h3 class="anchor" id="State">Job State:</h3>
+<ul>
+<li><b><i> Ready                </i> <small><code> RDY </code></small></b> - Job is ready to produce a task.</li>
+<li><b><i> Running              </i> <small><code> RUN </code></small></b> - Job has running tasks.</li>
+<li><b><i> Done                 </i> <small><code> DON </code></small></b> - All job tasks are done (or some skipped).</li>
+<li><b><i> Error                </i> <small><code> ERR </code></small></b> - Job has some error tasks.</li>
+<li><b><i> Skipped              </i> <small><code> SKP </code></small></b> - Some job tasks are skipped.</li>
+<li><b><i> Waiting Dependencies </i> <small><code> WD  </code></small></b> - Job waits some other jobs.</li>
+<li><b><i> Waiting Time         </i> <small><code> WT  </code></small></b> - Job waits some time.</li>
+<li><b><i> Offline              </i> <small><code> OFF </code></small></b> - Flag to server not to solve a job.</li>
+</ul>
+
+<h2>Job Block</h2>
+
+<h3>Block Attributes:</h3>
+<ul>
+<li><b class="anchor" id="Name">Name</b> - Each Block has an unique name. If new Block added to Job which the name already exists, Job change it's name by adding a number. Blocks dependence bases on their names and depend masks to match it.</li>
+
+<li><b class="anchor" id="TasksNum">Number of Tasks</b> - Number of tasks in block.</li>
+
+<li><b class="anchor" id="Numeric">Numeric</b> - Whether the block is numeric or string.</li>
+
+<li><b class="anchor" id="FrameFirst">Frame First</b> - First block frame.</li>
+
+<li><b class="anchor" id="FrameLast">Frame Last</b> - Last block frame.</li>
+
+<li><b class="anchor" id="FrameInc">Frames Increment</b> - Frames increment.</li>
+
+<li><b class="anchor" id="FramesPerTask">Frames Per Task</b> - Frames per task.
+In numeric blocks used to compute command first and last frame, parser percentage.
+When block has tasks with individual commands used to compute blocks per task dependency.
+Negative values means sub-frame dependency. For example you can render tiles or generate shadows in one block
+and generate mantra 'ifd' files in another with 1 frame per task.
+And if task has 4 shadows or 2x2 tiles you can set -4 frames per task for depended block.
+</li>
+
+<li><b class="anchor" id="SubTaskDepend">Sub Task Depend</b> - For tasks with several frames calculate sub task dependence.
+Useful for simulation and render when not all frames simulated.
+</li>
+
+</ul>
+
+Read <var>Command</var> description for details.
+
+<h3>Block Editable Parameters:</h3>
+<ul>
+<li><b class="anchor" id="TasksName">Tasks Name</b> - Block tasks names pattern.<br/>
+Block - numeric, pattern - not empty: generated task will fill this pattern with its first and last frames numbers<br/>
+Block - numeric, pattern - empty: tasks will take <var>first_frame - last_frame</var> name.<br/>
+Block - not numeric, pattern - not empty: task fill this pattern with it name.<br/>
+Block - not numeric, pattern - not empty: task simply take its name.<br/>
+</li>
+
+<li><b class="anchor" id="TasksType">Tasks Type</b> - Block tasks service name.</li>
+
+<li><b class="anchor" id="ParserType">Parser Type</b> - Block tasks output parser name.</li>
+
+<li><b class="anchor" id="WorkingDirectory">Working Directory</b> - Tasks process working directory.</li>
+
+<li><b class="anchor" id="CmdPre">Pre Command</b> - Like <b>Job Pre Command</b> but for each block.</li>
+<li><b class="anchor" id="CmdPost">Post Command</b> - Like <b>Job Post Command</b> but for each block.
+Working directory of this command will be this block working folder.
+</li>
+
+<li><b class="anchor" id="Capacity">Capacity</b> - tasks capacity (task checks available capacity on render to run on it, and takes its capacity value). Capacity can be static (by default) and variable - base value and coefficients:<br/>
+<b>Capacity Minimum Coefficient</b> - minimum Capacity multiplier.<br/>
+<b>Capacity Maximum Coefficient</b> - maximum Capacity multiplier.<br/>
+Block can generate tasks with capacity*coefficient to fit free render capacity. Task commands will be searched for the special string to replace it with capacity coefficient number. This command replacement performs render by service python class instance. Any service (tasks type) can describe own rule for this replacement by implementation of base class method. By default, base <kbd>service</kbd> class performs <code>command.replace( '@AF_CAPACITY@', str( capacity))</code>.<br/>
+You can specify number of CPUs to use for your applications (if it supports it by command line arguments).
+</li>
+
+<li>
+<b class="anchor" id="MultiHost">Multi Host Tasks</b> - block tasks can run on several hosts (prman <i>netrender</i>, houdini <i>mantra</i> remote rendering).<br/>
+<b>Multi Hosts Minimum</b> - Minimum number of hosts task can run on.<br/>
+<b>Multi Hosts Maximum</b> - Maximum number of hosts task can run on.<br/>
+<b>Multi Hosts Maximum Wait Time</b> - Time in seconds to wait for maximum hosts.<br/>
+<b>Multi Hosts Service</b> - Command to execute on slaves hosts, if it is empty, no service will be.<br/>
+<b>Multi Hosts Service Wait Time</b> - Time in seconds to wait for master execution after slaves execution.<br/>
+<b>Multi Hosts Same Host Master</b> - Master host will be in slaves list. For example if task took 'r00', 'r01', 'r02', 'r03', 'r04' hosts master command will be executed on 'r00' and 'r00' will be in slaves list too. If tasks can multihost service you can't enable this parameter, because only one command can be executed master or slave.<br/>
+</li>
+
+<li><b class="anchor" id="MaxRunningTasks">Maximum Running Tasks</b> - maximum number of tasks block can run on the same time.</li>
+
+<li><b class="anchor" id="MaxRunTasksPerHost">Maximum Running Tasks Per Host</b> - maximum number of tasks block can run on the same time on the same host.</li>
+
+<li><b class="anchor" id="HostsMask">Hosts Mask</b> - Block run only on Renders which host name matches this <a href="../../doc/regexp.html">mask</a>.</li>
+
+<li><b class="anchor" id="HostsMaskExclude">Exclude Hosts Mask</b> - Block can not run on renders which host name matches this <a href="../../doc/regexp.html">mask</a>.</li>
+
+<li><b class="anchor" id="DependMask">Depend Mask</b> - Block will wait previous job blocks which name matches this <a href="../../doc/regexp.html">mask</a>.</li>
+
+<li><b class="anchor" id="TasksDependMask">Tasks Depend Mask</b> - Block task will wait other job blocks task which name matches this <a href="../../doc/regexp.html">mask</a>.</li>
+
+<li><b class="anchor" id="ErrorRetries">Error Retries</b> - Number of task errors to retry it automatically. Value '-1' means take this value from user settings.</li>
+
+<li><b class="anchor" id="ErrorsAvoidHost">Errors Avoid Host</b> - Maximum number of errors on same host. Block begins to avoid render host name if number of errors on it greater or equal this value. Value less then '1' means no limit. Value '-1' means take this value from user settings.</li>
+
+<li><b class="anchor" id="ErrorsTaskSameHost">Errors Task Same Host</b>
+ - Maximum number of errors for task on same host.
+Task begin to avoid this host name of errors on it greater or equal this value.
+Value less then '1' means no limit. Value '-1' means take this value from user settings.</li>
+
+<li><b class="anchor" id="ErrorsForgiveTime">Errors Forgive Time</b>
+ - Time form last error to forgive error host (reset it's errors count).
+Value less then '1' means no forgive. Value '-1' means take this value from user settings.</li>
+
+<li><b class="anchor" id="TasksMaxRunTime">Tasks Maximum Run Time</b> - Tasks maximum time to run. After this time task will be set to error ( and may be automatically restarted according to <var>Error Retries</var> value). If this value equals zero, no task run time limit exists.
+<br/><br/></li>
+
+<li><b class="anchor" id="NeedPower">Need Power</b> - Minimum render host power needed. It's custom host parameter can be defined in farm description.</li>
+
+<li><b class="anchor" id="NeedMemory">Need Memory</b> - Minimum render host free memory needed.</li>
+
+<li><b class="anchor" id="NeedHDD">Need HDD</b> - Minimum render host free disk space needed.</li>
+
+<li><b class="anchor" id="NeedProperties">Need Properties</b> - A <a href="../../doc/regexp.html">mask</a> to much render host properties to run on it. It's custom host parameter can be defined in farm description.
+<br/><br/>
+</li>
+
+<li><b class="anchor" id="Command">Command</b> - Tasks command pattern.
+When block produces a task it calculates an unique command from this pattern and other parameters,
+depend on block type - numeric or string, replacing <kbd>@#@</kbd> pattern with a number.
+Padding is specified by the number of "#" symbols between "@" symbols.
+<ul>
+<li>
+<p>String: block seek for "@#@" string in command and replace it by another string get from <var>Task Command</var>.
+</p>
+<p>Example:</p>
+<p>
+command = <kbd>myrender some.scene -camera @#@</kbd><br />
+arguments = <kbd>['sun','sky','front','side','bottom']</kbd><br />
+Result:<br />
+1st task command: <kbd>myrender some.scene -camera sun</kbd><br />
+2nd task command: <kbd>myrender some.scene -camera sky</kbd><br />
+3rd task command: <kbd>myrender some.scene -camera front</kbd><br />
+...<br />
+</p><p>
+If block command is empty <var>Task Command</var> is simply used.
+</p></li>
+<li>
+<p>
+Numeric: block calculates first and last frame for the task according to task number,
+<var>Frame First</var>, <var>Frame Last</var>, <var>Frame per Host</var> and <var>Frame Increment</var> values.
+Each of <kbd>@#@</kbd> pairs will be replaced with the start and end numbers.
+</p>
+<p>
+Examples:
+</p>
+<p>
+command = <kbd>myrender some.scene -s @#@ -e @#@</kbd><br />
+Frame First = <kbd>1</kbd><br />
+Frame Last = <kbd>10</kbd><br />
+Frame per Host = <kbd>4</kbd><br />
+Result:<br />
+1st task command: <kbd>myrender some.scene -s 1 -e 4</kbd><br />
+2nd task command: <kbd>myrender some.scene -s 5 -e 8</kbd><br />
+3rd task command: <kbd>myrender some.scene -s 9 -e 10</kbd><br />
+</p>
+<p>
+command = <kbd>myrender something.@####@.obj</kbd><br />
+Frame First = <kbd>1</kbd><br />
+Frame Last = <kbd>10</kbd><br />
+Frame per Host = <kbd>1</kbd><br />
+Result:<br />
+1st task command: <kbd>myrender something.0001.obj</kbd><br />
+2nd task command: <kbd>myrender something.0002.obj</kbd><br />
+...<br />
+last task command: <kbd>myrender something.0010.obj</kbd><br />
+</p>
+<p>
+You can check numbers placing by <code><a href="cmd.html">afcmd</a> num [command] [number1] [number2]</code> command.
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p><b class="anchor" id="Files">Files</b> - File(s) pattern.
+Each task can have result file(s) pattern.
+Result file name will be constructed from this pattern by the same method as described before.
+Some another application, for example watch GUI,
+can execute your favorite image viewer <code>program [file]</code> and preview result frame.</p>
+<p>Example (numeric):</p>
+<p>
+Block View Command = <kbd>images/back.@####@.exr</kbd><br />
+Preview program = <kbd>kuickshow</kbd><br />
+Result for 57 frame: <kbd>kuickshow images/back.0057.exr</kbd><br />
+</p><p>
+In Watch program will be executed in block working directory
+</p>
+<p>Example (not numeric):</p>
+<p>
+Block View Command = <kbd>images/back.@#@.exr</kbd><br />
+Task View Command = <kbd>0057</kbd><br />
+Preview program = <kbd>kuickshow</kbd><br />
+Result: <kbd>kuickshow images/back.0057.exr</kbd><br />
+</p>
+<p>
+Task can have several files for preview, for example on different render passes or on a stereo images pair.
+To use this files string should be "<kbd>;</kbd>" - separated:<br/>
+<kbd>img.@####@.exr;img_normals.@####@.exr</kbd>
+</p>
+<p>
+If block is not numeric and block view command is empty only task view command is used.
+</p>
+<p>
+In Watch program will be executed in block working directory.
+</p>
+</li>
+</ul>
+
+<h3>Block State:</h3>
+<ul>
+<li><b><i> Ready                </i> <small><code> RDY </code></small></b> - Block is ready to produce a task.</li>
+<li><b><i> Running              </i> <small><code> RUN </code></small></b> - Block has running tasks.</li>
+<li><b><i> Done                 </i> <small><code> DON </code></small></b> - All block tasks are done (or some skipped).</li>
+<li><b><i> Error                </i> <small><code> ERR </code></small></b> - Block has some error tasks.</li>
+<li><b><i> Skipped              </i> <small><code> SKP </code></small></b> - Some block tasks are skipped.</li>
+<li><b><i> Waiting Dependencies </i> <small><code> WD  </code></small></b> - Block waits some other blocks.</li>
+</ul>
+
+
+<h2>Job Block Task</h2>
+
+<h3>Task Attributes:</h3>
+Tasks are not stored anywhere. Tasks are generated by blocks. You can't change task, change block attributes to change generated tasks.
+<ul>
+<li><b class="anchor" id="Name">Name</b> - Task name. Generated, if block is numeric.</li>
+<li><b class="anchor" id="WorkingDirectory">Working Directory</b> - Path where to execute the command (and preview command).</li>
+<li><b class="anchor" id="Command">Command</b> - Command to execute.</li>
+<li><b class="anchor" id="ParserType">Parser Type</b> - Parser type name - method to parse command output and calculate task running progress.</li>
+<li><b class="anchor" id="Files">Files</b> - (Optional, may be empty) Argument to provide to preview command to show frame
+(path to the image relative to task working directory, or absolute path).</li>
+</ul>
+
+<h3>Task Progress:</h3>
+<ul>
+<li><b class="anchor" id="StartTime">Start Time</b> - Time when task was started (last start).</li>
+<li><b class="anchor" id="FinishTime">Finish Time</b> - Time when task was finished (last finish).</li>
+<li><b class="anchor" id="StartCount">Start Count</b> - Number of times task has started (it can be manually or automatically restarted).</li>
+<li><b class="anchor" id="Percent">Percent</b> - Running task progress percentage.</li>
+<li><b class="anchor" id="Frame">Frame</b> - Running frame for multiframe tasks which can be produced by numeric blocks when frames per render parameter &gt; 1.</li>
+<li><b class="anchor" id="PercentFrame">Percent Frame</b> - Running percentage of current running frame for multiframe tasks which can be produced by numeric blocks when frames per render parameter &gt; 1.</li>
+<li><b class="anchor" id="Errors">Errors</b> - Number of times task produced an error.</li>
+<li><b class="anchor" id="ErrorHosts">Error Hosts</b> - List of hosts and number of times where task was finished with error.</li>
+</ul>
+
+<h3>Task State:</h3>
+<ul>
+<li><b><i> Read              </i> <small><code> RDY </code></small></b> - Task can be executed.</li>
+<li><b><i> Running           </i> <small><code> RUN </code></small></b> - Task is running.</li>
+<li><b><i> Done              </i> <small><code> DON </code></small></b> - Task is done.</li>
+<li><b><i> Error             </i> <small><code> ERR </code></small></b> - Task finished with error or failed to start.</li>
+<li><b><i> Skipped           </i> <small><code> SKP </code></small></b> - Task skipped.</li>
+<li><b><i> Warning           </i> <small><code> WRN </code></small></b> - Warning from <a href="parsers.html">parser</a>.</li>
+<li><b><i> Parser Error      </i> <small><code> PER </code></small></b> - Error from <a href="parsers.html">parser</a>.</li>
+<li><b><i> Parser Bad Result </i> <small><code> PBR </code></small></b> - Bad result from <a href="parsers.html">parser</a>.</li>
+</ul>
+

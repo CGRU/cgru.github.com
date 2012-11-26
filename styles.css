@@ -48,12 +48,14 @@ text-align: center;
 .navig { border-radius: 4px;}
 .navig:hover {
 background: rgba(255,255,100,.1);
-box-shadow: 0px 0px 5px #000 inset;
+box-shadow: 0px 0px 5px rgba(0,0,0,.5) inset;
 }
-.navgrp { padding: 4px 8px; }
+.navgrp { margin: 8px 0px; }
+#navig .navgrp > * { margin-left: 14px; }
+#navig .navgrp > *:first-child { margin-left: 4px; }
 .navig.current {
 background: rgba(255,255,100,.4);
-box-shadow: 0px 0px 6px #000 inset;
+box-shadow: 0px 0px 6px rgba(0,0,0,.9) inset;
 }
 
 #footer > * {

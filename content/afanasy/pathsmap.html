@@ -37,13 +37,27 @@ It will work any way.
 </li>
 <li>
 Module (Python Class) can works in 'UnixSeparators' mode.
-During translation from server to client it uses <code>\</code> slashes for client paths.
-For example NUKE uses only <code>\</code> slashes on any platform.
+During translation from server to client it uses <code>/</code> slashes for client paths.
+For example NUKE uses only <code>/</code> slashes on any platform.
 </li>
 </ul>
 
-<h3>Real working paths map file:</h3>
+<h4>A part of a real working config.json with map example:</h4>
 <pre>
-
+...
+"OS_windows":{
+	"pathsmap":[
+		["P:/",             "/ps/prj/"],
+		["//box/project/",  "/ps/prj/"],
+		["Q:/",             "/ps/prj2/"],
+		["//box2/project/", "/ps/prj2/"],
+		["//sun/libs/",     "/ps/lib/"],
+		["//sun/vault/",    "/ps/vault/"],
+		["T:/",             "/ps/etc/"],
+		["c:/ps/",          "/ps/"],
+		["c:/temp/",        "/tmp/"]
+	]
+}
+...
 </pre>
 
