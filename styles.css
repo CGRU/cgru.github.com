@@ -6,7 +6,7 @@ font-size: 16px;
 text-align: justify;
 }
 /** { margin: 0; padding: 0; overflow: hidden; */
-.navig, .cnavlink, #footer > * {
+.navig, .cnavlink, #footer > *, .forontop{
 -o-transition: all .3s ease-in-out;
 -moz-transition: all .3s ease-in-out;
 -webkit-transition: all .3s ease-in-out;
@@ -44,7 +44,7 @@ text-align: center;
 }
 #header .navig { margin: 1px; padding: 3px; text-transform: uppercase; }
 #navig .navig { margin: 1px 4px; padding: 1px 4px;}
-.navig, .cnavlink, .anchor { cursor: pointer;}
+.navig, .cnavlink, .anchor, .forontop { cursor: pointer;}
 .navig { border-radius: 4px;}
 .navig:hover {
 background: rgba(255,255,100,.1);
@@ -140,6 +140,12 @@ border-radius: 10px;
 border: 3px solid #000;
 text-shadow: 0px 0px 20px #060, 20px 1px 2px #010;
 }
+#content img {
+margin: 4px 8px;
+}
+#ontop img {
+margin: 20px;
+}
 a:link {
 color: #006;
 }
@@ -153,16 +159,18 @@ a:active {
 color: #D00;
 }
 
-#content .forontop {
-cursor: pointer;
-border: 1px #005 dashed;
+.forontop {
+opacity: 0.8;
+border: 1px #000 dashed;
 }
-#content .forontop:hover {
-border: 1px #A05 dashed;
+.forontop:hover {
+opacity: 1.0;
+border: 1px #FF0 dashed;
 }
-#content .forontop > * {
+.forontop > * {
 }
 #ontop {
+overflow: auto;
 background: rgba(0,0,0,.5);
 position: absolute;
 text-align: center;

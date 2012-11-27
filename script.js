@@ -97,12 +97,11 @@ function g_ProcessContent()
 
 	var forontops = g_elContent.getElementsByClassName('forontop');
 	for( var i = 0; i < forontops.length; i++)
-	{
 		forontops[i].onclick = function(e){ g_ForOnTopClicked(e.currentTarget);};
-		var width = forontops[i].width;
-		if( width )
-			forontops[i].width =  width / 2;
-	}
+
+	var arrows = g_elContent.getElementsByClassName('arrows');
+	for( var i = 0; i < arrows.length; i++)
+		g_DrawArrow( arrows[i]);
 }
 
 function g_ForOnTopClicked( i_el)
@@ -171,3 +170,54 @@ function GET()
 	}
 }
 
+function g_DrawArrow( i_el)
+{
+	var arrows = eval( i_el.getAttribute('arrows'));
+	i_el.innerHTML = arrows;
+
+	var width = 400;
+	var height = 400;
+	var pathID = 'wow';
+	var svg = '<svg version="1.1"';
+	svg += ' height="'+height+'" width="'+width+'">';
+	svg += '<path id="'+pathID+'" d="';
+
+	var cap = [[-5,-10],[0,0],[5,-10]];
+	for( var a = 0; a < arrows.length; a++)
+	{
+		svg += 'M';
+		var x,y,px,py = 0;
+		for( var p = 0; p < arrows[a].length; p++)
+		{
+			px = x; py = y;
+			if( p ) svg += ' L'
+			x = arrows[a][p][0];
+			y = arrows[a][p][1];
+			svg += ' '+x+' '+y;
+		}
+		svg += ' M';
+		px = x-px; py = y-py;
+		for( var p = 0; p < cap.length; p++)
+		{
+			if( p ) svg += ' L'
+			cx = cap[p][0];
+			cy = cap[p][1];
+			if( Math.abs(px) > Math.abs(py))
+			{
+				var tmp = cx;
+				cx = cy;
+				cy = tmp;
+			}
+			if( px < 0 ) cx = -cx;
+			if( py < 0 ) cy = -cy;
+			cx += x;
+			cy += y;
+			svg += ' '+cx+' '+cy;
+		}
+	}
+
+	svg += '" stroke="black" stroke-width="3" fill="none" /></svg>';
+
+//	i_el.textContent = svg;
+	i_el.innerHTML = svg;
+}
