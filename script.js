@@ -175,22 +175,21 @@ function g_DrawArrow( i_el)
 	var arrows = eval( i_el.getAttribute('arrows'));
 	i_el.innerHTML = arrows;
 
-	var width = 400;
-	var height = 400;
-	var pathID = 'wow';
+	var path_id = 0;
+	var width = i_el.style.width;
+	var height = i_el.style.height;
 	var svg = '<svg version="1.1"';
 	svg += ' height="'+height+'" width="'+width+'">';
-	svg += '<path id="'+pathID+'" d="';
 
 	var cap = [[-5,-10],[0,0],[5,-10]];
 	for( var a = 0; a < arrows.length; a++)
 	{
-		svg += 'M';
+		svg += '<path id="path'+(path_id++)+'" d="M';
 		var x,y,px,py = 0;
-		for( var p = 0; p < arrows[a].length; p++)
+		for( var p = 1; p < arrows[a].length; p++)
 		{
 			px = x; py = y;
-			if( p ) svg += ' L'
+			if( p > 1 ) svg += ' L'
 			x = arrows[a][p][0];
 			y = arrows[a][p][1];
 			svg += ' '+x+' '+y;
@@ -214,9 +213,14 @@ function g_DrawArrow( i_el)
 			cy += y;
 			svg += ' '+cx+' '+cy;
 		}
+		svg += '" stroke="rgb('+arrows[a][0][0]+','+arrows[a][0][1]+','+arrows[a][0][2]+')"';
+		svg += ' stroke-width="'+arrows[a][0][3]+'"';
+		svg += ' stroke-linejoin="miter"';
+		svg += ' fill="none" />';
 	}
 
-	svg += '" stroke="black" stroke-width="3" fill="none" /></svg>';
+//	svg += '" stroke="black" stroke-width="3" fill="none" /></svg>';
+	svg += '</svg>';
 
 //	i_el.textContent = svg;
 	i_el.innerHTML = svg;
