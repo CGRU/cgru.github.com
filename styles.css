@@ -141,7 +141,7 @@ border: 3px solid #000;
 text-shadow: 0px 0px 20px #060, 20px 1px 2px #010;
 }
 a:link {
-color: #000060;
+color: #006;
 }
 a:visited {
 color: #006;
@@ -151,6 +151,23 @@ color: #500;
 }
 a:active {
 color: #D00;
+}
+
+#content .forontop {
+cursor: pointer;
+border: 1px #005 dashed;
+}
+#content .forontop:hover {
+border: 1px #A05 dashed;
+}
+#content .forontop > * {
+}
+#ontop {
+background: rgba(0,0,0,.5);
+position: absolute;
+text-align: center;
+top: 0; bottom: 0; left: 0; right: 0;
+display: none;
 }
 
 #notfound {

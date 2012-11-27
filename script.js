@@ -1,16 +1,24 @@
-g_content = 'content/';
+g_path_prefix = 'content/';
 g_path = 'home.html';
 g_navs = [];
+
+g_elContent = null;
+g_elTop = null;
 
 function g_Init()
 {
 //g_Info('Initializing...');
+	document.body.onkeydown = function(e){ g_DisplayOnTop(false);};
 
 	var navs = document.body.getElementsByClassName('navig');
 	for( var i = 0; i < navs.length; i++ ) g_navs.push( navs[i]);
 
 	for( var i = 0; i < g_navs.length; i++ )
 		g_navs[i].onclick = g_NavClick;
+
+	g_elContent = document.getElementById('content');
+	g_elTop = document.getElementById('ontop');
+	g_elTop.onclick = function(e){ g_DisplayOnTop(false);};
 
 	window.onhashchange = g_PathChanged;
 
@@ -68,23 +76,57 @@ function g_SetContent( i_data)
 {
 	g_DisplayLoading( false);
 	g_DisplayNotFound( false);
-	document.getElementById('content').innerHTML = i_data;
+	g_DisplayOnTop( false);
+	g_elContent.innerHTML = i_data;
 
 	var paths = g_path.split('#');
 	if( paths.length > 1 )
 		document.getElementById(paths[1]).scrollIntoView(true);
 
-	var anchors = document.getElementById('content').getElementsByClassName('anchor');
+	g_ProcessContent();
+}
+
+function g_ProcessContent()
+{
+	var anchors = g_elContent.getElementsByClassName('anchor');
 	for( var i = 0; i < anchors.length; i++)
 		anchors[i].onclick = function(e){
 				var hash = g_path.split('#')[0];
 				document.location.hash = hash+'#'+e.currentTarget.getAttribute('id');
 			};
+
+	var forontops = g_elContent.getElementsByClassName('forontop');
+	for( var i = 0; i < forontops.length; i++)
+	{
+		forontops[i].onclick = function(e){ g_ForOnTopClicked(e.currentTarget);};
+		var width = forontops[i].width;
+		if( width )
+			forontops[i].width =  width / 2;
+	}
+}
+
+function g_ForOnTopClicked( i_el)
+{
+	g_DisplayOnTop( '<img src="'+i_el.getAttribute('src')+'"/>');
+}
+
+function g_DisplayOnTop( i_msg)
+{
+	var display = false;
+	if( i_msg == null ) display = false;
+	else if( i_msg.length )
+	{
+		g_elTop.innerHTML = i_msg;
+		display = true;
+	}
+	else display = false;
+	
+	g_elTop.style.display = display ? 'block':'none';
 }
 
 function g_Info( i_msg)
 {
-	document.getElementById('content').innerHTML = i_msg;
+	g_elContent.innerHTML = i_msg;
 }
 function g_Error( i_msg)
 {
@@ -105,7 +147,7 @@ function GET()
 
 	var xhr = new XMLHttpRequest();
 	xhr.overrideMimeType('application/json');
-	xhr.open('GET', g_content+path, true);
+	xhr.open('GET', g_path_prefix+path, true);
 	xhr.send(null);
 
 	xhr.onreadystatechange = function()
