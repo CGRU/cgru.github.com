@@ -18,6 +18,7 @@ arrows="{[
 [[0,0,200,1],[600,220],[610,220],[850,170],[850,149]],
 
 [[100,0,200,1],[700,290],[670,290],[630,180],[300,180],[250,120],[201,120]],
+[[100,0,200,1],[700,280],[680,280],[630,120],[600,120]],
 
 [[0,0,0,3],[100,150],[100,170],[200,280],[200,298]],
 [[0,0,0,3],[500,150],[500,198]],
@@ -75,8 +76,9 @@ Example:
 PAL (720x576:1.09)
 720x576x1.09
 </pre>
-First line is a title to display in a GUI.
-Second line is WIDTHxHEIGHTxASPECT.
+1. A title to display in a GUI.<br/>
+2. <code>WIDTHxHEIGHTxASPECT</code><br/>
+or <code>WIDTHxHEIGHT</code><br/>
 ">
 <b>formats</b><br/>format templates</div>
 
@@ -86,15 +88,32 @@ Location:<br/>
 Example:
 <pre>
 DNxHD 36MBits
-ffmpeg -y -r @FPS@ -i '@INPUT@' -vcodec dnxhd -b 36M '@OUTPUT@.@CONTAINER@'
+ffmpeg -y -r @FPS@ -i ''@INPUT@'' -vcodec dnxhd -b 36M ''@OUTPUT@.@CONTAINER@''
 </pre>
-First line is a title to display in a GUI.
+1. Title to display in a GUI.<br/>
+2. Command template for <b>ffmpeg</b>.<br/>
 ">
 <b>codecs</b><br/>encode command templates</div>
 
 <div style="left:700px;top:450px;width:300px;height:50px;box-shadow:0 0 5px #407 inset;" class="cnavblock info" info="
 Location:<br/>
 <kbd>cgru/utilities/moviemaker/templates</kbd><br/>
+Example:
+<pre style=''font-size:11px''>
+-stroke black -strokewidth 3
+-fill white -pointsize @SIZE_1/20Y@ -gravity northwest -annotate +@SIZE_1/30X@+@SIZE_1/30Y@ ''%(PROJECT)s''
+-fill white -pointsize @SIZE_1/20Y@ -gravity northeast -annotate +@SIZE_1/30X@+@SIZE_1/30Y@ ''%(SHOT)s %(VERSION)s''
+-fill white -pointsize @SIZE_1/25Y@ -gravity north     -annotate            +0+@SIZE_1/30Y@ ''%(DATETIME)s''
+-fill white -pointsize @SIZE_1/20Y@ -gravity southeast -annotate +@SIZE_1/30X@+@SIZE_1/30Y@ ''%(FRAME)s''
+-fill white -pointsize @SIZE_1/24Y@ -gravity southwest -annotate +@SIZE_1/24X@+@SIZE_1/30Y@ ''%(MOVIENAME)s''
+-stroke none
+-fill white -pointsize @SIZE_1/20Y@ -gravity northwest -annotate +@SIZE_1/30X@+@SIZE_1/30Y@ ''%(PROJECT)s''
+-fill white -pointsize @SIZE_1/20Y@ -gravity northeast -annotate +@SIZE_1/30X@+@SIZE_1/30Y@ ''%(SHOT)s %(VERSION)s''
+-fill white -pointsize @SIZE_1/25Y@ -gravity north     -annotate            +0+@SIZE_1/30Y@ ''%(DATETIME)s''
+-fill white -pointsize @SIZE_1/20Y@ -gravity southeast -annotate +@SIZE_1/30X@+@SIZE_1/30Y@ ''%(FRAME)s''
+-fill white -pointsize @SIZE_1/24Y@ -gravity southwest -annotate +@SIZE_1/24X@+@SIZE_1/30Y@ ''%(MOVIENAME)s''
+</pre>
+Command template for ImageMagick <b>convert</b> tool.<br/>
 ">
 <b>templates</b><br/>convert command templates</div>
 

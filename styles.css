@@ -6,7 +6,7 @@ font-size: 16px;
 text-align: justify;
 }
 /** { margin: 0; padding: 0; overflow: hidden; */
-.navig, .cnavlink, #footer > *, .forontop{
+.navig, .cnavlink, #footer > *, .forontop, .info {
 -o-transition: all .3s ease-in-out;
 -moz-transition: all .3s ease-in-out;
 -webkit-transition: all .3s ease-in-out;
@@ -134,6 +134,7 @@ kbd {
 color: #403;
 }
 pre {
+font-family: courier;
 overflow: hidden;
 background-color: #010;
 color: #7F4;
@@ -197,6 +198,7 @@ border-radius: 50px;
 }
 
 .info { cursor: pointer;}
+.info:hover { background: rgba(255,255,255,0.1);}
 .info.opened {
 cursor: auto;
 background: rgba(255,255,255,0.1);

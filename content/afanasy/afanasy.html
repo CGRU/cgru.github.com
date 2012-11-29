@@ -8,6 +8,99 @@ FREE AND OPEN SOURCE
 RENDER FARM MANAGER
 </h2>
 
+<p>
+Afanasy is a free and open source tool to control remote computing.
+You can compute something more quickly using render farm - remote computers connected by network.
+Afanasy designed for computer graphics (3d rendering and 2d compositing) parallel calculation.
+It can compute different frames (or even parts of frames) on several computers simultaneously.
+</p>
+<p>
+Afanasy provides render farm monitoring.
+It is very important to watch computers resources during render process.
+You can see what kind of resource (CPU, memory, network etc.) is more needed to render.
+It is very useful to know what are farm hosts doing.
+</p>
+<p>
+Afanasy engine simple runs different command lines on hosts and controls processes running.
+You can use Afanasy to parallel calculate anything you can describe (split) through command lines.
+</p>
+
+
+<div class="cnavblock" style="height:1000px">
+<h3>Schema</h3>
+
+<div class="cnavabs" style="left:10px;top:-100px;width:1000px;height:1000px;">
+
+<div class="arrows" style="position:absolute;opacity:0.5;width:1000px;height:700px;/*border:1px solid #000;*/"
+arrows="{[
+[[0,0,200,1],[100,100],[100,70],[850,70],[850,99]],
+
+[[100,0,200,1],[700,290],[670,290],[630,180],[300,180],[250,120],[201,120]],
+
+[[0,0,0,3],[250,340],[250,350],[200,380],[200,398]],
+
+[[0,0,200,3],[700,125],[690,125],[600,520],[202,520]],
+
+[[100,0,200,3],[700,480],[650,480],[550,420],[302,420]]
+
+]}">
+</div>
+
+<div style="left:0px;top:100px;width:270px;height:500px;" class="cnavblock">
+<b>Server</b>
+
+<div style="left:20px;top:40px;width:230px;height:200px;" class="cnavblock">
+<b>AfServer</b>
+
+<div style="left:10px;top:40px;width:100px;height:20px;" class="cnavblock">
+<b>binary</b></div>
+
+<div style="left:120px;top:40px;width:100px;height:20px;" class="cnavblock">
+<b>HTTP</b></div>
+
+<div style="left:120px;top:110px;width:100px;height:20px;" class="cnavblock">
+<b>JSON</b></div>
+
+</div>
+
+<div style="left:20px;top:300px;width:230px;height:20px;" class="cnavblock">
+<b>SQL Database</b></div>
+
+<div style="left:20px;top:380px;width:230px;height:120px;" class="cnavblock">
+<b>HTTP Server</b></div>
+
+</div>
+
+<div style="left:400px;top:100px;width:200px;height:30px;" class="cnavblock">
+<b>AfRender</b></div>
+
+<div style="left:700px;top:100px;width:300px;height:30px;box-shadow:0 0 5px #007 inset;" class="cnavblock">
+<b>AfWatch</b></div>
+
+<div style="left:400px;top:200px;width:200px;height:20px;" class="cnavblock">
+<b>AfCmd</b></div>
+
+<div style="left:400px;top:600px;width:200px;height:20px;" class="cnavblock">
+<b>Python API</b></div>
+
+<div style="left:0px;top:500px;width:200px;height:20px;" class="cnavblock">
+<b>afjob.py</b></div>
+
+<div style="left:0px;top:600px;width:200px;height:20px;" class="cnavblock">
+<b>AfStarter</b></div>
+
+<div style="left:100px;top:700px;width:400px;height:20px;" class="cnavblock">
+<b>Web GUI</b></div>
+
+<div style="left:700px;top:250px;width:300px;height:50px;box-shadow:0 0 5px #407 inset;" class="cnavblock info" info="
+Location:<br/>
+">
+<b>Web Visor</b><br/>format templates</div>
+
+</div>
+</div>
+
+
 <div style="float:right;text-align:center;margin:10px;">
 
 <b>Watch Renders</b><br/>
@@ -33,22 +126,6 @@ RENDER FARM MANAGER
 
 </div>
 
-<p>
-Afanasy is a free and open source tool to control remote computing.
-You can compute something more quickly using render farm - remote computers connected by network.
-Afanasy designed for computer graphics (3d rendering and 2d compositing) parallel calculation.
-It can compute different frames (or even parts of frames) on several computers simultaneously.
-</p>
-<p>
-Afanasy provides render farm monitoring.
-It is very important to watch computers resources during render process.
-You can see what kind of resource (CPU, memory, network etc.) is more needed to render.
-It is very useful to know what are farm hosts doing.
-</p>
-<p>
-Afanasy engine simple runs different command lines on hosts and controls processes running.
-You can use Afanasy to parallel calculate anything you can describe (split) through command lines.
-</p>
 
 <h2>Features:</h2>
 
@@ -73,11 +150,6 @@ task launches and take its capacity value from render.<br/>
 </p>
 <h5>Tasks can variate capacity 'on-the-fly'</h5>
 Capacity variation can be described through its minimum and maximum coefficients.
-If task with 1000 capacity units runs on render with 4000 free capacity, task can take capacity coefficient 4.
-This coefficient can be caught in task command line
-(so Mantra can be launched 'mantra -j 4 ...', or 3000 capacity can be used by one 'houdini' task,
-for example to generate something, which use only one CPU, and 'mantra -j 3').
-Hosts capacity values described in 'Farm Setup' ('xml' file).
 </p>
 
 <h4>Paths Map</h4>
@@ -128,9 +200,7 @@ You can describe various services (tasks) limits:<br/>
 
 <h4>Priorities</h4>
 <p>
-User priority - user with greater priority can get more hosts.
-</p><p>
-Job priority - to simple sort user jobs queue.
+User and job with greater priority can get more hosts.
 </p>
 
 <h4>Hosts Masks</h4>
@@ -155,17 +225,18 @@ You can send jobs and write custom GUI.
 
 <h4>Python API</h4>
 <p>
-You can create and send job using python.
-</p><p>
-Setup services and parsers through python classes inherited from base service and parser.<br/>
+You can create and send job using Python.
+Setup services and parsers through Python classes inherited from base service and parser.<br/>
 </p>
 
 <h4>Services and Parsers</h4>
 <p>
-Service - 'block tasks type', for example: 'hbatch', 'mantra', 'prman', 'nuke', 'maya'.<br/>
+Service - 'block tasks type', for example: 'nuke', 'mantra', 'blender', 'movgen', 'maya'.<br/>
 </p>
 <p>
-Service setups a default task output parser type (which can be overridden later). Services are python classes. They all inherits a base 'service' class. Service class describes command line manipulations, such as task capacity (how to specify how much CPUs to use ('mantra - j @AF_CAPACITY@')).
+Service setups a default task output parser type (which can be overridden later).
+Services python classes all inherited a base 'service' class.
+Service class describes command line manipulations, such as apply paths map.
 </p>
 <p>
 Parser - read task output to calculate running progress.
@@ -192,46 +263,29 @@ Afanasy (and Server and GUI) can handle <i>numeric</i> blocks with huge tasks nu
 
 <h4>Farm setup</h4>
 <p>
-Map hosts names and their abilities through patterns described in XML file.
+Map hosts names and their abilities through patterns described in JSON file.
 You can describe job and block '<i>need</i>' properties to be able to run only on hosts which satisfy this needs(OS, free memory etc.).
 Server can reload this file (and reconfigure itself) "on-the-fly", without restart and keep tasks running.
 </p>
 
-<h4>Watch - minimalistic GUI to afanasy</h4>
-<p>
-Watch - afanasy monitor. It can be in three modes - USER, VISOR and GOD.<br/>
-<i>USER</i> ( common mode ) - user can change any his and any his job parameter.
-He can manipulate render host which was registered with it's user name or if it contains user computer name<br/>
-<i>VISOR</i> ( super user mode ) - can do same as user but he change or remove job of any user.<br/>
-<i>GOD</i> ( super user mode ) - can do anything.
-Change any parameter of any user, job or host. Add or delete users. Start, stop, restart any render host.<br/>
-</p>
-
 <h4>Web Visor</h4>
 <p>
-Web interface to afanasy database to show current state tables or draw history usage statistics diagrams.
-</p><p>
-All calculations and database queries are on the server side, simple HTML text and PNG images provided to client.
-So client needs no libraries or plug-ins for it, any browser will be enough.
+Web interface to Afanasy SQL database to show various tables and statistics diagrams.
 </p>
 
 <h4>SQL Database Connection</h4>
 <p>
-Afanasy server can connect SQL database.
-It process it through Qt classes, you can query available SQL drivers for your system by <code>afcmd</code> command line utility.
-Postgre SQL, MySQL and SQLite are available for most common systems. It can be chosen in configuration file.
-Postgre SQL (QPSQL) is set as default. <br/>
-Afanasy stores jobs and users information in database. It get this information back on start.
-So you can shut down afanasy, and it will restore it's state on start again.
-Also you can type any SQL query to get some afanasy information yourself.
+Afanasy stores jobs and users information in database.
+It get this information back on start.
+So you can shut down AfServer, and it will restore it's state on start again.
+Also you can type any SQL query to get some information yourself.
 </p>
 
 <h4>Command Line Interface</h4>
 <p>
 Afanasy has a command line interface for various purposes.
-It can connect to Afanasy server from remote Linux machine.
 You can set some server parameter "on-the-fly".
-Change some user, job and host attributes.
+Change some user, job, host attributes.
 Query users, jobs, hosts attributes and traffic statistics.
 </p>
 

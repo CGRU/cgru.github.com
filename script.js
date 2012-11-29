@@ -126,6 +126,7 @@ function g_InfoClicked( i_evt)
 
 	elEvt.classList.add('opened');
 	var txt = elEvt.getAttribute('info');
+	txt = txt.replace(/''/g,'"');
 
 	var elInfo = document.createElement('div');
 	elInfo.classList.add('wndinfo');
@@ -150,10 +151,10 @@ function g_InfoClicked( i_evt)
 	y -= h;
 
 //window.console.log('x='+x+' y='+y+' w='+w+' h='+h+' cw='+g_elContent.offsetWidth+' ch='+g_elContent.innerHeight);
-	var pw = g_elContent.offsetWidth - 20;
-	var ph = g_elContent.offsetHeight;
+	var pw = g_elContent.clientWidth;
 	if( x + w > pw ) x = pw - w;
-//	if( y + h > ph ) y = ph - h;
+	x -= 10;
+	if( x < 0 ) x = 0;
 
 	elInfo.style.left = x+'px';
 	elInfo.style.top  = y+'px';
