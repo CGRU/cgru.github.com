@@ -8,7 +8,7 @@ g_elTop = null;
 function g_Init()
 {
 //g_Info('Initializing...');
-	document.body.onkeydown = function(e){ g_DisplayOnTop(false);};
+	document.body.onkeydown = g_OnKeyDown;
 
 	var navs = document.body.getElementsByClassName('navig');
 	for( var i = 0; i < navs.length; i++ ) g_navs.push( navs[i]);
@@ -23,6 +23,16 @@ function g_Init()
 	window.onhashchange = g_PathChanged;
 
 	g_PathChanged();
+}
+
+function g_OnKeyDown( i_evt)
+{
+	g_DisplayOnTop(false);
+	switch( i_evt.keyCode )
+	{
+	case 27: // ESC
+		g_InfoCloseAll();
+	}
 }
 
 function g_PathChanged()
@@ -102,6 +112,64 @@ function g_ProcessContent()
 	var arrows = g_elContent.getElementsByClassName('arrows');
 	for( var i = 0; i < arrows.length; i++)
 		g_DrawArrow( arrows[i]);
+
+	var infos = g_elContent.getElementsByClassName('info');
+	for( var i = 0; i < infos.length; i++)
+		infos[i].onclick = g_InfoClicked;
+}
+
+function g_InfoClicked( i_evt)
+{
+	var elEvt = i_evt.currentTarget;
+	if( elEvt.classList.contains('opened'))
+		return;
+
+	elEvt.classList.add('opened');
+	var txt = elEvt.getAttribute('info');
+
+	var elInfo = document.createElement('div');
+	elInfo.classList.add('wndinfo');
+	elInfo.elEvt = elEvt;
+	g_elContent.appendChild( elInfo);
+
+	var elClose = document.createElement('div');
+	elClose.classList.add('close');
+	elClose.textContent = 'x';
+	elClose.onclick = function(e){ g_InfoClose(e.currentTarget.parentNode);};
+	elInfo.appendChild( elClose);
+
+	var elText = document.createElement('div');
+	elText.classList.add('text');
+	elText.innerHTML = txt;
+	elInfo.appendChild( elText);
+
+	var x = elEvt.offsetLeft + elEvt.parentNode.offsetLeft;
+	var y = elEvt.offsetTop + elEvt.parentNode.offsetTop;
+	var w = elInfo.offsetWidth;
+	var h = elInfo.offsetHeight;
+	y -= h;
+
+//window.console.log('x='+x+' y='+y+' w='+w+' h='+h+' cw='+g_elContent.offsetWidth+' ch='+g_elContent.innerHeight);
+	var pw = g_elContent.offsetWidth - 20;
+	var ph = g_elContent.offsetHeight;
+	if( x + w > pw ) x = pw - w;
+//	if( y + h > ph ) y = ph - h;
+
+	elInfo.style.left = x+'px';
+	elInfo.style.top  = y+'px';
+}
+function g_InfoClose( i_elInfo)
+{
+	i_elInfo.elEvt.classList.remove('opened');
+	g_elContent.removeChild( i_elInfo);
+}
+function g_InfoCloseAll()
+{
+	var infos = g_elContent.getElementsByClassName('wndinfo');
+	var infoslen = infos.length;
+//	for( var i = 0; i < infos.length; i++)
+	for( var i = 0; i < infoslen; i++)
+		g_InfoClose( infos[0]);
 }
 
 function g_ForOnTopClicked( i_el)
@@ -219,7 +287,6 @@ function g_DrawArrow( i_el)
 		svg += ' fill="none" />';
 	}
 
-//	svg += '" stroke="black" stroke-width="3" fill="none" /></svg>';
 	svg += '</svg>';
 
 //	i_el.textContent = svg;

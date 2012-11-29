@@ -195,3 +195,29 @@ border-radius: 50px;
 }
 #notfound_file {
 }
+
+.info { cursor: pointer;}
+.info.opened {
+cursor: auto;
+background: rgba(255,255,255,0.1);
+}
+.wndinfo {
+position: absolute;
+box-shadow: 0px 0px 10px #000;
+border-radius: 8px;
+}
+.wndinfo, .wndinfo .close { background: #AC7;}
+.wndinfo .close {
+position: absolute;
+cursor: pointer;
+right: 0px; top: 0px;
+box-shadow: 0px 0px 3px #000;
+border-radius: 3px;
+padding: 2px;
+}
+.wndinfo .text {
+box-shadow: 0px 0px 3px #000 inset;
+border-radius: 6px;
+margin: 4px;
+padding: 10px;
+}
