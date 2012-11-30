@@ -25,15 +25,19 @@ box-shadow: 0px 0px 4px #341 inset;
 #framefooter { height: 36px; right: 0; left: 0; bottom: 0;}
 #framenavig { width: 182px; left: 0; top: 36px; bottom: 36px;}
 #framecontent { top: 36px; bottom: 36px; left: 182px; right: 0; }
-#header, #footer, #navig, #content { position: absolute; overflow: hidden;}
-#navig, #content { top: 10px; bottom: 10px; left: 10px; right: 10px; border-radius: 4px;}
-#header, #footer { top: 3px; bottom: 3px; left: 10px; right: 10px;}
+#header, #footer, #navig, #content { position: absolute;}
+#header, #footer { top: 3px; bottom: 3px; left: 10px; right: 10px; overflow: hidden;}
+
+#navig, #content {
+overflow: auto;
+top: 10px; bottom: 10px; left: 10px; right: 10px;
+box-shadow: 0px 0px 4px #000 inset;
+border-radius: 4px;
+}
 
 #navig {
-overflow: auto;
 font-size: 14px;
 padding: 4px 1px;
-box-shadow: 0px 0px 4px #000 inset;
 }
 
 #header > div {
@@ -71,10 +75,6 @@ overflow: hidden;
 #footer > *:hover {opacity: 0.9;}
 
 #content {
-overflow: auto;
-position: absolute;
-top: 10px; bottom: 10px; left: 10px; right: 10px;
-box-shadow: 0px 0px 2px #000 inset;
 padding: 20px;
 }
 
@@ -121,6 +121,9 @@ border-radius:12px; box-shadow:0 0 4px #000 inset;}
 position: absolute;
 text-align:center;
 margin: 0; padding:10px 0px;
+}
+.cnavblock.outer {
+box-shadow: 0 0 10px #000, 0 0 15px rgba(255,255,255,.3) inset, 0 0 5px rgba(0,0,0,.5) inset;
 }
 
 code, kbd {
