@@ -26,30 +26,57 @@ You can use Afanasy to parallel calculate anything you can describe (split) thro
 </p>
 
 
-<div class="cnavblock" style="height:1000px">
+<div class="cnavblock" style="width:1000px;height:750px;margin:0;padding:0;">
 <h3>Schema</h3>
 
-<div class="cnavabs" style="left:10px;top:-100px;width:1000px;height:1000px;">
+<div class="cnavabs" style="left:0px;top:-100px;width:1000px;height:750px;">
 
-<div class="arrows" style="position:absolute;opacity:0.5;width:1000px;height:700px;/*border:1px solid #000;*/"
+<div class="arrows" style="position:absolute;opacity:0.5;width:1000px;height:750px;/*border:1px solid #000;*/"
 arrows="{[
-[[0,0,200,1],[100,100],[100,70],[850,70],[850,99]],
+[[0,0,0,2],[300,180],[300,380]],
+[[0,0,0,2],[320,380],[320,180]],
+[[100,0,200,2],[430,180],[430,380]],
+[[100,0,200,2],[450,380],[450,180]],
+[[100,0,200,2],[540,180],[540,670],[490,670]],
+[[100,0,200,2],[490,690],[560,690],[560,180]],
 
-[[100,0,200,1],[700,290],[670,290],[630,180],[300,180],[250,120],[201,120]],
-
-[[0,0,0,3],[250,340],[250,350],[200,380],[200,398]],
-
-[[0,0,200,3],[700,125],[690,125],[600,520],[202,520]],
-
-[[100,0,200,3],[700,480],[650,480],[550,420],[302,420]]
+[[0,0,0,2],[120,530],[120,510],[200,480],[380,480]],
+[[0,0,0,2],[150,565],[260,565]],
+[[0,0,0,2],[260,580],[150,580]]
 
 ]}">
 </div>
 
-<div style="left:0px;top:100px;width:270px;height:500px;" class="cnavblock">
+<div style="left:240px;top:100px;width:510px;height:70px;box-shadow:0 0 5px #230 inset;" class="cnavblock">
+<b>GUI</b>
+<div style="left:10px;top:40px;width:100px;height:20px;box-shadow:0 0 5px #230 inset;" class="cnavblock">
+<b>AfWatch</b></div>
+<div style="left:140px;top:40px;width:100px;height:20px;box-shadow:0 0 5px #230 inset;" class="cnavblock">
+<b>Browser</b></div>
+<div style="left:270px;top:40px;width:100px;height:20px;box-shadow:0 0 5px #230 inset;" class="cnavblock">
+<b>Visor</b></div>
+<div style="left:400px;top:40px;width:100px;height:20px;" class="cnavblock">
+<b>Keeper</b></div>
+</div>
+
+<div style="left:0px;top:100px;width:200px;height:250px;" class="cnavblock">
+<b>Render</b>
+<div style="left:10px;top:40px;width:180px;height:20px;" class="cnavblock">
+<b>command</b></div>
+<div style="left:10px;top:120px;width:100px;height:20px;" class="cnavblock">
+<b>pathsmap</b></div>
+<div style="left:90px;top:170px;width:100px;height:20px;" class="cnavblock info" info="
+Location:
+">
+<b>parser</b></div>
+<div style="left:10px;top:220px;width:100px;height:20px;" class="cnavblock">
+<b>service</b></div>
+</div>
+
+<div style="left:240px;top:300px;width:270px;height:420px;" class="cnavblock">
 <b>Server</b>
 
-<div style="left:20px;top:40px;width:230px;height:200px;" class="cnavblock">
+<div style="left:20px;top:40px;width:230px;height:150px;" class="cnavblock">
 <b>AfServer</b>
 
 <div style="left:10px;top:40px;width:100px;height:20px;" class="cnavblock">
@@ -63,39 +90,46 @@ arrows="{[
 
 </div>
 
-<div style="left:20px;top:300px;width:230px;height:20px;" class="cnavblock">
+<div style="left:20px;top:250px;width:230px;height:20px;" class="cnavblock">
 <b>SQL Database</b></div>
 
-<div style="left:20px;top:380px;width:230px;height:120px;" class="cnavblock">
-<b>HTTP Server</b></div>
+<div style="left:20px;top:330px;width:230px;height:70px;" class="cnavblock">
+<b>Web Visor</b><br/>
+HTTP Server<br/>
+PHP with SQL API<br/>
+</div>
 
 </div>
 
-<div style="left:400px;top:100px;width:200px;height:30px;" class="cnavblock">
-<b>AfRender</b></div>
+<div style="left:50px;top:530px;width:100px;height:40px;" class="cnavblock">
+<b>AfCmd<br/>CLI</b></div>
 
-<div style="left:700px;top:100px;width:300px;height:30px;box-shadow:0 0 5px #007 inset;" class="cnavblock">
-<b>AfWatch</b></div>
+<div style="left:600px;top:430px;width:100px;height:40px;" class="cnavblock">
+<b>Python<br/>API</b></div>
 
-<div style="left:400px;top:200px;width:200px;height:20px;" class="cnavblock">
-<b>AfCmd</b></div>
+<div style="left:600px;top:550px;width:100px;height:40px;" class="cnavblock">
+<b>afjob.py<br/>CLI</b></div>
 
-<div style="left:400px;top:600px;width:200px;height:20px;" class="cnavblock">
-<b>Python API</b></div>
+<div style="left:800px;top:100px;width:200px;height:320px;" class="cnavblock">
+<b>Software<br/>Integration</b>
+<div style="left:10px;top:60px;width:180px;height:100px;" class="cnavblock">
+<b>python</b><br/>
+With internal Python<br/>
+Blender, Nuke, Houdini, XSI ...<br/>
+</div>
+<div style="left:10px;top:200px;width:180px;height:100px;" class="cnavblock">
+<b>script</b><br/>
+construct and launch a system command<br/>
+Max, After Effects ...<br/>
+</div>
+</div>
 
-<div style="left:0px;top:500px;width:200px;height:20px;" class="cnavblock">
-<b>afjob.py</b></div>
-
-<div style="left:0px;top:600px;width:200px;height:20px;" class="cnavblock">
-<b>AfStarter</b></div>
-
-<div style="left:100px;top:700px;width:400px;height:20px;" class="cnavblock">
-<b>Web GUI</b></div>
-
-<div style="left:700px;top:250px;width:300px;height:50px;box-shadow:0 0 5px #407 inset;" class="cnavblock info" info="
+<div style="left:810px;top:540px;width:180px;height:70px;" class="cnavblock info" info="
 Location:<br/>
 ">
-<b>Web Visor</b><br/>format templates</div>
+<b>AfStarter</b><br/>
+Stand Alone<br/>Submitter Dialog<br/>
+</div>
 
 </div>
 </div>
@@ -118,12 +152,13 @@ Location:<br/>
 <b>Watch Users</b><br/>
 <img src="images/afanasy/watch/users.png" alt="watch/users.png"/><br/>
 
+<!--
 <b>Web Visor Statistics Chart - Service Type / Tasks Number</b><br/>
 <img width="400" height="300" src="images/afanasy/visor/chart_service_tasks.png" alt="visor/chart_service_tasks.png"/><br/>
 
 <b>Web Visor Statistics Chart - User Name / Jobs Quantity</b><br/>
 <img width="400" height="300"  src="images/afanasy/visor/chart_user_jobs.png" alt="visor/chart_user_jobs.png"/><br/>
-
+-->
 </div>
 
 
@@ -289,6 +324,28 @@ Change some user, job, host attributes.
 Query users, jobs, hosts attributes and traffic statistics.
 </p>
 
+<h4>Python Job Example</h4>
+<pre>
+#!/usr/bin/env python
+
+import af
+
+job = af.Job('example job')
+
+block = af.Block('block of tasks')  
+block.setWorkingDirectory('/home')  
+
+task = af.Task('simple task')
+task.setCommand('ls -l')
+
+block.tasks.append(task)
+job.blocks.append(block)
+
+job.send()
+</pre>
+
+<!--p style="clear:both"></p-->
+
 <h4>JSON Job Example</h4>
 <pre>
 {
@@ -321,26 +378,6 @@ Query users, jobs, hosts attributes and traffic statistics.
 Tasks will be created automatically on demand, and on server and on GUI side.
 By such "on-the-fly" tasks creation way Afanasy can handle jobs with a huge tasks number.
 </p>
-
-<h4>Python Job Example</h4>
-<pre>
-#!/usr/bin/env python
-
-import af
-
-job = af.Job('example job')
-
-block = af.Block('block of tasks')  
-block.setWorkingDirectory('/home')  
-
-task = af.Task('simple task')
-task.setCommand('ls -l')
-
-block.tasks.append(task)
-job.blocks.append(block)
-
-job.send()
-</pre>
 
 <p>
 You can write any custom job directly in python, or use some GUI to generate jobs. Use some already written job generators (see <i>'Software Integration'</i> chapter) or write your own.
