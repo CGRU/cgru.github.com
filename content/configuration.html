@@ -1,7 +1,8 @@
-<h2>CGRU Configuration</h2>
+<h1>CGRU Configuration</h1>
 
+<h2>Config files</h2>
 <p>
-CGRU configuration based on JSON files.
+CGRU configuration files based JSON.
 One config file can include other, where parameters can be overridden.
 Config file can contain OS specific section, which parameters will be read only if client platform parameters matches OS section name.
 </p>
@@ -40,4 +41,45 @@ Or create an object with some unused name.
 To disable (comment) some parameter you can change it name to unused.
 For example you can just prefix name with "-".
 </p>
+
+
+<h2>Environment</h2>
+<p>
+Common user does not need to setup environment variables manually.
+Use Keeper or start scrips they will setup environment.
+To setup a console you should go to CGRU root folder and source setup script.
+</p>
+<pre>
+$ cd cgru
+$ source ./setup.sh
+</pre>
+
+
+<h3>Manual Environment Setup</h3>
+
+<h4>Required:</h4>
+<ul>
+<li><b>CGRU_LOCATION</b> - CGRU root folder.</li>
+<li><b>AF_ROOT</b> - AFANASY root folder.</li>
+<li><b>PYTHONPATH</b> - To import CGRU and AFANASY Python modules.
+	<ul>
+	<li><b>cgru/lib/python</b> - CGRU Python general library path.</li>
+	<li><b>cgru/afanasy/python</b> - AFANASY Python library path.</li>
+	</ul>
+</li>
+</ul>
+* You can separate CGRU and AFANASY, use different locations and versions.
+
+<h4>Optional:</h4>
+<ul>
+<li><b>CGRU_VERSION</b> - CGRU version string, will be shown in AfWatch and Browser. May be any. You can add some useful info to real version at work.</li>
+<li><b>AF_HOSTNAME</b> - Override hostname for AFANASY. Useful to run several clients on the same machine.</li>
+<li><b>AF_USERNAME</b> - Override user name for AFANASY.</li>
+<li><b>PATH</b> - Run commands.
+	<ul>
+	<li><b>cgru/bin</b> - CGRU tools.</li>
+	<li><b>cgru/afanasy/bin</b> - AFANASY applications.</li>
+	</ul>
+</li>
+</ul>
 

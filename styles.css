@@ -1,9 +1,12 @@
 body {
 background: #AB8;
-background-image:url('images/back.jpg');
 font-family: Verdana, Arial, Helvetica, sans-serif;
 font-size: 16px;
 text-align: justify;
+}
+
+body, #frameheader, #framefooter {
+background-image:url('images/back.jpg');
 }
 /** { margin: 0; padding: 0; overflow: hidden; */
 .navig, .cnavlink, #footer > *, .forontop, .info {
@@ -14,25 +17,26 @@ text-align: justify;
 
 #frameheader, #framefooter, #framenavig, #framecontent {
 position: absolute; overflow: hidden;
-box-shadow: 0px 0px 4px #341 inset;
+/*box-shadow: 0px 0px 4px #341 inset;*/
 }
 #frameheader, #framefooter, #framenavig {
+box-shadow: 0px 0px 10px #000, 0px 0px 4px #341 inset, 0px 0px 14px rgba(255,255,255,.5) inset;
 -o-select: none;
 -moz-user-select: none;
 -webkit-user-select: none;
 }
 #frameheader { height: 36px; right: 0; left: 0; top: 0; }
 #framefooter { height: 36px; right: 0; left: 0; bottom: 0;}
-#framenavig { width: 182px; left: 0; top: 36px; bottom: 36px;}
-#framecontent { top: 36px; bottom: 36px; left: 182px; right: 0; }
+#framenavig { width: 172px; left: 0; top: 36px; bottom: 36px;}
+#framecontent { top: 36px; bottom: 36px; left: 172px; right: 0; }
 #header, #footer, #navig, #content { position: absolute;}
 #header, #footer { top: 3px; bottom: 3px; left: 10px; right: 10px; overflow: hidden;}
 
-#navig, #content {
+#navig {
 overflow: auto;
-top: 10px; bottom: 10px; left: 10px; right: 10px;
-box-shadow: 0px 0px 4px #000 inset;
-border-radius: 4px;
+top: 0px; bottom: 0px; left: 10px; right: 0px;
+/*box-shadow: 0px 0px 4px #000 inset;
+border-radius: 4px;*/
 }
 
 #navig {
@@ -75,6 +79,8 @@ overflow: hidden;
 #footer > *:hover {opacity: 0.9;}
 
 #content {
+overflow: auto;
+left: 0px; right: 0px; top: 0px; bottom: 0px;
 padding: 20px;
 }
 
@@ -111,19 +117,20 @@ opacity: 0.8;
 }
 .cnavlink, .cnavblock {
 overflow:hidden;
-/*position: absolute;*/
 margin:10px 10px;
 padding:10px 20px;
-border-radius:12px; box-shadow:0 0 4px #000 inset;}
-.cnavlink:hover { box-shadow:0 0 8px #000 inset;}
+border-radius:12px; box-shadow:0 0 4px #000 inset, 0 0 15px rgba(255,255,255,.3);}
+.cnavblock.red    { box-shadow:0 0 4px #200 inset, 0 0 15px rgba(255,255,255,.3);}
+.cnavblock.green  { box-shadow:0 0 4px #040 inset, 0 0 15px rgba(255,255,255,.3);}
+.cnavblock.blue   { box-shadow:0 0 4px #007 inset, 0 0 15px rgba(255,255,255,.3);}
+.cnavblock.magenta{ box-shadow:0 0 4px #407 inset, 0 0 15px rgba(255,255,255,.3);}
+.cnavlink:hover   { box-shadow:0 0 8px #000 inset, 0 0 15px rgba(255,255,255,.3);}
+.cnavblock.outer { box-shadow: 0 0 10px #000, 0 0 15px rgba(255,255,255,.3) inset, 0 0 5px rgba(0,0,0,.5) inset; }
 .cnavabs { position:relative; /*border:1px #000 solid;*/}
 .cnavabs .cnavblock, .cnavabs .cnavlink {
 position: absolute;
 text-align:center;
 margin: 0; padding:10px 0px;
-}
-.cnavblock.outer {
-box-shadow: 0 0 10px #000, 0 0 15px rgba(255,255,255,.3) inset, 0 0 5px rgba(0,0,0,.5) inset;
 }
 
 code, kbd {
@@ -211,7 +218,7 @@ position: absolute;
 box-shadow: 0px 0px 10px #000;
 border-radius: 8px;
 }
-.wndinfo, .wndinfo .close { background: #AC7;}
+.wndinfo, .wndinfo .close { background: #CD9;}
 .wndinfo .close {
 position: absolute;
 cursor: pointer;
@@ -221,6 +228,7 @@ border-radius: 3px;
 padding: 2px;
 }
 .wndinfo .text {
+background-image:url('images/back.jpg');
 box-shadow: 0px 0px 3px #000 inset;
 border-radius: 6px;
 margin: 4px;

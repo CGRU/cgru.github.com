@@ -68,7 +68,10 @@ function g_Navigate( i_path)
 	path = g_path.split('#')[0];
 	for( var i = 0; i < g_navs.length; i++ )
 		if( path == g_navs[i].getAttribute('file'))
+		{
+			g_navs[i].scrollIntoView( false);
 			g_navs[i].classList.add('current');
+		}
 		else
 			g_navs[i].classList.remove('current');
 
@@ -120,6 +123,7 @@ function g_ProcessContent()
 
 function g_InfoClicked( i_evt)
 {
+	i_evt.stopPropagation(); 
 	var elEvt = i_evt.currentTarget;
 	if( elEvt.classList.contains('opened'))
 		return;
@@ -144,8 +148,14 @@ function g_InfoClicked( i_evt)
 	elText.innerHTML = txt;
 	elInfo.appendChild( elText);
 
-	var x = elEvt.offsetLeft + elEvt.parentNode.offsetLeft;
-	var y = elEvt.offsetTop + elEvt.parentNode.offsetTop;
+	var x = 0, y = 0;
+	var elOffset = elEvt;
+	while( elOffset.parentNode != g_elContent )
+	{
+		x += elOffset.offsetLeft;
+		y += elOffset.offsetTop;
+		elOffset = elOffset.parentNode;
+	}
 	var w = elInfo.offsetWidth;
 	var h = elInfo.offsetHeight;
 	y -= h;
