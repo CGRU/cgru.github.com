@@ -4,6 +4,7 @@ g_navs = [];
 
 g_elContent = null;
 g_elTop = null;
+g_goCount = 0;
 
 function g_Init()
 {
@@ -55,6 +56,7 @@ function g_NavClick( i_evt)
 
 function GO( i_path)
 {
+	g_goCount++;
 	document.location.hash = i_path;
 //	g_Navigate( i_path);
 }
@@ -69,7 +71,8 @@ function g_Navigate( i_path)
 	for( var i = 0; i < g_navs.length; i++ )
 		if( path == g_navs[i].getAttribute('file'))
 		{
-			g_navs[i].scrollIntoView( false);
+			if( g_goCount == 0 )
+				g_navs[i].scrollIntoView( false);
 			g_navs[i].classList.add('current');
 		}
 		else
