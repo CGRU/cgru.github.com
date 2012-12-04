@@ -9,6 +9,11 @@ g_goCount = 0;
 function g_Init()
 {
 //g_Info('Initializing...');
+	var sflogo = '<img src="images/sourceforge.png" border="0" alt="sourceforge"/>';
+	if( document.location.host.indexOf('cgru.info') != -1 )
+		sflogo = '<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=178692&amp;type=12" width="120" height="30" border="0" alt="SourceForge.net"/>';
+	document.getElementById('sflogo').innerHTML = sflogo;
+
 	document.body.onkeydown = g_OnKeyDown;
 
 	var navs = document.body.getElementsByClassName('navig');
