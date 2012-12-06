@@ -59,6 +59,16 @@ Farm object consists of a pattens and limits arrays.
 		An array on services names to remove.
 		If this array is empty, all services will be removed.
    </p></li>
+   <li><p>
+   <code>idle_cpu</code><br/>
+		CPU usage percentage machine considered as idle.
+		It used in automatic Wake-On-Lan.
+   </p></li>
+   <li><p>
+   <code>wol_idlesleep_time</code><br/>
+		Time in seconds to put an idle machine to sleep.
+		If this value is not set or less than 1, machines will never put to sleep automatically.
+   </p></li>
 </ul>
 </li>
 <li>
