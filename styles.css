@@ -50,7 +50,7 @@ text-align: center;
 }
 .navig, .cnavlink, .anchor, .forontop { cursor: pointer;}
 /*.navig { border-radius: 4px;}*/
-#header .navig { margin: 1px 4px; padding: 3px; text-transform: uppercase; border-radius: 6px; }
+#header .navig { margin: 1px 4px; height: 22px; padding: 3px; text-transform: uppercase; border-radius: 6px; }
 #navig .navig { padding: 2px 12px;}
 .navig:hover {
 background: rgba(255,255,100,.1);
