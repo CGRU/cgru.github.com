@@ -100,7 +100,7 @@ function g_SetContent( i_data)
 	g_DisplayOnTop( false);
 	g_elContent.innerHTML = i_data;
 
-	var path = [];
+	var paths = [];
 	if( g_path.indexOf('#') != -1) paths = g_path.split('#');
 	if( g_path.indexOf('?') != -1) paths = g_path.split('?');
 
