@@ -12,14 +12,16 @@
 	<h2>AFANASY</h2>
 
 	<div onclick="GO('afanasy/afanasy.html')" class="cnavlink">
-	<h3 style="float:right;/*border:1px solid #000*/">Render Farm Manager</h3>
+	<h3>Render Farm Manager</h3>
 	<ul style="left: 500px;/*border:1px solid #000*/">
 		<li>Flexible: JSON Protocol, Python API.</li>
+		<li>Farm Resources Monitoring: CPU (System,User), RAM, HDD, SWAP, I/O, Net and <i>Custom (Python)</i>.</li>
 		<li>Generic: Can do anything that can described via commands.</li>
-		<li>Statistics: SQL Database and a ready Web GUI to browse it.</li>
-		<li>Farm Resources Monitoring: CPU, System, RAM, HDD, SWAP, I/O, Net and <i>Custom</i></li>
-		<li>Multi-Tasks Hosts: Same host can run several tasks.</li>
-		<li>Priorities, Services, Parsers, Wake-On-Lan, Mixed-Os</li>
+		<li>Statistics: SQL Database and a ready Web GUI (PHP) to browse it.</li>
+		<li>Multi-Task Hosts: One host can run several tasks.</li>
+		<li>Multi-Host Tasks: One task can run on several hosts (master service and slaves).</li>
+		<li>Software Licenses Limits.</li>
+		<li>Dependences, Priorities, Services, Parsers, Wake-On-Lan, Mixed-Os, Qt GUI, Web GUI (HTML5), CLI, Nimby (with schedule).</li>
 	</ul>
 	</div>
 
@@ -37,20 +39,36 @@
 
 </div>
 
-<div onclick="GO('moviemaker.html')" class="cnavlink">
-<h2 style="float:left;">Movie Maker</h2>
-<p style="float:right;"><br/>Make dailies, search for sequences for encode.<p>
+<div style="float:left;" onclick="GO('moviemaker.html')" class="cnavlink">
+<h3>Movie Maker</h3>
+<ul>
+	<li>Make Dailies.</li>
+	<li>Search for sequences for encode.</li>
+	<li>Flexible: Python, ImageMagick, FFMpeg.</li>
+	<li>CLI and PyQt GUI for it.</li>
+	<li>Can be integrated in any pipe-line.</li>
+	<li>Custom annotating and codecs presets.</li>
+	<li>Afanasy integration.</li>
+</ul>
 </div>
 
-<div onclick="GO('keeper.html')" class="cnavlink">
-<h2 style="float:left;">Keeper</h2>
-<p style="float:right;"><br/>CGRU tools launcher</p>
+<div style="float:left;" onclick="GO('keeper.html')" class="cnavlink">
+<h3>Keeper</h3>
+<ul>
+	<li>System tray icon with menu.</li>
+	<li>CGRU tools launcher.</li>
+	<li>Any software launcher.</li>
+	<li>Custom commands launcher.</li>
+	<li>Afanasy integration.</li>
+	<li>Local render status icon.</li>
+	<li>Local render fast manipulation.</li>
+</ul>
 </div>
 
 </div>
 
 
-<div style="padding:0px 30px;">
+<div style="clear:both; padding: 30px;">
 
 <p>
 <b>2012.12.21: <a href="#changes_log.html?release1610">Version 1.6.10</a> Released.</b>

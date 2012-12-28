@@ -120,7 +120,7 @@ border-radius:12px; box-shadow:0 0 4px #000 inset, 0 0 15px rgba(255,255,255,.3)
 .cnavblock.green  { box-shadow:0 0 4px #040 inset, 0 0 15px rgba(255,255,255,.3);}
 .cnavblock.blue   { box-shadow:0 0 4px #007 inset, 0 0 15px rgba(255,255,255,.3);}
 .cnavblock.magenta{ box-shadow:0 0 4px #407 inset, 0 0 15px rgba(255,255,255,.3);}
-.cnavlink:hover   { box-shadow:0 0 8px #000 inset, 0 0 15px rgba(255,255,255,.3);}
+.cnavlink:hover   { box-shadow:0 0 8px #000 inset, 0 0 15px rgba(255,255,255,.3); background: rgba(255,255,100,.1);}
 .cnavblock.outer { box-shadow: 0 0 10px #000, 0 0 15px rgba(255,255,255,.3) inset, 0 0 5px rgba(0,0,0,.5) inset; }
 .cnavabs { position:relative; /*border:1px #000 solid;*/}
 .cnavabs .cnavblock, .cnavabs .cnavlink {
@@ -204,10 +204,10 @@ border-radius: 50px;
 }
 
 .info { cursor: pointer;}
-.info:hover { background: rgba(255,255,255,0.1);}
+.info:hover { background: rgba(255,255,100,0.1);}
 .info.opened {
 cursor: auto;
-background: rgba(255,255,255,0.1);
+background: rgba(255,255,100,0.1);
 }
 .wndinfo {
 position: absolute;
