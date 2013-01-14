@@ -98,25 +98,25 @@ Read <var>Command</var> description for details.
 
 <h3>Block Editable Parameters:</h3>
 <ul>
-<li><b class="anchor" id="TasksName">Tasks Name</b> - Block tasks names pattern.<br/>
+<li><b class="anchor" id="block_TasksName">Tasks Name</b> - Block tasks names pattern.<br/>
 Block - numeric, pattern - not empty: generated task will fill this pattern with its first and last frames numbers<br/>
 Block - numeric, pattern - empty: tasks will take <var>first_frame - last_frame</var> name.<br/>
 Block - not numeric, pattern - not empty: task fill this pattern with it name.<br/>
 Block - not numeric, pattern - not empty: task simply take its name.<br/>
 </li>
 
-<li><b class="anchor" id="TasksType">Tasks Type</b> - Block tasks service name.</li>
+<li><b class="anchor" id="block_TasksType">Tasks Type</b> - Block tasks service name.</li>
 
-<li><b class="anchor" id="ParserType">Parser Type</b> - Block tasks output parser name.</li>
+<li><b class="anchor" id="block_ParserType">Parser Type</b> - Block tasks output parser name.</li>
 
-<li><b class="anchor" id="WorkingDirectory">Working Directory</b> - Tasks process working directory.</li>
+<li><b class="anchor" id="block_WorkingDirectory">Working Directory</b> - Tasks process working directory.</li>
 
-<li><b class="anchor" id="CmdPre">Pre Command</b> - Like <b>Job Pre Command</b> but for each block.</li>
-<li><b class="anchor" id="CmdPost">Post Command</b> - Like <b>Job Post Command</b> but for each block.
+<li><b class="anchor" id="block_CmdPre">Pre Command</b> - Like <b>Job Pre Command</b> but for each block.</li>
+<li><b class="anchor" id="block_CmdPost">Post Command</b> - Like <b>Job Post Command</b> but for each block.
 Working directory of this command will be this block working folder.
 </li>
 
-<li><b class="anchor" id="Capacity">Capacity</b> - tasks capacity (task checks available capacity on render to run on it, and takes its capacity value). Capacity can be static (by default) and variable - base value and coefficients:<br/>
+<li><b class="anchor" id="block_Capacity">Capacity</b> - tasks capacity (task checks available capacity on render to run on it, and takes its capacity value). Capacity can be static (by default) and variable - base value and coefficients:<br/>
 <b>Capacity Minimum Coefficient</b> - minimum Capacity multiplier.<br/>
 <b>Capacity Maximum Coefficient</b> - maximum Capacity multiplier.<br/>
 Block can generate tasks with capacity*coefficient to fit free render capacity. Task commands will be searched for the special string to replace it with capacity coefficient number. This command replacement performs render by service python class instance. Any service (tasks type) can describe own rule for this replacement by implementation of base class method. By default, base <kbd>service</kbd> class performs <code>command.replace( '@AF_CAPACITY@', str( capacity))</code>.<br/>
@@ -124,7 +124,7 @@ You can specify number of CPUs to use for your applications (if it supports it b
 </li>
 
 <li>
-<b class="anchor" id="MultiHost">Multi Host Tasks</b> - block tasks can run on several hosts (prman <i>netrender</i>, houdini <i>mantra</i> remote rendering).<br/>
+<b class="anchor" id="block_MultiHost">Multi Host Tasks</b> - block tasks can run on several hosts (prman <i>netrender</i>, houdini <i>mantra</i> remote rendering).<br/>
 <b>Multi Hosts Minimum</b> - Minimum number of hosts task can run on.<br/>
 <b>Multi Hosts Maximum</b> - Maximum number of hosts task can run on.<br/>
 <b>Multi Hosts Maximum Wait Time</b> - Time in seconds to wait for maximum hosts.<br/>
@@ -133,45 +133,45 @@ You can specify number of CPUs to use for your applications (if it supports it b
 <b>Multi Hosts Same Host Master</b> - Master host will be in slaves list. For example if task took 'r00', 'r01', 'r02', 'r03', 'r04' hosts master command will be executed on 'r00' and 'r00' will be in slaves list too. If tasks can multihost service you can't enable this parameter, because only one command can be executed master or slave.<br/>
 </li>
 
-<li><b class="anchor" id="MaxRunningTasks">Maximum Running Tasks</b> - maximum number of tasks block can run on the same time.</li>
+<li><b class="anchor" id="block_MaxRunningTasks">Maximum Running Tasks</b> - maximum number of tasks block can run on the same time.</li>
 
-<li><b class="anchor" id="MaxRunTasksPerHost">Maximum Running Tasks Per Host</b> - maximum number of tasks block can run on the same time on the same host.</li>
+<li><b class="anchor" id="block_MaxRunTasksPerHost">Maximum Running Tasks Per Host</b> - maximum number of tasks block can run on the same time on the same host.</li>
 
-<li><b class="anchor" id="HostsMask">Hosts Mask</b> - Block run only on Renders which host name matches this <a href="#regexp.html">mask</a>.</li>
+<li><b class="anchor" id="Hblock_ostsMask">Hosts Mask</b> - Block run only on Renders which host name matches this <a href="#regexp.html">mask</a>.</li>
 
-<li><b class="anchor" id="HostsMaskExclude">Exclude Hosts Mask</b> - Block can not run on renders which host name matches this <a href="#regexp.html">mask</a>.</li>
+<li><b class="anchor" id="block_HostsMaskExclude">Exclude Hosts Mask</b> - Block can not run on renders which host name matches this <a href="#regexp.html">mask</a>.</li>
 
-<li><b class="anchor" id="DependMask">Depend Mask</b> - Block will wait previous job blocks which name matches this <a href="#regexp.html">mask</a>.</li>
+<li><b class="anchor" id="block_DependMask">Depend Mask</b> - Block will wait previous job blocks which name matches this <a href="#regexp.html">mask</a>.</li>
 
-<li><b class="anchor" id="TasksDependMask">Tasks Depend Mask</b> - Block task will wait other job blocks task which name matches this <a href="#regexp.html">mask</a>.</li>
+<li><b class="anchor" id="block_TasksDependMask">Tasks Depend Mask</b> - Block task will wait other job blocks task which name matches this <a href="#regexp.html">mask</a>.</li>
 
-<li><b class="anchor" id="ErrorRetries">Error Retries</b> - Number of task errors to retry it automatically. Value '-1' means take this value from user settings.</li>
+<li><b class="anchor" id="block_ErrorRetries">Error Retries</b> - Number of task errors to retry it automatically. Value '-1' means take this value from user settings.</li>
 
-<li><b class="anchor" id="ErrorsAvoidHost">Errors Avoid Host</b> - Maximum number of errors on same host. Block begins to avoid render host name if number of errors on it greater or equal this value. Value less then '1' means no limit. Value '-1' means take this value from user settings.</li>
+<li><b class="anchor" id="block_ErrorsAvoidHost">Errors Avoid Host</b> - Maximum number of errors on same host. Block begins to avoid render host name if number of errors on it greater or equal this value. Value less then '1' means no limit. Value '-1' means take this value from user settings.</li>
 
-<li><b class="anchor" id="ErrorsTaskSameHost">Errors Task Same Host</b>
+<li><b class="anchor" id="block_ErrorsTaskSameHost">Errors Task Same Host</b>
  - Maximum number of errors for task on same host.
 Task begin to avoid this host name of errors on it greater or equal this value.
 Value less then '1' means no limit. Value '-1' means take this value from user settings.</li>
 
-<li><b class="anchor" id="ErrorsForgiveTime">Errors Forgive Time</b>
+<li><b class="anchor" id="block_ErrorsForgiveTime">Errors Forgive Time</b>
  - Time form last error to forgive error host (reset it's errors count).
 Value less then '1' means no forgive. Value '-1' means take this value from user settings.</li>
 
-<li><b class="anchor" id="TasksMaxRunTime">Tasks Maximum Run Time</b> - Tasks maximum time to run. After this time task will be set to error ( and may be automatically restarted according to <var>Error Retries</var> value). If this value equals zero, no task run time limit exists.
+<li><b class="anchor" id="block_TasksMaxRunTime">Tasks Maximum Run Time</b> - Tasks maximum time to run. After this time task will be set to error ( and may be automatically restarted according to <var>Error Retries</var> value). If this value equals zero, no task run time limit exists.
 <br/><br/></li>
 
-<li><b class="anchor" id="NeedPower">Need Power</b> - Minimum render host power needed. It's custom host parameter can be defined in farm description.</li>
+<li><b class="anchor" id="block_NeedPower">Need Power</b> - Minimum render host power needed. It's custom host parameter can be defined in farm description.</li>
 
-<li><b class="anchor" id="NeedMemory">Need Memory</b> - Minimum render host free memory needed.</li>
+<li><b class="anchor" id="block_NeedMemory">Need Memory</b> - Minimum render host free memory needed.</li>
 
-<li><b class="anchor" id="NeedHDD">Need HDD</b> - Minimum render host free disk space needed.</li>
+<li><b class="anchor" id="block_NeedHDD">Need HDD</b> - Minimum render host free disk space needed.</li>
 
-<li><b class="anchor" id="NeedProperties">Need Properties</b> - A <a href="#regexp.html">mask</a> to much render host properties to run on it. It's custom host parameter can be defined in farm description.
+<li><b class="anchor" id="block_NeedProperties">Need Properties</b> - A <a href="#regexp.html">mask</a> to much render host properties to run on it. It's custom host parameter can be defined in farm description.
 <br/><br/>
 </li>
 
-<li><b class="anchor" id="Command">Command</b> - Tasks command pattern.
+<li><b class="anchor" id="block_Command">Command</b> - Tasks command pattern.
 When block produces a task it calculates an unique command from this pattern and other parameters,
 depend on block type - numeric or string, replacing <kbd>@#@</kbd> pattern with a number.
 Padding is specified by the number of "#" symbols between "@" symbols.
@@ -228,7 +228,7 @@ You can check numbers placing by <code><a href="cmd.html">afcmd</a> num [command
 </ul>
 </li>
 <li>
-<p><b class="anchor" id="Files">Files</b> - File(s) pattern.
+<p><b class="anchor" id="block_Files">Files</b> - File(s) pattern.
 Each task can have result file(s) pattern.
 Result file name will be constructed from this pattern by the same method as described before.
 Some another application, for example watch GUI,
@@ -278,24 +278,24 @@ In Watch program will be executed in block working directory.
 <h3>Task Attributes:</h3>
 Tasks are not stored anywhere. Tasks are generated by blocks. You can't change task, change block attributes to change generated tasks.
 <ul>
-<li><b class="anchor" id="Name">Name</b> - Task name. Generated, if block is numeric.</li>
-<li><b class="anchor" id="WorkingDirectory">Working Directory</b> - Path where to execute the command (and preview command).</li>
-<li><b class="anchor" id="Command">Command</b> - Command to execute.</li>
-<li><b class="anchor" id="ParserType">Parser Type</b> - Parser type name - method to parse command output and calculate task running progress.</li>
-<li><b class="anchor" id="Files">Files</b> - (Optional, may be empty) Argument to provide to preview command to show frame
+<li><b class="anchor" id="task_Name">Name</b> - Task name. Generated, if block is numeric.</li>
+<li><b class="anchor" id="task_WorkingDirectory">Working Directory</b> - Path where to execute the command (and preview command).</li>
+<li><b class="anchor" id="task_Command">Command</b> - Command to execute.</li>
+<li><b class="anchor" id="task_ParserType">Parser Type</b> - Parser type name - method to parse command output and calculate task running progress.</li>
+<li><b class="anchor" id="task_Files">Files</b> - (Optional, may be empty) Argument to provide to preview command to show frame
 (path to the image relative to task working directory, or absolute path).</li>
 </ul>
 
 <h3>Task Progress:</h3>
 <ul>
-<li><b class="anchor" id="StartTime">Start Time</b> - Time when task was started (last start).</li>
-<li><b class="anchor" id="FinishTime">Finish Time</b> - Time when task was finished (last finish).</li>
-<li><b class="anchor" id="StartCount">Start Count</b> - Number of times task has started (it can be manually or automatically restarted).</li>
-<li><b class="anchor" id="Percent">Percent</b> - Running task progress percentage.</li>
-<li><b class="anchor" id="Frame">Frame</b> - Running frame for multiframe tasks which can be produced by numeric blocks when frames per render parameter &gt; 1.</li>
-<li><b class="anchor" id="PercentFrame">Percent Frame</b> - Running percentage of current running frame for multiframe tasks which can be produced by numeric blocks when frames per render parameter &gt; 1.</li>
-<li><b class="anchor" id="Errors">Errors</b> - Number of times task produced an error.</li>
-<li><b class="anchor" id="ErrorHosts">Error Hosts</b> - List of hosts and number of times where task was finished with error.</li>
+<li><b class="anchor" id="task_StartTime">Start Time</b> - Time when task was started (last start).</li>
+<li><b class="anchor" id="task_FinishTime">Finish Time</b> - Time when task was finished (last finish).</li>
+<li><b class="anchor" id="task_StartCount">Start Count</b> - Number of times task has started (it can be manually or automatically restarted).</li>
+<li><b class="anchor" id="task_Percent">Percent</b> - Running task progress percentage.</li>
+<li><b class="anchor" id="task_Frame">Frame</b> - Running frame for multiframe tasks which can be produced by numeric blocks when frames per render parameter &gt; 1.</li>
+<li><b class="anchor" id="task_PercentFrame">Percent Frame</b> - Running percentage of current running frame for multiframe tasks which can be produced by numeric blocks when frames per render parameter &gt; 1.</li>
+<li><b class="anchor" id="task_Errors">Errors</b> - Number of times task produced an error.</li>
+<li><b class="anchor" id="task_ErrorHosts">Error Hosts</b> - List of hosts and number of times where task was finished with error.</li>
 </ul>
 
 <h3>Task State:</h3>
