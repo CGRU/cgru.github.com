@@ -1,5 +1,9 @@
 <h2>Afanasy Job</h2>
 
+<p>
+Afanasy Job can have one ore more blocks. Blocks have tasks. Blocks are needed to store some same parameters for all tasks it consists of, for example all block tasks have the same working directory, capacity, service and parser type. But command is differ, of course.
+</p>
+
 <h3>Job Attributes:</h3>
 <ul>
 <li><b class="anchor" id="Name">Name</b> - Each job has an unique name.
@@ -66,6 +70,13 @@ You can user default <a href="#afanasy/user.html#JobsLifeTime">life time</a> val
 
 <h2>Job Block</h2>
 
+<p>
+Afanasy Block keeps the same parameters for all its tasks. When task is generated (when it ready to run) it take such parameters as working folder, capacity, service from block.
+</p>
+<p>
+Blocks can be numeric (most blocks in Afanasy are numeric). Numeric blocks does not have tasks at all. Such block keeps parameters for all its tasks itself. For example it has a command as "render -s @#@ -e @#@" where @#@ will be replaced to start and end frames for each task.
+</p>
+
 <h3>Block Attributes:</h3>
 <ul>
 <li><b class="anchor" id="Name">Name</b> - Each Block has an unique name. If new Block added to Job which the name already exists, Job change it's name by adding a number. Blocks dependence bases on their names and depend masks to match it.</li>
@@ -128,9 +139,9 @@ You can specify number of CPUs to use for your applications (if it supports it b
 <b>Multi Hosts Minimum</b> - Minimum number of hosts task can run on.<br/>
 <b>Multi Hosts Maximum</b> - Maximum number of hosts task can run on.<br/>
 <b>Multi Hosts Maximum Wait Time</b> - Time in seconds to wait for maximum hosts.<br/>
-<b>Multi Hosts Service</b> - Command to execute on slaves hosts, if it is empty, no service will be.<br/>
+<b>Multi Hosts Service</b> - Command to execute on slaves hosts, if it is empty, no service will be executed.<br/>
 <b>Multi Hosts Service Wait Time</b> - Time in seconds to wait for master execution after slaves execution.<br/>
-<b>Multi Hosts Same Host Master</b> - Master host will be in slaves list. For example if task took 'r00', 'r01', 'r02', 'r03', 'r04' hosts master command will be executed on 'r00' and 'r00' will be in slaves list too. If tasks can multihost service you can't enable this parameter, because only one command can be executed master or slave.<br/>
+<b>Multi Hosts Same Host Master</b> - Master host will be in slaves list. For example if task took 'r00', 'r01', 'r02', 'r03', 'r04' hosts master command will be executed on 'r00' and 'r00' will be in slaves list too. If tasks has multihost service you can't enable this parameter, because only one command can be executed master or slave.<br/>
 </li>
 
 <li><b class="anchor" id="block_MaxRunningTasks">Maximum Running Tasks</b> - maximum number of tasks block can run on the same time.</li>
