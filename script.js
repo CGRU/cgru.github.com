@@ -44,10 +44,10 @@ function g_OnKeyDown( i_evt)
 function g_PathChanged()
 {
 	var path = document.location.hash;
-	if( path.indexOf('#') == -1 )
-		path = g_path;
-	else
+	if( path.indexOf('#') == 0 )
 		path = path.substr(1);
+	else
+		path = g_path;
 
 	g_Navigate( path);
 }
@@ -63,14 +63,13 @@ function GO( i_path)
 {
 	g_goCount++;
 	document.location.hash = i_path;
-//	g_Navigate( i_path);
 }
 
 function g_Navigate( i_path)
 {
 //g_Info( g_path);
 	
-	g_path = i_path;
+	g_path = decodeURI( i_path);
 
 	path = g_path.split('#')[0];
 	for( var i = 0; i < g_navs.length; i++ )
