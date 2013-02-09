@@ -248,14 +248,11 @@ function GET()
 				return;
 			}
 
-//g_Info( xhr.status + ':' + xhr.statusText);
 			if( xhr.responseText.length )
 				g_SetContent( xhr.responseText);
 			else
 				g_Error('File '+g_path+' is empty.');
 		}
-//		else
-//			g_Info('Can`t get file '+g_path);
 	}
 }
 
