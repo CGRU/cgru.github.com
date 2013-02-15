@@ -5,8 +5,8 @@
 	<atom:link href="http://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Mon, 11 Feb 2013 00:00:00 GMT</pubDate>
-	<lastBuildDate>Mon, 11 Feb 2013 00:00:00 GMT</lastBuildDate>
+	<pubDate>Fir, 15 Feb 2013 00:00:00 GMT</pubDate>
+	<lastBuildDate>Fri, 15 Feb 2013 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
 	<item>
@@ -17,7 +17,7 @@
 			Bug fixes.
 			Maya users should look at  <a target="_blank" href="http://meshstudio.blogspot.ru/2013/01/metools-for-afanasy.html">meTools for Afanasy</a>.
 		</description>
-		<pubDate>Mon, 11 Feb 2013 00:00:00 GMT</pubDate>
+		<pubDate>Fri, 15 Feb 2013 00:00:00 GMT</pubDate>
 	</item>
 	<item>
 		<title>CGRU Version 1.6.10 Released.</title>
