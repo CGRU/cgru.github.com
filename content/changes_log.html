@@ -19,13 +19,16 @@ You can upgrade only one client or server to check changes.</li>
 <br/>
 
 
-<p><b id="release1612" class="anchor">1.6.12</b> 2013.03.20</p>
+<p><b id="release1612" class="anchor">1.6.12</b> 2013.03.21</p>
 <p>
 	Afanasy configuration now has parameters to control user ability to change priority:
 	<kbd>af_perm_user_mod_his_priority</kbd> and
-	<kbd>af_perm_user_mod_job_priority</kbd>
-	Dy default user can change his own priority and his jobs priority.
-	Set this parameters to false and only admin will be allowed to change priorities.
+	<kbd>af_perm_user_mod_job_priority</kbd>.
+	By default user can change his own priority and his jobs priority.
+	Set this parameters to <i>false</i> and only admin will be allowed to change priorities.
+</p>
+<p>
+	Movie Maker: Apple ProRes codec presets.
 </p>
 <p>
 	Tested with Nuke7 - works fine.
@@ -34,6 +37,8 @@ You can upgrade only one client or server to check changes.</li>
 	Bugs Fixed:
 </p>
 <p>
+	Movie Maker: H264 (ffmpeg-libx264) uses 420 pixel format instead of 444 to work on most players.<br/>
+	Nuke Submission: Fixed to render Write-nodes inside group.<br/>
 	Nuke Render Script: Fixed to render different views in different folders.<br/>
 </p>
 
