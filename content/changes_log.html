@@ -1,12 +1,6 @@
 <p>
 If Afanasy <b>network protocol changed</b>, it became incompatible with old one.
 </p>
-<p>
-If Afanasy <b>database schema changed</b> server can't restore state. All information will be lost.
-You need to reset old database tables and create new.
-You can use this command to perform it:<br/>
-<code>afcmd db_resetall</code>
-</p>
 <ol>
 <li>The first number in version means some major changes in the project.</li>
 <li>The second number means compatibility lost.
@@ -14,6 +8,26 @@ You should upgrade all clients and server at the same.</li>
 <li>The third number versions are fully compatible.
 You can upgrade only one client or server to check changes.</li>
 </ol>
+
+
+<br/>
+
+
+<p><b id="release170" class="anchor">1.7.0</b> 2013.03.25 New Afanasy network protocol version.</p>
+<p>
+	Parser can return running task "activity" - string parameter.
+	For example Nuke can notificate which of stereo views is rendering now.
+	Movie Maker notificates whether an encoding is started.
+	Activity string is shown by AfWatch and WebGUI in job tasks list window for each task item.
+</p>
+<p>
+	Thumbnails... ?
+</p>
+<p>
+	Bugs Fixed:
+</p>
+<p>
+</p>
 
 
 <br/>
