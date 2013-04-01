@@ -13,12 +13,17 @@ You can upgrade only one client or server to check changes.</li>
 <br/>
 
 
-<p><b id="release170" class="anchor">1.7.0</b> 2013.03.25 New Afanasy network protocol version.</p>
+<p><b id="release170" class="anchor">1.7.0</b> 2013.03.31 New Afanasy network protocol version.</p>
 <p>
 	Parser can return running task "activity" - string parameter.
 	For example Nuke can notificate which of stereo views is rendering now.
 	Movie Maker notificates whether an encoding is started.
 	Activity string is shown by AfWatch and WebGUI in job tasks list window for each task item.
+</p>
+<p>
+	Render has an idle time parameter.
+	It shows time since CPU percentage is less a value specified in config.
+	AfWatch shows progress bar - how long render is idle or how much time before Wake-On-Lan sleep, if render is "sleepable".
 </p>
 <p>
 	Thumbnails... ?

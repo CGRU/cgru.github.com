@@ -6,13 +6,15 @@ g_elContent = null;
 g_elTop = null;
 g_goCount = 0;
 
+var $ = function( id ) { return document.getElementById( id ); };
+
 function g_Init()
 {
 //g_Info('Initializing...');
 	var sflogo = '<img src="images/sourceforge.png" border="0" alt="sourceforge"/>';
 	if( document.location.host.indexOf('cgru.info') != -1 )
 		sflogo = '<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=178692&amp;type=12" width="120" height="30" border="0" alt="SourceForge.net"/>';
-	document.getElementById('sflogo').innerHTML = sflogo;
+	$('sflogo').innerHTML = sflogo;
 
 	document.body.onkeydown = g_OnKeyDown;
 
@@ -22,9 +24,13 @@ function g_Init()
 	for( var i = 0; i < g_navs.length; i++ )
 		g_navs[i].onclick = g_NavClick;
 
-	g_elContent = document.getElementById('content');
-	g_elTop = document.getElementById('ontop');
+	g_elContent = $('content');
+	g_elTop = $('ontop');
 	g_elTop.onclick = function(e){ g_DisplayOnTop(false);};
+
+    var barW = $('navig').offsetWidth - $('navig').clientWidth;
+	$('navig').style.right = (-barW)+'px';
+	$('content').style.right = (-barW)+'px';
 
 	window.onhashchange = g_PathChanged;
 

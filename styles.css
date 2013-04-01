@@ -5,22 +5,24 @@ font-size: 16px;
 text-align: justify;
 }
 
+div { margin: 0px; padding: 0px; overflow: hidden; }
+
 body, #frameheader, #framefooter {
 background-image:url('images/back.jpg');
 }
-/** { margin: 0; padding: 0; overflow: hidden; */
-.navig, .cnavlink, #footer > *, .forontop, .info {
+
+.navig, .navig > div, .cnavlink, #footer > *, .forontop, .info {
 -o-transition: all .3s ease-in-out;
 -moz-transition: all .3s ease-in-out;
 -webkit-transition: all .3s ease-in-out;
 }
 
 #frameheader, #framefooter, #framenavig, #framecontent {
-position: absolute; overflow: hidden;
+position: absolute;
 /*box-shadow: 0px 0px 4px #341 inset;*/
 }
 #frameheader, #framefooter, #framenavig {
-box-shadow: 0px 0px 10px #000, 0px 0px 4px #341 inset, 0px 0px 14px rgba(255,255,255,.5) inset;
+box-shadow: 0px 0px 10px #000, 0px 0px 2px #341 inset, 0px 0px 18px rgba(255,255,255,.8) inset;
 -o-select: none;
 -moz-user-select: none;
 -webkit-user-select: none;
@@ -30,39 +32,75 @@ box-shadow: 0px 0px 10px #000, 0px 0px 4px #341 inset, 0px 0px 14px rgba(255,255
 #framenavig { width: 166px; left: 0; top: 36px; bottom: 36px;}
 #framecontent { top: 36px; bottom: 36px; left: 166px; right: 0; }
 #header, #footer, #navig, #content { position: absolute;}
-#header, #footer { top: 3px; bottom: 3px; left: 10px; right: 10px; overflow: hidden;}
 
-#navig, #content  {
-overflow: auto;
-top: 0px; bottom: 0px; left: 0px; right: 0px;
-}
-
-#navig {
-font-size: 14px;
-padding: 4px 0px;
-}
-
+#header { top: 0px; bottom: 0px; left: 0px; right: 0px; }
 #header > div {
 float: left;
 width: 20%;
 text-align: center;
-/*box-shadow: 0px 0px 2px #000 inset;*/
+/*
+height: 36px;
+position: relative;
+top: 0px; bottom: 0px;
+box-shadow: 0px 0px 2px #000 inset;
+*/
 }
-.navig, .cnavlink, .anchor, .forontop { cursor: pointer;}
 /*.navig { border-radius: 4px;}*/
-#header .navig { margin: 1px 4px; height: 22px; padding: 3px; text-transform: uppercase; border-radius: 6px; }
-#navig .navig { padding: 2px 12px;}
+#header > div .navig {
+margin: 0px 4px;
+text-align: center;
+height: 36px;
+/*
+position: relative;
+padding: 5px 0px;
+top: 0px; bottom: 0px;
+position: relative;
+border-radius: 6px;
+*/
+}
+#header > div .navig > div {
+text-transform: uppercase;
+text-align: center;
+margin-top: 6px;
+/*
+position: relative;
+padding: 5px 0px;
+top: 0px; bottom: 0px;
+position: relative;
+border-radius: 6px;
+*/
+}
+#header > div .navig.current > div {
+margin-top: 9px;
+}
+
+
+.navig, .cnavlink, .anchor, .forontop { cursor: pointer;}
 .navig:hover {
 background: rgba(255,255,100,.1);
 box-shadow: 0px 0px 5px rgba(0,0,0,.5) inset, 0px 0px 2px rgba(0,0,0,.5);
 }
+.navig.current {
+background: rgba(255,255,100,.2);
+box-shadow: 0px 0px 6px rgba(0,0,0,.9) inset, 0px 0px 10px rgba(255,255,200,.8), 0px 0px 3px rgba(0,0,0,.9);
+}
+
+
+#navig, #content  {
+top: 0px; bottom: 0px; left: 0px; right: 0px;
+}
+
+#navig {
+overflow-y: scroll;
+font-size: 14px;
+padding: 4px 0px;
+}
+
+#navig .navig { padding: 2px 12px;}
 .navgrp { margin: 8px 0px; }
 #navig .navgrp > * { padding-left: 24px; }
 #navig .navgrp > *:first-child { padding-left: 12px; }
-.navig.current {
-background: rgba(255,255,100,.4);
-box-shadow: 0px 0px 6px rgba(0,0,0,.9) inset, 0px 0px 10px rgba(255,255,200,.8), 0px 0px 3px rgba(0,0,0,.9);
-}
+#footer { top: 3px; bottom: 3px; left: 10px; right: 10px; }
 
 #footer > * {
 display: block;
@@ -71,19 +109,19 @@ text-align: center;
 width: 20%;
 opacity: 0.7;
 padding: 2px 0px;
-overflow: hidden;
 /*box-shadow: 0px 0px 2px #000 inset;*/
 }
 #footer > *:hover {opacity: 0.9;}
 
 #content {
+overflow-y: scroll;
+overflow-x: auto;
 padding: 20px;
 }
 
 #loading {
 background: #AB7;
 border: 3px #442 solid;
-overflow: hidden;
 /*
 position: absolute;
 left: 42%; right: 42%;
@@ -112,7 +150,6 @@ font-weight: bold;
 opacity: 0.8;
 }
 .cnavlink, .cnavblock {
-overflow:hidden;
 margin:10px 10px;
 padding:10px 20px;
 border-radius:12px; box-shadow:0 0 4px #000 inset, 0 0 15px rgba(255,255,255,.3);}
@@ -141,7 +178,6 @@ color: #403;
 }
 pre {
 font-family: courier;
-overflow: hidden;
 background-color: #010;
 color: #7F4;
 font-weight: bold;
@@ -192,7 +228,6 @@ display: none;
 }
 
 #notfound {
-overflow: hidden;
 margin: 50px;
 padding: 20px;
 display: none;
