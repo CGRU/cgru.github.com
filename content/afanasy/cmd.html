@@ -21,6 +21,13 @@ In this mode program outputs in|out messages size.<br />
 
 <h3>Some useful commands:</h3>
 
+<h4>General:</h4>
+<p>
+<code>$ afcmd cfm</code><br/>
+Just check that message can reach server main thread.
+If confirm message received back, server runs normally.
+</p>
+
 <h4>Database:</h4>
 <p>
 <code>$ afcmd db_drivers</code><br/>
@@ -61,16 +68,5 @@ Ask Afanasy server to reread farm configuration. It can be reconfigured without 
 <p>
 <code>$ afcmd stat</code><br/>
 Output traffic statistics.
-</p>
-
-<h4>General:</h4>
-<p>
-<code>$ afcmd num</code><br/>
-Test how Afanasy will fill numeric command with numbers (first and last frame).
-</p>
-<p>
-<code>$ afcmd parse</code><br/>
-Parse input with specified python class. For example you can check parser work:<br/>
-<kbd>mantra -V a -f render/scene.0001.ifd | afcmd parse <i>my_custom_parser_class_name</i></kbd>
 </p>
 
