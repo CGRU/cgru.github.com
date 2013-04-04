@@ -90,16 +90,14 @@ box-shadow: 0px 0px 6px rgba(0,0,0,.9) inset, 0px 0px 10px rgba(255,255,200,.8),
 top: 0px; bottom: 0px; left: 0px; right: 0px;
 }
 
-#navig {
-overflow-y: scroll;
-font-size: 14px;
-padding: 4px 0px;
-}
-
-#navig .navig { padding: 2px 12px;}
+#navig { overflow-y: scroll; font-size: 14px; padding: 4px 0px; }
+#navig .navig { padding: 2px 16px; margin-left: -5px; }
 .navgrp { margin: 8px 0px; }
-#navig .navgrp > * { padding-left: 24px; }
-#navig .navgrp > *:first-child { padding-left: 12px; }
+#navig .navgrp > * { padding-left: 28px; }
+#navig .navgrp > *:first-child { padding-left: 16px; }
+#navig .navig.current { margin-left: 0px;}
+
+
 #footer { top: 3px; bottom: 3px; left: 10px; right: 10px; }
 
 #footer > * {
