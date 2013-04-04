@@ -26,7 +26,7 @@ and based from <br/>
 It has data on input to parse. During parsing it can set some properties:
 <ul>
 <li><b>self.percent</b> (<kbd>int</kbd>)
- - Task execution percenage.
+ - Task execution percentage.
 <li><b>self.frame</b> (<kbd>int</kbd>)
  - Task execution frame. May set for multiply frame tasks to show current frame in GUI.
 <li><b>self.percentframe</b> (<kbd>int</kbd>)
@@ -41,8 +41,12 @@ In this case render will not try to kill it, sometimes you don`t need this.
 You can use at the end of task execution, at final result check.
 <li><b>self.finishedsuccess</b> (<kbd>False</kbd>/<kbd>True</kbd>)
  - Success. Task will finish with a success.
-Parser can consider that task is aready done and should not to continue.
+Parser can consider that task is already done and should not to continue.
 Render will terminate(kill) task process and send "done" status to server (not an "error").
+</li>
+<li><b>self.activity</b> (<kbd>string</kbd>)
+ - Some string to inform user about task running stage.
+For example: Nuke current rendering view when stereo, Movie Maker convert or encode stage.
 </li>
 </ul>
 This method can return a string result.
