@@ -77,7 +77,8 @@ function g_Navigate( i_path)
 	
 	g_path = decodeURI( i_path);
 
-	path = g_path.split('#')[0];
+	var path = g_path.split('#')[0];
+	if( path.indexOf('.html') == -1 ) path += '.html';
 	for( var i = 0; i < g_navs.length; i++ )
 		if( path == g_navs[i].getAttribute('file'))
 		{
@@ -238,9 +239,11 @@ function g_DisplayNotFound( i_display)
 function GET()
 {
 	var path = g_path.split('#')[0];
+	if( path.indexOf('.html') == -1 )
+		path += '.html';
 
 	var xhr = new XMLHttpRequest();
-	xhr.overrideMimeType('application/json');
+	xhr.overrideMimeType('text/html');
 	xhr.open('GET', g_path_prefix+path, true);
 	xhr.send(null);
 

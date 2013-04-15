@@ -1,65 +1,318 @@
 <h2>CGRU Installation</h2>
 
-<h3>Users:</h3>
+<h3>Contents</h3>
 <ul>
-   <li>
-      <a href="#downloads.html">Download</a> the latest release and unpack.
-      <ul>
-         <li>
-            <i>Linux</i>: See <a href="#install_linuxpackages.html">packages</a> page.
-         </li>
-      </ul>
-   </li>
-   <li>Use <a href="#keeper.html">Keeper</a> to launch applications.</li>
+<li><b>Installation</b>
+	<ul>
+	<li><a href="#installation#archive">MS Windows, Linux Archive</a></li>
+	<li><a href="#installation#linux">Linux Packages</a></li>
+	<li><a href="#installation#macosx">Mac OS X</a></li>
+	</ul>
+</li>
+<li><b>Configuration</b>
+	<ul>
+	<li><a href="#installation#config_files">Config Files</a></li>
+	<li><a href="#installation#config_environment">Environment Variables</a></li>
+	</ul>
+<li><a href="#installation#examples">Run Examples</a></li>
+<li><a href="#installation#build">Manual Project Build</a>
+	<ul>
+	<li><a href="#installation#build_mswin">MS Windows</a></li>
+	<li><a href="#installation#build_linux">Linux</a></li>
+	<li><a href="#installation#build_macosx">Mac OS X</a></li>
+	</ul>
 </ul>
 
-<h4>Afanasy Server:</h4>
+
+<hr>
+
+
+<h2>Installation</h2>
+
+<h3 id="archive" class="anchor">MS Windows, Linux Archive</h3>
+<ul>
+<li><a href="#downloads.html">Download</a> the latest release and unpack.</li>
+<li>Use <a href="#keeper.html">Keeper</a> to launch applications.</li>
+</ul>
+
+<h3 id="linux" class="anchor">Linux Packages</h3>
+<ul>
+<li>
+<b>Server:</b> You need to install <b>afanasy-server</b> package.
+You can to install <b>afanasy-render</b> package to monitor its resources.
+You should limit some heavy tasks not to run in server machine.
+</li>
+<li>
+<b>Workstation:</b> You need to install <b>cgru</b> package.
+</li>
+<li>
+<b>Render:</b> You need to install <b>afanasy-render</b> package,
+and also it is not an error to install <b>cgru</b> package on any computer.
+</li>
+</ul>
+
 <p>
-<a href="#afanasy/sql.html">Install SQL database</a> server.
+CGRU will be installed in <kbd>/opt/cgru</kbd> folder.
 </p>
 
-<h3>Developers:</h3>
+<table border="1" width="100%">
+<tr aligh="center">
+	<td style="padding:6px">
+		<b>Structure:</b>
+	</td>
+	<td style="padding:6px">
+		<b>Description:</b>
+	</td>
+	<td style="padding:6px">
+		<b>Depends:</b>
+	</td>
+	<td style="padding:6px">
+		<b>Suggests:</b>
+	</td>
+</tr>
+<tr aligh="center">
+	<td rowspan="6" style="padding:6px">
+		<ul>
+		<li>
+			cgru
+			<ul>
+			<li>
+				afanasy-render
+				<ul>
+				<li>
+					afanasy-common
+					<ul>
+					<li>
+						cgru-common
+					</li>
+					</ul>
+				</li>
+				</ul>
+			</li>
+			<li>
+				afanasy-qtgui
+				<ul>
+				<li>
+					cgru-common
+				</li>
+				</ul>
+			</li>
+			</ul>
+		</li>
+		<li>
+			afanasy-server
+			<ul>
+			<li>
+				afanasy-common
+				<ul>
+				<li>
+					cgru-common
+				</li>
+				</ul>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</td>
+	<td style="padding:6px">
+		<b>cgru</b>: Start menu item.
+	</td>
+	<td align="center" style="padding:6px">
+		PyQt
+	</td>
+	<td align="center" style="padding:6px">
+	</td>
+</tr>
+<tr>
+	<td style="padding:6px">
+		<b>cgru-common</b>: All files, except Afanasy binaries.<br/>
+	</td>
+	<td align="center" style="padding:6px">
+	</td>
+	<td align="center" style="padding:6px">
+	</td>
+</tr>
+<tr>
+	<td style="padding:6px">
+		<b>afanasy-common</b>: Afanasy binary files.
+	</td>
+	<td align="center" style="padding:6px">
+		PostgreSQL (libpq)<br/>
+	</td>
+	<td align="center" style="padding:6px">
+	</td>
+</tr>
+<tr>
+	<td style="padding:6px">
+		<b>afanasy-render</b>: Afanasy render startup script. Creates '<i>render</i>' user if does not exists.
+	</td>
+	<td align="center" style="padding:6px">
+	</td>
+	<td align="center" style="padding:6px">
+	</td>
+</tr>
+<tr>
+	<td style="padding:6px">
+		<b>afanasy-server</b>: Afanasy server startup script. Creates '<i>render</i>' user if does not exists.
+	</td>
+	<td align="center" style="padding:6px">
+	</td>
+	<td align="center" style="padding:6px">
+		postgresql-server apache php php-gd php-pgsql
+	</td>
+</tr>
+<tr>
+	<td style="padding:6px">
+		<b>afanasy-qtgui</b>: Afanasy Qt GUI files.
+	</td>
+	<td align="center" style="padding:6px">
+		Qt (libqt)<br/>
+	</td>
+	<td align="center" style="padding:6px">
+	</td>
+</tr>
+<tr>
+	<td style="padding:6px" colspan="2">
+	</td>
+	<td style="padding:6px" colspan="2">
+		* <i>Packages names are vary in each Linux distribution.</i>
+	</td>
+</tr>
+</table>
+
+<h4>Setup Files:</h4>
+<ul>
+<li>
+	<b>opt/cgru/afanasy/nonrootuser</b> - Afanasy server and render user name (default = render).
+</li>
+<li>
+	<b>opt/cgru/afanasy/init/depends_afserver_*</b> - Afanasy server depends.<br/>
+	<b>opt/cgru/afanasy/init/depends_afrender_*</b> - Afanasy render depends.
+</li>
+</ul>
+
+<h4>Installation:</h4>
+<ul>
+<li>
+Install and uninstall scripts provided with the packages.
+</li>
+<li>
+Various GUI utilities, native for each Linux distribution, can install it.
+</li>
+<li>
+Commands like <code>dpkg -i</code> for .<b>deb</b>'s and <code>rpm -i</code> for .<b>rmp</b>'s.
+</li>
+<li>
+The best way is to put this packages in you local company Linux repository.
+And to use native Linux ways to install and update software.
+In this way Linux system solves packages dependences itself.
+</li>
+</ul>
+
+<h3 id="macosx" class="anchor">Mac OS X</h3>
 <p>
-The project is hosted on GitHub: <a href="https://github.com/CGRU/cgru">https://github.com/CGRU/cgru</a>
-</p>
-<p>
-Build Afanasy:<br/>
-<code>
-$ cd cgru/afanasy/src/project.cmake<br/>
-$ ./build.sh<br/>
-</code>
-</p>
-<h4>Setup Environment:</h4>
-<p>
-You can setup you $PATH and $PYTHONPATH variables, to use Afanasy commands and to import Python module.
-</p>
-<p>
-To setup CGRU commands and Python module, you need to go in CGRU folder and source a script:
-</p>
-<code>
-$ cd cgru<br/>
-$ source ./setup.sh<br/>
-</code>
-<p>
-You can put next lines at the end of your <kbd>~/.bashrc</kbd> file:<br/>
-<code>
-# CRGU:<br/>
-pushd .../cgru; source ./setup.sh; popd<br/>
-</code>
-And shell will automatically source it at every launch.
-</p>
-<p>
-<b>MS Windows:</b>
- <kbd>cmd</kbd> scripts are also provided (its do the same).
+There is no release for this platform, yet.
+But you can <a href="#installation#manual_build">build project yourself</a>.
 </p>
 
-<h4>Run CGRU:</h4>
+
+<hr>
+
+
+<h2>Configuration</h2>
+
+<h3 id="config_files" class="anchor">Config files</h3>
+<p>
+CGRU configuration files based JSON.
+One config file can include other, where parameters can be overridden.
+Config file can contain OS specific section, which parameters will be read only if client platform parameters matches OS section name.
+</p>
+<p>
+At first <kbd>cgru/config_default.json</kbd> is read, where global parameters are set.
+It includes <kbd>cgru/afanasy/config_default.json</kbd> which configures Afanasy specific parameters.
+At last it tries to load <kbd>cgru/config.json</kbd>, where you should override some your company specific parameters.
+At least you should specify Afanasy server location in it.
+</p>
+<p>
+CGRU Keeper and AfWatch stores settings in <kbd>HOME/.cgru/config.json</kbd>.
+It is read with the same rules as the main config.
+User can use it to set its own properties and override global config settings.
+</p>
+<p>
+Each parameter should be preset only once in a config file.
+If there will several parameters with the same name in a same file, which will be chosen is undefined.
+Parameters order plays no role.
+Included files are read after the end of file, no matter where include line is.
+If in the next included file there will be a parameter with the same name, it value will be overridden.
+</p>
+<p>
+<a href="http://json.org" target="_blank">JSON syntax reference.</a> *
+</p>
+<p>
+Better to check config with <kbd>afcmd</kbd>. Just run this command with no arguments.
+On error it will output error message, position and some text around it.
+You can also view configuration in Keeper, but it can not to start on bad config at all.
+Keeper Configuration window will display result configuration and each config file contents in the order they where read (included).
+</p>
+<p>
+* There is no comments in JSON syntax. But there are ways to comment JSON files.
+For example you can create an object with no name: <br/>
+<kbd>"":"Some comment text."</kbd><br/>
+Or create an object with some unused name.
+To disable (comment) some parameter you can change it name to unused.
+For example you can just prefix name with "-".
+</p>
+
+
+<h3 id="config_environment" class="anchor">Environment</h3>
+<p>
+Common user does not need to setup environment variables manually.
+Use Keeper or start scrips they will setup environment.
+To setup a console you should go to CGRU root folder and source setup script.
+</p>
+<pre>
+$ cd cgru
+$ source ./setup.sh
+</pre>
+
+
+<h3>Manual Environment Setup</h3>
+
+<h4>Required:</h4>
+<ul>
+<li><kbd>CGRU_LOCATION</kbd> - CGRU root folder.</li>
+<li><kbd>AF_ROOT</kbd> - AFANASY root folder.</li>
+<li><kbd>PYTHONPATH</kbd> - To import CGRU and AFANASY Python modules.
+	<ul>
+	<li><code>cgru/lib/python</code> - CGRU Python general library path.</li>
+	<li><code>cgru/afanasy/python</code> - AFANASY Python library path.</li>
+	</ul>
+</li>
+</ul>
+* You can separate CGRU and AFANASY, use different locations and versions.
+
+<h4>Optional:</h4>
+<ul>
+<li><kbd>CGRU_VERSION</kbd> - CGRU version string, will be shown in AfWatch and Browser. May be any. You can add some useful info to real version at work.</li>
+<li><kbd>AF_HOSTNAME</kbd> - Override hostname for AFANASY. Useful to run several clients on the same machine.</li>
+<li><kbd>AF_USERNAME</kbd> - Override user name for AFANASY.</li>
+<li><kbd>PATH</kbd> - Run commands.
+	<ul>
+	<li><code>cgru/bin</code> - CGRU tools.</li>
+	<li><code>cgru/afanasy/bin</code> - AFANASY applications.</li>
+	</ul>
+</li>
+</ul>
+
+
+<hr>
+
+
+<h2 id="examples" class="anchor">Examples</h2>
 <p>
 CGRU examples are located in <kbd>cgru/examples</kbd> directory.<br/>
 General tools for specific soft are located in <kbd>cgru/plugins/[software_name]</kbd> folder.<br/>
 Afanasy Tools for specific soft are located in <kbd>cgru/afanasy/plugins/[software_name]</kbd> folder.<br/>
-Examples has software launching scripts to make them to run with CGRU and Afanasy setup.<br/>
-Documentation for specific soft in located in <kbd>cgru/plugins/[software_name]/doc</kbd> folder.<br/>
 Run examples by executing script from it example directory.<br/>
 To launch Blender example:<br/>
 <code>
@@ -68,8 +321,79 @@ To launch Blender example:<br/>
 </code>
 </p>
 <p>
-<b>MS Windows:</b>
+<b>MS Windows</b>
 You can double click application launch script in <kbd>cgru\start</kbd> directory,
 or create link to it, to launch example run its script.<br/>
 Example for Blender: <kbd>cgru\examples\blender\start_blender.cmd</kbd>
 </p>
+
+
+<hr>
+
+
+<h2 id="build" class="anchor">Manual Project Build</h2>
+<p>
+The project is hosted on GitHub: <a href="https://github.com/CGRU/cgru">https://github.com/CGRU/cgru</a>
+</p>
+<p>
+If you want just to compile (not to develop) better to use tags.
+</p>
+<p>
+You can simple <a href="#downloads">download</a> an archive with the latests release sources.
+</p>
+<p>
+Needed libraries:
+</p>
+<ul>
+<li>Python: >= 2.6</li>
+<li>Qt: for Qt-GUI only</li>
+<li>PostgreSQL: for server only</li>
+</ul>
+<p>
+There is cmake and qmake build scripts.
+Also Ruby scripts for mxx_ru are preset, if you are familiar with it.
+</p>
+
+<h3 id="build_mswin" class="anchor">MS Windows</h3>
+<p>
+You need MS Visual Studio 10 and cmake.
+Cmake will generate Visual Studio project.
+</p>
+<p>
+Go to <kbd>cgru/afanasy/src/project.cmake</kbd><br/>
+Run <kbd>win_build_msvc.cmd</kbd><br/>
+</p>
+
+<h3 id="build_linux" class="anchor">Linux</h3>
+<p>
+All needed libraries can be installed by a script.
+</p>
+<pre>
+cd cgru/utilities
+./install_depends_devel.sh
+
+cd cgru/afanasy/src/project.cmake
+./build.sh
+</pre>
+
+<h3 id="build_macosx" class="anchor">Mac OS X</h3>
+<p>
+You should be familiar with building projects on Mac.
+</p>
+<p>
+You can use <a href="http://www.macports.org/" target="_blank">macports</a>
+or <a href="http://mxcl.github.io/homebrew/" target="_blank">homebrew</a>
+to install needed libraries and cmake.
+</p>
+<pre>
+cd cgru/afanasy/src/project.cmake
+./build.sh
+</pre>
+<p>
+Or you can download and install Qt manually and use qmake:
+</p>
+<pre>
+cd cgru/afanasy/src/project.qmake
+./build.sh
+</pre>
+
