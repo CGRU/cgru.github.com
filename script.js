@@ -80,7 +80,7 @@ function g_Navigate( i_path)
 	var path = g_path.split('#')[0];
 	if( path.indexOf('.html') == -1 ) path += '.html';
 	for( var i = 0; i < g_navs.length; i++ )
-		if( path == g_navs[i].getAttribute('file'))
+		if( path == g_navs[i].getAttribute('file').split('#')[0])
 		{
 			if( g_goCount == 0 )
 				g_navs[i].scrollIntoView( false);
