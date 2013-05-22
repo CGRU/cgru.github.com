@@ -1,10 +1,35 @@
-<h2>Afanasy Render Host</h2>
+<h2 id="page_top" class="anchor">Afanasy Render Host</h2>
 
-<p>Render is a client application.
-It runs on a remote host and communicates with server.
-Server sends tasks to render to run.</p>
+<p>
+	Render is a client application.
+	It runs on a remote host and communicates with server.
+	Server sends tasks to render to run.
+</p>
 
-<p>There are several ways to launch render:</p>
+<h2>Contents</h2>
+<ul>
+
+<li><a href="#afanasy/render#launch">Launch</a></li>
+<li><a href="#afanasy/render#attributes">Attributes</a>
+	<ul>
+	<li><a href="#afanasy/render#editable_parameters">Editable Parameters</a></li>
+	<li><a href="#afanasy/render#host_attributes">Farm Host Attributes</a></li>
+	<li><a href="#afanasy/render#resources">Resources</a></li>
+	</ul>
+</li>
+<li><a href="#afanasy/render#configuration">Configuration</a></li>
+<li><a href="#afanasy/render#paths_map">Paths Map</a></li>
+<li><a href="#afanasy/render#services">Services</a></li>
+<li><a href="#afanasy/render#parsers">Parsers</a></li>
+<li><a href="#afanasy/render#custom_resources">Custom Resources</a></li>
+<li><a href="#afanasy/render#windows_must_die">Windows Must Die</a></li>
+
+</ul>
+
+
+
+<h2 id="launch" class="anchor">Launch Methods</h2>
+
 <ul>
 <li>Keeper AFANASY menu - on MS Windows only.
 </li>
@@ -27,7 +52,10 @@ $ afrender
 </li>
 </ul>
 
-<h3>Render Attributes:</h3>
+
+
+
+<h2 id="attributes" class="anchor">Render Attributes:</h2>
 <ul>
 <li><b class="anchor" id="Name">Name</b> - Each render has an unique name.
 If new render comes to server with the name which already exists, server will not register it.
@@ -48,7 +76,8 @@ To launch another render on the same host use <kbd>AF_HOSTNAME</kbd> environment
 <li><b class="anchor" id="CapacityUsed">Capacity Used</b> - Capacity used by running tasks.</li>
 </ul>
 
-<h3>Render Editable Parameters:</h3>
+
+<h3 id="editable_parameters" class="anchor">Editable Parameters:</h3>
 <ul>
 <li><b class="anchor" id="UserName">Render User</b> - Who launched a render. Can be changed only by administrators. Note that process do not change uid. This value for afanasy only.</li>
 <li><b class="anchor" id="Priority">Priority</b> - Render with greater priority get task first.</li>
@@ -70,7 +99,8 @@ To launch another render on the same host use <kbd>AF_HOSTNAME</kbd> environment
 <li><b class="anchor" id="Annotation">Annotation</b> - Annotate render GUI item.</li>
 </ul>
 
-<h3>Render Host Attributes:</h3>
+
+<h3 id="host_attributes" class="anchor">Farm Host Attributes:</h3>
 <ul>
 <li><b class="anchor" id="Capacity">Capacity</b> - Total capacity value (each running task takes some capacity).</li>
 <li><b class="anchor" id="MaxTasks">Max Tasks</b> - Maximum number of tasks can be running the same time.</li>
@@ -87,7 +117,8 @@ To launch another render on the same host use <kbd>AF_HOSTNAME</kbd> environment
 <li><b class="anchor" id="ServicesNames">Services Names</b> - List of type names of available services.</li>
 </ul>
 
-<h3>Render Host Resources Usage:</h3>
+
+<h3 id="resources" class="anchor">Resources Usage:</h3>
 <ul>
 <li><b class="anchor" id="CpuLoadavg">CPU Loadavg[3]</b> - Load average.</li>
 <li><b class="anchor" id="CpuUser">CPU User</b> - User usage percentage.</li>
@@ -114,8 +145,9 @@ To launch another render on the same host use <kbd>AF_HOSTNAME</kbd> environment
 <p><code>$ afrender [nimby|NIMBY]</code></p>
 
 
-<h2 id="config" class="anchor">Configuration</h2>
 
+
+<h2 id="configuration" class="anchor">Configuration</h2>
 <ul>
 <li><p>
 <code class="anchor" id="cmd_shell">cmd_shell</code> not defined by default.<br/>
@@ -213,14 +245,158 @@ Command for render to shutdown a machine. For MS Windows you can use "shutdown /
 </p></li>
 </ul>
 
-<h2 class="anchor" id="customresources">Custom Resources</h2>
 
+
+
+<h2 id="paths_map" class="anchor">Afanasy Paths Map</h2>
+<p>
+CGRU has an ability to map paths.
+Every client can have own paths map file to translate paths to server and from server.
+</p>
+<p>
+Paths map is described in <a href="#configuration.html">config</a> files by <kbd>pathsmap</kbd> object.
+It is an arrays of path pairs:
+</p>
+<pre>
+"pathsmap":[
+	["//server/projects/","/mnt/prj/"],
+	["//server/tools/","/mnt/tools/"]
+]
+</pre>
+<p>
+When job constructs (on the client side) all commands and working directories are translated from client to server.
+When task starts (on the client side) all commands and working directories are translated from server to client.
+Server does know nothing about paths map.
+</p>
+<h3>MS Windows platform issues:</h3>
+<ul>
+<li>
+You can write only <code>/</code> slashes in a config.
+It will try both slashes directions.
+Some applications allows client to use and <code>\</code> and <code>/</code> slashes,
+so pattern will be matched in any case.
+</li>
+<li>
+When client searches a pattern it converts paths in lower case.
+So no matter how client wrote a path '//server/projects/', '//SERVER/PROJECTS/', '//SERVER/projects/' or '//server/PROJECTS/'.
+It will work any way.
+</li>
+<li>
+Module (Python Class) can works in 'UnixSeparators' mode.
+During translation from server to client it uses <code>/</code> slashes for client paths.
+For example NUKE uses only <code>/</code> slashes on any platform.
+</li>
+</ul>
+<h4>A part of a real working config.json with map example:</h4>
+<pre>
+...
+"OS_windows":{
+	"pathsmap":[
+		["P:/",             "/ps/prj/"],
+		["//box/project/",  "/ps/prj/"],
+		["Q:/",             "/ps/prj2/"],
+		["//box2/project/", "/ps/prj2/"],
+		["//sun/libs/",     "/ps/lib/"],
+		["//sun/vault/",    "/ps/vault/"],
+		["T:/",             "/ps/etc/"],
+		["c:/ps/",          "/ps/"],
+		["c:/temp/",        "/tmp/"]
+	]
+}
+...
+</pre>
+
+
+
+
+<h2 id="services" class="anchor">Services (Tasks Types)</h2>
+<p>
+Python classes stored in <br/>
+<code>cgru/afanasy/python/services</code><br/>
+and based from <br/>
+<code>cgru/afanasy/python/services/service.py</code><br/>
+</p>
+<p>It describes a service:</p>
+<ul>
+   <li>
+      Service with this name exists.
+   </li>
+   <li>
+      Default service parser.
+   </li>
+   <li>
+      Method to transfer commands and paths from server to client (different OS-es can have different paths).
+   </li>
+   <li>
+      Method to insert in task command variable capacity coefficient.
+   </li>
+</ul>
+
+
+
+
+<h2 id="parsers" class="anchor">Tasks Output Parsers</h2>
+<p>
+Parser read task output and calculate running percentage and frame (for multiply frames per render).
+</p>
+<p>
+Python classes stored in <br/>
+<code>cgru/afanasy/python/parsers</code><br/>
+and based from <br/>
+<code>cgru/afanasy/python/parsers/parser.py</code><br/>
+</p>
+<p>It describes a parser:</p>
+<ul>
+	<li>
+		Parser with this name exists.
+	</li>
+	<li>
+		Parsing function by overriding <code>parser.do(self, data)</code> method.
+	</li>
+</ul>
+<h3>Parser method:</h3>
+<p>
+It has data on input to parse. During parsing it can set some properties:
+<ul>
+<li><b class="anchor" id="percent">self.percent</b> (<kbd>int</kbd>)
+ - Task execution percentage.
+<li><b class="anchor" id="frame">self.frame</b> (<kbd>int</kbd>)
+ - Task execution frame. May set for multiply frame tasks to show current frame in GUI.
+<li><b class="anchor" id="percentframe">self.percentframe</b> (<kbd>int</kbd>)
+ - Task execution current frame percentage.
+<li><b class="anchor" id="warning">self.warning</b> (<kbd>False</kbd>/<kbd>True</kbd>)
+ - Some warning. To notify user only.
+<li><b class="anchor" id="error">self.error</b> (<kbd>False</kbd>/<kbd>True</kbd>)
+ - Error. Render will try to terminate and kill a task.
+<li><b class="anchor" id="badresult">self.badresult</b> (<kbd>False</kbd>/<kbd>True</kbd>)
+ - Error. Task will finish with an error.
+In this case render will not try to kill it, sometimes you don`t need this.
+You can use at the end of task execution, at final result check.
+<li><b class="anchor" id="finishedsuccess">self.finishedsuccess</b> (<kbd>False</kbd>/<kbd>True</kbd>)
+ - Success. Task will finish with a success.
+Parser can consider that task is already done and should not to continue.
+Render will terminate(kill) task process and send "done" status to server (not an "error").
+</li>
+<li><b class="anchor" id="parser_activity">self.activity</b> (<kbd>string</kbd>)
+ - Some string to inform user about task running stage.
+For example: Nuke current rendering view when stereo, Movie Maker convert or encode stage.
+</li>
+</ul>
+This method can return a string result.
+In such case this string will be stored instead of incoming data.
+You can use it to produce some message, by appending incoming data with your information.
+Or you can cut some useless information.
+</p>
+
+
+
+
+<h2 class="anchor" id="custom_resources">Custom Resources</h2>
 <p>
 You can write custom resources meter(s) on Python.
 Render instances a class and runs <kbd>update</kbd> method periodically (each time the Render updates).
 You can inherit base <kbd>resbase</kbd> class and set its properties.
 </p>
-
 <p>
 There are some examples of custom meters in Afanasy.
 </p>
@@ -228,13 +404,11 @@ There are some examples of custom meters in Afanasy.
 <li><b>example</b> - Just an example. It increments a value from 0 to 100, changes label text, plotter and label size, graph and back color.</li>
 <li><b>iostat</b> - Shows parsed output of Linux '<i>iostat</i>' command. Graph value is utilization percentage (or %busy).</li>
 </ul>
-
 <p>
 This is how Watch shows two custom resources meters <kbd>example</kbd> and <kbd>iostat</kbd>.<br/>
 <img src="images/afanasy/watch/render_rescustom.png" alt="render_rescustom.png"><br/>
 It places custom plotters in a second row, under standard build-in resources meters.<br/>
 </p>
-
 <p>
 Python classes stored in <br/>
 <code>cgru/afanasy/python/resources</code><br/>
@@ -261,7 +435,9 @@ Set <kbd>False</kbd> if resource meter initialization failed.
 </ul>
 
 
-<h2 id="windowsmustdie" class="anchor">Windows Must Die</h2>
+
+
+<h2 id="windows_must_die" class="anchor">Windows Must Die</h2>
 <p>
 Farm based on MS Windows OS can produce some 'bad' windows.
 If process crashed, Windows OS can launch a window with apologizes,
