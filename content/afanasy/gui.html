@@ -1,5 +1,28 @@
-<h2>Watch - Afanasy Qt GUI</h2>
+<h2 id="page_top" class="anchor">Afanasy GUI</h2>
 
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#afanasy/gui#watch">Watch</a>
+	<ul>
+	<li><a href="#afanasy/gui#watch_jobs">Jobs</a></li>
+	<li><a href="#afanasy/gui#watch_tasks">Tasks</a></li>
+	<li><a href="#afanasy/gui#watch_renders">Renders</a></li>
+	<li><a href="#afanasy/gui#watch_users">Users</a></li>
+	<li><a href="#afanasy/gui#watch_admin">Administration</a></li>
+	<li><a href="#afanasy/gui#watch_config">Configuration</a></li>
+	<li><a href="#afanasy/gui#watch_styles">Styles</a></li>
+	</ul>
+</li>
+<li><a href="#afanasy/gui#web">WEB</a>
+	<ul>
+	<li><a href="#afanasy/gui#web_online_version">Online Version</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<h2 id="watch" class="anchor">Watch - Afanasy Qt GUI</h2>
 <p>
 Watch - afanasy monitor. It can be in three modes - USER, VISOR and GOD.<br/>
 <ul>
@@ -8,48 +31,12 @@ Watch - afanasy monitor. It can be in three modes - USER, VISOR and GOD.<br/>
 <li><b>GOD</b> ( super user mode ) - can do anything.
 Change any parameter of any user, job or host. Add or delete hosts, users. Restart, shutdown any render host.</li>
 </ul>
-
 To switch user mode you need to type password in active Watch window (you do not need to re-login to switch between modes).
 To reset super user mode you can type password again.
 </p>
 
-<h3>Super user mode:</h3>
-<p>
-Type password to switch to it. You can see and manipulate all users jobs.<br />
-</p>
-<table width="99%">
-   <caption><b>Jobs Tab</b></caption>
-   <tr>
-      <td align="center">
-         <b>&quot;Visor&quot; Mode</b> (Orange border)
-         <br/>
-         <img src="images/afanasy/watch/jobs_visor.png" alt="jobs_visor"/>
-         <br/>
-         Default password is "idkfa"
-      </td>
-      <td align="center">
-         Sort&amp;Filter Control Widget<br />
-         Right Mouse Button (RMB) Menu<br />
-         <img src="images/afanasy/watch/jobs_sortfilter.png" alt="jobs_sortfilter"/><br />
-         Sort&amp;Filter Control allows you to define items sorting and filtering conditions.<br />
-         You can choose sorting parameter and direction or disable sorting at all
-         (disabling is equivalent to empty filter expression string).<br />
-         Choose filtering parameter and condition (to include or exclude pattern) or disable filtering at all.<br />
-         When filtering is working Sort&amp;Filter Control highlights its widget background color.<br />
-     </td>
-      <td align="center">
-         <b>&quot;GOD&quot; Mode</b> (Light green border)
-         <br/>
-         <img src="images/afanasy/watch/jobs_filtered.png" alt="jobs_filtered"/>
-         <br/>
-         Default password is "iddqd"
-      </td>
-   </tr>
-</table>
 
-
-<h2 id="config" class="anchor">Configuration</h2>
-
+<h3 id="watch_config" class="anchor">Configuration</h3>
 <ul>
 <li><p>
 <code>pswd_visor</code> = 1832116180fdc61b64fd978401e462e9<br/>
@@ -152,7 +139,7 @@ Time to wait for writing data to consider that connection is not lost.
 </ul>
 
 
-<h2 id="jobs" class="anchor">Jobs Monitor</h2>
+<h3 id="watch_jobs" class="anchor">Jobs Monitor</h3>
 
 <div style="float:right;text-align:center;margin:20px">
 <p>
@@ -232,8 +219,7 @@ You can move jobs in user jobs list. Note that job can move only jobs with the s
 <p><b>Delete</b> - Delete job (it deletes from database too, minimum information put into statistics tables).</p>
 
 
-<h2 id="tasks" class="anchor">Tasks Monitor</h2>
-
+<h3 id="watch_tasks" class="anchor">Tasks</h3>
 <p>
 Mouse double click on a job in jobs list will open its tasks window.
 </p>
@@ -299,8 +285,7 @@ Last start was on render named 'r10-1'.<br/>
 <p><b>Restart</b> - Restart task.</p>
 
 
-<h2 id="renders" class="anchor">Renders Monitor</h2>
-
+<h3 id="watch_renders" class="anchor">Renders</h3>
 <p>
 To open renders list in a separate window uses RMB on 'RENDERS' button.
 </p>
@@ -396,8 +381,7 @@ read and write data on disk.<br/>
 </p>
 
 
-<h2 id="users" class="anchor">Users Monitor</h2>
-
+<h3 id="watch_users" class="anchor">Users</h3>
 <p>
 To open users list in a separate window uses RMB on 'USERS' button.
 </p>
@@ -436,8 +420,42 @@ Automatic task errors retries = '3'.<br/>
 </p>
 
 
-<h2 id="styles" class="anchor" style="clear:both">GUI Styles</h2>
+<h3 id="watch_admin" class="anchor">Administration:</h3>
+<p>
+Type password to switch to super user mode. You can see and manipulate all users jobs.<br />
+</p>
+<table width="99%">
+   <caption><b>Jobs Tab</b></caption>
+   <tr>
+      <td align="center">
+         <b>&quot;Visor&quot; Mode</b> (Orange border)
+         <br/>
+         <img src="images/afanasy/watch/jobs_visor.png" alt="jobs_visor"/>
+         <br/>
+         Default password is "idkfa"
+      </td>
+      <td align="center">
+         Sort&amp;Filter Control Widget<br />
+         Right Mouse Button (RMB) Menu<br />
+         <img src="images/afanasy/watch/jobs_sortfilter.png" alt="jobs_sortfilter"/><br />
+         Sort&amp;Filter Control allows you to define items sorting and filtering conditions.<br />
+         You can choose sorting parameter and direction or disable sorting at all
+         (disabling is equivalent to empty filter expression string).<br />
+         Choose filtering parameter and condition (to include or exclude pattern) or disable filtering at all.<br />
+         When filtering is working Sort&amp;Filter Control highlights its widget background color.<br />
+     </td>
+      <td align="center">
+         <b>&quot;GOD&quot; Mode</b> (Light green border)
+         <br/>
+         <img src="images/afanasy/watch/jobs_filtered.png" alt="jobs_filtered"/>
+         <br/>
+         Default password is "iddqd"
+      </td>
+   </tr>
+</table>
 
+
+<h3 id="watch_styles" class="anchor" style="clear:both">GUI Styles</h3>
 <table>
 <tr align="center">
 	<td><b><i>Civil</i>:</b></td>
@@ -474,4 +492,43 @@ Automatic task errors retries = '3'.<br/>
 	<td><img src="images/afanasy/watch/style_hellokitty.png"/></td>
 </tr>
 </table>
+
+
+
+
+<h2 id="web" class="anchor">WEB GUI</h2>
+<p>
+It is beta for now. It will be CGRU 2.0.
+</p>
+<p>
+It based on HTML5 technologies.
+It will not work on Microsoft Internet Explorer.
+If it does not work on Android, install Firefox.
+</p>
+<h3>CGRU Add-on</h3>
+<p>It is available for Mozilla Firefox only for now.</p>
+<ul>
+<li><a href="firefox/cgru-addon.xpi" target="_blank"><b>Mozilla Firefox</b></a></li>
+</ul>
+<p>
+Web GUI can run system commands.
+Browsers can not run any commands for security reasons.
+But it can be realized through a browser extension.
+</p>
+
+
+<h3 id="web_online_version" class="anchor">Online Version</h3>
+<p>
+	Online version is designed to let users to try Afanasy via WEB GUI.
+	You can change parameters, restart jobs.
+	You even can to delete everything and it will be empty till the next demo start.
+</p>
+<b><a href="http://home.piastro.ru:61000" target="_blank">http://home.piastro.ru:61000</a></b>
+<ul>
+	<li>This is not a real worknig server at CG company.</li>
+	<li>All render clients and server are running on the same host.</li>
+	<li>Server does not accept new jobs.</li>
+	<li>Server does not allow to change existing tasks commands.</li>
+	<li>All services (tasks) starts a simple python script that just sleeps for some time.</li>
+</ul>
 

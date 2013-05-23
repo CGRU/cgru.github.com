@@ -111,7 +111,11 @@ function g_SetContent( i_data)
 	if( g_path.indexOf('?') != -1) paths = g_path.split('?');
 
 	if( paths.length > 1 )
-		document.getElementById(paths[1]).scrollIntoView(true);
+	{
+		var el = document.getElementById(paths[1]);
+		if( el )
+			el.scrollIntoView(true);
+	}
 
 	g_ProcessContent();
 }

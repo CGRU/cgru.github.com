@@ -15,19 +15,19 @@ You can upgrade only one client or server to check changes.</li>
 
 <p><b id="release170" class="anchor">1.7.0</b> 2013.03.31 New Afanasy network protocol version.</p>
 <p>
-	Parser can return running task "activity" - string parameter.
+	Parser can return running task <a href="#afanasy/render#parser_activity">"activity"</a> - string parameter.
 	For example Nuke can notify which of stereo views is rendering now.
 	Movie Maker notify whether an encoding is started.
 	Activity string is shown by AfWatch and WebGUI in job tasks list window for each task item.
 </p>
 <p>
 	Render has an idle time parameter.
-	It shows time since CPU percentage is less a value specified in config.
-	AfWatch shows progress bar - how long render is idle or how much time before Wake-On-Lan sleep, if render is "sleepable".
+	It shows time since CPU percentage is less than an <a href="#afanasy/server#farm_idle_cpu">idle_cpu</a> value in farm setup.
+	GUI shows progress bar - how long render is idle.
 </p>
 <p>
 	Render client nimby can be set to free if computer is idle for some time.
-	You can configure it in farm.json by nimby_idlefree_time parameter.
+	You can configure it in farm.json by <a href="#afanasy/server#farm_nimby_idlefree_time">nimby_idlefree_time</a> parameter.
 	It is useful for render on workstations that artists left.
 </p>
 <p>
@@ -35,7 +35,7 @@ You can upgrade only one client or server to check changes.</li>
 	GUI renders items show running tasks percentage.
 </p>
 <p>
-	New system job block - "events".
+	New system job block - <a href="#afanasy/server#events">"events"</a>.
 	New service - "events".
 	Afanasy server can generate events, on job error, for example.
 	Events are pushed to system job as tasks for events block.

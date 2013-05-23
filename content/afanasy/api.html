@@ -1,12 +1,310 @@
-<h2>Afanasy Python API</h2>
+<h2 id="page_top" class="anchor">Afanasy API</h2>
 
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#afanasy/api#json">JSON</a>
+	<ul>
+	<li><a href="#afanasy/api#json_job_min">Job Minimum</a></li>
+	<li><a href="#afanasy/api#json_get">Get</a></li>
+	<li><a href="#afanasy/api#json_action">Action</a></li>
+	<li><a href="#afanasy/api#json_job_max">Job Maximum</a></li>
+	</ul>
+</li>
+<li><a href="#afanasy/api#python">Python</a>
+	<ul>
+	<li><a href="#afanasy/api#python_class_job">Job Class</a></li>
+	<li><a href="#afanasy/api#python_class_block">Block Class</a></li>
+	<li><a href="#afanasy/api#python_class_task">Task Class</a></li>
+	</ul>
+</li>
+<li><a href="#afanasy/api#python_afjob">afjob.py CLI</a></li>
+</ul>
+
+
+<h2 id="json" class="anchor">JSON Protocol</h2>
+
+<p>
+You can communicate with Afanasy server by JSON.
+</p>
+<ul>
+   <li>
+      <code>afcmd json [file|pipe]</code> - Test JSON syntax, output an error and position.
+   </li>
+   <li>
+      <code>afcmd v json [file|pipe]</code> - Same as previous and output parsed JSON document structure.
+   </li>
+   <li>
+      <code>afcmd json send [file]</code> - Send JSON data after successfully parsed.
+   </li>
+</ul>
+
+<p>
+You can use Afanasy Python module to construct and send valid structures.
+</p>
+
+<p>
+JSON protocol is not finished. Only job structure is final - to remove python binary module dependence to send a job.
+</p>
+
+<h3 id="json_job_min" class="anchor">Job Minimum:</h3>
+<pre/>
+
+{
+   "job":
+   {
+      "name"                  : "job name",
+      "user_name"             : "jimmy",
+      "host_name"             : "host",
+      "blocks":[
+      {
+         "name"              : "Nuke",
+         "tasks_name"        : "frames @#@-@#@",
+         "service"           : "nuke",
+         "parser"            : "nuke",
+         "frame_first"       : 1,
+         "frame_last"        : 100,
+         "frames_per_task"   : 10,
+         "frames_inc"        : 2,
+         "command"           : "nuke -F@#@,@#@ -x scene.nk -X Write1",
+         "working_directory" : "/home/jimmy/work",
+         "files"             : "folder/img_L.@####@.jpg;folder/img_R.@####@.jpg"
+      }
+      ]
+   }
+}
+
+</pre>
+
+<h3 id="json_get" class="anchor">Get Examples:</h3>
+<table border="1" width="99%">
+<tr>
+   <th size="25%">Get all jobs list</th>
+   <th size="25%">Get jobs list from users ids with</th>
+   <th size="25%">Get renders by host names pattern</th>
+   <th size="25%">Get users list with special ids</th>
+</tr>
+<tr>
+<td><pre>
+{
+ "get":
+ {
+  "type" : "jobs"
+ }
+}
+
+</pre></td>
+<td><pre>
+{
+ "get":
+ {
+  "type" : "jobs",
+  "uids" : [1,2]
+ }
+}
+</pre></td>
+<td><pre>
+{
+ "get":
+ {
+  "type" : "renders",
+  "mask" : "farmhost.*"
+ }
+}
+</pre></td>
+<td><pre>
+{
+ "get":
+ {
+  "type" : "users",
+  "ids"  : [1,2]
+ }
+}
+</pre></td>
+</tr>
+</table>
+
+<h3 id="json_action" class="anchor">Action Examples:</h3>
+<table border="1" width="99%">
+<tr>
+   <th colspan="2">Edit parameters</th>
+   <th colspan="2">Perform operations</th>
+</tr>
+<tr>
+   <td size="25%">Set render nimby</td>
+   <td size="25%">Set user priority</td>
+   <td size="25%">Exit render</td>
+   <td size="25%">Delete job</td>
+</tr>
+<tr>
+<td><pre>
+{
+ "action":
+ {
+  "user_name"  : "jimmy",
+  "host_name"  : "pc01",
+  "mask"       : "pc02",
+  "type"       : "renders",
+  "params"     :
+  {
+   "nimby"     : true
+  }
+ }
+}
+</pre></td>
+<td><pre>
+{
+ "action":
+ {
+  "user_name"  : "jimmy",
+  "host_name"  : "pc01",
+  "mask"       : "bob",
+  "type"       : "users",
+  "params"     :
+  {
+   "priority"  : "50"
+  }
+ }
+}
+</pre></td>
+<td><pre>
+{
+ "action":
+ {
+  "user_name"  : "jimmy",
+  "host_name"  : "pc01",
+  "mask"       : "pc02",
+  "type"       : "renders",
+  "operation"  :
+  {
+   "type"      : "exit"
+  }
+ }
+}
+</pre></td>
+<td><pre>
+{
+ "action":
+ {
+  "user_name"  : "jimmy",
+  "host_name"  : "pc01",
+  "mask"       : "my3drender",
+  "type"       : "jobs",
+  "operation"  :
+  {
+   "type"      : "delete"
+  }
+ }
+}
+</pre></td>
+</tr>
+</table>
+
+<h3 id="json_job_max" class="anchor">Job Maximum:</h3>
+<pre/>
+
+{
+   "job":
+   {
+      "name"                           : "job name",
+      "user_name"                      : "jimmy",
+      "annotation"                     : "json test",
+      "priority"                       : 50,
+      "max_running_tasks"              : 20,
+      "max_running_tasks_per_host"     : 3,
+      "time_creation"                  : 12345678901,
+      "time_wait"                      : 12345688901,
+      "time_life"                      : 360000,
+      "description"                    : "\\for\\ \"tests\" 'only'",
+      "hosts_mask"                     : "renderhost.*",
+      "hosts_mask_exclude"             : "badhost.*",
+      "depend_mask"                    : "my3djob.*",
+      "depend_mask_global"             : "his3djob.*",
+      "need_os"                        : "linux",
+      "need_properties"                : "cuda",
+      "command_post"                   : "deletefiles path/to/some.scene",
+      "blocks":[
+      {
+         "name"                       : "Nuke",
+         "tasks_name"                 : "frames @#@-@#@",
+         "service"                    : "nuke",
+         "parser"                     : "nuke",
+         "capacity"                   : 500,
+         "capacity_coeff_min"         : 2,
+         "capacity_coeff_max"         : 4,
+         "frame_first"                : 1,
+         "frame_last"                 : 100,
+         "frames_per_task"            : 10,
+         "frames_inc"                 : 2,
+         "non_sequential"             : true,
+         "errors_retries"             : 9,
+         "errors_avoid_host"          : 4,
+         "errors_task_same_host"      : 3,
+         "errors_forgive_time"        : 3600,
+         "depend_mask"                : "someBlock",
+         "tasks_depend_mask"          : "someBlockTasks",
+         "hosts_mask"                 : "renderhost_b.*",
+         "hosts_mask_exclude"         : "badhost_b.*",
+         "need_properties"            : "nvidia",
+         "command"                    : "nuke -F@#@,@#@ -x scene.nk -X Write1",
+         "working_directory"          : "/home/jimmy/work",
+         "files"                      : "folder/img_L.@####@.jpg;folder/img_R.@####@.jpg",
+         "command_post"               : "deletefiles scene.nk"
+      },
+      {
+         "name"                       : "Generic",
+         "tasks_name"                 : "generate @#@",
+         "service"                    : "generic",
+         "parser"                     : "generic",
+         "capacity"                   : 1100,
+         "depend_sub_task"            : true,
+         "max_running_tasks"          : 20,
+         "max_running_tasks_per_host" : 3,
+         "tasks_max_run_time"         : 600,
+         "multihost_min"              : 3,
+         "multihost_max"              : 5,
+         "multihost_max_wait"         : 10,
+         "multihost_service"          : "generic_server",
+         "multihost_service_wait"     : 3,
+         "multihost_master_on_slave"  : false,
+         "command"                    : "generate @#@",
+         "working_directory"          : "/home/jimmy/work",
+         "files"                      : "folder/@#@.jpg",
+         "tasks":[
+         {
+            "name"                   : "Process A",
+            "command"                : "-a file_a",
+            "files"                  : "file_a"
+         },
+         {
+            "name"                   : "Process B",
+            "command"                : "-b file_b",
+            "files"                  : "file_b"
+         },
+         {
+            "name"                   : "Process C",
+            "command"                : "-c file_c",
+            "files"                  : "file_c"
+         }
+         ]
+      }
+      ]
+   }
+}
+
+</pre>
+
+
+
+
+
+<h2 id="python" class="anchor">Python API</h2>
 <p>
 You can create jobs within Python, that exists in most common CG software.
 Afanasy Python module uses the same JSON protocol, it helps you to construct and send JSON job data.
 </p>
 
-<h3 id="example" class="anchor">Example:</h3>
-
+<h3 id="python_example" class="anchor">Example:</h3>
 <pre>
 #!/usr/bin/env python
 
@@ -53,13 +351,6 @@ job.setCmdPost('rm /projects/test/nuke/scene.nk.tmp.nk')
 job.send()
 </pre>
 
-<h2 id="afjob" class="anchor">afjob.py - CLI Job Interface</h2>
-
-<p>This is a python program. It constructs job from command line arguments and send to server.</p>
-<p><code>cgru/afanasy/python/afjob.py</code></p>
-<p>This script without or with invalid arguments prints help.</p>
-
-
 <h2 id="job" class="anchor">Job Object</h2>
 
 <h3>Constructor:</h3>
@@ -80,97 +371,78 @@ Blocks list.<br/>
 
 <h3>Functions:</h3>
 <ul>
-
 <li>job.<b>offline()</b>
 <p>
 Set job to <a href="#afanasy/job.html#State">Offline</a> state.
 </p></li>
-
 <li>job.<b>output([</b><i>True</i><b>])</b>
 <p>
 Print job information. If <i>True</i> print job blocks information too.
 </p></li>
-
 <li>job.<b>send()</b>
 <p>
 Send job to Afanasy server.
 </p></li>
-
 <li>job.<b>setCmdPost(</b><i>command</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#CmdPost">Post Command</a>.
 </p></li>
-
 <li>job.<b>setCmdPre(</b><i>command</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#CmdPre">Pre Command</a>.
 </p></li>
-
 <li>job.<b>setDependMask(</b><i>mask</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#DependMask">Depend Mask</a>.
 </p></li>
-
 <li>job.<b>setDependMaskGlobal(</b><i>mask</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#DependMaskGlobal">Global Depend Mask</a>.
 </p></li>
-
 <li>job.<b>setDescription(</b><i>description</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#Description">Description</a>.
 </p></li>
-
 <li>job.<b>setHostsMask(</b><i>mask</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#HostsMask">Hosts Mask</a>.
 </p></li>
-
 <li>job.<b>setHostsMaskExclude(</b><i>mask</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#HostsMaskExclude">Exclude Hosts Mask</a>.
 </p></li>
-
 <li>job.<b>setMaxRunningTasks(</b><i>number</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#MaxRunningTasks">Maximum Running Tasks</a> number.
 </p></li>
-
 <li>job.<b>setMaxRunTasksPerHost(</b><i>number</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#MaxRunTasksPerHost">Maximum Running Tasks Per Host</a> number.
 </p></li>
-
 <li>job.<b>setName(</b><i>name</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#Name">Name</a>.
 </p></li>
-
 <li>job.<b>setNeedOS(</b><i>mask</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#NeedOS">Needed Operating System</a> mask. When Python af.Job class constructs it detects OS, and set it by this method. So use this function to override it.
 </p></li>
-
 <li>job.<b>setNeedProperties(</b><i>mask</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#NeedProperties">Needed Host Properties</a> mask.
 </p></li>
-
 <li>job.<b>setPriority(</b><i>priority</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#Priority">Priority</a>.
 </p></li>
-
 <li>job.<b>setWaitTime(</b><i>time_int</i><b>)</b>
 <p>
 Set job <a href="#afanasy/job.html#WaitTime">Wait Time</a> (in seconds since epoch).
 </p></li>
-
 </ul>
 
 
 <h2 id="block" class="anchor">Block Object</h2>
-
 <h3>Constructor:</h3>
 <ul>
 <li>block = af.<b>Block(</b><i>blockname, blocktype</i><b>)</b>
@@ -189,152 +461,122 @@ Tasks list. Not used in numeric block.<br/>
 
 <h3>Functions:</h3>
 <ul>
-
 <li>block.<b>setCapacity(</b><i>number</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_Capacity">Capacity</a> value.
 </p></li>
-
 <li>block.<b>setCmdPost(</b><i>command</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_CmdPost">Post command</a>.
 </p></li>
-
 <li>block.<b>setCmdPre(</b><i>command</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_CmdPre">Pre command</a>.
 </p></li>
-
 <li>block.<b>setCommand(</b><i>command</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_Command">Command</a>.
 </p></li>
-
 <li>block.<b>setDependMask(</b><i>mask</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_DependMask">Depend Mask</a>.
 </p></li>
-
 <li>block.<b>setDependSubTask()</b>
 <p>
 Allow block <a href="#afanasy/job.html#block_SubTaskDepend">Sub Tasks Dependence</a>.
 </p></li>
-
 <li>block.<b>setErrorsAvoidHost(</b><i>number</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_ErrorsAvoidHost">Errors Avoid Host</a> - maximum number or errors on same host for job NOT to avoid host.
 </p></li>
-
 <li>block.<b>setErrorsRetries(</b><i>number</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_ErrorRetries">Error Retries</a> - maximum number of errors in task to retry it automatically.
 </p></li>
-
 <li>block.<b>setErrorsTaskSameHost(</b><i>number</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_ErrorsTaskSameHost">Errors Task Same Host</a> - maximum number or errors on same host for task NOT to avoid host.
 </p></li>
-
 <li>block.<b>setErrorsForgiveTime(</b><i>number</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_ErrorsForgiveTime">Errors Forgive Time</a> - time to forgive error host.
 </p></li>
-
 <li>block.<b>setFiles(</b><i>image file name</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_Files">Files</a> argument.
 </p></li>
-
 <li>block.<b>setFramesPerTask(</b><i>number</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_FramesPerTask">Frames Per Task</a> number.
 </p></li>
-
 <li>block.<b>setHostsMask(</b><i>mask</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_HostsMask">Hosts Mask</a>.
 </p></li>
-
 <li>block.<b>setHostsMaskExclude(</b><i>mask</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_HostsMaskExclude">Exclude Hosts Mask</a>.
 </p></li>
-
 <li>block.<b>setMaxRunningTasks(</b><i>number</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_MaxRunningTasks">Maximum Running Tasks</a> parameter.
 </p></li>
-
 <li>block.<b>setMaxRunTasksPerHost(</b><i>number</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_MaxRunTasksPerHost">Maximum Running Tasks Per Host</a> parameter.
 </p></li>
-
 <li>block.<b>setMultiHost(</b><i>int min, int max, int waitmax, bool sameHostMaster, const char * service, int waitsrv</i><b>)</b>
 <p>
 Set block tasks to be able to run on several hosts and set <a href="#afanasy/job.html#block_MultiHost">Multi Hosts Tasks</a> parameters.
 </p></li>
-
 <li>block.<b>setNeedHDD(</b><i>gigabytes</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_NeedHDD">Disk Space Needed</a> in gigabytes.
 </p></li>
-
 <li>block.<b>setNeedMemory(</b><i>megabytes</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_NeedMemory">Memory Needed</a> in megabytes.
 </p></li>
-
 <li>block.<b>setNeedPower(</b><i>power</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_NeedPower">Needed Host Power</a> mask.
 </p></li>
-
 <li>block.<b>setNeedProperties(</b><i>mask</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_NeedProperties">Needed Host Properties</a> mask.
 </p></li>
-
 <li>block.<b>setNumeric(</b><i>start, end, [perTask=1]</i><b>)</b>
 <p>
 Set block to numeric <a href="#afanasy/job.html#block_Numeric">Numeric</a> type.
 </p></li>
-
 <li>block.<b>setParser(</b><i>type</i><b>)</b>
 <p>
 Set block tasks <a href="#afanasy/job.html#block_ParserType">Parser Type</a> name.
 </p></li>
-
 <li>block.<b>setTasksDependMask(</b><i>mask</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_TasksDependMask">Tasks Depend Mask</a>.
 </p></li>
-
 <li>block.<b>setTasksMaxRunTime(</b><i>seconds</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_TasksMaxRunTime">Tasks Maximum Running Time</a> limit (in seconds).
 </p></li>
-
 <li>block.<b>setTasksName(</b><i>name</i><b>)</b>
 <p>
 Set block <a href="#afanasy/job.html#block_TasksName">Tasks Name</a>.
 </p></li>
-
 <li>block.<b>setVariableCapacity(</b><i>min, max</i><b>)</b>
 <p>
 Set block capacity to variable, through <a href="#afanasy/job.html#block_Capacity">Capacity Coefficients</a> - maximum and minimun values.
 </p></li>
-
 <li>block.<b>setWorkingDirectory(</b><i>directory</i><b>)</b>
 <p>
 Set block tasks <a href="#afanasy/job.html#block_WorkingDirectory">Working Directory</a>.
 </p></li>
-
 </ul>
 
 
 <h2 id="task" class="anchor">Task Object</h2>
-
 <h3>Constructor:</h3>
 <ul>
 <li>task = af.<b>Task(</b><i>taskname</i><b>)</b>
@@ -345,21 +587,24 @@ Construct a new task and return it.
 
 <h3>Functions:</h3>
 <ul>
-
 <li>task.<b>setCommand(</b><i>command</i><b>)</b>
 <p>
 Set task <a href="#afanasy/job.html#task_Command">Command</a>.
 </p></li>
-
 <li>task.<b>setFiles(</b><i>image file name</i><b>)</b>
 <p>
 Set task <a href="#afanasy/job.html#task_Files">Files</a> argument.
 </p></li>
-
 <li>task.<b>setName(</b><i>name</i><b>)</b>
 <p>
 Set task <a href="#afanasy/job.html#task_Name">Name</a>.
 </p></li>
-
 </ul>
+
+
+<h2 id="python_afjob" class="anchor">afjob.py - CLI Job Interface</h2>
+<p>This is a python program. It constructs job from command line arguments and send to server.</p>
+<p><code>cgru/afanasy/python/afjob.py</code></p>
+<p>This script without or with invalid arguments prints help.</p>
+
 
