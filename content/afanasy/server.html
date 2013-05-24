@@ -272,16 +272,27 @@ Farm object consists of a pattens and limits arrays.
    <li><p>
    <code id="farm_idle_cpu" class="anchor">idle_cpu</code><br/>
 		CPU usage percentage machine considered as idle.
-		It used in automatic Wake-On-Lan.
+		It used in automatic Wake-On-Lan and Nimby off.
+   </p></li>
+   <li><p>
+   <code id="farm_busy_cpu" class="anchor">busy_cpu</code><br/>
+		CPU usage percentage machine considered as busy.
+		It used in automatic Nimby.
    </p></li>
    <li><p>
    <code id="farm_wol_idlesleep_time" class="anchor">wol_idlesleep_time</code><br/>
 		Time in seconds to put an idle machine to sleep.
 		If this value is not set or less than 1, machines will never put to sleep automatically.
    </p></li>
+   <li><p>
    <code id="farm_nimby_idlefree_time" class="anchor">nimby_idlefree_time</code><br/>
 		Time in seconds set an idle Nimby machine to free.
 		If this value is not set or less than 1, machines will never set to free automatically.
+   </p></li>
+   <li><p>
+   <code id="farm_nimby_busyfree_time" class="anchor">nimby_busyfree_time</code><br/>
+		Time in seconds set a machine with busy CPU and no Afanasy task to Nimby.
+		If this value is not set or less than 1, machines will never set to nimby automatically.
    </p></li>
 </ul>
 </li>
