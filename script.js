@@ -114,7 +114,14 @@ function g_SetContent( i_data)
 	{
 		var el = document.getElementById(paths[1]);
 		if( el )
+		{
 			el.scrollIntoView(true);
+			g_anchor_el = el;
+//			window.setTimeout("g_anchor_el.scrollIntoView(true)", 1000)
+			var imgs = g_elContent.getElementsByTagName('img');
+			for( var i = 0; i < imgs.length; i++)
+				imgs[i].onload = function(){ g_anchor_el.scrollIntoView(true)};
+		}
 	}
 
 	g_ProcessContent();
