@@ -274,3 +274,16 @@ padding: 4px 0px;
 text-shadow: 0 0 4px #FFFFFF;
 }
 
+.player_examples img {
+border: 2px solid #000;
+border-radius: 8px;
+box-shadow: 0 0 4px #FFF;
+margin-bottom: 40px;
+vertical-align: middle;
+}
+
+.player_examples img:hover {
+border: 2px solid #AAA;
+box-shadow: 0 0 12px #FFF;
+}
+
