@@ -274,16 +274,16 @@ padding: 4px 0px;
 text-shadow: 0 0 4px #FFFFFF;
 }
 
-.player_examples img {
+#content .player_examples a {
+padding: 0px;
+margin: 8px;
+float: left;
+display: block;
 border: 2px solid #000;
 border-radius: 8px;
 box-shadow: 0 0 4px #FFF;
-margin-bottom: 40px;
-vertical-align: middle;
+overflow: hidden;
+height: 90px;
 }
-
-.player_examples img:hover {
-border: 2px solid #AAA;
-box-shadow: 0 0 12px #FFF;
-}
-
+#content .player_examples a:hover { border: 2px solid #AAA; box-shadow: 0 0 12px #FFF; }
+#content .player_examples a img { padding: 0px; margin: 0px; }
