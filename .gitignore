@@ -1,3 +1,4 @@
+.rules
 *.swp
 *.swo
 export_credentials.sh

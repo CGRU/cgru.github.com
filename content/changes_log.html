@@ -16,15 +16,67 @@ You can upgrade only one client or server to check changes.</li>
 <br/>
 
 
-<p><b id="release171" class="anchor">1.7.1</b> 2013.06.11</p>
+<p><b id="release20a" class="anchor">2.0.alpha</b> 2013.09.01</p>
 <p>
-	AfServer: You can add new user via JSON. An example is preset in <kbd>cgru/examples/json/</kbd>.
+	<i>Alpha</i> version presets in a repository only.
+	You can get it only by building from sources yourself.
+	It is not recommended to use this version for production.
+	It is designed for tests and developing only.
+</p>
+<p>
+	<b>No SQL</b>. Afanasy server stores state in <i>json</i> files in its temporary folder.
+	Now SQL is stands for statistics only.
+	If you does not need statistics you can not to setup SQL at all (or setup it later).
+</p>
+<p>
+	<b>Authentication</b>. Afanasy <i>json</i> protocol has an authentication mechanism.
+	It uses <a target="_blank" href="http://en.wikipedia.org/wiki/Digest_access_authentication">Digest Access Authentication</a> method.
+	IP Trust mask allows to skip authentication (by default mask allows any IP).
+	Binary protocol does not have authentication mechanism.
+	If IP does not match trust mask and message uses binary protocol (not <i>json</i>) - message will be ignored.
+	This was designed to use Web GUI not from a local network.
+	Note, that it is only authentication mechanism and not data encryption.
+	But passwords are not sent in a plain text, and even are not stored in a plain text (see Digest description).
+</p>
+<p>
+	Python service class has <i>doPost</i> function.
+	You can do some post process there.
+	If post command requires enough calculation, you can return a list of commands (strings) from this function.
+	In this case all that commands will be executed in child subprocesses and output will attached to task output.
+</p>
+<p>
+	<b>Thumbnails</b>. If task (block) has files parameter thumbnail will be generated.
+	It generates by afrender.
+	Python service <i>doPost</i> function returns commands for it.
+	Thumbnail files binary data is send by afrender to afserver along with task output.
+	Server stores all files that afrender sends on task finish.
+	AfWatch and Web GUI can show thumbnails.
+	You can get tasks files from afserver by HTTP GET method.
+</p>
+<p>
+	Python parser class has <i>mode</i> argument in <i>parse</i> function.
+	This argument stands for task subprocess status.
+	For example, now parser knows whether the task is running or finished and how it was finished.
+	Now if a task has finished with success you can set an error if output does not contain some required result.
+</p>
+<p>
+	All plugins from <kbd>cgru/afanasy/plugins/</kbd> moved to<kbd> cgru/plugins/</kbd>.
+	That old plugins location came from SVN age, when Afanasy has branches, tags, trunk. Within Git it is not needed.
+	So now there is no mess where to put or find files in <i>cgru/plugins/</i> or <i>cgru/afanasy/plugins</i>.
+</p>
+<p>
+	You can add new user via JSON. An example is located in <kbd>cgru/examples/json/</kbd>.
+</p>
+<p>
 </p>
 <p>
 	Bugs Fixed:
 </p>
 <p>
-	-
+	post command?
+</p>
+<p>
+	command change from GUI?
 </p>
 
 
