@@ -39,15 +39,15 @@
 <ul>
 <li>
 <b>Server:</b> You need to install <b>afanasy-server</b> package.
-You can to install <b>afanasy-render</b> package to monitor its resources.
-You should limit some heavy tasks not to run in server machine.
+You can to install <b>afanasy-render</b> package to monitor its resources,
+and should limit some heavy tasks not to run on server machine.
 </li>
 <li>
 <b>Workstation:</b> You need to install <b>cgru</b> package.
 </li>
 <li>
-<b>Render:</b> You need to install <b>afanasy-render</b> package,
-and also it is not an error to install <b>cgru</b> package on any computer.
+<b>Render:</b> You need to install <b>afanasy-render</b> package.
+Or you simple can install <b>cgru</b> package on any computer.
 </li>
 </ul>
 
@@ -144,7 +144,7 @@ CGRU will be installed in <kbd>/opt/cgru</kbd> folder.
 </tr>
 <tr>
 	<td style="padding:6px">
-		<b>afanasy-render</b>: Afanasy render startup script. Creates '<i>render</i>' user if does not exists.
+		<b>afanasy-render</b>: Afanasy render startup script. Creates '<i>render</i>' user if it does not exist.
 	</td>
 	<td align="center" style="padding:6px">
 	</td>
@@ -153,7 +153,7 @@ CGRU will be installed in <kbd>/opt/cgru</kbd> folder.
 </tr>
 <tr>
 	<td style="padding:6px">
-		<b>afanasy-server</b>: Afanasy server startup script. Creates '<i>render</i>' user if does not exists.
+		<b>afanasy-server</b>: Afanasy server startup script. Creates '<i>render</i>' user if it does not exist.
 	</td>
 	<td align="center" style="padding:6px">
 	</td>
@@ -191,7 +191,7 @@ CGRU will be installed in <kbd>/opt/cgru</kbd> folder.
 </li>
 </ul>
 
-<h4>Installation:</h4>
+<h4>Installation Methods:</h4>
 <ul>
 <li>
 Install and uninstall scripts provided with the packages.
@@ -331,7 +331,7 @@ Example for Blender: <kbd>cgru\examples\blender\start_blender.cmd</kbd>
 <hr>
 
 
-<h2 id="build" class="anchor">Manual Project Build</h2>
+<h2 id="manual_build" class="anchor">Manual Project Build</h2>
 <p>
 The project is hosted on GitHub: <a href="https://github.com/CGRU/cgru">https://github.com/CGRU/cgru</a>
 </p>
@@ -346,8 +346,8 @@ Needed libraries:
 </p>
 <ul>
 <li>Python: >= 2.6</li>
-<li>Qt: for Qt-GUI only</li>
-<li>PostgreSQL: for server only</li>
+<li>Qt: Needed for Qt-GUI only</li>
+<li>PostgreSQL: Optional, Needed by server for statistcs only</li>
 </ul>
 <p>
 There is cmake and qmake build scripts.
@@ -356,7 +356,7 @@ Also Ruby scripts for mxx_ru are preset, if you are familiar with it.
 
 <h3 id="build_mswin" class="anchor">MS Windows</h3>
 <p>
-You need MS Visual Studio 10 and cmake.
+You need MS Visual Studio 10 SP1 and cmake.
 Cmake will generate Visual Studio project.
 </p>
 <p>

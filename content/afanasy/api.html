@@ -336,7 +336,7 @@ block.setWorkingDirectory('/projects/test/nuke')
 block.setCommand('nuke -i -X WriteBack -x scene.nk.tmp.nk %1,%2')
 
 # Set block tasks preview command arguments.
-block.setFiles('jpg/img.%04d.jpg')
+block.setFiles(['jpg/img.%04d.jpg'])
 
 # Set block to numeric type, providing first, last frame and frames per host
 block.setNumeric( 1, 100, 10)
@@ -351,7 +351,7 @@ job.setCmdPost('rm /projects/test/nuke/scene.nk.tmp.nk')
 job.send()
 </pre>
 
-<h2 id="job" class="anchor">Job Object</h2>
+<h2 id="python_class_job" class="anchor">Job Object</h2>
 
 <h3>Constructor:</h3>
 <ul>
@@ -442,7 +442,7 @@ Set job <a href="#afanasy/job.html#WaitTime">Wait Time</a> (in seconds since epo
 </ul>
 
 
-<h2 id="block" class="anchor">Block Object</h2>
+<h2 id="python_class_block" class="anchor">Block Object</h2>
 <h3>Constructor:</h3>
 <ul>
 <li>block = af.<b>Block(</b><i>blockname, blocktype</i><b>)</b>
@@ -501,9 +501,9 @@ Set block <a href="#afanasy/job.html#block_ErrorsTaskSameHost">Errors Task Same 
 <p>
 Set block <a href="#afanasy/job.html#block_ErrorsForgiveTime">Errors Forgive Time</a> - time to forgive error host.
 </p></li>
-<li>block.<b>setFiles(</b><i>image file name</i><b>)</b>
+<li>block.<b>setFiles(</b>[<i>an array of image filenames</i>]<b>)</b>
 <p>
-Set block <a href="#afanasy/job.html#block_Files">Files</a> argument.
+Set block <a href="#afanasy/job.html#block_Files">Files</a> parameter.
 </p></li>
 <li>block.<b>setFramesPerTask(</b><i>number</i><b>)</b>
 <p>
@@ -576,7 +576,7 @@ Set block tasks <a href="#afanasy/job.html#block_WorkingDirectory">Working Direc
 </ul>
 
 
-<h2 id="task" class="anchor">Task Object</h2>
+<h2 id="python_class_task" class="anchor">Task Object</h2>
 <h3>Constructor:</h3>
 <ul>
 <li>task = af.<b>Task(</b><i>taskname</i><b>)</b>
@@ -591,9 +591,9 @@ Construct a new task and return it.
 <p>
 Set task <a href="#afanasy/job.html#task_Command">Command</a>.
 </p></li>
-<li>task.<b>setFiles(</b><i>image file name</i><b>)</b>
+<li>task.<b>setFiles(</b>[<i>an array of image filenames</i>]<b>)</b>
 <p>
-Set task <a href="#afanasy/job.html#task_Files">Files</a> argument.
+Set task <a href="#afanasy/job.html#task_Files">Files</a> parameter.
 </p></li>
 <li>task.<b>setName(</b><i>name</i><b>)</b>
 <p>

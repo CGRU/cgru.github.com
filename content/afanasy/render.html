@@ -223,22 +223,15 @@ Time to wait for writing data to consider that connection is not lost.
 Server truncates log above this limit.
 </p></li>
 <li><p>
-<code>render_logs_rotate</code> = 10<br/>
-Server store logs of renders with the same name by renaming old. It adds a number to the end of old file name (logs rotating).
-</p></li>
-<!--
-<li><p>
-<code>render_exec</code> = afrender<br/>
-Command for render to execute another render or to restart.
-</p></li>
--->
-<li><p>
 <code>render_cmd_reboot</code> = reboot<br/>
 Command for render to reboot a machine. For MS Windows you can use "shutdown /r".
 </p></li>
 <li><p>
 <code>render_cmd_shutdown</code> = shutdown -P 1 afrequest<br/>
 Command for render to shutdown a machine. For MS Windows you can use "shutdown /s".
+</p></li>
+<li><p>
+<code>render_windowsmutdie</code> = <a href="#afanasy/render#windows_must_die">Windows Must Die</a> list.
 </p></li>
 </ul>
 
@@ -441,9 +434,11 @@ If process crashed, Windows OS can launch a window with apologizes,
 and 'hung' the process until someone closes this window.
 </p>
 <p>
-Afanasy Render client periodically finds windows listed in 
-<kbd>afanasy/windowsmustdie*.txt</kbd>
-file(s), and closes them (sends WM_CLOSE signal).
+Afanasy Render client periodically finds and closes windows listed in
+<kbd>af_render_windowsmustdie</kbd> configuration parameter.
+</p>
+<p>
+It closes them by sending WM_CLOSE signal.
 </p>
 
 <h3>windowsmustdie.txt example:</h3>
