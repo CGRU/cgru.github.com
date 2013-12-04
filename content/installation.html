@@ -9,7 +9,7 @@
 	<li><a href="#installation#macosx">Mac OS X</a></li>
 	</ul>
 </li>
-<li><b>Configuration</b>
+<li><a href="#installation#configuration">Configuration</a>
 	<ul>
 	<li><a href="#installation#config_files">Config Files</a></li>
 	<li><a href="#installation#config_environment">Environment Variables</a></li>
@@ -219,7 +219,7 @@ But you can <a href="#installation#manual_build">build project yourself</a>.
 <hr>
 
 
-<h2>Configuration</h2>
+<h2 id="configuration" class="anchor">Configuration</h2>
 
 <h3 id="config_files" class="anchor">Config files</h3>
 <p>
@@ -234,7 +234,8 @@ At last it tries to load <kbd>cgru/config.json</kbd>, where you should override 
 At least you should specify Afanasy server location in it.
 </p>
 <p>
-CGRU Keeper and AfWatch stores settings in <kbd>HOME/.cgru/config.json</kbd>.
+CGRU Keeper and AfWatch stores settings in <kbd>$HOME/.cgru/config.json</kbd> on UNIX and
+<kbd>%APPDATA%/cgru/config.json</kbd> on MS Windows OS.
 It is read with the same rules as the main config.
 User can use it to set its own properties and override global config settings.
 </p>

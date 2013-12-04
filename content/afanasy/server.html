@@ -20,6 +20,7 @@
 	<li><a href="#afanasy/server#events">Events</a></li>
 	</ul>
 </li>
+<li><a href="#afanasy/server#authentication">Authentication</a></li>
 <li><a href="#afanasy/server#sql">SQL</a>
 	<ul>
 	<li><a href="#afanasy/server#statistics">Statistics</a></li>
@@ -614,7 +615,40 @@ But usually it happens at the morning, when artists come at work, and the whole 
 </p>
 
 
-
+<h2 id="authentication" class="anchor">Authentication</h2>
+<p>
+	Afanasy <i>json</i> protocol has an authentication mechanism.
+	It is designed to use Web GUI not from a local network.
+</p>
+<p>
+	<a target="_blank" href="http://en.wikipedia.org/wiki/Digest_access_authentication">Digest Access Authentication</a> method is used.
+</p>
+<p>
+	IP Trust mask allows to skip authentication.
+	By default mask allows any IP, and if you did not configured it, you should not notice authentication at all.
+</p>
+<p>
+	Binary protocol does not have authentication mechanism.
+	If IP does not match trust mask and message uses binary protocol (not <i>json</i>) - message will be ignored.
+</p>
+<p>
+	Note, that it is only authentication mechanism and not data encryption.
+	But passwords are not sent in a plain text, and even are not stored in a plain text (see Digest description).
+</p>
+<p>
+	<a href="#installation#configuration" target="_blank">Configuration</a>:
+<pre>
+	"realm":"CGRU",
+	"af_digest_file":".htdigest",
+</pre>
+	<ul>
+	<li><i>realm</i> - Digest authentication realm, this parameter is used by RULES too.</li>
+	<li><i>af_digest_file</i> - Digest file location relative to CGRU root folder.</li>
+	</ul>
+	You can edit digest file with a standard UNIX tool
+	<a href="http://httpd.apache.org/docs/current/programs/htdigest.html" target="_blank">htdigest</a>.
+	Also RULES stores digest in this file too, so you can use it as a GUI to edit this file.
+<p>
 
 <h2 id="sql" class="anchor">SQL Database</h2>
 <p>Afanasy uses <b><a href="http://www.postgresql.org" target="_blank">PostgreSQL</a></b> engine</p>
