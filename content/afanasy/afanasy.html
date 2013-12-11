@@ -95,7 +95,7 @@ It does not change database data.<br/>
 It does know nothing about Afanasy<br/>
 server and whether it is running.<br/>
 ">
-<b>Web<br/>Visor</b></div>
+<b>Web<br/>Browser</b></div>
 
 <div style="left:400px;top:60px;width:100px;height:20px;" class="cnavblock info" info="
 <a href=''#keeper.html'' target=''_blank''>CGRU Keeper</a> opens and listens a port.<br/>
@@ -185,14 +185,14 @@ But it can be anywhere.<br/>
 <b>SQL Database</b></div>
 
 <div style="left:20px;top:330px;width:230px;height:70px;" class="cnavblock blue info" info="
-<a href=''#afanasy/statistics.html'' target=''_blank''>Web Visor</a> is a set of PHP scripts.<br/>
+<a href=''#afanasy/server#statistics'' target=''_blank''>Statistics</a> is a set of PHP scripts.<br/>
 It desiged to gather statistics from SQL database.<br/>
 Notice that it is only one direction connection.<br/>
 It does not change database data.<br/>
 It does know nothing about Afanasy<br/>
 server and whether it is running.<br/>
 ">
-<b>Web Visor</b><br/>
+<b>Statistics</b><br/>
 HTTP Server<br/>
 PHP with SQL lib<br/>
 </div>
@@ -450,12 +450,11 @@ Server can reload this file (and reconfigure itself) "on-the-fly", without resta
 Web interface to Afanasy SQL database to show various statistics.
 </p>
 
-<h4>SQL Database Connection</h4>
+<h4>SQL Statistics</h4>
 <p>
-Afanasy stores jobs and users information in database.
-It get this information back on start.
-So you can shut down AfServer, and it will restore it's state on start again.
-Also you can type any SQL query to get some information yourself.
+	Afanasy stores done jobs and finished tasks in adatabase.
+	There is some ready Web GUI to show it.
+	And you can type any SQL query to get some information.
 </p>
 
 <h4>Command Line Interface</h4>
