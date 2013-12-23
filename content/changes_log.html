@@ -17,6 +17,9 @@ You can upgrade only one client or server to check changes.</li>
 
 
 <p><b id="release200" class="anchor">2.0.0</b> 2013.12.03</p>
+<ul>
+
+<li>
 <p>
 	<b>No SQL</b>. Afanasy server stores state in <i>json</i> files in its temporary folder.
 	Now SQL stands for statistics only.
@@ -26,7 +29,6 @@ You can upgrade only one client or server to check changes.</li>
 		You will loose all jobs, renders and users settings if any.
 	</b><br/>
 </p>
-
 <p>
 <i>
 So now on MS Windows OS, Afanasy server does not needs any installation/configuration procedures to work.<br>
@@ -34,7 +36,9 @@ Just run (double ckick) <kbd>cgru/start/AFANASY/_afserver.cmd</kbd><br/>
 Or drag a link to Startup menu for auto launch at logon.
 </i>
 </p>
+</li>
 
+<li>
 <p>
 	<a href="#afanasy/server#authentication" target="_blank"><b>Authentication</b></a>.
 	Afanasy <i>json</i> protocol has an authentication mechanism.
@@ -47,12 +51,18 @@ Or drag a link to Startup menu for auto launch at logon.
 	Note, that it is only authentication mechanism and not data encryption.
 	But passwords are not sent in a plain text, and even are not stored in a plain text (see Digest description).
 </p>
+</li>
+
+<li>
 <p>
 	Python service class has <i>doPost</i> function.
 	You can do some post process there.
 	If post command requires enough calculation, you can return a list of commands (strings) from this function.
 	In this case all that commands will be executed in child subprocesses and output will attached to task output.
 </p>
+</li>
+
+<li>
 <p>
 	<a href="#afanasy/render#thumbnails" target="_blank"><b>Thumbnails</b></a>.
 	If task (block) has files parameter or parser finds images thumbnail will be generated.
@@ -67,69 +77,103 @@ Or drag a link to Startup menu for auto launch at logon.
 	Python parser class can find images in task output.
 	Python service class can ask parsed images for thumbnails generation.
 </p>
+</li>
+
+<li>
 <p>
 	Python parser class has <i>mode</i> argument in <i>parse</i> function.
 	This argument stands for task subprocess status.
 	For example, now parser knows whether the task is running or finished and how it was finished.
 	Now if a task has finished with success you can set an error if output does not contain some required result.
 </p>
+</li>
+
+<li>
 <p>
 	All plugins from <kbd>cgru/afanasy/plugins/</kbd> moved to<kbd> cgru/plugins/</kbd>.
 	That old plugins location came from SVN age, when Afanasy has branches, tags, trunk. Within Git it is not needed.
 	So now there is no mess where to put or find files in <i>cgru/plugins/</i> or <i>cgru/afanasy/plugins</i>.
 </p>
+</li>
+
+<li>
 <p>
 	You can add new user via JSON. An example is located in <kbd>cgru/examples/json/</kbd>.
 </p>
+</li>
+
+<li>
 <p>
 	<i><a href="#afanasy/render#windows_must_die" target="_blank">Windowsmustdie</a></i>
 	function configures via general configure system (json files).
 	So there is no separate <i>windowsmustdie.txt</i> file now,
 	you can list windows to close in any config file (shared).
 </p>
+</li>
+
+<li>
 <p>
 	Python service class now instance parser class itself.
 	So you can exchange information between service and parser classes.
 </p>
+</li>
+
+<li>
 <p>
 	<b>Python API</b>: Block and task <a href="#afanasy/api.html#python_class_block" target="_blank"><i>setFiles</i></a>
 	function takes an array of string.
 	And not a single string where several files are separated with ';'.
 	<br/><b style="color:darkred">You should fix your custom submission scripts if any.</b>
 </p>
+</li>
+
+<li>
 <p>
 	CGRU Home folder on MS Windows OS moved to <kbd>%APPDATA%/cgru/</kbd>.
 	It is used to keep user personal <a href="#installation#configuration" target="_blank">configuration</a>.
 	<br/><i>If you want to store CGRU Keeper and Afanasy Watch GUI settings move files to the new location.
 	<br/>Previously it was in %HOMEPATH%/.cgru/ where %HOMEPATH% is usually user Documents folder.</i>
 </p>
+</li>
+
+<li>
 <p>
 	<a href="#afanasy/gui#web" target="_blank">Web GUI</a> is not "beta".
 </p>
+</li>
+
+<li>
 <p>
 	<a href="#rules/rules" target="_blank">RULES</a> is not "beta".
-	But there is still the lack of documentation.
+	But there is still the lack of documentation and lots of things to do.
 </p>
+</li>
+
+<li>
 <p>
 	AfTalk Afanasy chat client was removed from the project.
 </p>
-<p>
-</p>
+</li>
+
+</ul>
+
 <p>
 	Bugs Fixed:
 </p>
-<p>
+<ul>
+<li>
 	Server hung when a job with no blocks sent.
-</p>
-<p>
+</li>
+<li>
 	Change job bock (tasks) command (working folder) change from Watch GUI.
-</p>
-<p>
+</li>
+<li>
 	Post command ignore when job json file send with afcmd.
-</p>
-<p>
+</li>
+<li>
 	Change any user parameter resets jobs solving method to 'order'.
-</p>
+</li>
+</ul>
 
 
 <br/>
