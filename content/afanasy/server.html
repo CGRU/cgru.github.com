@@ -21,11 +21,7 @@
 	</ul>
 </li>
 <li><a href="#afanasy/server#authentication">Authentication</a></li>
-<li><a href="#afanasy/server#sql">SQL</a>
-	<ul>
-	<li><a href="#afanasy/server#statistics">Statistics</a></li>
-	</ul>
-</li>
+<li><a href="#afanasy/server#statistics">Statistics</a></li>
 </ul>
 
 
@@ -650,84 +646,79 @@ But usually it happens at the morning, when artists come at work, and the whole 
 	Also RULES stores digest in this file too, so you can use it as a GUI to edit this file.
 <p>
 
-<h2 id="sql" class="anchor">SQL Database</h2>
-<p>Afanasy uses <b><a href="http://www.postgresql.org" target="_blank">PostgreSQL</a></b> engine</p>
+<h2 id="statistics" class="anchor">Statistics</h2>
 <p>
-You don't need to install it on clients.
-SQL database server is needed for Afanasy server only.
-It is better to install it on the same host as Afanasy server.
-</p>
-<p>
-Database server needed to store jobs, renders, users state.
-Afanasy reads information from database on start.
-You can use Afanasy without any database, but server will start with no data.
-So you can skip this stage if you want just to try Afanasy.
+	Afanasy server can store statistics in SQL database.
+	It uses <b><a href="http://www.postgresql.org" target="_blank">PostgreSQL</a></b> engine.
 </p>
 
 <h3>Database Setup</h3>
 <ul>
-   <li>
-      Edit Postgre SQL client authentication configuration file <kbd>pg_hba.conf</kbd>.<br/>
-      Its location depends on Linux distributive. For example:<br/>
-      Debian, Ubuntu: <kbd>/etc/postgresql/ [version] /main/pg_hba.conf</kbd><br/>
-      CentOS, Fedora, openSUSE: <kbd>/var/lib/pgsql/data/pg_hba.conf</kbd><br/>
-      <i>make install</i>:<kbd>/usr/local/pgsql/data/pg_hba.conf</kbd><br/>
-      Add this line<br/>
-      <kbd>local afanasy afadmin password</kbd><br/>
-      Read comments in this file to know what does it mean.<br/>
-      (If problems with authentication try <kbd>trust</kbd> for all methods.)
-   </li>
-   <li>
-      Restart database<br/>
-   </li>
-   <li>
-      Create afanasy database and user<br/>
-      <code>
-      # su - postgres<br/>
-      $ createdb afanasy<br/>
-      $ psql afanasy<br/>
-      CREATE USER afadmin PASSWORD 'AfPassword';<br/>
-      </code>
-   </li>
+	<li>
+		Edit Postgre SQL client authentication configuration file <kbd>pg_hba.conf</kbd>.<br/>
+		Its location depends on Linux distributive. For example:<br/>
+		Debian, Ubuntu: <kbd>/etc/postgresql/ [version] /main/pg_hba.conf</kbd><br/>
+		CentOS, Fedora, openSUSE: <kbd>/var/lib/pgsql/data/pg_hba.conf</kbd><br/>
+		<i>make install</i>:<kbd>/usr/local/pgsql/data/pg_hba.conf</kbd><br/>
+		Add this line<br/>
+		<kbd>local afanasy afadmin password</kbd><br/>
+		Read comments in this file to know what does it mean.<br/>
+		(If problems with authentication try <kbd>trust</kbd> for all methods.)
+	</li>
+	<li>
+		Restart database<br/>
+	</li>
+	<li>
+		Create afanasy database and user<br/>
+		<code>
+		# su - postgres<br/>
+		$ createdb afanasy<br/>
+		$ psql afanasy<br/>
+		CREATE USER afadmin PASSWORD 'AfPassword';<br/>
+		</code>
+	</li>
 </ul>
 
 <h3>Create Tables</h3>
 <ul>
-   <li>
-      Go into CGRU commands directory:<br />
-      <code>$ cd cgru/afanasy/bin</code><br />
-   </li>
-   <li>
-      Check database connection:<br />
-      <code>$ ./afcmd db_check</code><br />
-      Program will output error or print "Database connection is working" if everything is ok.<br />
-   </li>
-   <li>
-      Create required tables:<br />
-      <code>$ ./afcmd db_resetall</code><br />
-      This command also delete old tables if they exists.<br />
-   </li>
+	<li>
+		Go into CGRU root folder:<br />
+		<code>$ cd /opt/cgru</code><br />
+	</li>
+	<li>
+		Source setup:<br />
+		<code>$ source ./setup.sh</code><br />
+	</li>
+	<li>
+		Check database connection:<br />
+		<code>$ afcmd db_check</code><br />
+		Program should output an error or print "Database connection is working" if everything is ok.<br />
+	</li>
+	<li>
+		Create required tables:<br />
+		<code>$ afcmd db_reset_all</code><br />
+		This command also delete old tables if they exists.<br />
+	</li>
 </ul>
 <p>
 
 
-<h3 id="statistics" class="anchor">Statistics</h3>
-<h3>Web Interface to Afanasy SQL database</h3>
-<p>You can watch all users jobs, users activity and various statistics tables and diagrams.</p>
-<p>All you need is any web browser and connection with afanasy server.
-No database connection or browser plugins need, all calculations are on server side,
-you browser will receive plain html text and png images.</p>
-<h3>Web Visor Setup</h3>
-You need to install a web server with PHP, PGSQL and GD (to draw chart images) plugins.
-Any UNIX have this packages.
-<br/>
-In most Linux-es all this can be provided by packages:
-<br/>
-<code>
-apache2 libapache2-mod-php5 php5 php5-pgsql php5-gd
-</code>
-<br/>
-Site is located in <kbd>cgru/afanasy/webvisor</kbd> folder.
+<h3>Web interface to Afanasy SQL statistics database</h3>
+<p>
+	You need a web browser with HTML5.
+</p>
+<h3>Server setup</h3>
+<p>
+	You need to install a web server with PHP and PGSQL modules.
+	Any UNIX have this packages.
+</p>
+<p>
+	In most Linux-es all this can be provided by packages:
+	<br/><code>apache2 libapache2-mod-php5 php5 php5-pgsql</code>
+</p>
+<p>
+	The site is located in <kbd>cgru/afanasy/statistics</kbd> folder.
+</p>
 
 <h3>Screenshots</h3>
 
@@ -735,7 +726,7 @@ Site is located in <kbd>cgru/afanasy/webvisor</kbd> folder.
 	<caption><b>Graphs</b></caption>
 	<tr>
 		<td align="center" width="20%">
-		<img src="images/afanasy/statistics/graphs.png" alt="graphs" />
+		<img width="1000px" src="images/afanasy/statistics/graphs.png" alt="graphs" />
 	</td>
 	</tr>
 </table>
