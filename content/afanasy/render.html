@@ -342,12 +342,27 @@ and based from <br/>
 		Parser with this name exists.
 	</li>
 	<li>
-		Parsing function by overriding <code>parser.do(self, data)</code> method.
+		Parsing function by overriding <code>parser.do(self, data, mode)</code> method.
 	</li>
 </ul>
-<h3>Parser method:</h3>
+<h3>Input arguments:</h3>
 <p>
-It has data on input to parse. During parsing it can set some properties:
+</p>
+<ul>
+	<li><b>data</b> (<kbd>str</kbd>) Current portion of a task process output.</li>
+	<li><b>mode</b> (<kbd>str</kbd>)
+		<ul>
+			<li><b>RUN</b> Task is running.</li>
+			<li><b>EXIT_CODE:STOP_TIME</b> Task is not running:
+				process exit status and stop time if task was asked to stop (zero if was not).</li>
+		</ul>
+	</li>
+</ul>
+<h3>Output parameters:</h3>
+<p>
+	This function should not return anything.
+	Function results are transfered within class members:
+</p>
 <ul>
 <li><b class="anchor" id="percent">self.percent</b> (<kbd>int</kbd>)
  - Task execution percentage.
@@ -373,10 +388,11 @@ Render will terminate(kill) task process and send "done" status to server (not a
 For example: Nuke current rendering view when stereo, Movie Maker convert or encode stage.
 </li>
 </ul>
-This method can return a string result.
-In such case this string will be stored instead of incoming data.
-You can use it to produce some message, by appending incoming data with your information.
-Or you can cut some useless information.
+<p>
+	This method can return a string result.
+	In such case this string will be stored instead of incoming data.
+	You can use it to produce some message, by appending incoming data with your information.
+	Or you can cut some useless information.
 </p>
 
 
