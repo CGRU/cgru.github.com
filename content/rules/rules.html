@@ -17,6 +17,12 @@ RULES is a WEB engine to view/modify folders structure, designed for CG projects
 <li><h3><a href="#rules/rules#ru_online">Online Version</a></h3>
 </li>
 
+<li><h3><a href="#rules/rules#ru_installation">Installation</a></h3>
+	<ul>
+	<li><a href="#rules/rules#ru_install_requrements">Requirements</a></li>
+	</ul>
+</li>
+
 <li><h3><a href="#rules/rules#ru_gui">GUI</a></h3>
 <ul>
 <li><a href="#rules/rules#ru_header">Header</a>
@@ -77,7 +83,7 @@ Rules online:
 <p>
 	Online version has some limitations:
 	<ul>
-	<li>Your machine does not have an access to its filesystem, so browser can`t open folders and files.</li>
+	<li>Your machine does not have an access to its file system, so browser can't open folders and files.</li>
 	<li>There is no Afanasy, so it can't send jobs, you can't create dailies from images sequences.</li>
 	<li>There is no video and image conversion tools, you can't generate thumbnails.</li>
 	<li>Web server does not have authentication mechanisms,
@@ -89,20 +95,30 @@ Rules online:
 </p>
 
 
-<h2 id="ru_header" class="anchor">Header</h2>
+<h2 id="ru_installation" class="anchor">Installation</h2>
 
-<h3 id="ru_header_settings" class="anchor">Settings</h3>
+<h3 id="ru_install_requrements" class="anchor">Requirements</h3>
+<p>
+	It is a common web site based on Apache (>=2) and PHP(>=5.2).
+</p>
+
+
+<h2 id="ru_gui" class="anchor">GUI</h2>
+
+<h3 id="ru_header" class="anchor">Header</h3>
+
+<h4 id="ru_header_settings" class="anchor">Settings</h4>
 <p>
 	You can setup colors, view options and login here.
 	All setting will be stored in your browser.
 </p>
 
-<h3 id="ru_header_assets" class="anchor">Assets Links</h3>
+<h4 id="ru_header_assets" class="anchor">Assets Links</h4>
 <p>
 	All founded assets are shown here with links.
 </p>
 
-<h3 id="ru_header_newscount" class="anchor">News Counter</h3>
+<h4 id="ru_header_newscount" class="anchor">News Counter</h4>
 <p>
 	Number of new displayed here.
 	News are updated every minute.
@@ -113,30 +129,30 @@ Rules online:
 
 
 
-<h2 id="ru_navig" class="anchor">Navigation</h2>
+<h3 id="ru_navig" class="anchor">Navigation</h3>
 
-<h3 id="ru_navig_options" class="anchor">Options</h3>
+<h4 id="ru_navig_options" class="anchor">Options</h4>
 <p>
 	You can setup what to display in folders items.
 	Only first wold on annotation will be shown.
 </p>
 
-<h3 id="ru_navig_tree" class="anchor">Folders Tree</h3>
+<h4 id="ru_navig_tree" class="anchor">Folders Tree</h4>
 <p>
-	This is your filesystem tree.
+	This is your file system tree.
 </p>
 
 
 
 
-<h2 id="ru_content" class="anchor">Content</h2>
+<h3 id="ru_content" class="anchor">Content</h3>
 
-<h3 id="ru_content_thumb" class="anchor">Thumbnail</h3>
+<h4 id="ru_content_thumb" class="anchor">Thumbnail</h4>
 <p>
 	This is location thumbnail.
 </p>
 
-<h3 id="ru_content_status" class="anchor">Status</h3>
+<h4 id="ru_content_status" class="anchor">Status</h4>
 <p>
 	Status consists of:
 	<ul>
@@ -149,20 +165,20 @@ Rules online:
 	</ul>
 </p>
 
-<h3 id="ru_content_asstet" class="anchor">Asset</h3>
+<h4 id="ru_content_asstet" class="anchor">Asset</h4>
 <p>
 	It some custom viewer.
 	You can setup rules to find assets automatically or point asset directly.
 	Asset can have own html and javascript code, do and show anything.
 </p>
 
-<h3 id="ru_content_files" class="anchor">Files</h3>
+<h4 id="ru_content_files" class="anchor">Files</h4>
 <p>
 	Location files and folders.
 	If there is some asset founded, files are not shown, if asset does not have special option.
 </p>
 
-<h3 id="ru_content_body" class="anchor">Body</h3>
+<h4 id="ru_content_body" class="anchor">Body</h4>
 <p>
 	Body is a some editable page.
 	Can be used for anything.
@@ -170,7 +186,7 @@ Rules online:
 	Scene and shot can have tasks description.
 </p>
 
-<h3 id="ru_content_comments" class="anchor">Comments</h3>
+<h4 id="ru_content_comments" class="anchor">Comments</h4>
 <p>
 	This is location comments.
 	If you want to upload something within comment, you can drag and drop files in upload field, but not start to upload them.
@@ -181,9 +197,9 @@ Rules online:
 
 
 
-<h2 id="ru_sidepan" class="anchor">Side Panel</h2>
+<h3 id="ru_sidepan" class="anchor">Side Panel</h3>
 
-<h3 id="ru_sidepan_news" class="anchor">News</h3>
+<h4 id="ru_sidepan_news" class="anchor">News</h4>
 <p>
 	News are shown here, with links.
 	To delete link, double-click '-' button.
@@ -194,7 +210,7 @@ Rules online:
 	To delete channel, double-click '-' button.
 </p>
 
-<h3 id="ru_sidepan_play" class="anchor">Playlist</h3>
+<h4 id="ru_sidepan_play" class="anchor">Playlist</h4>
 <p>
 	It is just global bookmarks.
 	User can bookmark any location (shot) in browser in common way.
@@ -208,7 +224,7 @@ Rules online:
 	Before RULES, each user was to find (browse) the sequence to view.
 </p>
 
-<h3 id="ru_sidepan_upload" class="anchor">Upload</h3>
+<h4 id="ru_sidepan_upload" class="anchor">Upload</h4>
 <p>
 	This is a way to upload files.
 	Any location (shot, asset) can have its own relative upload path.
@@ -222,7 +238,7 @@ Rules online:
 	link and a thumbnail to the file will be attached to comment.
 </p>
 
-<h3 id="ru_sidepan_perm" class="anchor">Permissions</h3>
+<h4 id="ru_sidepan_perm" class="anchor">Permissions</h4>
 <p>
 	This is where administrators can control users permissions.
 	Permissions are stored in the same way as Apache server understands.
@@ -238,9 +254,9 @@ Rules online:
 
 
 
-<h2 id="ru_footer" class="anchor">Footer</h2>
+<h3 id="ru_footer" class="anchor">Footer</h3>
 
-<h3 id="ru_footer_info" class="anchor">Info</h3>
+<h4 id="ru_footer_info" class="anchor">Info</h4>
 <p>
 	This is status line.
 	It shows current path after navigation.
@@ -248,13 +264,13 @@ Rules online:
 	You can open that path.
 </p>
 
-<h3 id="ru_footer_ver" class="anchor">Version</h3>
+<h4 id="ru_footer_ver" class="anchor">Version</h4>
 <p>
 	On startup server reads cgru/version.txt file, like any other CGRU tool.
 	You can write anything there to display some custom information.
 </p>
 
-<h3 id="ru_footer_log" class="anchor">Log</h3>
+<h4 id="ru_footer_log" class="anchor">Log</h4>
 <p>
 	System logs are stored there.
 	Needed to debug.
