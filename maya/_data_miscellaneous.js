@@ -1,19 +1,5 @@
 
 category.push("miscellaneous_");
-name_short.push("Autosave Manager");
-name_full.push("Autosave Manager.");
-annotation.push("Aoutomatic scene saving after a specified period of time or number of selections. And history backup functions.");
-file_html.push("tima_autosavemgr.html");
-keywords.push("autosave backup miscellaneous tima");
-
-category.push("miscellaneous_");
-name_short.push("Project Seek");
-name_full.push("Auto Project Seek.");
-annotation.push("Aoutomatic project workspace seek.");
-file_html.push("tima_projectseek.html");
-keywords.push("auto project file open seek workspace miscellaneous tima");
-
-category.push("miscellaneous_");
 name_short.push("Camera Tools");
 name_full.push("Camera Tools marking menu (Camera Zoom Pan).");
 annotation.push("Camera tools marking menu. Camera Zoom Pan tool - works without camera transform.");

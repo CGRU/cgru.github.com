@@ -3,6 +3,7 @@
 <head>
 <link href="../_system/styles.css" rel="stylesheet" type="text/css">
 <title>CGRU installation</title>
+<meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="description" content="CGRU: CG Tools, CG Rules, Afanasy - Free Open Source Render Farm Manager" />
 <meta name="keywords" content="Houdini, Maya, Nuke, RenderMan, Mantra, Mentalray, Max, XSI, SoftImage, prman, Afanasy, animation, rendering, render, farm, manager, free, open source, 3D, 2D" />
@@ -37,11 +38,18 @@
 </table>
 <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0"><tr><td>
 <!--HEADER-->
+
+
+
 <div class="commonText">
+
 <h4>1. Скачать последний релиз.</h4>
-<a href="http://sourceforge.net/projects/cgru/files">sourceforge</a></td>
+<a href="http://sourceforge.net/projects/cgru/files">sourceforge</a>
+
 <h4>2. Распаковать/положить куда-нибудь.</h4>
+
 <h4>3. Скопировать запускной скрипт, находящийся в <i>cgru/plugins/maya/maya.bat</i> ( или <i>maya.sh</i> для linux ), например на рабочий стол ( скрипт будет настраивать маю и cgru перед запуском майи).</h4>
+
 <h4>4. Настроить скрипт:</h4>
 <p>
 поправить на то куда вы переписали cgru и где у вас стоит майа:<br/>
@@ -59,20 +67,19 @@ set MAYA_LOCATION=c:\autodesk\Maya2008-x64<br/>
 или через вспомогательные переменные, как в примере<br>
 set MAYA_VERSION=2008<br/>
 set MAYA_ARCH=-x64<br/>
-rem For 32bit Maya uncomment next line<br/>
-rem set MAYA_ARCH=<br/>
 set MAYA_CGRU_LOCATION=c:\cg\tools\cgru\plugins\maya<br/>
 set MAYA_LOCATION=c:\autodesk\Maya%MAYA_VERSION%%MAYA_ARCH%<br/>
 через вспомогательные переменные потом менять скрипт для разных версий проще, или разделить их на 2а - установка версии и остальные настройки для одновременного внесения общих изменений для разный версий май.<br/>
 ( но это можно считать отступлением для админов в студиях )<br/>
 </p>
+
+
+
 <h3>Политика Партии:</h3>
-<p>
-CGRU запускается за счёт "оверрайда" initAfter.mel. Это из родных майских скриптов, выполняющийся после инициализации майи, в нём в конце просто засоурсится скрипт /cgru/cgru.mel). "Оверрайд" скрипта - это когда в есть скрипт с таким же названием в переменной MAYA_SCRIPT_PATH. Эту переменную можно выставлять в скрипте, запускающем майу. Пример такого скрипта находится в /cgru/maya.bat (windows) или /cgru/maya (linux).
-</p>
 <p>
 Все настройки (выставление environment переменных) теперь находятся в <strong>maya.bat</strong>. Это сделано для того чтобы можно было использовать сразу несколько настроек для майи. А также для того, чтобы сисадмин держал где-то в своих тулзах настройки для корпоративной майи, и менял всё в одном месте, а лазил по пофилям всех пользователей. (У пользователя, в таком случае, где-то на десктопе висит ярлычек "Maya" указывающий на зашаренный для всех ресурс).
 </p>
+
 <h4>Настройка environment-a (maya.bat):</h4>
 <p>
 <strong>set MAYA_VERSION=2008</strong><br>
@@ -104,8 +111,13 @@ CGRU запускается за счёт "оверрайда" initAfter.mel. Э
 <strong>start maya.exe<br></strong>
 А это, собственно, то, для чего мы это всё делали.<br>
 </p>
+
 <p align = "right"><a href="../index.html" target="_top" class="smallComments">jump to CGRU documentation</a></p>
+
 </div>
+
+
+
 <!--FOOTER-->
 </td></tr></table>
 <table width="100%" align="center" cellpadding="0" cellspacing="0">
