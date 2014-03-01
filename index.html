@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<!-- INDEX_MARKER needed to recognize that server has not found some page, as it always returning index.html (HTML5 avigation) -->
 <html>
 <head>
 <meta charset="UTF-8">
 <title>CGRU</title>
-<link type="text/css" rel="stylesheet" href="styles.css">
-<script type="text/javascript" src="script.js"></script>
+<link type="text/css" rel="stylesheet" href="/styles.css">
+<script type="text/javascript" src="/script.js"></script>
 <script type="text/javascript">
 
 if( document.location.host.indexOf('cgru.info') != -1 )
@@ -48,76 +49,74 @@ if( document.location.host.indexOf('cgru.info') != -1 )
 
 <div id="framenavig">
 <div id="navig">
-<div class="navig" file="installation.html#page_top">Installation</div>
-<div class="navig" file="keeper.html">Keeper</div>
-<div class="navig" file="afstarter.html">AfStarter</div>
-<div class="navig" file="moviemaker.html">Movie Maker</div>
+<a class="navig" href="/installation#page_top">Installation</a>
+<a class="navig" href="/keeper">Keeper</a>
+<a class="navig" href="/afstarter">AfStarter</a>
+<a class="navig" href="/moviemaker">Movie Maker</a>
 
 <div class="navgrp">
-<div class="navig" file="rules/rules.html#page_top">RULES</div>
-<div class="navig" file="rules/player.html#page_top">Player</div>
+<a class="navig" href="/rules/rules#page_top">RULES</a>
+<a class="navig" href="/rules/player#page_top">Player</a>
 </div>
 
 <div class="navgrp">
-<div class="navig" file="afanasy/afanasy.html">AFANASY</div>
-<div class="navig" file="afanasy/server.html#page_top">Server</div>
-<div class="navig" file="afanasy/api.html#page_top">API</div>
-<div class="navig" file="afanasy/gui.html#page_top">GUI</div>
-<div class="navig" file="afanasy/job.html">Job</div>
-<div class="navig" file="afanasy/user.html">User</div>
-<div class="navig" file="afanasy/render.html#page_top">Render</div>
-<div class="navig" file="afanasy/cmd.html">Cmd</div>
+<a class="navig" href="/afanasy/afanasy">AFANASY</a>
+<a class="navig" href="/afanasy/server#page_top">Server</a>
+<a class="navig" href="/afanasy/api#page_top">API</a>
+<a class="navig" href="/afanasy/gui#page_top">GUI</a>
+<a class="navig" href="/afanasy/job">Job</a>
+<a class="navig" href="/afanasy/user">User</a>
+<a class="navig" href="/afanasy/render#page_top">Render</a>
+<a class="navig" href="/afanasy/cmd">Cmd</a>
 </div>
 
 <div class="navgrp"><div>Soft Integration:</div>
-<div class="navig" file="afterfx.html">AfterFX</div>
-<div class="navig" file="blender.html">Blender</div>
-<div class="navig" file="cinema4d.html">Cinema 4D</div>
-<div class="navig" file="houdini.html">Houdini</div>
-<div class="navig" file="max.html">Max</div>
-<div class="navig" file="maya.html">Maya</div>
-<div class="navig" file="nuke.html">Nuke</div>
-<div class="navig" file="xsi.html">XSI</div>
+<a class="navig" href="/afterfx">AfterFX</a>
+<a class="navig" href="/blender">Blender</a>
+<a class="navig" href="/cinema4d">Cinema 4D</a>
+<a class="navig" href="/houdini">Houdini</a>
+<a class="navig" href="/max">Max</a>
+<a class="navig" href="/maya">Maya</a>
+<a class="navig" href="/nuke">Nuke</a>
+<a class="navig" href="/xsi">XSI</a>
 </div>
 
-<div class="navig" file="regexp.html">RegExp</div>
-<div class="navig" file="license.html">License</div>
-<div class="navig" file="coding_rules.html">Coding Rules</div>
-<div class="navig" file="cgrules.html">CG - Rules</div>
-<!--div class="navig" file="badlink.html">bad link</div-->
+<a class="navig" href="/regexp">RegExp</a>
+<a class="navig" href="/license">License</a>
+<a class="navig" href="/coding_rules">Coding Rules</a>
+<a class="navig" href="/cgrules">CG - Rules</a>
+<!--a class="navig" href="/badlink.html">bad link</a-->
 </div>
 </div>
 
-<div id="frameheader">
 <div id="header">
-<div><div class="navig" file="home.html"><div>H&shy;OME</div></div></div>
-<div><div class="navig" file="downloads.html"><div>D&shy;own&shy;loads</div></div></div>
-<div><div class="navig" file="changes_log.html#latest"><div>C&shy;han&shy;ges Log</div></div></div>
-<div><div class="navig" file="about.html"><div>A&shy;bout</div></div></div>
-<div><div class="navig" file="contacts.html"><div>C&shy;ont&shy;acts</div></div></div>
-<a id="rules" href="http://cgru.info/rules" target="_blank">R U L E S</a>
-</div>
+<a class="navig" href="/home">H&shy;OME</a>
+<a class="navig" href="/downloads">D&shy;own&shy;loads</a>
+<a class="navig" href="/roadmap">R&shy;oad&shy;map</a>
+<a class="navig" href="/changes_log#latest">C&shy;han&shy;ges Log</a>
+<a class="navig" href="/about">A&shy;bout</a>
+<a class="navig" href="/contacts">C&shy;ont&shy;acts</a>
+<a class="navig" href="http://cgru.info/rules" target="_blank" id="rules">R U L E S</a>
 </div>
 
-<div id="framefooter">
 <div id="footer">
-<a href="http://github.com/CGRU/cgru" target="_blank"><img src="images/github.png" alt="github" border="0"/></a>
-<a href="http://sourceforge.net/projects/cgru" target="_blank" id="sflogo"></a>
-<a href="http://www.linkedin.com/groups/CGRU-AFANASY-4263049" target="_blank"><img src="images/linkedin.png" border="0" alt="linkedin"/></a>
-<a href="http://libregraphicsworld.org/tag/cgru" target="_blank"><img src="images/libregraphicsworld.png" alt="LibreGraphicsWorld" border="0"/></a>
+<a href="http://github.com/CGRU/cgru" target="_blank"><img src="/images/github.png" alt="github" border="0"/></a>
+<a href="http://sourceforge.net/projects/cgru" target="_blank" id="sflogo"><img src="/images/sourceforge.png" alt="sourceforge" border="0"/></a>
+<a href="http://www.linkedin.com/groups/CGRU-AFANASY-4263049" target="_blank"><img src="/images/linkedin.png" border="0" alt="linkedin"/></a>
+<a href="http://libregraphicsworld.org/tag/cgru" target="_blank"><img src="/images/libregraphicsworld.png" alt="LibreGraphicsWorld" border="0"/></a>
 <div>
-	<a href="http://cgru.info/doc/cgru_rss_feed.xml"><img src="images/rss.png" border="0" alt="RSS"/></a>
+	<a href="http://cgru.info/doc/cgru_rss_feed.xml"><img src="/images/rss.png" border="0" alt="RSS"/></a>
 	<!-- Place this tag where you want the +1 button to render. -->
 	<div class="g-plusone"></div>
 	<!-- Place this tag after the last +1 button tag. -->
 	<script type="text/javascript">
 	(function() {
-	var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	if( document.location.host.indexOf('cgru.info') != -1 )
+	{var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
 	po.src = 'https://apis.google.com/js/plusone.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-	})();
+	}})();
 	</script>
-</div>
 </div>
 </div>
 

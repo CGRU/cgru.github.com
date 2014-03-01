@@ -1,28 +1,29 @@
-g_path_prefix = 'content/';
-g_path = 'home.html';
+g_path_prefix = '/content';
+
 g_navs = [];
+g_path = null;
 
 g_elContent = null;
 g_elTop = null;
-g_goCount = 0;
+g_goCount = -1;
 
 var $ = function( id ) { return document.getElementById( id ); };
 
 function g_Init()
 {
 //g_Info('Initializing...');
-	var sflogo = '<img src="images/sourceforge.png" border="0" alt="sourceforge"/>';
 	if( document.location.host.indexOf('cgru.info') != -1 )
-		sflogo = '<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=178692&amp;type=12" width="120" height="30" border="0" alt="SourceForge.net"/>';
-	$('sflogo').innerHTML = sflogo;
+		$('sflogo').innerHTML = '<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=178692&amp;type=12" width="120" height="30" border="0" alt="SourceForge.net"/>';
 
 	document.body.onkeydown = g_OnKeyDown;
 
 	var navs = document.body.getElementsByClassName('navig');
-	for( var i = 0; i < navs.length; i++ ) g_navs.push( navs[i]);
-
-	for( var i = 0; i < g_navs.length; i++ )
-		g_navs[i].onclick = g_NavClick;
+	for( var i = 0; i < navs.length; i++ )
+	{
+		if( navs[i].id == 'rules') continue;
+		navs[i].onclick = g_NavClicked;
+		g_navs.push( navs[i]);
+	}
 
 	g_elContent = $('content');
 	g_elTop = $('ontop');
@@ -32,9 +33,9 @@ function g_Init()
 	$('navig').style.right = (-barW)+'px';
 	$('content').style.right = (-barW)+'px';
 
-	window.onhashchange = g_PathChanged;
+	window.onpopstate = g_Navigate;
 
-	g_PathChanged();
+	g_Navigate();
 }
 
 function g_OnKeyDown( i_evt)
@@ -47,40 +48,37 @@ function g_OnKeyDown( i_evt)
 	}
 }
 
-function g_PathChanged()
+function g_NavClicked( i_evt)
 {
-	var path = document.location.hash;
-	if( path.indexOf('#') == 0 )
-		path = path.substr(1);
-	else
-		path = g_path;
-
-	g_Navigate( path);
+	i_evt.preventDefault();
+	var path = i_evt.currentTarget.href;
+	window.history.pushState('object','CGRU', path);
+console.log('g_NavClicked:' + path);
+	g_Navigate();
 }
 
-function g_NavClick( i_evt)
-{
-	var nav = i_evt.currentTarget;
-	var path = nav.getAttribute('file');
-	GO( path);
-}
-
-function GO( i_path)
-{
-	g_goCount++;
-	document.location.hash = i_path;
-}
-
-function g_Navigate( i_path)
+function g_Navigate()
 {
 //g_Info( g_path);
-	
-	g_path = decodeURI( i_path);
+//	g_path = decodeURI( i_path);
+	var path = document.location.pathname;
+	if( path == '/' ) path = '/home';
+	path = path.split('#')[0];
+	if( g_path == path )
+	{
+		g_GotoHash();
+		return;
+	}
 
-	var path = g_path.split('#')[0];
-	if( path.indexOf('.html') == -1 ) path += '.html';
+	g_path = path;
+
+console.log('g_Navigate:' + path);
+
+//console.log( path);
 	for( var i = 0; i < g_navs.length; i++ )
-		if( path == g_navs[i].getAttribute('file').split('#')[0])
+	{
+//console.log( g_navs[i].getAttribute('href').split('#')[0]);
+		if( path == g_navs[i].getAttribute('href').split('#')[0])
 		{
 			if( g_goCount == 0 )
 				g_navs[i].scrollIntoView( false);
@@ -88,9 +86,10 @@ function g_Navigate( i_path)
 		}
 		else
 			g_navs[i].classList.remove('current');
+	}
 
 	g_DisplayLoading();
-	GET();
+	GET( path);
 }
 
 function g_DisplayLoading( i_display)
@@ -106,35 +105,45 @@ function g_SetContent( i_data)
 	g_DisplayOnTop( false);
 	g_elContent.innerHTML = i_data;
 
-	var paths = [];
-	if( g_path.indexOf('#') != -1) paths = g_path.split('#');
-	if( g_path.indexOf('?') != -1) paths = g_path.split('?');
+	g_GotoHash();
 
-	if( paths.length > 1 )
+	g_ProcessContent();
+}
+
+function g_GotoHash()
+{
+	var hash = document.location.hash;
+	if( hash && hash.length )
 	{
-		var el = document.getElementById(paths[1]);
+		if( hash.indexOf('#') == 0 )
+			hash = hash.substr(1);
+		var el = document.getElementById( hash);
 		if( el )
 		{
 			el.scrollIntoView(true);
 			g_anchor_el = el;
-//			window.setTimeout("g_anchor_el.scrollIntoView(true)", 1000)
 			var imgs = g_elContent.getElementsByTagName('img');
 			for( var i = 0; i < imgs.length; i++)
 				imgs[i].onload = function(){ g_anchor_el.scrollIntoView(true)};
 		}
 	}
-
-	g_ProcessContent();
 }
 
 function g_ProcessContent()
 {
+console.log('g_ProcessContent:');
 	var anchors = g_elContent.getElementsByClassName('anchor');
 	for( var i = 0; i < anchors.length; i++)
 		anchors[i].onclick = function(e){
-				var hash = g_path.split('#')[0];
-				document.location.hash = hash+'#'+e.currentTarget.getAttribute('id');
+				document.location.hash = e.currentTarget.getAttribute('id');
 			};
+
+	var links = g_elContent.getElementsByClassName('local_link');
+	for( var i = 0; i < links.length; i++ )
+	{
+console.log( links[i].href);
+		links[i].onclick = g_NavClicked;
+	}
 
 	var forontops = g_elContent.getElementsByClassName('forontop');
 	for( var i = 0; i < forontops.length; i++)
@@ -244,18 +253,21 @@ function g_DisplayNotFound( i_display)
 	if( i_display == null ) i_display = true;
 	if( i_display ) g_SetContent('');
 	document.getElementById('notfound').style.display = i_display ? 'block':'none';
-	document.getElementById('notfound_file').innerHTML = '<b>'+g_path+'</b>';
+	document.getElementById('notfound_file').innerHTML = '<b>'+document.location.pathname+'</b>';
 }
 
-function GET()
+function GET( i_path)
 {
-	var path = g_path.split('#')[0];
+	var path = i_path;
+
 	if( path.indexOf('.html') == -1 )
 		path += '.html';
+	path = g_path_prefix + path;
+console.log('GET:' + path);
 
 	var xhr = new XMLHttpRequest();
 	xhr.overrideMimeType('text/html');
-	xhr.open('GET', g_path_prefix+path, true);
+	xhr.open('GET', path, true);
 	xhr.send(null);
 
 	xhr.onreadystatechange = function()
@@ -269,9 +281,16 @@ function GET()
 			}
 
 			if( xhr.responseText.length )
+			{
+				if( xhr.responseText.indexOf('INDEX_MARKER') != -1 )
+				{
+					g_DisplayNotFound();
+					return;
+				}
 				g_SetContent( xhr.responseText);
+			}
 			else
-				g_Error('File '+g_path+' is empty.');
+				g_Error('File '+i_path+' is empty.');
 		}
 	}
 }

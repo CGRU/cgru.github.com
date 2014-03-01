@@ -3,25 +3,25 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#afanasy/server#launch">Launch</a></li>
-<li><a href="#afanasy/server#configuration">Configuration</a>
+<li><a href="/afanasy/server#launch">Launch</a></li>
+<li><a href="/afanasy/server#configuration">Configuration</a>
 	<ul>
-	<li><a href="#afanasy/server#conf_client_server">Client &amp; Server</a></li>
-	<li><a href="#afanasy/server#conf_user">User</a></li>
-	<li><a href="#afanasy/server#conf_job">Job</a></li>
-	<li><a href="#afanasy/server#conf_database">Database</a></li>
+	<li><a href="/afanasy/server#conf_client_server">Client &amp; Server</a></li>
+	<li><a href="/afanasy/server#conf_user">User</a></li>
+	<li><a href="/afanasy/server#conf_job">Job</a></li>
+	<li><a href="/afanasy/server#conf_database">Database</a></li>
 	</ul>
 </li>
-<li><a href="#afanasy/server#farm_setup">Farm Setup</a></li>
-<li><a href="#afanasy/server#system_job">System Job</a>
+<li><a href="/afanasy/server#farm_setup">Farm Setup</a></li>
+<li><a href="/afanasy/server#system_job">System Job</a>
 	<ul>
-	<li><a href="#afanasy/server#post_commands">Post Commands</a></li>
-	<li><a href="#afanasy/server#wake_on_lan">Wake On Lan</a></li>
-	<li><a href="#afanasy/server#events">Events</a></li>
+	<li><a href="/afanasy/server#post_commands">Post Commands</a></li>
+	<li><a href="/afanasy/server#wake_on_lan">Wake On Lan</a></li>
+	<li><a href="/afanasy/server#events">Events</a></li>
 	</ul>
 </li>
-<li><a href="#afanasy/server#authentication">Authentication</a></li>
-<li><a href="#afanasy/server#statistics">Statistics</a></li>
+<li><a href="/afanasy/server#authentication">Authentication</a></li>
+<li><a href="/afanasy/server#statistics">Statistics</a></li>
 </ul>
 
 
@@ -227,7 +227,7 @@ Farm object consists of a pattens and limits arrays.
    </p></li>
    <li><p>
    <code>mask</code><br/>
-   Hosts which names matches this A <a href="#regexp.html">mask</a> will take this pattern settings.
+   Hosts which names matches this A <a href="/regexp.html">mask</a> will take this pattern settings.
    </p></li>
    <li><p>
    <code>description</code><br/>
@@ -426,24 +426,24 @@ You can manipulate it's parameters here to control its running.
    <td>
       <br/>
       Jobs List: System job "afanasy"<br/>
-      <img src="images/afanasy/watch/sysjob_job.png" alt="sysjob_job.png"/><br/>
+      <img src="/images/afanasy/watch/sysjob_job.png" alt="sysjob_job.png"/><br/>
    </td>
    <td>
       <br/>
       Tasks List: System job block<br/>
-      <img src="images/afanasy/watch/sysjob_tasks.png" alt="sysjob_tasks.png"/><br/>
+      <img src="/images/afanasy/watch/sysjob_tasks.png" alt="sysjob_tasks.png"/><br/>
    </td>
 </tr>
 <tr align="center">
    <td>
       <br/>
       Renders List: System tasks execution<br/>
-      <img src="images/afanasy/watch/sysjob_render.png" alt="sysjob_render.png"/><br/>
+      <img src="/images/afanasy/watch/sysjob_render.png" alt="sysjob_render.png"/><br/>
       </td>
    <td>
       <br/>
       Users List: System job user "afadmin"<br/>
-      <img src="images/afanasy/watch/sysjob_user.png" alt="sysjob_user.png"/><br/>
+      <img src="/images/afanasy/watch/sysjob_user.png" alt="sysjob_user.png"/><br/>
       </td>
 </tr>
 </table>
@@ -505,7 +505,7 @@ This parameter is commented in default configuration, "system" name used.
 
 
 <h3 id="wake_on_lan" class="anchor">Wake-On-LAN</h3>
-<img src="images/afanasy/watch/wol_job.png" alt="wol_job" style="float:right;margin:20px"/>
+<img src="/images/afanasy/watch/wol_job.png" alt="wol_job" style="float:right;margin:20px"/>
 <p>
 You can setup Afanasy to Wake-On-LAN machines.
 </p>
@@ -567,7 +567,7 @@ This parameter is commented in default configuration, "system" name used.
 </ul>
 <p>
 Server can put machines to sleep automatically.
-See <a href="#afanasy/farm_setup.html">Farm Setup</a>.
+See <a href="#farm_setup">Farm Setup</a>.
 Sleeping machine will be awaken when there will be some task, able to run on it.
 One such task will wake the entire farm.
 But usually it happens at the morning, when artists come at work, and the whole farm will be needed soon.
@@ -632,7 +632,7 @@ But usually it happens at the morning, when artists come at work, and the whole 
 	But passwords are not sent in a plain text, and even are not stored in a plain text (see Digest description).
 </p>
 <p>
-	<a href="#installation#configuration" target="_blank">Configuration</a>:
+	<a href="/installation#configuration" target="_blank">Configuration</a>:
 <pre>
 	"realm":"CGRU",
 	"af_digest_file":".htdigest",
@@ -726,7 +726,7 @@ But usually it happens at the morning, when artists come at work, and the whole 
 	<caption><b>Graphs</b></caption>
 	<tr>
 		<td align="center" width="20%">
-		<img width="1000px" src="images/afanasy/statistics/graphs.png" alt="graphs" />
+		<img width="1000px" src="/images/afanasy/statistics/graphs.png" alt="graphs" />
 	</td>
 	</tr>
 </table>

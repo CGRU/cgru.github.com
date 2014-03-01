@@ -7,10 +7,10 @@ Afanasy Job can have one ore more blocks. Blocks have tasks. Blocks are needed t
 <h3>Job Attributes:</h3>
 <ul>
 <li><b class="anchor" id="Name">Name</b> - Each job has an unique name.
-   If new job comes to server with the name which already exists, server change it's name by adding a number.
-   Jobs dependence bases on their names and depend masks to match it.
-   Afanasy standard <a href="#regexp.html">Regular Expressions</a>.
-   The same expressions are in Pythob, PHP, Perl and other languages.</li>
+	If new job comes to server with the name which already exists, server change it's name by adding a number.
+	Jobs dependence bases on their names and depend masks to match it.
+	Afanasy standard <a href="/regexp" class="local_link">Regular Expressions</a>.
+	The same expressions are in Pythob, PHP, Perl and other languages.</li>
 <li><b class="anchor" id="NameUser">User Name</b> - User name who has created the Job.</li>
 <li><b class="anchor" id="NameHost">Host Name</b> - Host name where job was created.</li>
 <li><b class="anchor" id="TimeCreation">Creation Time</b> - Time when the job was created.</li>
@@ -26,16 +26,16 @@ Afanasy Job can have one ore more blocks. Blocks have tasks. Blocks are needed t
 <li><b class="anchor" id="MaxRunningTasks">Maximum Running Tasks</b> - Maximum number of running tasks at the same time.</li>
 <li><b class="anchor" id="MaxRunTasksPerHost">Maximum Running Tasks Per Host</b> - Maximum number of running tasks at the same time at the same host.</li>
 <li><b class="anchor" id="HostsMask">Hosts Mask</b> - Job run only on renders which host name matches this
-<a href="#regexp.html">mask</a>.</li>
+<a href="/regexp" class="local_link">mask</a>.</li>
 <li><b class="anchor" id="HostsMaskExclude">Exclude Hosts Mask</b> - Job can not run on renders which host name matches this
-<a href="#regexp.html">mask</a>.</li>
+<a href="/regexp" class="local_link">mask</a>.</li>
 <li><b class="anchor" id="DependMask">Depend Mask</b> - Job will wait other user jobs which name matches this
-<a href="#regexp.html">mask</a>.</li>
+<a href="/regexp" class="local_link">mask</a>.</li>
 <li><b class="anchor" id="DependMaskGlobal">Global Depend Mask</b> - Job will wait other jobs from any user which name matches this
-<a href="#regexp.html">mask</a>.</li>
+<a href="/regexp" class="local_link">mask</a>.</li>
 <li><b class="anchor" id="WaitTime">Wait Time</b> - Time to wait to start a job.</li>
-<li><b class="anchor" id="NeedOS">OS Needed</b> - A <a href="#regexp.html">mask</a> to contain render host OS name to run on it.</li>
-<li><b class="anchor" id="NeedProperties">Properties Needed</b> - A <a href="#regexp.html">mask</a> to contain render host properties to run on it. It's custom host parameter can be defined in farm description.</li>
+<li><b class="anchor" id="NeedOS">OS Needed</b> - A <a href="/regexp" class="local_link">mask</a> to contain render host OS name to run on it.</li>
+<li><b class="anchor" id="NeedProperties">Properties Needed</b> - A <a href="/regexp" class="local_link">mask</a> to contain render host properties to run on it. It's custom host parameter can be defined in farm description.</li>
 
 <li><b class="anchor" id="CmdPre">Pre Command</b> - Command to execute on job registration.
 Note, that this <b><i>command is executed by server</i></b>, and not from tasks working directory.
@@ -51,7 +51,7 @@ Working directory of such system task will be the first block working folder.
 <li><b class="anchor" id="LifeTime">Life Time</b> - Maximum job age in seconds.
 When job age becomes greater then life time if will be automatically deleted in any case.
 It is useful for some technical jobs to prevent their amount rise.
-You can user default <a href="#afanasy/user.html#JobsLifeTime">life time</a> value for all its jobs.
+You can user default <a href="/afanasy/user#JobsLifeTime" class="local_link">life time</a> value for all its jobs.
 </li>
 <li><b class="anchor" id="Annotation">Annotation</b> - Job annotation. Does not influence anything. This string will be shown in GUI item.</li>
 </ul>
@@ -148,13 +148,13 @@ You can specify number of CPUs to use for your applications (if it supports it b
 
 <li><b class="anchor" id="block_MaxRunTasksPerHost">Maximum Running Tasks Per Host</b> - maximum number of tasks block can run on the same time on the same host.</li>
 
-<li><b class="anchor" id="Hblock_ostsMask">Hosts Mask</b> - Block run only on Renders which host name matches this <a href="#regexp.html">mask</a>.</li>
+<li><b class="anchor" id="Hblock_ostsMask">Hosts Mask</b> - Block run only on Renders which host name matches this <a href="/regexp" class="local_link">mask</a>.</li>
 
-<li><b class="anchor" id="block_HostsMaskExclude">Exclude Hosts Mask</b> - Block can not run on renders which host name matches this <a href="#regexp.html">mask</a>.</li>
+<li><b class="anchor" id="block_HostsMaskExclude">Exclude Hosts Mask</b> - Block can not run on renders which host name matches this <a href="/regexp" class="local_link">mask</a>.</li>
 
-<li><b class="anchor" id="block_DependMask">Depend Mask</b> - Block will wait previous job blocks which name matches this <a href="#regexp.html">mask</a>.</li>
+<li><b class="anchor" id="block_DependMask">Depend Mask</b> - Block will wait previous job blocks which name matches this <a href="/regexp" class="local_link">mask</a>.</li>
 
-<li><b class="anchor" id="block_TasksDependMask">Tasks Depend Mask</b> - Block task will wait other job blocks task which name matches this <a href="#regexp.html">mask</a>.</li>
+<li><b class="anchor" id="block_TasksDependMask">Tasks Depend Mask</b> - Block task will wait other job blocks task which name matches this <a href="/regexp" class="local_link">mask</a>.</li>
 
 <li><b class="anchor" id="block_ErrorRetries">Error Retries</b> - Number of task errors to retry it automatically. Value '-1' means take this value from user settings.</li>
 
@@ -178,14 +178,14 @@ Value less then '1' means no forgive. Value '-1' means take this value from user
 
 <li><b class="anchor" id="block_NeedHDD">Need HDD</b> - Minimum render host free disk space needed.</li>
 
-<li><b class="anchor" id="block_NeedProperties">Need Properties</b> - A <a href="#regexp.html">mask</a> to much render host properties to run on it. It's custom host parameter can be defined in farm description.
+<li><b class="anchor" id="block_NeedProperties">Need Properties</b> - A <a href="/regexp" class="local_link">mask</a> to much render host properties to run on it. It's custom host parameter can be defined in farm description.
 <br/><br/>
 </li>
 
 <li><b class="anchor" id="block_Command">Command</b> - Tasks command pattern.
 When block produces a task it calculates an unique command from this pattern and other parameters,
 depend on block type - numeric or string, replacing <kbd>@#@</kbd> pattern with a number.
-Padding is specified by the number of "#" symbols between "@" symbols.
+Padding is specified by the number of "/" symbols between "@" symbols.
 <ul>
 <li>
 <p>String: block seek for "@#@" string in command and replace it by another string get from <var>Task Command</var>.
@@ -233,7 +233,7 @@ Result:<br />
 last task command: <kbd>myrender something.0010.obj</kbd><br />
 </p>
 <p>
-You can check numbers placing by <code><a href="cmd.html">afcmd</a> num [command] [number1] [number2]</code> command.
+You can check numbers placing by <code><a href="/afanasy/cmd" class="local_link">afcmd</a> num [command] [number1] [number2]</code> command.
 </p>
 </li>
 </ul>
@@ -313,8 +313,8 @@ Tasks are not stored anywhere. Tasks are generated by blocks. You can't change t
 <li><b><i> Done              </i> <small><code> DON </code></small></b> - Task is done.</li>
 <li><b><i> Error             </i> <small><code> ERR </code></small></b> - Task finished with error or failed to start.</li>
 <li><b><i> Skipped           </i> <small><code> SKP </code></small></b> - Task skipped.</li>
-<li><b><i> Warning           </i> <small><code> WRN </code></small></b> - Warning from <a href="#afanasy/parsers.html">parser</a>.</li>
-<li><b><i> Parser Error      </i> <small><code> PER </code></small></b> - Error from <a href="#afanasy/parsers.html">parser</a>.</li>
-<li><b><i> Parser Bad Result </i> <small><code> PBR </code></small></b> - Bad result from <a href="#afanasy/parsers.html">parser</a>.</li>
+<li><b><i> Warning           </i> <small><code> WRN </code></small></b> - Warning from <a href="/afanasy/parsers" class="local_link">parser</a>.</li>
+<li><b><i> Parser Error      </i> <small><code> PER </code></small></b> - Error from <a href="/afanasy/parsers" class="local_link">parser</a>.</li>
+<li><b><i> Parser Bad Result </i> <small><code> PBR </code></small></b> - Bad result from <a href="/afanasy/parsers" class="local_link">parser</a>.</li>
 </ul>
 

@@ -8,12 +8,12 @@ You can connect several Afanasy ROP nodes to Afanasy ROP to setup render paramet
 
 <table width="99%">
 <tr align="center">
-   <td><b>General Parameters</b><br/><img src="images/houdini/afanasy_general.png" alt="afanasy_general.png" /></td>
-   <td><b>Job Parameters</b><br/><img src="images/houdini/afanasy_jobparams.png" alt="afanasy_jobparams.png" /></td>
+	<td><b>General Parameters</b><br/><img src="/images/houdini/afanasy_general.png" alt="afanasy_general.png" /></td>
+	<td><b>Job Parameters</b><br/><img src="/images/houdini/afanasy_jobparams.png" alt="afanasy_jobparams.png" /></td>
 </tr>
 <tr align="center">
-   <td><b>Separate Render</b><br/><img src="images/houdini/afanasy_separate.png" alt="afanasy_separate.png" /></td>
-   <td><b>Custom Command</b><br/><img src="images/houdini/afanasy_command.png" alt="afanasy_command.png" /></td>
+	<td><b>Separate Render</b><br/><img src="/images/houdini/afanasy_separate.png" alt="afanasy_separate.png" /></td>
+	<td><b>Custom Command</b><br/><img src="/images/houdini/afanasy_command.png" alt="afanasy_command.png" /></td>
 </tr>
 </table>
 
@@ -27,11 +27,11 @@ You can connect several Afanasy ROP nodes to Afanasy ROP to setup render paramet
 <li><b>Job Name</b> - Afanasy job name. Default is $HIPNAME.$OS = [hip scene name].[afanasy ROP name].</li>
 <li><b>Connected Nodes Are Independent</b> - Allow run the same frames of all connected nodes at the same time.</li>
 <li><b>Valid Frame Range:</b>
-   <ul>
-   <li><b>Render Any Frame</b> - Use frame range form downstream node. Or render current frame if no range in network defined.</li>
-   <li><b>Render Frame Range</b> - Render this specified frame range.</li>
-   <li><b>Render Frame Range Only (Strict)</b> - Render this specified frame range. Other ROPs will wait this whole frame range rendered.</li>
-   </ul>
+	<ul>
+	<li><b>Render Any Frame</b> - Use frame range form downstream node. Or render current frame if no range in network defined.</li>
+	<li><b>Render Frame Range</b> - Render this specified frame range.</li>
+	<li><b>Render Frame Range Only (Strict)</b> - Render this specified frame range. Other ROPs will wait this whole frame range rendered.</li>
+	</ul>
 </li>
 <li><b>Frames Per Task</b> - Number of frames in each task.</li>
 <li><b>Allow Sub-Task Dependence</b> - Tasks can wait other tasks to be done partially.</li>
@@ -65,22 +65,22 @@ It can give several advantages on some 'heavy' scenes.
 It generates a job which can:
 </p>
 <ul>
-   <li>
-      Render images locally in temporary folder and copy whole image after successful render.
-      It can save your network traffic as render do not send small portions of an image during render process.
-   </li>
-   <li>
-      Generate IFD file locally and then render it in separate process but in the same task.
-      It can save render memory.
-   </li>
-   <li>
-      Split one frame on tiles to render them simultaneously.
-      So you can increase speed of one frame render.
-      And also it can reduce memory needed to render a frame.
-   </li>
-   <li>
-      Cleanup rendered IFD files and joined tiles images.
-   </li>
+	<li>
+		Render images locally in temporary folder and copy whole image after successful render.
+		It can save your network traffic as render do not send small portions of an image during render process.
+	</li>
+	<li>
+		Generate IFD file locally and then render it in separate process but in the same task.
+		It can save render memory.
+	</li>
+	<li>
+		Split one frame on tiles to render them simultaneously.
+		So you can increase speed of one frame render.
+		And also it can reduce memory needed to render a frame.
+	</li>
+	<li>
+		Cleanup rendered IFD files and joined tiles images.
+	</li>
 </ul>
 <p>
 An utility to join EXR file tiles is provided with CGRU.
@@ -131,18 +131,18 @@ The simplest way to render with Afanasy is to connect 'afanasy' ROP to your rend
 <table width="99%">
 <tr align="center">
 <td colspan="2">
-   ROP Network Parameters:<br/>
-   <img src="images/houdini/simple_houdini.png" alt="simple_houdini" />
+	ROP Network Parameters:<br/>
+	<img src="/images/houdini/simple_houdini.png" alt="simple_houdini" />
 </td>
 </tr>
 <tr align="center">
 <td>
-   Watch Jobs:<br/>
-   <img src="images/houdini/simple_job.png" alt="simple_job" />
+	Watch Jobs:<br/>
+	<img src="/images/houdini/simple_job.png" alt="simple_job" />
 </td>
 <td>
-   Watch Tasks:<br/>
-   <img src="images/houdini/simple_tasks.png" alt="simple_tasks" />
+	Watch Tasks:<br/>
+	<img src="/images/houdini/simple_tasks.png" alt="simple_tasks" />
 </td>
 </tr>
 </table>
@@ -161,18 +161,18 @@ Usually you need separate IFD files generation and run 'mantra' as a standalone 
 <table width="99%">
 <tr align="center">
 <td colspan="2">
-   ROP Network Parameters:<br/>
-   <img src="images/houdini/command_houdini.png" alt="command_houdini" />
+	ROP Network Parameters:<br/>
+	<img src="/images/houdini/command_houdini.png" alt="command_houdini" />
 </td>
 </tr>
 <tr align="center">
 <td>
-   Watch Jobs:<br/>
-   <img src="images/houdini/command_job.png" alt="command_job" />
+	Watch Jobs:<br/>
+	<img src="/images/houdini/command_job.png" alt="command_job" />
 </td>
 <td>
-   Watch Tasks:<br/>
-   <img src="images/houdini/command_tasks.png" alt="command_tasks" />
+	Watch Tasks:<br/>
+	<img src="/images/houdini/command_tasks.png" alt="command_tasks" />
 </td>
 </tr>
 </table>
@@ -193,18 +193,18 @@ Tiles will be combined in a single image.
 <table width="99%">
 <tr align="center">
 <td colspan="2">
-   ROP Network Parameters:<br/>
-   <img src="images/houdini/tilerender_houdini.png" alt="tilerender_houdini" />
+	ROP Network Parameters:<br/>
+	<img src="/images/houdini/tilerender_houdini.png" alt="tilerender_houdini" />
 </td>
 </tr>
 <tr align="center">
 <td>
-   Tile Job:<br/>
-   <img src="images/houdini/tilerender_job.png" alt="tilerender_job" />
+	Tile Job:<br/>
+	<img src="/images/houdini/tilerender_job.png" alt="tilerender_job" />
 </td>
 <td>
-   Tile Tasks:<br/>
-   <img src="images/houdini/tilerender_tasks.png" alt="tilerender_tasks" />
+	Tile Tasks:<br/>
+	<img src="/images/houdini/tilerender_tasks.png" alt="tilerender_tasks" />
 </td>
 </tr>
 </table>
@@ -234,18 +234,18 @@ With this option frames begin to render as they already simulated while the enti
 <table width="99%">
 <tr align="center">
 <td colspan="2">
-   ROP Network Parameters:<br/>
-   <img src="images/houdini/subtask_houdini.png" alt="subtask_houdini" />
+	ROP Network Parameters:<br/>
+	<img src="/images/houdini/subtask_houdini.png" alt="subtask_houdini" />
 </td>
 </tr>
 <tr align="center">
 <td>
-   Sub-Task Job:<br/>
-   <img src="images/houdini/subtask_job.png" alt="subtask_job" />
+	Sub-Task Job:<br/>
+	<img src="/images/houdini/subtask_job.png" alt="subtask_job" />
 </td>
 <td>
-   Sub-Task Tasks:<br/>
-   <img src="images/houdini/subtask_tasks.png" alt="subtask_tasks" />
+	Sub-Task Tasks:<br/>
+	<img src="/images/houdini/subtask_tasks.png" alt="subtask_tasks" />
 </td>
 </tr>
 </table>
@@ -262,12 +262,12 @@ You can connect any number of ROP nodes to construct a complex job.
 <table width="99%">
 <tr align="center">
 <td>
-   ROP Network:<br/>
-   <img src="images/houdini/complex_houdini.png" alt="complex_houdini" />
+	ROP Network:<br/>
+	<img src="/images/houdini/complex_houdini.png" alt="complex_houdini" />
 </td>
 <td>
-   Afanasy Job:<br/>
-   <img src="images/houdini/complex_job.png" alt="complex_job" />
+	Afanasy Job:<br/>
+	<img src="/images/houdini/complex_job.png" alt="complex_job" />
 </td>
 </tr>
 </table>
