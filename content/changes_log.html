@@ -199,13 +199,13 @@ You can upgrade only one client or server to check changes.</li>
 
 <p><b id="release170" class="anchor">1.7.0</b> 2013.06.05 New Afanasy network protocol version.</p>
 <p>
-	<a href="/afanasy/gui#web">WEB GUI</a> (beta).
+	<a href="/afanasy/gui#web" target="_blank">WEB GUI</a> (beta).
 	No authentication yet.
 	<a href="http://black.cinelab.ru:51000" target="_blank">Online demo</a>.
 	HTML5: Latest Firefox, Chrome, Safari.
 </p>
 <p>
-	<a href="/rules/rules">RULES</a> (beta).
+	<a href="/rules/rules" target="_blank">RULES</a> (beta).
 	It has begun!
 	<a href="http://cgru.info/rules" target="_blank">Online demo</a>.
 	HTML5: Latest Firefox, Chrome, Safari.
@@ -216,28 +216,28 @@ You can upgrade only one client or server to check changes.</li>
 	HTML5: Latest Firefox, Chrome, Safari.
 </p>
 <p>
-	Parser can return running task <a href="/afanasy/render#parser_activity">"activity"</a> - string parameter.
+	Parser can return running task <a href="/afanasy/render#parser_activity" target="_blank">"activity"</a> - string parameter.
 	For example Nuke can notify which of stereo views is rendering now.
 	Movie Maker notify whether an encoding is started.
 	Activity string is shown by GUI in job tasks list window for each task item.
 </p>
 <p>
 	Render client Nimby can be set to free if computer is idle for some time.
-	You can configure it in farm.json by <a href="/afanasy/server#farm_nimby_idlefree_time">nimby_idlefree_time</a> parameter.
-	Machine considered as idle if CPU busy percentage is less than <a href="/afanasy/server#farm_idle_cpu">idle_cpu</a> value.
+	You can configure it in farm.json by <a href="/afanasy/server#farm_nimby_idlefree_time" target="_blank">nimby_idlefree_time</a> parameter.
+	Machine considered as idle if CPU busy percentage is less than <a href="/afanasy/server#farm_idle_cpu" target="_blank">idle_cpu</a> value.
 	It is useful for render on workstations that artists left.
 </p>
 <p>
 	Render client Nimby can be turned on if computer CPU is busy for some time and has no Afanasy task.
-	You can configure it in farm.json by <a href="/afanasy/server#farm_nimby_busyfree_time">nimby_busyfree_time</a> parameter.
-	Machine considered as busy if CPU busy percentage greater than <a href="/afanasy/server#farm_busy_cpu">busy_cpu</a> value.
+	You can configure it in farm.json by <a href="/afanasy/server#farm_nimby_busyfree_time" target="_blank">nimby_busyfree_time</a> parameter.
+	Machine considered as busy if CPU busy percentage greater than <a href="/afanasy/server#farm_busy_cpu" target="_blank">busy_cpu</a> value.
 </p>
 <p>
 	Afanasy server sends to GUI tasks percentage with renders list.
 	GUI renders list items show running tasks percentage.
 </p>
 <p>
-	New system job block - <a href="/afanasy/server#events">"events"</a>.
+	New system job block - <a href="/afanasy/server#events" target="_blank">"events"</a>.
 	New service - "events".
 	Afanasy server can generate events, on job error, for example.
 	Events are pushed to system job as tasks for events block.

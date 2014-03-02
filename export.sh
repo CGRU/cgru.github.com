@@ -16,7 +16,6 @@ ftp -in $dest <<END_SCRIPT
 quote USER $FTP_USER
 quote PASS $FTP_PASS
 
-mkdir content
 cd content
 lcd content
 mput *.html
@@ -26,7 +25,6 @@ cd afanasy
 lcd afanasy
 mput *.html
 ls
-
 cdup
 lcd ..
 
@@ -34,9 +32,16 @@ cd rules
 lcd rules
 mput *.html
 ls
-
 cdup
 lcd ..
+
+cd software
+lcd software
+mput *.html
+ls
+cdup
+lcd ..
+
 cdup
 lcd ..
 

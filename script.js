@@ -6,6 +6,7 @@ g_path = null;
 g_elContent = null;
 g_elTop = null;
 g_goCount = -1;
+g_get_cache = {};
 
 var $ = function( id ) { return document.getElementById( id ); };
 
@@ -51,9 +52,13 @@ function g_OnKeyDown( i_evt)
 function g_NavClicked( i_evt)
 {
 	i_evt.preventDefault();
-	var path = i_evt.currentTarget.href;
-	window.history.pushState('object','CGRU', path);
-console.log('g_NavClicked:' + path);
+//console.log('g_NavClicked:' + i_evt.currentTarget.href);
+	GO( i_evt.currentTarget.href);
+}
+
+function GO( i_path)
+{
+	window.history.pushState('object','CGRU', i_path);
 	g_Navigate();
 }
 
@@ -72,7 +77,7 @@ function g_Navigate()
 
 	g_path = path;
 
-console.log('g_Navigate:' + path);
+//console.log('g_Navigate:' + path);
 
 //console.log( path);
 	for( var i = 0; i < g_navs.length; i++ )
@@ -131,7 +136,7 @@ function g_GotoHash()
 
 function g_ProcessContent()
 {
-console.log('g_ProcessContent:');
+//console.log('g_ProcessContent:');
 	var anchors = g_elContent.getElementsByClassName('anchor');
 	for( var i = 0; i < anchors.length; i++)
 		anchors[i].onclick = function(e){
@@ -141,7 +146,7 @@ console.log('g_ProcessContent:');
 	var links = g_elContent.getElementsByClassName('local_link');
 	for( var i = 0; i < links.length; i++ )
 	{
-console.log( links[i].href);
+//console.log( links[i].href);
 		links[i].onclick = g_NavClicked;
 	}
 
@@ -263,7 +268,14 @@ function GET( i_path)
 	if( path.indexOf('.html') == -1 )
 		path += '.html';
 	path = g_path_prefix + path;
-console.log('GET:' + path);
+//console.log('GET:' + path);
+
+	if( g_get_cache[path] )
+	{
+//console.log('GET CACHED:' + path);
+		g_SetContent( g_get_cache[path]);
+		return;
+	}
 
 	var xhr = new XMLHttpRequest();
 	xhr.overrideMimeType('text/html');
@@ -287,7 +299,8 @@ console.log('GET:' + path);
 					g_DisplayNotFound();
 					return;
 				}
-				g_SetContent( xhr.responseText);
+				g_SetContent( xhr.responseText)
+				g_get_cache[path] = xhr.responseText;
 			}
 			else
 				g_Error('File '+i_path+' is empty.');
