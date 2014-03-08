@@ -16,6 +16,30 @@ You can upgrade only one client or server to check changes.</li>
 <br/>
 
 
+<p><b id="release201" class="anchor">2.0.1</b> 2014.03.08</p>
+<ul>
+<li><p>
+	Movie Maker: AV conversion tool is configurable.
+	You can set a custom command or executable path.
+	The default is <kbd>ffmpeg</kbd>.
+	<br><i>Some Linux distrubutions swithced from ffmpeg to</i> <kbd>avconv</kbd>. <i>For now, they are fully compatible</i>.
+</p></li>
+</ul>
+<p>
+	Bugs Fixed:
+</p>
+<ul>
+<li><p>
+	Movie Maker and RULES thumbnails: EXR and DPX colorspace problem is solved,
+	but you need at least ImageMagick version <kbd>6.8.8-8</kbd> for it
+	(EXR bug was in CGRU, DPX bug was in ImageMagick).
+</p></li>
+</ul>
+
+
+<br/>
+
+
 <p><b id="release200" class="anchor">2.0.0</b> 2014.03.01</p>
 <ul>
 
@@ -180,16 +204,16 @@ You can upgrade only one client or server to check changes.</li>
 </p>
 <ul>
 <li><p>
-	Server hung when a job with no blocks sent.
+	server hung when a job with no blocks sent.
 </p></li>
 <li><p>
-	Change job bock (tasks) command (working folder) change from Watch GUI.
+	change job bock (tasks) command (working folder) change from watch gui.
 </p></li>
 <li><p>
-	Post command ignore when job json file send with afcmd.
+	post command ignore when job json file send with afcmd.
 </p></li>
 <li><p>
-	Change any user parameter resets jobs solving method to 'order'.
+	change any user parameter resets jobs solving method to 'order'.
 </p></li>
 </ul>
 
