@@ -16,8 +16,14 @@ You can upgrade only one client or server to check changes.</li>
 <br/>
 
 
-<p><b id="release201" class="anchor">2.0.1</b> 2014.04.04</p>
+<p><b id="release201" class="anchor">2.0.1</b> 2014.04.10</p>
 <ul>
+<li><p>
+	RULES: Convert multiply selected movies or sequences to other movies or sequences.
+	You can change codec, fps, resolution and
+		convert DPX-es to JPEG-s with a specified colorspace and quality, for example.
+	Such calculations will be processed on a farm via Afanasy.
+</p></li>
 <li><p>
 	Movie Maker: AV conversion tool is configurable.
 	You can set a custom command or executable path.
@@ -31,17 +37,15 @@ You can upgrade only one client or server to check changes.</li>
 		<li>Server configuration and farm setup can be reloaded via JSON message.</li>
 	</ul>
 </p></li>
-<li><p>
-</p></li>
 </ul>
 <p>
 	Bugs Fixed:
 </p>
 <ul>
 <li><p>
-	Movie Maker and RULES thumbnails: EXR and DPX colorspace problem is solved,
-	but you need at least ImageMagick version <kbd>6.8.8-8</kbd> for it
-	(EXR bug was in CGRU, DPX bug was in ImageMagick).
+	Movie Maker and RULES thumbnails: EXR and DPX colorspace problem is solved.
+	<br>You need at least <kbd>ImageMagick >= 6.8.8-8</kbd> version for it.
+	<br>EXR bug was in CGRU, DPX bug was in ImageMagick.
 </p></li>
 <li><p>
 	Afanasy Web GUI: Sorting and filtering parameters storing.

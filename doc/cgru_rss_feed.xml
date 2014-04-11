@@ -5,10 +5,23 @@
 	<atom:link href="http://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Sun, 2 Mar 2014 00:00:00 GMT</pubDate>
-	<lastBuildDate>Sun, 2 Mar 2014 00:00:00 GMT</lastBuildDate>
+	<pubDate>Sun, 11 Apr 2014 00:00:00 GMT</pubDate>
+	<lastBuildDate>Sun, 11 Apr 2014 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 2.0.1 Released.</title>
+		<link>http://cgru.info/#changes_log.html#release201</link>
+		<guid>http://cgru.info/#changes_log.html#release201</guid>
+		<description>
+		    RULES: Convert multiply selected movies or sequences to other movies or sequences.
+			    You can change codec, fps, resolution and
+		        convert DPX-es to JPEG-s with a specified colorspace and quality, for example.
+			    Such calculations will be processed on a farm via Afanasy.
+			Afanasy server several bugs fixed. This is the major reason of this release.
+		</description>
+		<pubDate>Sun, 11 Apr 2014 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 2.0.0 Released.</title>
 		<link>http://cgru.info/#changes_log.html#release200</link>
