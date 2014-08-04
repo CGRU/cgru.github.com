@@ -16,7 +16,7 @@ You can upgrade only one client or server to check changes.</li>
 <br/>
 
 
-<p><b id="release202" class="anchor">2.0.2</b> 2014.07.31 <i>(not released)</i></p>
+<p><b id="release202" class="anchor">2.0.2</b> 2014.08.04 <i>(not released)</i></p>
 <ul>
 <li><p>
 	RULES:
@@ -33,11 +33,19 @@ You can upgrade only one client or server to check changes.</li>
 		GUI: Job item ETA.
 	</p></li>
 	<li><p>
-		Server: On a new job, server returns its ID.
+		Server:
+		<ul>
+		<li><p>
+			On a new job, server returns its ID.
+		</p></li>
+		<li><p>
+			Tasks solving speed limit configurable <a href="/afanasy/server#af_serve_tasks_speed" target="_blank">parameter</a>.
+		</p></li>
+		</ul>
 	</p></li>
 	<li><p>
 		Events: Server sends the entire job JSON object to render.
-		You can use any job parameter in an event a service Python class.
+		You can use any job parameter in an event Python service class.
 	</p></li>
 	</ul>
 </p></li>
