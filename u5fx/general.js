@@ -132,8 +132,8 @@ function uf_OnMouseMove(i_e)
 	var y = i_e.clientY;
 	var dx = 8;
 	var dy = 4;
-	for( var i = 0; i < 4; i++)
-	uf_units.push( uf_DrawCreateUnit( x-dx, x+dx, y-dy, y+dy, 2));
+//	for( var i = 0; i < 4; i++)
+	uf_units.push( uf_DrawCreateUnit( x-dx, x+dx, y-dy, y+dy, 4));
 //console.log( i_e.currentTarget.textContent + ' ' + i_e.currentTarget.m_shake);
 }
 function uf_OnMouseOver(i_e)
@@ -242,35 +242,36 @@ function uf_Draw( i_no_timeout )
 
 	uf_draw_cycle++;
 
-	if( uf_units.length == 0 )
+	while( uf_units.length < 100 )
 	{
-//setTimeout( uf_Draw, 500); return;
-		for( var i = 0; i < 100; i++)
-			uf_units.push( uf_DrawCreateUnit( 0, uf_body_w, 0, uf_body_h));
+		uf_units.push( uf_DrawCreateUnit( 0, uf_body_w, 0, uf_body_h));
 	}
 
-	if(( uf_draw_cycle % 100 ) == 0 )
+	if(( uf_draw_cycle % 10 ) == 0 )
 		uf_units.shift();
 
 	for( var i = 0; i < uf_units.length; i++)
 	{
 		uf_ctx.putImageData( uf_units[i].id, uf_units[i].x, uf_units[i].y );
 
-		if( Math.random() > .99 )
+		if(( Math.random() > .99 ) && ( uf_units[i].vy == 0 ))
 		{
 			uf_units[i].vx = 0;
 			uf_units[i].vy = ( Math.random() > .1 ) ? 1 : -1;
 
-			var clr = uf_back_clr_min + (uf_back_clr_max - uf_back_clr_min) * Math.random();
-			for( var c = 0; c < 4; c++)
+//			if( Math.random() > .9 )
 			{
-				uf_units[i].id.data[c*4+0] = clr;
-				uf_units[i].id.data[c*4+1] = clr;
-				uf_units[i].id.data[c*4+2] = clr;
-				uf_units[i].id.data[c*4+3] = 255;
+				var clr = uf_back_clr_min + (uf_back_clr_max - uf_back_clr_min) * Math.random();
+				for( var c = 0; c < 4; c++)
+				{
+					uf_units[i].id.data[c*4+0] = clr;
+					uf_units[i].id.data[c*4+1] = clr;
+					uf_units[i].id.data[c*4+2] = clr;
+					uf_units[i].id.data[c*4+3] = 255;
+				}
 			}
 		}
-		else if( Math.random() > .9 )
+		else if(( Math.random() > .9 ) && ( uf_units[i].vx == 0 ))
 		{
 			uf_units[i].vx = ( Math.random() > .5 ) ? 1 : -1;
 			uf_units[i].vy = 0;
