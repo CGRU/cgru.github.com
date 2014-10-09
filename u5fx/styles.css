@@ -69,21 +69,25 @@ font-size: 18px;
 }
 
 #footer div {
-margin-top: 15px;
+padding: 15px 0;
 float: left;
 width: 25%;
+-border: 1px solid #FF0;
 }
 
 #content {
 position: absolute;
-left: 0; right: 0;
+left: 0;
+right: 0;
 top: 150px;
-bottom: 5px;
+bottom: 50px;
+overflow-y: auto;
+-border: 1px solid #FF0;
 }
 
 .content {
 text-align: justify;
-padding: 20px;
+padding: 20px 40px;
 position: absolute;
 -left: -100%;
 }
