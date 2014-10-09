@@ -16,13 +16,13 @@ text-decoration: none;
 -o-transition: color .3s ease-in-out;
 -moz-transition: color .3s ease-in-out;
 -webkit-transition: color .3s ease-in-out;
-padding: 10px;
-margin: 10px;
-height: 40px;
+-padding: 10px;
+-margin: 10px;
+-height: 40px;
 -border: 1px solid #FFF;
 }
 a.visited { color: #AAAAAA; }
-a:hover   { color: #FFFFFF; text-shadow: 0 0 10px #FFF; }
+a:hover   { color: #FFFFFF; text-shadow: -10px 0 10px #FFF, 10px 0 10px #FFF;; }
 
 .navig.current a { color: #DDDDDD; }
 
@@ -44,13 +44,16 @@ margin: 40px;
 font-size: 22px;
 position: absolute;
 left: 0; right: 0; bottom: 0;
-height: 40px;
+height: 60px;
 -border: 1px solid #FF0;
 }
 
 #navigation div {
 float: left;
 width: 25%;
+margin-top: 10px;
+padding: 10px 0;
+-border: 1px solid #FF0;
 }
 
 #footer {
