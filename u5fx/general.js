@@ -1,6 +1,6 @@
 uf_default_path = 'about';
-uf_back_clr_min = 60;
-uf_back_clr_max = 70;
+uf_back_clr_min = 50;
+uf_back_clr_max = 60;
 
 var $ = function( id ) { return document.getElementById( id ); };
 
@@ -133,7 +133,8 @@ function uf_OnMouseMove(i_e)
 	var dx = 8;
 	var dy = 4;
 //	for( var i = 0; i < 4; i++)
-	uf_units.push( uf_DrawCreateUnit( x-dx, x+dx, y-dy, y+dy, 4));
+//	uf_units.push( uf_DrawCreateUnit( x-dx, x+dx, y-dy, y+dy, 4));
+	uf_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy,"clr_mult":4,"type":1}));
 //console.log( i_e.currentTarget.textContent + ' ' + i_e.currentTarget.m_shake);
 }
 function uf_OnMouseOver(i_e)
@@ -190,7 +191,7 @@ return;
 	var y = e.clientY;
 	var dx = 4;
 	var dy = 4;
-	uf_units.push( uf_DrawCreateUnit( x-dx, x+dx, y-dy, y+dy));
+	uf_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy}));
 }
 
 function uf_BodyOnClick( e )
@@ -201,41 +202,9 @@ return;
 	var dx = 40;
 	var dy = 10;
 	for( var i = 0; i < 100; i++)
-		uf_units.push( uf_DrawCreateUnit( x-dx, x+dx, y-dy, y+dy));
+		uf_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy}));
 }
 
-function uf_DrawCreateUnit( i_x_min, i_x_max, i_y_min, i_y_max, i_clr_mult)
-{
-	if( i_clr_mult == null )
-		i_clr_mult = 1;
-
-	var unit = {};
-	unit.x = i_x_min + ( i_x_max - i_x_min ) * Math.random();
-	unit.y = i_y_min + ( i_y_max - i_y_min ) * Math.random();
-
-	if( Math.random() > .5 )
-	{
-		unit.vx = ( Math.random() > .5 ) ? 1 : -1;;
-		unit.vy = 0;
-	}
-	else
-	{
-		unit.vx = 0;
-		unit.vy = ( Math.random() > .1 ) ? 1 : -1;;
-	}
-
-	unit.id = uf_ctx.createImageData(2,2);
-	var clr = uf_back_clr_min + i_clr_mult * (uf_back_clr_max - uf_back_clr_min) * Math.random();
-	for( var i = 0; i < 4; i++)
-	{
-		unit.id.data[i*4+0] = clr;
-		unit.id.data[i*4+1] = clr;
-		unit.id.data[i*4+2] = clr;
-		unit.id.data[i*4+3] = 255;
-	}
-
-	return unit;
-}
 function uf_Draw( i_no_timeout )
 {
 //console.log(uf_units.length);
@@ -244,7 +213,7 @@ function uf_Draw( i_no_timeout )
 
 	while( uf_units.length < 100 )
 	{
-		uf_units.push( uf_DrawCreateUnit( 0, uf_body_w, 0, uf_body_h));
+		uf_units.push( new Unit({"x_min":0,"x_max":uf_body_w,"y_min":0,"y_max":uf_body_h}));
 	}
 
 	if(( uf_draw_cycle % 10 ) == 0 )
@@ -252,42 +221,92 @@ function uf_Draw( i_no_timeout )
 
 	for( var i = 0; i < uf_units.length; i++)
 	{
-		uf_ctx.putImageData( uf_units[i].id, uf_units[i].x, uf_units[i].y );
-
-		if(( Math.random() > .99 ) && ( uf_units[i].vy == 0 ))
-		{
-			uf_units[i].vx = 0;
-			uf_units[i].vy = ( Math.random() > .1 ) ? 1 : -1;
-
-//			if( Math.random() > .9 )
-			{
-				var clr = uf_back_clr_min + (uf_back_clr_max - uf_back_clr_min) * Math.random();
-				for( var c = 0; c < 4; c++)
-				{
-					uf_units[i].id.data[c*4+0] = clr;
-					uf_units[i].id.data[c*4+1] = clr;
-					uf_units[i].id.data[c*4+2] = clr;
-					uf_units[i].id.data[c*4+3] = 255;
-				}
-			}
-		}
-		else if(( Math.random() > .9 ) && ( uf_units[i].vx == 0 ))
-		{
-			uf_units[i].vx = ( Math.random() > .5 ) ? 1 : -1;
-			uf_units[i].vy = 0;
-		}
-
-		uf_units[i].x += uf_units[i].vx;
-		uf_units[i].y += uf_units[i].vy;
-
-		if( uf_units[i].x > uf_body_w ) uf_units[i].x = 0;
-		if( uf_units[i].y > uf_body_h ) uf_units[i].y = 0;
-
-		if( uf_units[i].x < 0 ) uf_units[i].x = uf_body_w;
-		if( uf_units[i].y < 0 ) uf_units[i].y = uf_body_h;
+		uf_units[i].refresh();
+		uf_units[i].draw();
 	}
 
 	if( i_no_timeout !== true )
-		setTimeout( uf_Draw, 150);
+		setTimeout( uf_Draw, 100);
+}
+
+function Unit( i_args)
+{
+	if( i_args.clr_mult == null )
+		i_args.clr_mult = 1;
+
+	this.type = i_args.type;
+	this.cycle = 0;
+
+	this.x = i_args.x_min + ( i_args.x_max - i_args.x_min ) * Math.random();
+	this.y = i_args.y_min + ( i_args.y_max - i_args.y_min ) * Math.random();
+
+	if( Math.random() > .5 )
+	{
+		this.vx = ( Math.random() > .5 ) ? 1 : -1;;
+		this.vy = 0;
+	}
+	else
+	{
+		this.vx = 0;
+		this.vy = ( Math.random() > .1 ) ? 1 : -1;;
+	}
+
+	this.img = uf_ctx.createImageData(2,2);
+
+	this.setColor( i_args.clr_mult);
+}
+Unit.prototype.setColor = function( i_mult)
+{
+	if( i_mult == null ) i_mult = 1;
+	var clr = uf_back_clr_min + i_mult * (uf_back_clr_max - uf_back_clr_min) * Math.random();
+	for( var i = 0; i < 4; i++)
+	{
+		this.img.data[i*4+0] = clr;
+		this.img.data[i*4+1] = clr;
+		this.img.data[i*4+2] = clr;
+		this.img.data[i*4+3] = 255;
+	}
+}
+Unit.prototype.refresh = function()
+{
+	var to_y = .01;
+	var to_x = .1;
+	var clr = .5;
+
+	if( this.type )
+	{
+		to_x = .001 * this.cycle;
+		if( to_x > .1 ) to_x = .1;
+		clr = 1;
+	}
+
+	if(( Math.random() < to_y ) && ( this.vy == 0 ))
+	{
+		this.vx = 0;
+		this.vy = ( Math.random() > .1 ) ? 1 : -1;
+
+		if( Math.random() < clr )
+			this.setColor();
+	}
+	else if(( Math.random() < to_x ) && ( this.vx == 0 ))
+	{
+		this.vx = ( Math.random() > .5 ) ? 1 : -1;
+		this.vy = 0;
+	}
+
+	this.x += this.vx;
+	this.y += this.vy;
+
+	if( this.x > uf_body_w ) this.x = 0;
+	if( this.y > uf_body_h ) this.y = 0;
+
+	if( this.x < 0 ) this.x = uf_body_w;
+	if( this.y < 0 ) this.y = uf_body_h;
+
+	this.cycle++;
+}
+Unit.prototype.draw = function()
+{
+	uf_ctx.putImageData( this.img, this.x, this.y );
 }
 

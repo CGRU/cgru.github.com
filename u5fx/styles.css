@@ -77,28 +77,34 @@ width: 25%;
 
 #content {
 position: absolute;
-left: 0;
-right: 0;
+left: 0; right: 0;
 top: 150px;
 bottom: 50px;
-overflow-y: auto;
--border: 1px solid #FF0;
+-border: 2px solid #00F;
 }
-
 .content {
 text-align: justify;
-padding: 20px 40px;
 position: absolute;
+top: 0; bottom: 0;
 -left: -100%;
+-overflow-y: auto;
+-border: 2px solid #0F0;
 }
 .content.current {
 -left: 0;
 }
-
 .content.transition {
 -o-transition: all .6s ease-in-out;
 -moz-transition: all .6s ease-in-out;
 -webkit-transition: all .6s ease-in-out;
+}
+.scroll {
+top: 0; bottom: 0;
+left: 0; right: -20px;
+padding: 20px 40px;
+overflow-y: scroll;
+position: absolute;
+-border: 2px solid #FF0;
 }
 
 .shake {
