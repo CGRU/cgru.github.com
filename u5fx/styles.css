@@ -26,6 +26,16 @@ a:hover   { color: #FFFFFF; text-shadow: -10px 0 10px #FFF, 10px 0 10px #FFF;; }
 
 .navig.current a { color: #DDDDDD; }
 
+table { border-collapse: collapse; }
+-table.statistics td { border: 1px solid #777; border-right-width: 0; padding: 1px 8px; }
+
+table td {
+border: 2px solid rgba(255,255,255,.1);
+-border-right-width: 0;
+box-shadow: 0 0 10px rgba(0,0,0,.3) inset;
+padding: 20px 0px;
+}
+
 #header {
 position: absolute;
 left: 0; right: 0; top: 0;
