@@ -16,7 +16,7 @@ You can upgrade only one client or server to check changes.</li>
 <br/>
 
 
-<p><b id="release203" class="anchor">2.0.3</b> 2014.10.02 <i>(not released)</i></p>
+<p><b id="release203" class="anchor">2.0.3</b> 2014.10.29 <i>(not released)</i></p>
 <ul>
 <li><p>
 	RULES:
@@ -51,6 +51,11 @@ You can upgrade only one client or server to check changes.</li>
 	<li><p>
 		Afrender calls parser function on task finished in any case, even if there is no new output.
 		This may be needed if want to perform some finalizing actions in your custom parser.
+	</p></li>
+	<li><p>
+		Service python class has a function to check task process exit status value.
+		By default (in service.py) zero is considered as a success, any other as an error.
+		But now you can override this function in you custom service.
 	</p></li>
 	</ul>
 </p></li>
