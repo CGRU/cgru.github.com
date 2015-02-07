@@ -1,3 +1,4 @@
+g_site = 'cgru.info';
 g_path_prefix = '/content';
 
 g_navs = [];
@@ -13,7 +14,7 @@ var $ = function( id ) { return document.getElementById( id ); };
 function g_Init()
 {
 //g_Info('Initializing...');
-	if( document.location.host.indexOf('cgru.info') != -1 )
+	if( document.location.host.indexOf( g_site) != -1 )
 		$('sflogo').innerHTML = '<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=178692&amp;type=12" width="120" height="30" border="0" alt="SourceForge.net"/>';
 
 	document.body.onkeydown = g_OnKeyDown;
@@ -22,6 +23,15 @@ function g_Init()
 	for( var i = 0; i < navs.length; i++ )
 	{
 		if( navs[i].id == 'rules') continue;
+
+		// Replace cgru.info to local site, if needed:
+		if( document.location.host.indexOf( g_site) == -1 )
+		{
+			var href = navs[i].getAttribute('href');
+			href = href.replace( g_site, document.location.host);
+			navs[i].setAttribute('href', href);
+		}
+
 		navs[i].onclick = g_NavClicked;
 		g_navs.push( navs[i]);
 	}
@@ -69,6 +79,7 @@ function g_Navigate()
 	var path = document.location.pathname;
 	if( path == '/' ) path = '/home';
 	path = path.split('#')[0];
+
 	if( g_path == path )
 	{
 		g_GotoHash();
@@ -78,12 +89,19 @@ function g_Navigate()
 	g_path = path;
 
 //console.log('g_Navigate:' + path);
-
-//console.log( path);
 	for( var i = 0; i < g_navs.length; i++ )
 	{
-//console.log( g_navs[i].getAttribute('href').split('#')[0]);
-		if( path == g_navs[i].getAttribute('href').split('#')[0])
+		var href = g_navs[i].href.split('#')[0];
+
+		// Remove protocol and host from href:
+		if( href.indexOf('http') == 0 )
+		{
+			href = href.replace(/https?:\/\//,'');
+			href = href.replace( document.location.host,'');
+		}
+//console.log( href);
+
+		if( path == href )
 		{
 			if( g_goCount == 0 )
 				g_navs[i].scrollIntoView( false);
@@ -92,6 +110,7 @@ function g_Navigate()
 		else
 			g_navs[i].classList.remove('current');
 	}
+//console.log( path);
 
 	g_DisplayLoading();
 	GET( path);
