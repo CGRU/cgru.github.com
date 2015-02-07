@@ -140,15 +140,9 @@ padding: 20px;
 #loading {
 background: #AB7;
 border: 3px #442 solid;
-/*
 position: absolute;
-left: 42%; right: 42%;
-top: 45%; bottom: 45%;
-*/
-position: relative;
-float: right;
-top: 45%;
-right: 45%;
+top: 40%;
+left: 40%;
 box-shadow: 0px 0px 8px #000;
 border-radius: 6px;
 padding: 10px;
