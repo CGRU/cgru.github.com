@@ -317,25 +317,25 @@ job = af.Job('somejob')
 # Set job depend mask
 job.setDependMask('another_job_name')
 
-# Set maximum hosts job can run on.
-job.setMaxHosts( 15)
+# Set maximum tasks that can be executed simultaneously
+job.setMaxRunningTasks( 15)
 
-# Set job hosts mask.
+# Set job hosts mask
 job.setHostsMask('r.*')
 
-# Start job paused.
+# Start job paused
 job.offLine()
 
 # Create a block with provided name and service type
 block = af.Block('back', 'nuke')
 
-# Set block tasks working directory.
+# Set block tasks working directory
 block.setWorkingDirectory('/projects/test/nuke')
 
-# Set block tasks command.
+# Set block tasks command
 block.setCommand('nuke -i -X WriteBack -x scene.nk.tmp.nk %1,%2')
 
-# Set block tasks preview command arguments.
+# Set block tasks preview command arguments
 block.setFiles(['jpg/img.%04d.jpg'])
 
 # Set block to numeric type, providing first, last frame and frames per host
@@ -347,7 +347,7 @@ job.blocks.append( block)
 # Set command to execute by server after a job is deleted.
 job.setCmdPost('rm /projects/test/nuke/scene.nk.tmp.nk')
 
-# Send job to Afanasy server.
+# Send job to Afanasy server
 job.send()
 </pre>
 
