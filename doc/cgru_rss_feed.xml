@@ -5,17 +5,28 @@
 	<atom:link href="http://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Sun, 9 Nov 2014 00:00:00 GMT</pubDate>
-	<lastBuildDate>Sun, 9 Nov 2014 00:00:00 GMT</lastBuildDate>
+	<pubDate>Thu, 26 Feb 2015 00:00:00 GMT</pubDate>
+	<lastBuildDate>Thu, 26 Feb 2015 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 2.0.4 Released.</title>
+		<link>http://cgru.info/#changes_log.html#release204</link>
+		<guid>http://cgru.info/#changes_log.html#release204</guid>
+		<description>
+			Afanasy job block frame sequential new parameter.
+			RULES permissions to edit tasks, body, playlist, assign artists.
+			Bugfixes.
+		</description>
+		<pubDate>Thu, 26 Feb 2015 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 2.0.3 Released.</title>
 		<link>http://cgru.info/#changes_log.html#release203</link>
 		<guid>http://cgru.info/#changes_log.html#release203</guid>
 		<description>
 			Afanasy service and parser changes, WebGUI custom resources support.
-		    RULES: News filter, users(artists) roles, Nuke scene template.
+			RULES: News filter, users(artists) roles, Nuke scene template.
 			Bugfixes.
 		</description>
 		<pubDate>Sun, 9 Nov 2014 00:00:00 GMT</pubDate>
