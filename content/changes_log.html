@@ -16,19 +16,37 @@ You can upgrade only one client or server to check changes.</li>
 <br/>
 
 
-<p><b id="release210" class="anchor">2.1.0</b> 2015.02.20 (not released)</p>
+<p><b id="release204" class="anchor">2.0.4</b> 2015.02.26</p>
 <ul>
+<li><p>
+	RULES:
+	<ul>
+	<li><p>
+		Permissions to edit tasks, body, playlist, assign artists.
+	</p></li>
+	</ul>
+</p></li>
 <li><p>
 	Afanasy:
 	<ul>
 	<li><p>
-		New job block frame <a href="/afanasy/job#Sequential" target="_blank">sequential</a> parameter.
+		Job block frame <a href="/afanasy/job#Sequential" target="_blank">sequential</a> new parameter.
 	</p></li>
 	<li><p>
 		AfWatch can edit custom data for job and user.
 	</p></li>
 	<li><p>
 		You can get farm setup from afserver via json.
+	</p></li>
+	<li><p>
+		Server can save json object.
+		This can be useful to edit config or farm setup.
+	</p></li>
+	<li><p>
+		WebGUI changes, but not finished, in progress.
+		New idea is less RMB menus.
+		Actions are buttons on the left control panel,
+		parameters manipulation is on the right panel.
 	</p></li>
 	</ul>
 </p></li>
@@ -43,6 +61,9 @@ You can upgrade only one client or server to check changes.</li>
 	<ul>
 	<li><p>
 		Events service fixed (was broken in 2.0.3).
+	</p></li>
+	<li><p>
+		Server memory leak fixed. It was small and rare, probably you did not noticed it.
 	</p></li>
 	</ul>
 </p></li>

@@ -101,13 +101,13 @@ And if task has 4 shadows or 2x2 tiles you can set -4 frames per task for depend
 
 <li><b class="anchor" id="Sequential">Sequential</b> - Tasks frames sequential solving.
 By default, this parameter is 1, tasks will be solved from the first to the last one by one.
-If this parameter is -1, tasks will be solver from the last to the first one by one.
+If this parameter is -1, tasks will be solved from the last to the first one by one.
 If this parameter is greater than 1 or less than -1, 10 for example,
 tasks with every 10 frame will be solved at first, than other tasks.
 If -10, every 10 frame but from the end.
 Important thing that task frame is used for sequential calculation, not task number.
 If sequential is 0, always middle task will be solved.
-For example if frame range is 1-100, solving tasks order will be: 1,100,50,25,75 and so on.
+For example if frame range is 1-100, tasks solving order will be: 1,100,50,25,75 and so on.
 </li>
 
 <li><b class="anchor" id="SubTaskDepend">Sub Task Depend</b> - For tasks with several frames calculate sub task dependence.
@@ -115,8 +115,6 @@ Useful for simulation and render when not all frames simulated.
 </li>
 
 </ul>
-
-Read <var>Command</var> description for details.
 
 <h3>Block Editable Parameters:</h3>
 <ul>
