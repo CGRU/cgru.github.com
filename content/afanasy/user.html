@@ -16,7 +16,6 @@
 
 <h3>User Editable Parameters:</h3>
 <ul>
-<li><b class="anchor" id="Permanent">Permanent</b> - User exists in database (and his parameters are stored if server restarts). Not permanent with no jobs will be deleted.</li>
 <li><b class="anchor" id="Priority">Priority</b> - User with greater can have more running tasks number (get more render hosts).<br/>
 <code>need = pow( 1.1, priority) / (runningtasksnumber + 1.0)</code><br/>
 Each priority point gives 10% hosts bonus (running tasks number).

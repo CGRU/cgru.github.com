@@ -34,6 +34,16 @@ Afanasy Job can have one ore more blocks. Blocks have tasks. Blocks are needed t
 <li><b class="anchor" id="DependMaskGlobal">Global Depend Mask</b> - Job will wait other jobs from any user which name matches this
 <a href="/regexp" class="local_link">mask</a>.</li>
 <li><b class="anchor" id="WaitTime">Wait Time</b> - Time to wait to start a job.</li>
+
+<li><b class="anchor" id="PPA">PPA</b> - Preview Pending Approval:<br/>
+This parameter plays role only when job block(s) has a non-sequetial tasks solving.
+When PPA is turned on, job renders only non-sequetial tasks (for example just each 10 frame).
+Then job state falls into PPA and it stops to solve any tasks.
+Artist can check each 10 job frames.
+And, depending on the results, conutinue job or not.
+To continue job, you can turn PPA parameter off.
+</li>
+
 <li><b class="anchor" id="NeedOS">OS Needed</b> - A <a href="/regexp" class="local_link">mask</a> to contain render host OS name to run on it.</li>
 <li><b class="anchor" id="NeedProperties">Properties Needed</b> - A <a href="/regexp" class="local_link">mask</a> to contain render host properties to run on it. It's custom host parameter can be defined in farm description.</li>
 
