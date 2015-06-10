@@ -157,11 +157,11 @@ Time to wait to start a job.
 </div></div>
 
 <div class="parameter"><div class="caption">
-<div class="anchor" id="job_job_ppa"><b>Preview Pending Approval</b></div>
+<div class="anchor" id="job_ppa"><b>Preview Pending Approval</b></div>
 <div class="json">ppa</div>
 <div class="python">af.Job.setPPApproval()</div>
 </div><div class="description">
-This parameter plays role only when job block(s) has a non-sequential tasks solving.
+This parameter plays role only when job block(s) has a <a href="#block_sequential">non-sequential</a> tasks solving.
 When PPA is turned on, job renders only non-sequential tasks (for example just each 10 frame).
 Then job state falls into PPA and it stops to solve any tasks.
 Artist can check each 10 job frames.
