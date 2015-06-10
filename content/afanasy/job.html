@@ -1,115 +1,386 @@
-<h2>Afanasy Job</h2>
+<h2 class="anchor" id="job">Afanasy Job</h2>
 
 <p>
-Afanasy Job can have one ore more blocks. Blocks have tasks. Blocks are needed to store some same parameters for all tasks it consists of, for example all block tasks have the same working directory, capacity, service and parser type. But command is differ, of course.
+Afanasy Job can have one ore more blocks. Blocks have tasks. Blocks are needed to store some same parameters for all tasks it consists of, for example all block tasks have the same working directory, capacity, service and parser type. But commands are differ.
 </p>
 
-<h3>Job Attributes:</h3>
-<ul>
-<li><b class="anchor" id="Name">Name</b> - Each job has an unique name.
-	If new job comes to server with the name which already exists, server change it's name by adding a number.
-	Jobs dependence bases on their names and depend masks to match it.
-	Afanasy standard <a href="/regexp" class="local_link">Regular Expressions</a>.
-	The same expressions are in Pythob, PHP, Perl and other languages.</li>
-<li><b class="anchor" id="NameUser">User Name</b> - User name who has created the Job.</li>
-<li><b class="anchor" id="NameHost">Host Name</b> - Host name where job was created.</li>
-<li><b class="anchor" id="TimeCreation">Creation Time</b> - Time when the job was created.</li>
-<li><b class="anchor" id="TimeStarted">Started Time</b> - Time when the job was started (produced first task).</li>
-<li><b class="anchor" id="TimeDone">Time Done</b> - Time when the job was done (last task finished).</li>
-<li><b class="anchor" id="Description">Description</b> - Any custom description. For database statistics queries only.</li>
-<li><b class="anchor" id="Blocks">Blocks</b> - Jobs consist of block which can produce tasks.</li>
-</ul>
 
-<h3>Job Editable Parameters:</h3>
-<ul>
-<li><b class="anchor" id="Priority">Priority</b> - Jobs with greater priority run first.</li>
-<li><b class="anchor" id="MaxRunningTasks">Maximum Running Tasks</b> - Maximum number of running tasks at the same time.</li>
-<li><b class="anchor" id="MaxRunTasksPerHost">Maximum Running Tasks Per Host</b> - Maximum number of running tasks at the same time at the same host.</li>
-<li><b class="anchor" id="HostsMask">Hosts Mask</b> - Job run only on renders which host name matches this
-<a href="/regexp" class="local_link">mask</a>.</li>
-<li><b class="anchor" id="HostsMaskExclude">Exclude Hosts Mask</b> - Job can not run on renders which host name matches this
-<a href="/regexp" class="local_link">mask</a>.</li>
-<li><b class="anchor" id="DependMask">Depend Mask</b> - Job will wait other user jobs which name matches this
-<a href="/regexp" class="local_link">mask</a>.</li>
-<li><b class="anchor" id="DependMaskGlobal">Global Depend Mask</b> - Job will wait other jobs from any user which name matches this
-<a href="/regexp" class="local_link">mask</a>.</li>
-<li><b class="anchor" id="WaitTime">Wait Time</b> - Time to wait to start a job.</li>
+<h3 class="anchor" id="job_attributes">Job Attributes:</h3>
 
-<li><b class="anchor" id="PPA">PPA</b> - Preview Pending Approval:<br/>
-This parameter plays role only when job block(s) has a non-sequetial tasks solving.
-When PPA is turned on, job renders only non-sequetial tasks (for example just each 10 frame).
+
+<div class="parameters">
+	<div>
+		<div class="caption">
+			<div>Name</div>
+			<div class="json">JSON</div>
+			<div class="python">Python</div>
+		</div>
+	</div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_name"><b>Name</b></div>
+<div class="json">name</div>
+<div class="python">af.Job(str), af.Job.setName(str)</div>
+</div><div class="description">
+Each job has an unique name.
+If new job comes to server with the name which already exists, server change it's name by adding a number.
+Jobs dependences bases on their names and depend mask to match it.
+Afanasy standard <a href="/regexp" class="local_link">Regular Expressions</a>.
+The same expressions are in Pythob, PHP, Perl and other languages.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_user_name"><b>User Name</b></div>
+<div class="json">user_name</div>
+<div class="python"><i>auto</i>, af.Job.setUserName(str)</div>
+</div><div class="description">
+User name who has created the Job.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_host_name"><b>Host Name</b></div>
+<div class="json">host_name</div>
+<div class="python"><i>auto</i></div>
+</div><div class="description">
+Host name where job was created.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_time_creation"><b>Creation Time</b></div>
+<div class="json">time_creation</div>
+<div class="python"><i>auto</i></div>
+</div><div class="description">
+Time when the job was created.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_time_started"><b>Started Time</b></div>
+<div class="json">time_started</div>
+<div class="python"><i>n/a</i></div>
+</div><div class="description">
+Time when the job was started (produced the first task).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_time_done"><b>Time Done</b></div>
+<div class="json">time_done</div>
+<div class="python"><i>n/a</i></div>
+</div><div class="description">
+Time when the job was done (last task finished).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_description"><b>Description</b></div>
+<div class="json">description</div>
+<div class="python">af.Job.setDescription(str)</div>
+</div><div class="description">
+Any custom description. For database statistics queries only.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_blocks"><b>Blocks</b></div>
+<div class="json">blocks[] (array)</div>
+<div class="python">af.Job.blocks[] (array)</div>
+</div><div class="description">
+Job consists of block(s) which contain task(s).
+</div></div>
+
+</div>
+
+
+<h3 class="anchor" id="job_parameters">Job Editable Parameters:</h3>
+
+<div class="parameters">
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_priority"><b>Priority</b></div>
+<div class="json">priority</div>
+<div class="python">af.Job.setPriority(int)</div>
+</div><div class="description">
+Job with a greater priority will run first.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_max_running_tasks"><b>Maximum Running Tasks</b></div>
+<div class="json">max_running_tasks</div>
+<div class="python">af.Job.setMaxRunningTasks(int)</div>
+</div><div class="description">
+Maximum number of running tasks at the same time.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_max_running_tasks_per_host"><b>Maximum Running Tasks Per Host</b></div>
+<div class="json">max_running_tasks_per_host</div>
+<div class="python">af.Job.setMaxRunTasksPerHost(int)</div>
+</div><div class="description">
+Maximum number of running tasks at the same time at the same host.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_hosts_mask"><b>Hosts Mask</b></div>
+<div class="json">hosts_mask</div>
+<div class="python">af.Job.setHostsMask(str)</div>
+</div><div class="description">
+Job run only on renders which host name matches this <a href="/regexp" class="local_link">mask</a>.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_hosts_mask_exclude"><b>Exclude Hosts Mask</b></div>
+<div class="json">hosts_mask_exclude</div>
+<div class="python">af.Job.setHostsMaskExclude(str)</div>
+</div><div class="description">
+Job can not run on renders which host name matches this <a href="/regexp" class="local_link">mask</a>.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_job_depend_mask"><b>Depend Mask</b></div>
+<div class="json">depend_mask</div>
+<div class="python">af.Job.setDependMask(str)</div>
+</div><div class="description">
+Job will wait other user jobs which name matches this <a href="/regexp" class="local_link">mask</a>.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_depend_mask_global"><b>Global Depend Mask</b></div>
+<div class="json">depend_mask_global</div>
+<div class="python">af.Job.setDependMaskGlobal(str)</div>
+</div><div class="description">
+Job will wait other jobs from any user which name matches this <a href="/regexp" class="local_link">mask</a>.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_time_wait"><b>Wait Time</b></div>
+<div class="json">time_wait</div>
+<div class="python">af.Job.setWaitTime(seconds)</div>
+</div><div class="description">
+Time to wait to start a job.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_job_ppa"><b>Preview Pending Approval</b></div>
+<div class="json">ppa</div>
+<div class="python">af.Job.setPPApproval()</div>
+</div><div class="description">
+This parameter plays role only when job block(s) has a non-sequential tasks solving.
+When PPA is turned on, job renders only non-sequential tasks (for example just each 10 frame).
 Then job state falls into PPA and it stops to solve any tasks.
 Artist can check each 10 job frames.
 And, depending on the results, conutinue job or not.
 To continue job, you can turn PPA parameter off.
-</li>
+</div></div>
 
-<li><b class="anchor" id="NeedOS">OS Needed</b> - A <a href="/regexp" class="local_link">mask</a> to contain render host OS name to run on it.</li>
-<li><b class="anchor" id="NeedProperties">Properties Needed</b> - A <a href="/regexp" class="local_link">mask</a> to contain render host properties to run on it. It's custom host parameter can be defined in farm description.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_need_os"><b>OS Needed</b></div>
+<div class="json">need_os</div>
+<div class="python">af.Job.setNeedOS(str), af.Job.setNativeOS()</div>
+</div><div class="description">
+Job will run only on hosts which name contains this <a href="/regexp" class="local_link">mask</a>.
+Python setNativeOS function will automatically set needed os the same that it run.
+</div></div>
 
-<li><b class="anchor" id="CmdPre">Pre Command</b> - Command to execute on job registration.
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_need_properties"><b>Properties Needed</b></div>
+<div class="json">need_properties</div>
+<div class="python">af.Job.setNeedProperties(str)</div>
+</div><div class="description">
+Job will run only on hosts with custom properties contans this <a href="/regexp" class="local_link">mask</a>. 
+It's custom host parameter can be defined in farm description.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_command_pre"><b>Pre Command</b></div>
+<div class="json">command_pre</div>
+<div class="python">af.Job.setCmdPre(str)</div>
+</div><div class="description">
+Command to execute on job registration.
 Note, that this <b><i>command is executed by server</i></b>, and not from tasks working directory.
 Use absolute paths here or even transfer paths if you server has another file system than renders.<br/>
-Commands are executed in a special thread with commands queue.
-This means if somebody executes 'sleep 1000', other commands execution (and jobs registration) will be delayed on 1000 seconds (only delayed, not lost).<br/>
-Try not use Pre Command at all. You always can create one more task(block) and make other tasks(blocks) depend on it.
-</li>
-<li><b class="anchor" id="CmdPost">Post Command</b> - Command executed on job deletion.
+If somebody executes 'sleep 1000', other commands execution (and jobs registration) will be delayed on 1000 seconds (only delayed, not lost). Try not use Pre Command at all. You always can create one more task(block) and make other tasks(blocks) depend on it.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_command_post"><b>Post Command</b></div>
+<div class="json">command_post</div>
+<div class="python">af.Job.setCmdPost(str)</div>
+</div><div class="description">
+Command executed on job deletion.
 This commands are executed on render farm hosts by special system job.
 Working directory of such system task will be the first block working folder.
-</li>
-<li><b class="anchor" id="LifeTime">Life Time</b> - Maximum job age in seconds.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_time_life"><b>Life Time</b></div>
+<div class="json">time_life</div>
+<div class="python"><i>n/a</i></div>
+</div><div class="description">
+Maximum job age in seconds.
 When job age becomes greater then life time if will be automatically deleted in any case.
 It is useful for some technical jobs to prevent their amount rise.
-You can user default <a href="/afanasy/user#JobsLifeTime" class="local_link">life time</a> value for all its jobs.
-</li>
-<li><b class="anchor" id="Annotation">Annotation</b> - Job annotation. Does not influence anything. This string will be shown in GUI item.</li>
-</ul>
+You can user default <a href="/afanasy/user#user_time_life" class="local_link">life time</a> value for all its jobs.
+</div></div>
 
-<h3 class="anchor" id="State">Job State:</h3>
-<ul>
-<li><b><i> Ready                </i> <small><code> RDY </code></small></b> - Job is ready to produce a task.</li>
-<li><b><i> Running              </i> <small><code> RUN </code></small></b> - Job has running tasks.</li>
-<li><b><i> Done                 </i> <small><code> DON </code></small></b> - All job tasks are done (or some skipped).</li>
-<li><b><i> Error                </i> <small><code> ERR </code></small></b> - Job has some error tasks.</li>
-<li><b><i> Skipped              </i> <small><code> SKP </code></small></b> - Some job tasks are skipped.</li>
-<li><b><i> Waiting Dependencies </i> <small><code> WD  </code></small></b> - Job waits some other jobs.</li>
-<li><b><i> Waiting Time         </i> <small><code> WT  </code></small></b> - Job waits some time.</li>
-<li><b><i> Offline              </i> <small><code> OFF </code></small></b> - Flag to server not to solve a job.</li>
-</ul>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_annotation"><b>Annotation</b></div>
+<div class="json">annotation</div>
+<div class="python">af.Job.setAnnotation(str)</div>
+</div><div class="description">
+Job annotation. Does not influence anything. This string will be shown in a GUI item.
+</div></div>
 
-<h2>Job Block</h2>
+
+</div>
+
+<h3 class="anchor" id="job_state">Job State:</h3>
+<table class="state">
+
+<tr><td><b><i>Ready                   </i></td><td><small><code>RDY</code></small></b></td>
+<td>Job is ready to produce a task.</td></tr>
+
+<tr><td><b><i>Running                 </i></td><td><small><code>RUN</code></small></b></td>
+<td>Job has running tasks.</td></tr>
+
+<tr><td><b><i>Done                    </i></td><td><small><code>DON</code></small></b></td>
+<td>All job tasks are done (may be some skipped).</td></tr>
+
+<tr><td><b><i>Error                   </i></td><td><small><code>ERR</code></small></b></td>
+<td>Job has some error tasks.</td></tr>
+
+<tr><td><b><i>Skipped                 </i></td><td><small><code>SKP</code></small></b></td>
+<td>Some job tasks are skipped.</td></tr>
+
+<tr><td><b><i>Waiting Dependencies    </i></td><td><small><code>WD </code></small></b></td>
+<td>Job waits some other jobs to be done.</td></tr>
+
+<tr><td><b><i>Waiting Time            </i></td><td><small><code>WT </code></small></b></td>
+<td>Job waits some time to start.</td></tr>
+
+<tr><td><b><i>Preview Pending Approval</i></td><td><small><code>PPA</code></small></b></td>
+<td>Job has rendered all non-sequential tasks and waits approval.</td></tr>
+
+<tr><td><b><i>Offline                 </i></td><td><small><code>OFF</code></small></b></td>
+<td>Flag to server not to solve a job.</td></tr>
+
+</table>
+
+
+
+
+<h2 class="anchor" id="block">Job Block</h2>
 
 <p>
-Afanasy Block keeps the same parameters for all its tasks. When task is generated (when it ready to run) it take such parameters as working folder, capacity, service from block.
+Afanasy Block keeps the same parameters for all its tasks.
+When task is generated (when it ready to run) it take such parameters as working folder, capacity, service from block.
 </p>
 <p>
-Blocks can be numeric (most blocks in Afanasy are numeric). Numeric blocks does not have tasks at all. Such block keeps parameters for all its tasks itself. For example it has a command as "render -s @#@ -e @#@" where @#@ will be replaced to start and end frames for each task.
+Blocks can be numeric (most blocks in Afanasy are numeric).
+Numeric blocks does not have tasks at all.
+Such block keeps parameters for all its tasks itself.
+For example it has a command as "render -s @#@ -e @#@" where @#@ will be replaced with start and end frames for each task.
 </p>
 
-<h3>Block Attributes:</h3>
-<ul>
-<li><b class="anchor" id="Name">Name</b> - Each Block has an unique name. If new Block added to Job which the name already exists, Job change it's name by adding a number. Blocks dependence bases on their names and depend masks to match it.</li>
+<div class="parameters">
 
-<li><b class="anchor" id="TasksNum">Number of Tasks</b> - Number of tasks in block.</li>
+<h3 class="anchor" id="block_attributes">Block Attributes:</h3>
 
-<li><b class="anchor" id="Numeric">Numeric</b> - Whether the block is numeric or string.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_name"><b>Name</b></div>
+<div class="json">name</div>
+<div class="python">af.Block( name, service), af.Block.setName()</div>
+</div><div class="description">
+Each Block has an unique name.
+If new Block added to Job which the name already exists, Job change it's name by adding a number.
+Blocks dependence bases on their names and depend masks to match it.
+</div></div>
 
-<li><b class="anchor" id="FrameFirst">Frame First</b> - First block frame.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_tasks_num"><b>Number of Tasks</b></div>
+<div class="json">tasks_num</div>
+<div class="python"><i>n/a</i></div>
+</div><div class="description">
+The number of tasks in block.
+</div></div>
 
-<li><b class="anchor" id="FrameLast">Frame Last</b> - Last block frame.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_numeric"><b>Numeric</b></div>
+<div class="json">numeric</div>
+<div class="python">af.Block.setNumeric( start, end, pertask, inc)</div>
+</div><div class="description">
+Whether the block is numeric.
+</div></div>
 
-<li><b class="anchor" id="FrameInc">Frames Increment</b> - Frames increment.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_frame_first"><b>Frame First</b></div>
+<div class="json">frame_first</div>
+<div class="python">af.Block.setNumeric( start, end, pertask, inc)</div>
+</div><div class="description">
+First block frame.
+</div></div>
 
-<li><b class="anchor" id="FramesPerTask">Frames Per Task</b> - Frames per task.
-In numeric blocks used to compute command first and last frame, parser percentage.
-When block has tasks with individual commands used to compute blocks per task dependency.
-Negative values means sub-frame dependency. For example you can render tiles or generate shadows in one block
-and generate mantra 'ifd' files in another with 1 frame per task.
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_frame_last"><b>Frame Last</b></div>
+<div class="json">frame_last</div>
+<div class="python">af.Block.setNumeric( start, end, pertask, inc)</div>
+</div><div class="description">
+Last block frame.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_frames_inc"><b>Frames Increment</b></div>
+<div class="json">frames_inc</div>
+<div class="python">af.Block.setNumeric( start, end, pertask, inc)</div>
+</div><div class="description">
+In varisous softwares also knows as frames step, jump, by frame.
+You can use it if you want to render only each third frame, for example.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_frames_per_task"><b>Frames Per Task</b></div>
+<div class="json">frames_per_task</div>
+<div class="python">af.Block.setNumeric( start, end, pertask, inc),<br>af.Block.setFramesPerTask(int)</div>
+</div><div class="description">
+Number of frames in each task.
+When block is not numeric (has tasks with individual commands) used to compute blocks per task dependency.
+Negative values means sub-frame dependency.
+For example you can render tiles or generate shadows in one block and generate mantra 'ifd' files in another with 1 frame per task.
 And if task has 4 shadows or 2x2 tiles you can set -4 frames per task for depended block.
-</li>
+</div></div>
 
-<li><b class="anchor" id="Sequential">Sequential</b> - Tasks frames sequential solving.
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_depend_sub_task"><b>Sub Task Depend</b></div>
+<div class="json">depend_sub_task</div>
+<div class="python">af.Block.setDependSubTask(false/true)</div>
+</div><div class="description">
+For tasks with several frames calculate sub task dependence.
+Useful for simulation and render when not all frames simulated.
+</div></div>
+
+
+</div>
+
+<h3 class="anchor" id="block_parameters">Block Editable Parameters:</h3>
+
+<div class="parameters">
+
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_tasks_name"><b>Tasks Name</b></div>
+<div class="json">tasks_name</div>
+<div class="python">af.Block.setTasksName(str)</div>
+</div><div class="description">
+Block tasks names pattern.
+<ul>
+<li>Block - numeric, pattern - not empty: generated task will fill this pattern with its first and last frames numbers.</li>
+<li>Block - numeric, pattern - empty: tasks will take <var>first_frame - last_frame</var> name.</li>
+<li>Block - not numeric, pattern - not empty: task fill this pattern with it name.</li>
+<li>Block - not numeric, pattern - empty: task simply take its name.</li>
+</ul>
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_sequential"><b>Sequential</b></div>
+<div class="json">sequential</div>
+<div class="python">af.Block.setSequential(int)</div>
+</div><div class="description">
 By default, this parameter is 1, tasks will be solved from the first to the last one by one.
 If this parameter is -1, tasks will be solved from the last to the first one by one.
 If this parameter is greater than 1 or less than -1, 10 for example,
@@ -118,222 +389,469 @@ If -10, every 10 frame but from the end.
 Important thing that task frame is used for sequential calculation, not task number.
 If sequential is 0, always middle task will be solved.
 For example if frame range is 1-100, tasks solving order will be: 1,100,50,25,75 and so on.
-</li>
+</div></div>
 
-<li><b class="anchor" id="SubTaskDepend">Sub Task Depend</b> - For tasks with several frames calculate sub task dependence.
-Useful for simulation and render when not all frames simulated.
-</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_service"><b>Service</b></div>
+<div class="json">service</div>
+<div class="python">af.Block.setService(str)</div>
+</div><div class="description">
+The name of a block tasks service type.
+</div></div>
 
-</ul>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_parser"><b>Parser</b></div>
+<div class="json">parser</div>
+<div class="python">af.Block.setParser(int)</div>
+</div><div class="description">
+Block tasks output parser name.
+</div></div>
 
-<h3>Block Editable Parameters:</h3>
-<ul>
-<li><b class="anchor" id="block_TasksName">Tasks Name</b> - Block tasks names pattern.<br/>
-Block - numeric, pattern - not empty: generated task will fill this pattern with its first and last frames numbers<br/>
-Block - numeric, pattern - empty: tasks will take <var>first_frame - last_frame</var> name.<br/>
-Block - not numeric, pattern - not empty: task fill this pattern with it name.<br/>
-Block - not numeric, pattern - not empty: task simply take its name.<br/>
-</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_working_directory"><b>Working Directory</b></div>
+<div class="json">working_directory</div>
+<div class="python">af.Block.setWorkingDirectory(str)</div>
+</div><div class="description">
+Tasks process working directory.
+</div></div>
 
-<li><b class="anchor" id="block_TasksType">Tasks Type</b> - Block tasks service name.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_command_pre"><b>Pre Command</b></div>
+<div class="json">command_pre</div>
+<div class="python">af.Block.setCmdPre(str)</div>
+</div><div class="description">
+Like job "Pre Command" but for each block.
+</div></div>
 
-<li><b class="anchor" id="block_ParserType">Parser Type</b> - Block tasks output parser name.</li>
-
-<li><b class="anchor" id="block_WorkingDirectory">Working Directory</b> - Tasks process working directory.</li>
-
-<li><b class="anchor" id="block_CmdPre">Pre Command</b> - Like <b>Job Pre Command</b> but for each block.</li>
-<li><b class="anchor" id="block_CmdPost">Post Command</b> - Like <b>Job Post Command</b> but for each block.
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_command_post"><b>Post Command</b></div>
+<div class="json">command_post</div>
+<div class="python">af.Block.setCmdPost(str)</div>
+</div><div class="description">
+Like job "Post Command" but for each block.
 Working directory of this command will be this block working folder.
-</li>
+</div></div>
 
-<li><b class="anchor" id="block_Capacity">Capacity</b> - tasks capacity (task checks available capacity on render to run on it, and takes its capacity value). Capacity can be static (by default) and variable - base value and coefficients:<br/>
-<b>Capacity Minimum Coefficient</b> - minimum Capacity multiplier.<br/>
-<b>Capacity Maximum Coefficient</b> - maximum Capacity multiplier.<br/>
-Block can generate tasks with capacity*coefficient to fit free render capacity. Task commands will be searched for the special string to replace it with capacity coefficient number. This command replacement performs render by service python class instance. Any service (tasks type) can describe own rule for this replacement by implementation of base class method. By default, base <kbd>service</kbd> class performs <code>command.replace( '@AF_CAPACITY@', str( capacity))</code>.<br/>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_capacity"><b>Capacity</b></div>
+<div class="json">capacity</div>
+<div class="python">af.Block.setCapacity(str)</div>
+</div><div class="description">
+Task checks available capacity on render to run on it.
+Capacity can be static (by default) and variable - base value and coefficients:<br/>
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_variable_capacity"><b>Variable Capacity</b></div>
+<div class="json">capacity_coeff_min<br>capacity_coeff_max</div>
+<div class="python">af.Block.setVariableCapacity(min, max)</div>
+</div><div class="description">
+Block can generate tasks with capacity*coefficient to fit free render capacity.
+Task commands will be searched for the special string to replace it with capacity coefficient number.
+This command replacement performs render by service python class instance.
+Any service can describe own rule for this replacement by implementation of base class method.
+By default, base <kbd>service</kbd> class performs <code>command.replace('@AF_CAPACITY@', str( capacity))</code>.<br/>
 You can specify number of CPUs to use for your applications (if it supports it by command line arguments).
-</li>
+</div></div>
 
-<li>
-<b class="anchor" id="block_MultiHost">Multi Host Tasks</b> - block tasks can run on several hosts (prman <i>netrender</i>, houdini <i>mantra</i> remote rendering).<br/>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_multi_host_tasks"><b>Multi Host Tasks</b></div>
+<div class="json">multihost_min<br>multihost_max<br>multihost_max_wait<br>multihost_master_on_slave<br>multihost_service<br>multihost_service_wait</div>
+<div class="python">af.Block.setMultiHost(min, max, wait, master_on_slave=False, service=None, service_wait=-1)</div>
+</div><div class="description">
+Multi Host Tasks</b> - block tasks can run on several hosts (prman <i>netrender</i>, houdini <i>mantra</i> remote rendering).<br/>
 <b>Multi Hosts Minimum</b> - Minimum number of hosts task can run on.<br/>
 <b>Multi Hosts Maximum</b> - Maximum number of hosts task can run on.<br/>
 <b>Multi Hosts Maximum Wait Time</b> - Time in seconds to wait for maximum hosts.<br/>
+<b>Multi Hosts Same Host Master</b> - Master host will be in slaves list. For example if task took 'r00', 'r01', 'r02', 'r03', 'r04' hosts master command will be executed on 'r00' and 'r00' will be in slaves list too. If tasks has multihost service you can't enable this parameter, because only one command can be executed master or slave.<br/>
 <b>Multi Hosts Service</b> - Command to execute on slaves hosts, if it is empty, no service will be executed.<br/>
 <b>Multi Hosts Service Wait Time</b> - Time in seconds to wait for master execution after slaves execution.<br/>
-<b>Multi Hosts Same Host Master</b> - Master host will be in slaves list. For example if task took 'r00', 'r01', 'r02', 'r03', 'r04' hosts master command will be executed on 'r00' and 'r00' will be in slaves list too. If tasks has multihost service you can't enable this parameter, because only one command can be executed master or slave.<br/>
-</li>
+</div></div>
 
-<li><b class="anchor" id="block_MaxRunningTasks">Maximum Running Tasks</b> - maximum number of tasks block can run on the same time.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_"><b>Maximum Running Tasks</b></div>
+<div class="json">max_running_tasks</div>
+<div class="python">af.Block.setMaxRunningTasks(int)</div>
+</div><div class="description">
+Maximum number of tasks block can run on the same time.
+</div></div>
 
-<li><b class="anchor" id="block_MaxRunTasksPerHost">Maximum Running Tasks Per Host</b> - maximum number of tasks block can run on the same time on the same host.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_max_running_tasks_per_host"><b>Maximum Running Tasks Per Host</b></div>
+<div class="json">max_running_tasks_per_host</div>
+<div class="python">af.Block.setMaxRunTasksPerHost(int)</div>
+</div><div class="description">
+Maximum number of tasks block can run on the same time on the same host.
+</div></div>
 
-<li><b class="anchor" id="Hblock_ostsMask">Hosts Mask</b> - Block run only on Renders which host name matches this <a href="/regexp" class="local_link">mask</a>.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_hosts_mask"><b>Hosts Mask</b></div>
+<div class="json">hosts_mask</div>
+<div class="python">af.Block.setHostsMask(str)</div>
+</div><div class="description">
+Block run only on Renders which host name matches this <a href="/regexp" class="local_link">mask</a>.
+</div></div>
 
-<li><b class="anchor" id="block_HostsMaskExclude">Exclude Hosts Mask</b> - Block can not run on renders which host name matches this <a href="/regexp" class="local_link">mask</a>.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_hosts_mask_exclude"><b>Exclude Hosts Mask</b></div>
+<div class="json">hosts_mask_exclude</div>
+<div class="python">af.Block.setHostsMaskExclude(str)</div>
+</div><div class="description">
+Block can not run on renders which host name matches this <a href="/regexp" class="local_link">mask</a>.
+</div></div>
 
-<li><b class="anchor" id="block_DependMask">Depend Mask</b> - Block will wait previous job blocks which name matches this <a href="/regexp" class="local_link">mask</a>.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_depend_mask"><b>Depend Mask</b></div>
+<div class="json">depend_mask</div>
+<div class="python">af.Block.setDependMask(str)</div>
+</div><div class="description">
+Block will wait previous job blocks which name matches this <a href="/regexp" class="local_link">mask</a>.
+</div></div>
 
-<li><b class="anchor" id="block_TasksDependMask">Tasks Depend Mask</b> - Block task will wait other job blocks task which name matches this <a href="/regexp" class="local_link">mask</a>.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_tasks_depend_mask"><b>Tasks Depend Mask</b></div>
+<div class="json">tasks_depend_mask</div>
+<div class="python">af.Block.setTasksDependMask(str)</div>
+</div><div class="description">
+Block task will wait other job blocks task which name matches this <a href="/regexp" class="local_link">mask</a>.
+</div></div>
 
-<li><b class="anchor" id="block_ErrorRetries">Error Retries</b> - Number of task errors to retry it automatically. Value '-1' means take this value from user settings.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_errors_retries"><b>Error Retries</b></div>
+<div class="json">errors_retries</div>
+<div class="python">af.Block.setErrorsRetries(int)</div>
+</div><div class="description">
+Number of task errors to retry it automatically.
+Value '-1' means take this value from user settings.
+</div></div>
 
-<li><b class="anchor" id="block_ErrorsAvoidHost">Errors Avoid Host</b> - Maximum number of errors on same host. Block begins to avoid render host name if number of errors on it greater or equal this value. Value less then '1' means no limit. Value '-1' means take this value from user settings.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_errors_avoid_host"><b>Errors Avoid Host</b></div>
+<div class="json">errors_avoid_host</div>
+<div class="python">af.Block.setErrorsAvoidHost(int)</div>
+</div><div class="description">
+Maximum number of errors on same host.
+Block begins to avoid render host name if number of errors on it greater or equal this value.
+Value less then '1' means no limit.
+Value '-1' means take this value from user settings.
+</div></div>
 
-<li><b class="anchor" id="block_ErrorsTaskSameHost">Errors Task Same Host</b>
- - Maximum number of errors for task on same host.
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_"><b>Errors Task Same Host</b></div>
+<div class="json">errors_task_same_host</div>
+<div class="python">af.Block.setErrorsTaskSameHost(int)</div>
+</div><div class="description">
+Maximum number of errors for task on same host.
 Task begin to avoid this host name of errors on it greater or equal this value.
-Value less then '1' means no limit. Value '-1' means take this value from user settings.</li>
+Value less then '1' means no limit.
+Value '-1' means take this value from user settings.
+</div></div>
 
-<li><b class="anchor" id="block_ErrorsForgiveTime">Errors Forgive Time</b>
- - Time form last error to forgive error host (reset it's errors count).
-Value less then '1' means no forgive. Value '-1' means take this value from user settings.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_errors_forgive_time"><b>Errors Forgive Time</b></div>
+<div class="json">errors_forgive_time</div>
+<div class="python">af.Block.setErrorsForgiveTime(int)</div>
+</div><div class="description">
+Time form last error to forgive error host (reset it's errors count).
+Value less then '1' means no forgive.
+Value '-1' means take this value from user settings.
+</div></div>
 
-<li><b class="anchor" id="block_TasksMaxRunTime">Tasks Maximum Run Time</b> - Tasks maximum time to run. After this time task will be set to error ( and may be automatically restarted according to <var>Error Retries</var> value). If this value equals zero, no task run time limit exists.
-<br/><br/></li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_tasks_max_run_time"><b>Tasks Maximum Run Time</b></div>
+<div class="json">tasks_max_run_time</div>
+<div class="python">af.Block.setTasksMaxRunTime(int)</div>
+</div><div class="description">
+Tasks maximum time to run.
+After this time task will be set to error ( and may be automatically restarted according to <var>Error Retries</var> value).
+If this value equals zero, no task run time limit exists.
+</div></div>
 
-<li><b class="anchor" id="block_NeedPower">Need Power</b> - Minimum render host power needed. It's custom host parameter can be defined in farm description.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_need_power"><b>Need Power</b></div>
+<div class="json">need_power</div>
+<div class="python">af.Block.setNeedPower(int)</div>
+</div><div class="description">
+Minimum render host power needed.
+It's custom host parameter can be defined in farm description.
+</div></div>
 
-<li><b class="anchor" id="block_NeedMemory">Need Memory</b> - Minimum render host free memory needed.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_need_memory"><b>Need Memory</b></div>
+<div class="json">need_memory</div>
+<div class="python">af.Block.setNeedMemory(int)</div>
+</div><div class="description">
+Minimum render host free memory needed.
+</div></div>
 
-<li><b class="anchor" id="block_NeedHDD">Need HDD</b> - Minimum render host free disk space needed.</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_need_hdd"><b>Need HDD</b></div>
+<div class="json">need_hdd</div>
+<div class="python">af.Block.setNeedHDD()</div>
+</div><div class="description">
+Minimum render host free disk space needed.
+</div></div>
 
-<li><b class="anchor" id="block_NeedProperties">Need Properties</b> - A <a href="/regexp" class="local_link">mask</a> to much render host properties to run on it. It's custom host parameter can be defined in farm description.
-<br/><br/>
-</li>
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_need_properties"><b>Need Properties</b></div>
+<div class="json">need_properties</div>
+<div class="python">af.Block.setNeedProperties(str)</div>
+</div><div class="description">
+A <a href="/regexp" class="local_link">mask</a> to much render host properties to run on it.
+It's custom host parameter can be defined in farm description.
+</div></div>
 
-<li><b class="anchor" id="block_Command">Command</b> - Tasks command pattern.
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_"><b>Command</b></div>
+<div class="json">command</div>
+<div class="python">af.Block.setCommand(str)</div>
+</div><div class="description">
+Tasks command pattern.
 When block produces a task it calculates an unique command from this pattern and other parameters,
 depend on block type - numeric or string, replacing <kbd>@#@</kbd> pattern with a number.
 Padding is specified by the number of "/" symbols between "@" symbols.
-<ul>
-<li>
-<p>String: block seek for "@#@" string in command and replace it by another string get from <var>Task Command</var>.
-</p>
-<p>Example:</p>
 <p>
-command = <kbd>myrender some.scene -camera @#@</kbd><br />
-arguments = <kbd>['sun','sky','front','side','bottom']</kbd><br />
-Result:<br />
-1st task command: <kbd>myrender some.scene -camera sun</kbd><br />
-2nd task command: <kbd>myrender some.scene -camera sky</kbd><br />
-3rd task command: <kbd>myrender some.scene -camera front</kbd><br />
-...<br />
-</p><p>
-If block command is empty <var>Task Command</var> is simply used.
-</p></li>
-<li>
-<p>
-Numeric: block calculates first and last frame for the task according to task number,
-<var>Frame First</var>, <var>Frame Last</var>, <var>Frame per Host</var> and <var>Frame Increment</var> values.
-Each of <kbd>@#@</kbd> pairs will be replaced with the start and end numbers.
+	String: block seek for "@#@" string in command and replace it by another string get from <var>Task Command</var>.
 </p>
 <p>
-Examples:
+	Example:
 </p>
 <p>
-command = <kbd>myrender some.scene -s @#@ -e @#@</kbd><br />
-Frame First = <kbd>1</kbd><br />
-Frame Last = <kbd>10</kbd><br />
-Frame per Host = <kbd>4</kbd><br />
-Result:<br />
-1st task command: <kbd>myrender some.scene -s 1 -e 4</kbd><br />
-2nd task command: <kbd>myrender some.scene -s 5 -e 8</kbd><br />
-3rd task command: <kbd>myrender some.scene -s 9 -e 10</kbd><br />
+	command = <kbd>myrender some.scene -camera @#@</kbd><br />
+	arguments = <kbd>['sun','sky','front','side','bottom']</kbd><br />
+	Result:<br />
+	1st task command: <kbd>myrender some.scene -camera sun</kbd><br />
+	2nd task command: <kbd>myrender some.scene -camera sky</kbd><br />
+	3rd task command: <kbd>myrender some.scene -camera front</kbd><br />
+	...<br />
 </p>
 <p>
-command = <kbd>myrender something.@####@.obj</kbd><br />
-Frame First = <kbd>1</kbd><br />
-Frame Last = <kbd>10</kbd><br />
-Frame per Host = <kbd>1</kbd><br />
-Result:<br />
-1st task command: <kbd>myrender something.0001.obj</kbd><br />
-2nd task command: <kbd>myrender something.0002.obj</kbd><br />
-...<br />
-last task command: <kbd>myrender something.0010.obj</kbd><br />
+	If block command is empty <var>Task Command</var> is simply used.
 </p>
 <p>
-You can check numbers placing by <code><a href="/afanasy/cmd" class="local_link">afcmd</a> num [command] [number1] [number2]</code> command.
+	Numeric: block calculates first and last frame for the task according to task number,
+	<var>Frame First</var>, <var>Frame Last</var>, <var>Frame per Host</var> and <var>Frame Increment</var> values.
+	Each of <kbd>@#@</kbd> pairs will be replaced with the start and end numbers.
 </p>
-</li>
-</ul>
-</li>
-<li>
-<p><b class="anchor" id="block_Files">Files</b> - File(s) pattern.
-Each task can have result file(s) pattern.
-Result file name will be constructed from this pattern by the same method as described before.
-Some another application, for example watch GUI,
-can execute your favorite image viewer <code>program [file]</code> and preview result frame.</p>
+<p>
+	Examples:
+</p>
+<p>
+	command = <kbd>myrender some.scene -s @#@ -e @#@</kbd><br />
+	Frame First = <kbd>1</kbd><br />
+	Frame Last = <kbd>10</kbd><br />
+	Frame per Host = <kbd>4</kbd><br />
+	Result:<br />
+	1st task command: <kbd>myrender some.scene -s 1 -e 4</kbd><br />
+	2nd task command: <kbd>myrender some.scene -s 5 -e 8</kbd><br />
+	3rd task command: <kbd>myrender some.scene -s 9 -e 10</kbd><br />
+</p>
+<p>
+	command = <kbd>myrender something.@####@.obj</kbd><br />
+	Frame First = <kbd>1</kbd><br />
+	Frame Last = <kbd>10</kbd><br />
+	Frame per Host = <kbd>1</kbd><br />
+	Result:<br />
+	1st task command: <kbd>myrender something.0001.obj</kbd><br />
+	2nd task command: <kbd>myrender something.0002.obj</kbd><br />
+	...<br />
+	last task command: <kbd>myrender something.0010.obj</kbd><br />
+</p>
+<p>
+	You can check numbers placing by <code><a href="/afanasy/cmd" class="local_link">afcmd</a> num [command] [number1] [number2]</code> command.
+</p>
+</div></div>
+
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_files"><b>Files</b></div>
+<div class="json">files[]</div>
+<div class="python">af.Block.setFiles(str[])</div>
+</div><div class="description">
+<p>
+	Each task can have result file(s) pattern.
+	Result file name will be constructed from this pattern by the same method as described before.
+	Some another application, for example watch GUI,
+	can execute your favorite image viewer <code>program [file]</code> and preview result frame.
+</p>
+<p>
+	Python function will extend an existing files array.
+</p>
 <p>Example (numeric):</p>
 <p>
-Block files = <kbd>images/back.@####@.exr</kbd><br />
-Preview command = <kbd>nuke -v @ARG@</kbd><br />
-Result for 57 frame: <kbd>nuke -v images/back.0057.exr</kbd><br />
-</p><p>
-In Watch program will be executed in block working directory
+	Block files = <kbd>images/back.@####@.exr</kbd><br />
+	Preview command = <kbd>nuke -v @ARG@</kbd><br />
+	Result for 57 frame: <kbd>nuke -v images/back.0057.exr</kbd><br />
+</p>
+<p>
+	In Watch program will be executed in block working directory
 </p>
 <p>Example (not numeric):</p>
 <p>
-Block files = <kbd>images/back.@#@.exr</kbd><br />
-Task files = <kbd>0057</kbd><br />
-Preview command = <kbd>nuke -v @ARG@</kbd><br />
-Result: <kbd>nuke -v images/back.0057.exr</kbd><br />
+	Block files = <kbd>images/back.@#@.exr</kbd><br />
+	Task files = <kbd>0057</kbd><br />
+	Preview command = <kbd>nuke -v @ARG@</kbd><br />
+	Result: <kbd>nuke -v images/back.0057.exr</kbd><br />
 </p>
 <p>
-Task can have several files for preview, for example when several render passes or on a stereo images pair.
+	Task can have several files for preview, for example when several render passes or on a stereo images pair.
 </p>
 <p>
-If block is not numeric and block view command is empty only task view command is used.
+	If block is not numeric and block view command is empty only task view command is used.
 </p>
 <p>
-In Watch program will be executed in block working directory.
+	In Watch program will be executed in block working directory.
 </p>
-</li>
-</ul>
+</div></div>
 
-<h3>Block State:</h3>
-<ul>
-<li><b><i> Ready                </i> <small><code> RDY </code></small></b> - Block is ready to produce a task.</li>
-<li><b><i> Running              </i> <small><code> RUN </code></small></b> - Block has running tasks.</li>
-<li><b><i> Done                 </i> <small><code> DON </code></small></b> - All block tasks are done (or some skipped).</li>
-<li><b><i> Error                </i> <small><code> ERR </code></small></b> - Block has some error tasks.</li>
-<li><b><i> Skipped              </i> <small><code> SKP </code></small></b> - Some block tasks are skipped.</li>
-<li><b><i> Waiting Dependencies </i> <small><code> WD  </code></small></b> - Block waits some other blocks.</li>
-</ul>
+</div>
 
 
-<h2>Job Block Task</h2>
+<h3 class="anchor" id="block_state">Block State:</h3>
+<table class="state">
+<tr><td><b><i>Ready               </i></b></td><td><b><small><code>RDY</code></small></b></td><td>Block is ready to produce a task.</td></tr>
+<tr><td><b><i>Running             </i></b></td><td><b><small><code>RUN</code></small></b></td><td>Block has running tasks.</td></tr>
+<tr><td><b><i>Done                </i></b></td><td><b><small><code>DON</code></small></b></td><td>All block tasks are done (or some skipped).</td></tr>
+<tr><td><b><i>Error               </i></b></td><td><b><small><code>ERR</code></small></b></td><td>Block has some error tasks.</td></tr>
+<tr><td><b><i>Skipped             </i></b></td><td><b><small><code>SKP</code></small></b></td><td>Some block tasks are skipped.</td></tr>
+<tr><td><b><i>Waiting Dependencies</i></b></td><td><b><small><code>WD </code></small></b></td><td>Block waits some other blocks.</td></tr>
+</table>
 
-<h3>Task Attributes:</h3>
-Tasks are not stored anywhere. Tasks are generated by blocks. You can't change task, change block attributes to change generated tasks.
-<ul>
-<li><b class="anchor" id="task_Name">Name</b> - Task name. Generated, if block is numeric.</li>
-<li><b class="anchor" id="task_WorkingDirectory">Working Directory</b> - Path where to execute the command (and preview command).</li>
-<li><b class="anchor" id="task_Command">Command</b> - Command to execute.</li>
-<li><b class="anchor" id="task_ParserType">Parser Type</b> - Parser type name - method to parse command output and calculate task running progress.</li>
-<li><b class="anchor" id="task_Files">Files</b> - (Optional, may be empty) Files for preview.</li>
-</ul>
 
-<h3>Task Progress:</h3>
-<ul>
-<li><b class="anchor" id="task_StartTime">Start Time</b> - Time when task was started (last start).</li>
-<li><b class="anchor" id="task_FinishTime">Finish Time</b> - Time when task was finished (last finish).</li>
-<li><b class="anchor" id="task_StartCount">Start Count</b> - Number of times task has started (it can be manually or automatically restarted).</li>
-<li><b class="anchor" id="task_Percent">Percent</b> - Running task progress percentage.</li>
-<li><b class="anchor" id="task_Frame">Frame</b> - Running frame for multiframe tasks which can be produced by numeric blocks when frames per render parameter &gt; 1.</li>
-<li><b class="anchor" id="task_PercentFrame">Percent Frame</b> - Running percentage of current running frame for multiframe tasks which can be produced by numeric blocks when frames per render parameter &gt; 1.</li>
-<li><b class="anchor" id="task_Errors">Errors</b> - Number of times task produced an error.</li>
-<li><b class="anchor" id="task_ErrorHosts">Error Hosts</b> - List of hosts and number of times where task was finished with error.</li>
-</ul>
+<h2 class="anchor" id="task">Job Block Task</h2>
 
-<h3>Task State:</h3>
-<ul>
-<li><b><i> Read              </i> <small><code> RDY </code></small></b> - Task can be executed.</li>
-<li><b><i> Running           </i> <small><code> RUN </code></small></b> - Task is running.</li>
-<li><b><i> Done              </i> <small><code> DON </code></small></b> - Task is done.</li>
-<li><b><i> Error             </i> <small><code> ERR </code></small></b> - Task finished with error or failed to start.</li>
-<li><b><i> Skipped           </i> <small><code> SKP </code></small></b> - Task skipped.</li>
-<li><b><i> Warning           </i> <small><code> WRN </code></small></b> - Warning from <a href="/afanasy/parsers" class="local_link">parser</a>.</li>
-<li><b><i> Parser Error      </i> <small><code> PER </code></small></b> - Error from <a href="/afanasy/parsers" class="local_link">parser</a>.</li>
-<li><b><i> Parser Bad Result </i> <small><code> PBR </code></small></b> - Bad result from <a href="/afanasy/parsers" class="local_link">parser</a>.</li>
-</ul>
+<h3 class="anchor" id="task_attributes">Task Attributes:</h3>
+If block is numeric all this attributes are generated on the fly by block.
+
+<div class="parameters">
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_name"><b>Name</b></div>
+<div class="json">name</div>
+<div class="python">af.Task(str)</div>
+</div><div class="description">
+Task name.
+Generated, if block is numeric.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_command"><b>Command</b></div>
+<div class="json">command</div>
+<div class="python">af.Block.setCommand(str)</div>
+</div><div class="description">
+Command to execute.
+Generated, if block is numeric.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_files"><b>Files</b></div>
+<div class="json">files[]</div>
+<div class="python">af.Block.setFiles(str[])</div>
+</div><div class="description">
+Files for preview.
+Generated, if block is numeric.
+</div></div>
+
+</div>
+
+
+<h3 class="anchor" id="task_progress">Task Progress:</h3>
+
+<div class="parameters">
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_tst"><b>Start Time</b></div>
+<div class="json">tst</div>
+<div class="python"><i>(n/a)</i></div>
+</div><div class="description">
+Time when task was started (last start).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_tdn"><b>Done Time</b></div>
+<div class="json">tdn</div>
+<div class="python"><i>(n/a)</i></div>
+</div><div class="description">
+Time when task was done (last finish).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_str"><b>Starts Count</b></div>
+<div class="json">str</div>
+<div class="python"><i>(n/a)</i></div>
+</div><div class="description">
+Number of times task has started (it can be manually or automatically restarted).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_per"><b>Percent</b></div>
+<div class="json">per</div>
+<div class="python"><i>(n/a)</i></div>
+</div><div class="description">
+Running task progress percentage.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_frm"><b>Frame</b></div>
+<div class="json">frm</div>
+<div class="python"><i>(n/a)</i></div>
+</div><div class="description">
+Running frame for multiframe tasks which can be produced by numeric blocks when frames per render parameter &gt; 1.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_pfr"><b>Percent Frame</b></div>
+<div class="json">pfr</div>
+<div class="python"><i>(n/a)</i></div>
+</div><div class="description">
+Running percentage of current running frame for multiframe tasks which can be produced by numeric blocks when frames per render parameter &gt; 1.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_err"><b>Errors Count</b></div>
+<div class="json">err</div>
+<div class="python"><i>(n/a)</i></div>
+</div><div class="description">
+Number of times the task produced an error.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_error_hosts"><b>Error Hosts</b></div>
+<div class="json"><i>(n/a)</i></div>
+<div class="python"><i>(n/a)</i></div>
+</div><div class="description">
+List of hosts and number of times where task was finished with error.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_hst"><b>Host Name</b></div>
+<div class="json">hst</div>
+<div class="python"><i>(n/a)</i></div>
+</div><div class="description">
+Host name where the task was started last time.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="task_act"><b>Activity</b></div>
+<div class="json">act</div>
+<div class="python"><i>(n/a)</i></div>
+</div><div class="description">
+Last task activity.
+This is a sting to informate user only, does not influence anything.
+Activity can be parsed from task process output by Python parser class.
+</div></div>
+
+</div>
+
+<h3 class="anchor" id="task_state">Task State:</h3>
+<table class="state">
+<tr><td><b><i>Read             </i></b></td><td><b><small><code>RDY</code></small></b></td><td>Task can be executed.<td></tr>
+<tr><td><b><i>Running          </i></b></td><td><b><small><code>RUN</code></small></b></td><td>Task is running.<td></tr>
+<tr><td><b><i>Done             </i></b></td><td><b><small><code>DON</code></small></b></td><td>Task is done.<td></tr>
+<tr><td><b><i>Error            </i></b></td><td><b><small><code>ERR</code></small></b></td><td>Task finished with error or failed to start.<td></tr>
+<tr><td><b><i>Skipped          </i></b></td><td><b><small><code>SKP</code></small></b></td><td>Task skipped.<td></tr>
+<tr><td><b><i>Warning          </i></b></td><td><b><small><code>WRN</code></small></b></td><td>Warning from <a href="/afanasy/parsers" class="local_link">parser</a>.<td></tr>
+<tr><td><b><i>Parser Error     </i></b></td><td><b><small><code>PER</code></small></b></td><td>Error from <a href="/afanasy/parsers" class="local_link">parser</a>.<td></tr>
+<tr><td><b><i>Parser Bad Result</i></b></td><td><b><small><code>PBR</code></small></b></td><td>Bad result from <a href="/afanasy/parsers" class="local_link">parser</a>.<td></tr>
+</table>
 
