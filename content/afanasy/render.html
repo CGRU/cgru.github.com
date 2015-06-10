@@ -53,91 +53,362 @@ $ afrender
 
 
 
-<h2 id="attributes" class="anchor">Render Attributes:</h2>
-<ul>
-<li><b class="anchor" id="Name">Name</b> - Each render has an unique name.
+<h2 id="render_attributes" class="anchor">Render Attributes:</h2>
+
+<div class="parameters">
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_name"><b>Name</b></div>
+<div class="json">name</div>
+</div><div class="description">
+Each render has an unique name.
 If new render comes to server with the name which already exists, server will not register it.
-Users and jobs hosts masks (huntgroup) are based on render names.
-and <a href="/regexp" class="local_link">Regular Expressions</a> (they are Perl-like).
-<br/>
+Users and jobs hosts masks are based on render names and 
+<a href="/regexp" class="local_link">Regular Expressions</a> (they are Perl-like).<br/>
 To launch another render on the same host use <kbd>AF_HOSTNAME</kbd> environment variable to override render name.
-<br/><br/></li>
-<li><b class="anchor" id="Address">Address</b> - IP address and port that render listening, if online.
-<li><b class="anchor" id="NetworkInterfaces">Network Interfaces</b> - Network interfaces information (name, mac and ips).
-<br/><br/></li>
-<li><b class="anchor" id="TimeLaunch">Launch Time</b> - Time the application was launched.</li>
-<li><b class="anchor" id="TimeRegister">Registration Time</b> - Time the render was registered on server.</li>
-<li><b class="anchor" id="TimeUpdate">Last Update Time</b> - Last time the render has update its resources usage.
-<li><b class="anchor" id="WOLOprerationTime">WOL Operation Time</b> - Time the last any WOL operation was performed.
-<br/><br/></li>
-<li><b class="anchor" id="Tasks">Tasks</b> - Running tasks number and some its attributes (user, job, etc.).</li>
-<li><b class="anchor" id="CapacityUsed">Capacity Used</b> - Capacity used by running tasks.</li>
-</ul>
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_address"><b>Address</b></div>
+<div class="json">address.family<br>address.ip<br>address.port</div>
+</div><div class="description">
+IP address with family (IPv4 or IPv6) and port that render listening, if online.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_netifs"><b>Network Interfaces</b></div>
+<div class="json">netifs[]</div>
+</div><div class="description">
+Network interfaces information (name, mac and ips).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_time_launch"><b>Launch Time</b></div>
+<div class="json">time_launch</div>
+</div><div class="description">
+Time the application was launched.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_time_register"><b>Registration Time</b></div>
+<div class="json">time_register</div>
+</div><div class="description">
+Time the render was registered on server.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_time_update"><b>Last Update Time</b></div>
+<div class="json">time_update</div>
+</div><div class="description">
+Last time the render has update its resources usage.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_wol_operation_time"><b>WOL Operation Time</b></div>
+<div class="json">wol_operation_time</div>
+</div><div class="description">
+Time the last any WOL operation was performed.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_tasks"><b>Tasks</b></div>
+<div class="json">tasks[]</div>
+</div><div class="description">
+Running tasks number and some its attributes (user, job, etc.).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_capacity_used"><b>Capacity Used</b></div>
+<div class="json">capacity_used</div>
+</div><div class="description">
+Capacity used by running tasks.
+</div></div>
+
+</div>
 
 
-<h3 id="editable_parameters" class="anchor">Editable Parameters:</h3>
-<ul>
-<li><b class="anchor" id="UserName">Render User</b> - Who launched a render. Can be changed only by administrators. Note that process do not change uid. This value for afanasy only.</li>
-<li><b class="anchor" id="Priority">Priority</b> - Render with greater priority get task first.</li>
-<li><b class="anchor" id="Capacity">Capacity</b> - You can override host farm setup (see below) capacity.</li>
-<li><b class="anchor" id="MaxTasks">Max Tasks</b> - You can override host farm setup (see below) maximum running tasks.</li>
-<li><b class="anchor" id="DisabledServices">Disabled Services</b> - You can disable host farm setup (see below) service.</li>
-<li><b class="anchor" id="State">Render State:</b>
-   <ul>
-   <li><b><i> Online       </i></b> - Render is online.</li>
-   <li><b><i> nimby        </i></b> - Render is taken by his user. Only render user can render on it.</li>
-   <li><b><i> NIMBY        </i></b> - Render is taken by his user and he don't want to render on it.</li>
-   <li><b><i> Busy         </i></b> - Render executing one or more tasks.</li>
-   <li><b><i> Dirty        </i></b> - Render capacity changed or some service disabled.</li>
-   <li><b><i> WOLFalling   </i></b> - Render is falling a sleep. It was asked to sleep, but still online.</li>
-   <li><b><i> SWOLSleeping </i></b> - Render is sleeping.</li>
-   <li><b><i> SWOLWaking   </i></b> - Render is waking up. It was asked to wake up but still is not online.</li>
-   </ul>
-</li>
-<li><b class="anchor" id="Annotation">Annotation</b> - Annotate render GUI item.</li>
-</ul>
+<h3 id="render_parameters" class="anchor">Editable Parameters:</h3>
+
+<div class="parameters">
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_user_name"><b>Render User</b></div>
+<div class="json">user_name</div>
+</div><div class="description">
+Who launched a render.
+Can be changed only by administrators.
+Note that process do not change uid.
+This value for afanasy only.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_priority"><b>Priority</b></div>
+<div class="json">priority</div>
+</div><div class="description">
+Render with greater priority get task first.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_capacity"><b>Capacity</b></div>
+<div class="json">capacity</div>
+</div><div class="description">
+You can override host farm setup capacity.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_max_tasks"><b>Max Tasks</b></div>
+<div class="json">max_tasks</div>
+</div><div class="description">
+You can override host farm setup maximum running tasks.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_services_disabled"><b>Disabled Services</b></div>
+<div class="json">services_disabled</div>
+</div><div class="description">
+You can disable host farm setup service(s).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="render_annotation"><b>Annotation</b></div>
+<div class="json">annotation</div>
+</div><div class="description">
+Annotate render GUI item.
+</div></div>
+
+</div>
+
+<h3 class="anchor" id="state">Render State:</h3>
+
+<table class="state">
+<tr><td><b><i>Online     </i></b></td><td>Is online.<td></tr>
+<tr><td><b><i>nimby      </i></b></td><td>Is taken by his user. Only render user can render on it.</td></tr>
+<tr><td><b><i>NIMBY      </i></b></td><td>Is taken by his user and he don't want to render on it.</td></tr>
+<tr><td><b><i>Busy       </i></b></td><td>Executing one or more tasks.</td></tr>
+<tr><td><b><i>Dirty      </i></b></td><td>Capacity changed or some service disabled.</td></tr>
+<tr><td><b><i>WOLFalling </i></b></td><td>Is falling a sleep. It was asked to sleep, but still online.</td></tr>
+<tr><td><b><i>WOLSleeping</i></b></td><td>Is sleeping.</td></tr>
+<tr><td><b><i>WOLWaking  </i></b></td><td>Is waking up. It was asked to wake up but still is not online.</td></tr>
+</table>
 
 
 <h3 id="host_attributes" class="anchor">Farm Host Attributes:</h3>
-<ul>
-<li><b class="anchor" id="Capacity">Capacity</b> - Total capacity value (each running task takes some capacity).</li>
-<li><b class="anchor" id="MaxTasks">Max Tasks</b> - Maximum number of tasks can be running the same time.</li>
-<li><b class="anchor" id="CpuNum">Number of CPUs</b> - Processors number.</li>
-<li><b class="anchor" id="MHz">CPUs MHz</b> - Fist Processor frequency.</li>
-<li><b class="anchor" id="MemoryMb">Memory Megabytes</b> - Total memory in megabytes.</li>
-<li><b class="anchor" id="SwapMb">Swap Megabytes</b> - Total swap space in megabytes.</li>
-<li><b class="anchor" id="HddGb">HDD Gigabytes</b> - Total disk space in gigabytes.
-<br/><br/></li>
-<li><b class="anchor" id="OS">OS</b> - OS name described in farm setup.</li>
-<li><b class="anchor" id="Power">Power</b> - Custom number described in farm setup.</li>
-<li><b class="anchor" id="Properties">Properties</b> - Custom string described in farm setup.
-<br/><br/></li>
-<li><b class="anchor" id="ServicesNames">Services Names</b> - List of type names of available services.</li>
-</ul>
+
+<div class="parameters">
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_capacity"><b>Capacity</b></div>
+<div class="json">capacity</div>
+</div><div class="description">
+Capacity value (each running task takes some capacity).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_max_tasks"><b>Max Tasks</b></div>
+<div class="json">max_tasks</div>
+</div><div class="description">
+Maximum number of tasks can be running the same time.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_os"><b>OS</b></div>
+<div class="json">os</div>
+</div><div class="description">
+OS name detected on start or can be described in farm setup.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_power"><b>Power</b></div>
+<div class="json">power</div>
+</div><div class="description">
+Custom number described in farm setup.
+This can be used to filter jobs that render can run.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_properties"><b>Properties</b></div>
+<div class="json">properties</div>
+</div><div class="description">
+Custom string described in farm setup.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_services"><b>Services Names</b></div>
+<div class="json">services[]</div>
+</div><div class="description">
+List of type names of available services.
+</div></div>
+
+</div>
+
 
 
 <h3 id="resources" class="anchor">Resources Usage:</h3>
-<ul>
-<li><b class="anchor" id="CpuLoadavg">CPU Loadavg[3]</b> - Load average.</li>
-<li><b class="anchor" id="CpuUser">CPU User</b> - User usage percentage.</li>
-<li><b class="anchor" id="CpuNice">CPU Nice</b> - User 'nice' usage percentage (low priority processes).</li>
-<li><b class="anchor" id="CpuSystem">CPU System</b> - System usage percentage.</li>
-<li><b class="anchor" id="CpuIdle">CPU Idle</b> - Idle percentage (CPU free).</li>
-<li><b class="anchor" id="CpuIOWait">CPU IO Wait</b> - Waiting for I/O complete percentage.</li>
-<li><b class="anchor" id="CpuIRQ">CPU IRQ</b> - Interrupts servicing percentage.</li>
-<li><b class="anchor" id="CpuIRQ">CPU Soft-IRQ</b> - Soft interrupts servicing percentage.
-<br/><br/></li>
-<li><b class="anchor" id="MemoryFreeMb">Memory Free Mb</b> - Free memory in megabytes.</li>
-<li><b class="anchor" id="MemoryCachedMb">Memory Cached Mb</b> - Cached memory in megabytes.</li>
-<li><b class="anchor" id="MemoryCachedMb">Memory Buffers Mb</b> - Buffered memory in megabytes.</li>
-<li><b class="anchor" id="SwapUsedMb">Swap Used Mb</b> - Used swap in megabytes.</li>
-<li><b class="anchor" id="HDDFreeGb">HDD Free Gb</b> - Available free disk space in gigabytes (in root - '/').</li>
-<li><b class="anchor" id="NetRecvKbSec">Net Received Kb/Sec</b> - Network receiving traffic in kilobytes per second.</li>
-<li><b class="anchor" id="NetSendKbSec">Net Send Kb/Sec</b> - Network sending traffic in kilobytes per second.</li>
-<li><b class="anchor" id="DiskRdKbSec">Disk Read Kb/Sec</b> - Disk reading in kilobytes per second.</li>
-<li><b class="anchor" id="DiskWrKbSec">Disk Write Kb/Sec</b> - Disk writing in kilobytes per second.</li>
-<li><b class="anchor" id="DiskBusy">Disk Busy</b> - Percentage of system ticks spend for the disk IO.</li>
-</ul>
+
+<div class="parameters">
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_cpu_num"><b>Number of CPUs</b></div>
+<div class="json">cpu_num</div>
+</div><div class="description">
+Cores number.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_cpu_mhz"><b>CPUs MHz</b></div>
+<div class="json">cpu_mhz</div>
+</div><div class="description">
+Fist Processor frequency.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_cpu_loadavg"><b>CPU Loadavg[3]</b></div>
+<div class="json">cpu_loadavg[]</div>
+</div><div class="description">
+Load average.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_cpu_user"><b>CPU User</b></div>
+<div class="json">cpu_user</div>
+</div><div class="description">
+User usage percentage.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_cpu_nice"><b>CPU Nice</b></div>
+<div class="json">cpu_nice</div>
+</div><div class="description">
+User 'nice' usage percentage (low priority processes).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_cpu_system"><b>CPU System</b></div>
+<div class="json">cpu_system</div>
+</div><div class="description">
+System usage percentage.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_cpu_idle"><b>CPU Idle</b></div>
+<div class="json">cpu_idle</div>
+</div><div class="description">
+Idle percentage (CPU free).
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_cpu_iowait"><b>CPU IO Wait</b></div>
+<div class="json">cpu_iowait</div>
+</div><div class="description">
+Waiting for I/O complete percentage.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_cpu_irq"><b>CPU IRQ</b></div>
+<div class="json">cpu_irq</div>
+</div><div class="description">
+Interrupts servicing percentage.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_cpu_softirq"><b>CPU Soft-IRQ</b></div>
+<div class="json">cpu_softirq</div>
+</div><div class="description">
+Soft interrupts servicing percentage.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_mem_total_mb"><b>Memory Megabytes</b></div>
+<div class="json">mem_total_mb</div>
+</div><div class="description">
+Total amount of memory in megabytes.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_mem_free_mb"><b>Memory Free Mb</b></div>
+<div class="json">mem_free_mb</div>
+</div><div class="description">
+Free memory in megabytes.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_mem_cached_mb"><b>Memory Cached Mb</b></div>
+<div class="json">mem_cached_mb</div>
+</div><div class="description">
+Cached memory in megabytes.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_mem_buffers_mb"><b>Memory Buffers Mb</b></div>
+<div class="json">mem_buffers_mb</div>
+</div><div class="description">
+Buffered memory in megabytes.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_swap_total_mb"><b>Swap Megabytes</b></div>
+<div class="json">swap_total_mb</div>
+</div><div class="description">
+Total swap space in megabytes.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_swap_used_mb"><b>Swap Used Mb</b></div>
+<div class="json">swap_used_mb</div>
+</div><div class="description">
+Used swap in megabytes.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="host_hdd_total_gb"><b>HDD Gigabytes</b></div>
+<div class="json">hdd_total_gb</div>
+</div><div class="description">
+Total disk space in gigabytes.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_hdd_free_gb"><b>HDD Free Gb</b></div>
+<div class="json">hdd_free_gb</div>
+</div><div class="description">
+Available free disk space in gigabytes (in root - '/').
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_hdd_rd_kbsec"><b>Disk Read Kb/Sec</b></div>
+<div class="json">hdd_rd_kbsec</div>
+</div><div class="description">
+Disk reading in kilobytes per second.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_hdd_wr_kbsec"><b>Disk Write Kb/Sec</b></div>
+<div class="json">hdd_wr_kbsec</div>
+</div><div class="description">
+Disk writing in kilobytes per second.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_hdd_busy"><b>Disk Busy</b></div>
+<div class="json">hdd_busy</div>
+</div><div class="description">
+Percentage of system ticks spend for the disk IO.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_net_recv_kbsec"><b>Net Received Kb/Sec</b></div>
+<div class="json">net_recv_kbsec</div>
+</div><div class="description">
+Network receiving traffic in kilobytes per second.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="res_net_send_kbsec"><b>Net Send Kb/Sec</b></div>
+<div class="json">net_send_kbsec</div>
+</div><div class="description">
+Network sending traffic in kilobytes per second.
+</div></div>
+
+</div>
 
 <p>To register a render already in [nimby|NIMBY] state use command:</p>
 <p><code>$ afrender [nimby|NIMBY]</code></p>
