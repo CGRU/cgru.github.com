@@ -49,9 +49,57 @@ $ afserver
 </ul>
 
 
-
 <h2 id="configuration" class="anchor">Configuration</h2>
-<h4>General:</h4>
+
+
+<h4 id="conf_client_server" class="anchor">Client &amp; Server:</h4>
+<ul>
+<li><p>
+	<code id="af_servername" class="anchor">af_servername</code> = localhost<br/>
+	Afanasy server name to lookup or IP address.
+</p></li>
+<li><p>
+	<code id="af_serverport" class="anchor">af_serverport</code> = 51000<br/>
+	Port to listen to server.
+</p></li>
+<li><p>
+	<code id="af_clientport" class="anchor">af_clientport</code> = 51001<br/>
+	First port to listen to clients. Next client launched on the host will listen the next port.
+</p></li>
+<li><p>
+	<code id="af_serveripmask" class="anchor">af_serveripmask</code> = *.* 127.0.0.1 192.168.* *:* 0:0:0:0:0:0:0:1 FC00:* FD00:*<br/>
+	Acceptable connections IP addresses mask.
+	Connections form addresses not matching this masks will be ignored by server.
+	Mask should have at least one '.' for IPv4 or one ':' for IPv6.
+	There are some useful examples in the default value.
+</p></li>
+<li><p>
+	<code id="af_ipv6_disable" class="anchor">af_ipv6_disable</code> = 1<br/>
+	IPv6 is disabled by default, to enable it, set this parameter value to 0.
+</p></li>
+<li><p>
+	<code id="af_tempdirectory" class="anchor">af_tempdirectory</code> = /var/tmp/afanasy/<br/>
+	Directory for sever to store logs and tasks outputs.
+</p></li>
+<li><p>
+	<code id="af_serve_tasks_speed" class="anchor">af_serve_tasks_speed</code> = -1<br/>
+	Server tasks solving speed limit (~tasks/second).
+	This can be useful not to let to server to start all tasks at once
+	on a big farm and a job with big tasks number.
+	As this can hung network or fileserver.
+</p></li>
+<li><p>
+	<code id="af_srv_so_rcvtimeo_sec" class="anchor">af_srv_so_rcvtimeo_sec</code> = 2<br/>
+	Set socket maximum time to wait for an input operation to complete (see <i>man setsockopt</i>).
+</p></li>
+<li><p>
+	<code id="af_srv_so_sndtimeo_sec" class="anchor">af_srv_so_sndtimeo_sec</code> = 2<br/>
+	Set socket maximum time to wait for an output operation to complete (see <i>man setsockopt</i>).
+</p></li>
+</ul>
+
+
+<h4 id="conf_general" class="anchor">General:</h4>
 <ul>
 <li><p>
 	<code id="timeformat" class="anchor">timeformat</code> = %a %d %b %H:%M.%S<br/>
@@ -75,63 +123,17 @@ $ afserver
 	Default priority for users and jobs. User with no administrative rights can't set priority greater than this value.
 </p></li>
 <li><p>
-	<code id="af_maxhosts" class="anchor">af_maxhosts</code> = -1<br/>
-	Default maximum hosts number for users and jobs. Value '-1' means no hosts number limit.
+	<code id="af_maxrunningtasks" class="anchor">af_maxrunningtasks</code> = -1<br/>
+	Default maximum running tasks number for users and jobs. Value '-1' means no hosts number limit.
 </p></li>
 <li><p>
 	<code id="af_hostsmask" class="anchor">af_hostsmask</code> = ""<br/>
 	Default hosts mask number for users and jobs.
 	Empty means that users and jobs can run on any host.
-	Afanasy uses <a href="http://doc.trolltech.com/qregexp.html#details" target="_blank">QT Regular Expressions</a>
-	(they are Perl-like).
+	Any masks in Afanasy is described by <a href="/regexp" target="_blank">Regular Expressions</a>
 </p></li>
 </ul>
 
-<h4 id="conf_client_server" class="anchor">Client &amp; Server:</h4>
-<ul>
-<li><p>
-	<code id="af_servername" class="anchor">af_servername</code> = localhost<br/>
-	Afanasy server name to lookup or IP address.
-</p></li>
-<li><p>
-	<code id="af_serveripmask" class="anchor">af_serveripmask</code> = *.* 127.0.0.1 192.168.* *:* 0:0:0:0:0:0:0:1 FC00:* FD00:*<br/>
-	Acceptable connections IP addresses mask.
-	Connections form addresses not matching this masks will be ignored by server.
-	Mask should have at least one '.' for IPv4 or one ':' for IPv6.
-	There are some useful examples in the default value.
-</p></li>
-<li><p>
-	<code id="af_serverport" class="anchor">af_serverport</code> = 51000<br/>
-	Port to listen to server.
-</p></li>
-<li><p>
-	<code id="af_clientport" class="anchor">af_clientport</code> = 51001<br/>
-	First port to listen to clients. Next client launched on the host will listen the next port.
-</p></li>
-<li><p>
-	<code id="af_ipv6_disable" class="anchor">af_ipv6_disable</code> = 1<br/>
-	IPv6 is disabled by default, to enable it, set this parameter value to 0.
-</p></li>
-<li><p>
-	<code id="af_srv_so_rcvtimeo_sec" class="anchor">af_srv_so_rcvtimeo_sec</code> = 2<br/>
-	Set socket maximum time to wait for an input operation to complete (see <i>man setsockopt</i>).
-</p></li>
-<li><p>
-	<code id="af_srv_so_sndtimeo_sec" class="anchor">af_srv_so_sndtimeo_sec</code> = 2<br/>
-	Set socket maximum time to wait for an output operation to complete (see <i>man setsockopt</i>).
-</p></li>
-<li><p>
-	<code id="af_tempdirectory" class="anchor">af_tempdirectory</code> = /var/tmp/afanasy/<br/>
-	Directory for sever to store logs and tasks outputs.
-</p></li>
-<li><p>
-	<code id="af_serve_tasks_speed" class="anchor">af_serve_tasks_speed</code> = -1<br/>
-	Server tasks solving speed limit (~tasks/second).
-	This can be useful not to let to server to start all tasks at once
-	on a big farm and a job with big tasks number.
-	As this can hung network or fileserver.
-</p></li>
-</ul>
 
 <h4 id="conf_job" class="anchor">Job:</h4>
 <ul>
@@ -140,12 +142,8 @@ $ afserver
 	Default tasks capacity value, if not set manually on job creation or running job GUI.
 </p></li>
 <li><p>
-	<code id="af_task_update_timeout" class="anchor">af_task_update_timeout</code> = 300 (seconds)<br/>
+	<code id="af_task_update_timeout" class="anchor">af_task_update_timeout</code> = 15 (seconds)<br/>
 	If task status or percentage has not been updated for this period it's considered as an error.
-</p></li>
-<li><p>
-	<code id="af_job_logs_rotate" class="anchor">af_job_logs_rotate</code> = 10<br/>
-	Server store logs of a jobs with the same name by renaming old. It adds a number to the end of old file name (logs rotating).
 </p></li>
 </ul>
 
@@ -153,15 +151,15 @@ $ afserver
 <ul>
 <li><p>
 	<code id="af_errors_avoid_host" class="anchor">af_errors_avoid_host</code> = 3<br/>
-	<a href="/afanasy/user#ErrorsAvoidHost" class="local_link">Errors Avoid Host</a> parameter for new user.
+	<a href="/afanasy/user#user_errors_avoid_host" class="local_link">Errors Avoid Host</a> parameter for new user.
 </p></li>
 <li><p>
 	<code id="af_task_error_retries" class="anchor">af_task_error_retries</code> = 3<br/>
-	<a href="/afanasy/user#ErrorRetries" class="local_link">Error Retries</a> parameter for new user.
+	<a href="/afanasy/user#user_errors_retries" class="local_link">Error Retries</a> parameter for new user.
 </p></li>
 <li><p>
 	<code id="af_task_error_same_host" class="anchor">af_task_error_same_host</code> = 3<br/>
-	<a href="/afanasy/user#ErrorsTaskSameHost" class="local_link">Errors Task Same Host</a> parameter for new user.
+	<a href="/afanasy/user#user_errors_task_same_host" class="local_link">Errors Task Same Host</a> parameter for new user.
 </p></li>
 <li><p>
 	<code id="af_user_zombietime" class="anchor">af_user_zombietime</code> = 2 (seconds)<br/>
@@ -170,10 +168,6 @@ $ afserver
 <li><p>
 	<code id="af_user_logs_linesmax" class="anchor">af_user_logs_linesmax</code> = 100<br/>
 	Server truncates log above this limit.
-</p></li>
-<li><p>
-	<code id="af_user_logs_rotate" class="anchor">af_user_logs_rotate</code> = 10<br/>
-	Server store logs of users with the same name by renaming old. It adds a number to the end of old file name (logs rotating).
 </p></li>
 </ul>
 
@@ -206,14 +200,10 @@ $ afserver
 	When server looses connection with database it tries to reconnect.
 	Each reconnection try it refreshes connection settings from configuration,
 	so you can reconfigure database connection settings "on-the-fly".
-	When server looses connection it stops to execute queries queue,
-	so they will not be lost but they store in memory.
-	To prevent RAM usage growth server will no accept any new jobs until successful reconnect.
 </p>
 <p>
 	If server fails to connect to database for the first time on start,
 	it will ignore database at all.
-	It will work normally but will loose all data on restart.
 </p>
 
 
