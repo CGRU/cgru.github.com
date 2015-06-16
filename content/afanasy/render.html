@@ -417,6 +417,13 @@ Network sending traffic in kilobytes per second.
 
 
 <h2 id="configuration" class="anchor">Configuration</h2>
+
+<p>
+	This is <kbd>Render</kbd> part of <kbd>afanasy/config_default.json</kbd> file:
+</p>
+
+<pre class="source" source="afanasy/config_default.json" section="Render:"></pre>
+
 <ul>
 <li><p>
 <code class="anchor" id="cmd_shell">cmd_shell</code> not defined by default.<br/>
@@ -424,75 +431,6 @@ Shell command used to launch any other command. It is important that it will be 
 If not defined build-in values are used:<br/>
 <i>UNIX</i>: "/bin/bash -c"<br/>
 <i>MS Windows</i>: "cmd.exe /c"<br/>
-</p></li>
-<li><p>
-<code>render_default_capacity</code> = 1000<br/>
-Default render capacity value, if not set in farm config.
-</p></li>
-<li><p>
-<code>render_default_maxtasks</code> = 5<br/>
-Maximum allowed simultaneously running tasks on render, if not set in farm config.
-</p></li>
-<li><p>
-<code>render_hddspace_path</code> = /<br/>
-Path to measure free disk space ('/' - for MS Windows means the root of the system disk).
-</p></li>
-<li><p>
-<code>render_networkif</code> = (?!lo$).*<br/>
-Network interface(s) name pattern to measure network traffic on.
-It will be a sum of traffic if several interfaces matching pattern are founded.
-Specified above default pattern matches any name except <i>lo</i> (loopback interface name).
-</p></li>
-<li><p>
-<code>render_iostat_device</code> = sda<br/>
-Device to measure disk IO statistics (for MS Windows - statistics only for first disk available).
-</p></li>
-<li><p>
-<code>render_resclasses</code> = example;iostat<br/>
-Custom resources meter(s). Python class name(s), if several - list separated with ';' character.
-</p></li>
-<li><p>
-<code>render_customiostat_devices</code> = sda<br/>
-Device(s) for custom python resource meter "<i>iostat</i>".
-To watch several devices use regular expression, for example "<i>sda[2-4]</i>".
-If several devices matching pattern are founded,
-it calculates the sum of traffic parameters and maximum of utilization parameters.
-</p></li>
-<li><p>
-<code>render_nice</code> = 10<br/>
-Renice task command process on render.
-</p></li>
-<li><p>
-<code>render_update_sec</code> = 5 (seconds)<br/>
-Render resources update interval.
-</p></li>
-<li><p>
-<code>render_updatetaskperiod</code> = 1 (seconds)<br/>
-Period to render to update task state or percentage (even if there is no parser).
-</p></li>
-<li><p>
-<code>render_zombietime</code> = 60 (seconds)<br/>
-Time to server to delete render if there is no update (resources usage) for this period.
-</p></li>
-<li><p>
-<code>render_connectretries</code> = 3<br/>
-Connection fails times to consider to render that there is no connection to server.
-</p></li>
-<li><p>
-<code>render_waitforconnected</code> = 15000 (milliseconds)<br/>
-Time to wait for connection establishing to consider that connection is available.
-</p></li>
-<li><p>
-<code>render_waitforreadyread</code> = 15000 (milliseconds)<br/>
-Time to wait for incoming data to consider that connection is not lost.
-</p></li>
-<li><p>
-<code>render_waitforbyteswritten</code> = 15000 (milliseconds)<br/>
-Time to wait for writing data to consider that connection is not lost.
-</p></li>
-<li><p>
-<code>render_logs_linesmax</code> = 100<br/>
-Server truncates log above this limit.
 </p></li>
 <li><p>
 <code>render_cmd_reboot</code> = reboot<br/>

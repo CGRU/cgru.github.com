@@ -113,7 +113,12 @@ function g_Navigate()
 //console.log( path);
 
 	g_DisplayLoading();
-	GET( path);
+
+	if( path.indexOf('.html') == -1 )
+		path += '.html';
+	path = g_path_prefix + path;
+
+	GET({'path':path,'func':g_SetContent});
 }
 
 function g_DisplayLoading( i_display)
@@ -169,6 +174,20 @@ function g_ProcessContent()
 		links[i].onclick = g_NavClicked;
 	}
 
+
+	// Process sources:
+	var src_addr = 'http://localhost/cgru/';
+	if( document.location.hostname != 'localhost' )
+		src_addr = 'http://data.cgru.info/cgru/';
+	var sources = g_elContent.getElementsByClassName('source');
+	for( var i = 0; i < sources.length; i++)
+	{
+		var el = sources[i];
+		var src = src_addr + el.getAttribute('source');
+		GET({'path':src,'func':g_SetSource,'el':el,'section':el.getAttribute('section')});
+	}
+
+
 	var forontops = g_elContent.getElementsByClassName('forontop');
 	for( var i = 0; i < forontops.length; i++)
 		forontops[i].onclick = function(e){ g_ForOnTopClicked(e.currentTarget);};
@@ -180,6 +199,32 @@ function g_ProcessContent()
 	var infos = g_elContent.getElementsByClassName('info');
 	for( var i = 0; i < infos.length; i++)
 		infos[i].onclick = g_InfoClicked;
+}
+
+function g_SetSource( i_data, i_args)
+{
+//console.log('i_data=' + i_data);
+	var text = i_data;
+
+	if( i_args.section && i_args.section.length )
+	{
+		var text = '';
+		for(;;)
+		{
+			var i = i_data.indexOf( i_args.section);
+			if( i < 0 ) break;
+
+			i_data = i_data.substring( i);
+			i_data = i_data.substring( i_data.indexOf('\n'));
+
+			text += i_data.substring( 0, i_data.indexOf('"":""'));
+
+			i_data = i_data.substring( i_data.indexOf('"":""'));
+		}
+	}
+
+	text = text.replace(/\n\t/g,'\n');
+	i_args.el.innerHTML = text;
 }
 
 function g_InfoClicked( i_evt)
@@ -280,51 +325,42 @@ function g_DisplayNotFound( i_display)
 	document.getElementById('notfound_file').innerHTML = '<b>'+document.location.pathname+'</b>';
 }
 
-function GET( i_path)
+function GET( i_args)
 {
-	var path = i_path;
-
-	if( path.indexOf('.html') == -1 )
-		path += '.html';
-	path = g_path_prefix + path;
-//console.log('GET:' + path);
+	var path = i_args.path;
+//console.log('Get=' + path);
 
 	if( g_get_cache[path] )
 	{
-//console.log('GET CACHED:' + path);
-		g_SetContent( g_get_cache[path]);
+//console.log('Get CACHED=' + path);
+		i_args.func( g_get_cache[path]);
 		return;
 	}
 
 	var xhr = new XMLHttpRequest();
 	xhr.overrideMimeType('text/html');
+//	xhr.overrideMimeType('application/json');
 	xhr.open('GET', path, true);
 	xhr.send(null);
+	xhr.m_args = i_args;
 
-	xhr.onreadystatechange = function()
-	{
-		if( xhr.readyState == 4 )
-		{
-			if(( window.location.protocol == 'http:' ) && ( xhr.status != 200 ))
-			{
-				g_DisplayNotFound();
-				return;
-			}
-
-			if( xhr.responseText.length )
-			{
-				if( xhr.responseText.indexOf('INDEX_MARKER') != -1 )
-				{
-					g_DisplayNotFound();
-					return;
-				}
-				g_SetContent( xhr.responseText)
-				g_get_cache[path] = xhr.responseText;
-			}
-			else
-				g_Error('File '+i_path+' is empty.');
-		}
+	xhr.onload = g_XHR_OnLoad;
+	xhr.onerror = function() {
+		console.log(this);
+		console.log('ERROR: ' + this.m_args.path);
+		g_DisplayNotFound();
 	}
+}
+
+function g_XHR_OnLoad()
+{
+	if( this.responseText.indexOf('INDEX_MARKER') != -1 )
+	{
+		g_DisplayNotFound();
+		return;
+	}
+	this.m_args.func( this.responseText, this.m_args);
+	g_get_cache[this.m_args.path] = this.responseText;
 }
 
 function g_DrawArrow( i_el)
