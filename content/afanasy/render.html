@@ -426,22 +426,16 @@ Network sending traffic in kilobytes per second.
 
 <ul>
 <li><p>
-<code class="anchor" id="cmd_shell">cmd_shell</code> not defined by default.<br/>
-Shell command used to launch any other command. It is important that it will be used by render to launch task process.
-If not defined build-in values are used:<br/>
-<i>UNIX</i>: "/bin/bash -c"<br/>
-<i>MS Windows</i>: "cmd.exe /c"<br/>
+	<code class="anchor" id="cmd_shell">cmd_shell</code><br/>
+	Shell command used to launch any other command.
+	It is important that it will be used by render to launch task process.
+	If not defined build-in values are used:<br/>
+	<i>UNIX</i>: "/bin/bash -c"<br/>
+	<i>MS Windows</i>: "cmd.exe /c"<br/>
 </p></li>
 <li><p>
-<code>render_cmd_reboot</code> = reboot<br/>
-Command for render to reboot a machine. For MS Windows you can use "shutdown /r".
-</p></li>
-<li><p>
-<code>render_cmd_shutdown</code> = shutdown -P 1 afrequest<br/>
-Command for render to shutdown a machine. For MS Windows you can use "shutdown /s".
-</p></li>
-<li><p>
-<code>render_windowsmutdie</code> = <a href="#windows_must_die">Windows Must Die</a> list.
+	<code>render_windowsmutdie</code><br>
+	<a href="#windows_must_die">Windows Must Die</a> list.
 </p></li>
 </ul>
 
