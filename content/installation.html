@@ -234,6 +234,19 @@ At last it tries to load <kbd>cgru/config.json</kbd>, where you should override 
 At least you should specify Afanasy server location in it.
 </p>
 <p>
+	Create <kbd>config.json</kbd> file in a CGRU root folder:
+	<pre>
+	{"cgru_config":{
+
+		"af_servername":"afanasy",
+
+		"":""
+	}}
+	</pre>
+	It should at least contain Afanasy server hostname or IP address.
+	Read <kbd>cgru/config_default.json</kbd> parameters comments for help.
+</p>
+<p>
 CGRU Keeper and AfWatch stores settings in <kbd>$HOME/.cgru/config.json</kbd> on UNIX and
 <kbd>%APPDATA%/cgru/config.json</kbd> on MS Windows OS.
 It is read with the same rules as the main config.
