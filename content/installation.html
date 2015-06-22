@@ -30,9 +30,17 @@
 <h2>Installation</h2>
 
 <h3 id="archive" class="anchor">MS Windows, Linux Archive</h3>
+<p>
+	<a href="downloads" target="_blank">Download</a> the latest release and unpack.
+	Use <a href="keeper" target="_blank">Keeper</a> to launch applications.
+</p>
 <ul>
-<li><a href="/downloads" class="local_link">Download</a> the latest release and unpack.</li>
-<li>Use <a href="/keeper" class="local_link">Keeper</a> to launch applications.</li>
+	<li><b>Server: </b>
+		Launch <a href="afanasy/server#launch" target="_blank">afserver</a>.</li>
+	<li><b>Render: </b>
+		Launch <a href="afanasy/render#launch" target="_blank">afrender</a>.</li>
+	<li><b>Workstation: </b>
+		Use <a href="keeper" target="_blank">Keeper</a> to launch render client and other CGRU applications.</li>
 </ul>
 
 <h3 id="linux" class="anchor">Linux Packages</h3>
@@ -221,18 +229,6 @@ But you can <a href="#manual_build">build project yourself</a>.
 
 <h2 id="configuration" class="anchor">Configuration</h2>
 
-<h3 id="config_files" class="anchor">Config files</h3>
-<p>
-CGRU configuration files based JSON.
-One config file can include other, where parameters can be overridden.
-Config file can contain OS specific section, which parameters will be read only if client platform parameters matches OS section name.
-</p>
-<p>
-At first <kbd>cgru/config_default.json</kbd> is read, where global parameters are set.
-It includes <kbd>cgru/afanasy/config_default.json</kbd> which configures Afanasy specific parameters.
-At last it tries to load <kbd>cgru/config.json</kbd>, where you should override some your company specific parameters.
-At least you should specify Afanasy server location in it.
-</p>
 <p>
 	Create <kbd>config.json</kbd> file in a CGRU root folder:
 	<pre>
@@ -245,6 +241,19 @@ At least you should specify Afanasy server location in it.
 	</pre>
 	It should at least contain Afanasy server hostname or IP address.
 	Read <kbd>cgru/config_default.json</kbd> parameters comments for help.
+</p>
+
+<h3 id="config_files" class="anchor">Config files</h3>
+<p>
+CGRU configuration files based JSON.
+One config file can include other, where parameters can be overridden.
+Config file can contain OS specific section, which parameters will be read only if client platform parameters matches OS section name.
+</p>
+<p>
+At first <kbd>cgru/config_default.json</kbd> is read, where global parameters are set.
+It includes <kbd>cgru/afanasy/config_default.json</kbd> which configures Afanasy specific parameters.
+At last it tries to load <kbd>cgru/config.json</kbd>, where you should override some your company specific parameters.
+At least you should specify Afanasy server location in it.
 </p>
 <p>
 CGRU Keeper and AfWatch stores settings in <kbd>$HOME/.cgru/config.json</kbd> on UNIX and

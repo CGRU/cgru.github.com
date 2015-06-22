@@ -176,8 +176,9 @@ function g_ProcessContent()
 
 
 	// Process sources:
-	var src_addr = 'http://localhost/cgru/';
-	if( document.location.hostname != 'localhost' )
+	var src_addr = 'http://127.0.0.1/cgru/';
+	var locals = ['localhost','127.0.0.1'];
+	if( locals.indexOf( document.location.hostname) == -1 )
 		src_addr = 'http://data.cgru.info/cgru/';
 	var sources = g_elContent.getElementsByClassName('source');
 	for( var i = 0; i < sources.length; i++)
