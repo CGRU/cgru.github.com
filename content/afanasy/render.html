@@ -615,6 +615,32 @@ For example: Nuke current rendering view when stereo, Movie Maker convert or enc
 	You can get tasks thumbnails from afserver by HTTP GET method.
 </p>
 <p>
+	Parser has <code>appendFile( i_file, i_onthefly)</code> function to add parsered files.
+	<ul>
+	<li>
+		<code>i_file</code> path to the image to append.
+	</li>
+	<li>
+		<code>i_onthefly</code>
+		<ul>
+			<li>
+				<code>False</code>
+				Thumbnail will be generated after task process finish.
+				This is a most common method.
+			</li>
+			<li>
+				<code>True</code>
+				Thumbnail will be generated just after this function call.
+				Task probably will be still running in this case.
+				This can be useful for a long time task that process many images.
+				Good example is a movie encoding
+				Was designed and now used in dailies creation.
+			</li>
+		</ul>
+	</li>
+	</ul>
+</p>
+<p>
 	<a href="/installation#configuration" target="_blank">Configuration</a>:
 <pre>
 	"af_thumbnail_extensions":["exr","dpx","jpg","jpeg","png","tif","tiff","tga"],
