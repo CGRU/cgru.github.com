@@ -98,6 +98,7 @@ margin-left: -3px;
 .navig, .cnavlink, .anchor, .forontop { cursor: pointer;}
 .navig:hover {
 background: rgba(200,255,255,.2);
+box-shadow: 0px 0px 6px rgba(200,255,255,.4);
 }
 a.navig.current {
 background: rgba(200,255,255,.4);
@@ -133,19 +134,20 @@ padding: 20px;
 }
 
 #loading {
-background: #AAA;
-border: 3px #777 solid;
+background-color: #AAA;
+border: 2px #777 solid;
 position: absolute;
 top: 40%;
 left: 40%;
 box-shadow: 0px 0px 8px #000;
-border-radius: 2px;
-padding: 10px;
+border-radius: 4px;
+padding: 6px;
 text-align: center;
 }
 #loading div {
-box-shadow: 0px 0px 8px #000 inset;
-border-radius: 6px;
+background-color: #CCC;
+border: 2px #777 solid;
+border-radius: 2px;
 padding: 6px 8px;
 font-weight: bold;
 text-align: center;
@@ -204,8 +206,8 @@ margin: 50px;
 padding: 20px;
 display: none;
 text-align: center;
-box-shadow: 0px 0px 18px #000 inset,  0px 0px 18px #000;
-border-radius: 50px;
+border: 2px solid #777;
+border-radius: 4px;
 }
 #notfound_file {
 }
