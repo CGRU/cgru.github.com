@@ -133,13 +133,13 @@ padding: 20px;
 }
 
 #loading {
-background: #AB7;
-border: 3px #442 solid;
+background: #AAA;
+border: 3px #777 solid;
 position: absolute;
 top: 40%;
 left: 40%;
 box-shadow: 0px 0px 8px #000;
-border-radius: 6px;
+border-radius: 2px;
 padding: 10px;
 text-align: center;
 }
