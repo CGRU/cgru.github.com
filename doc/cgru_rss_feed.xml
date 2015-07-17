@@ -5,10 +5,21 @@
 	<atom:link href="http://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Tue, 30 Jun 2015 00:00:00 GMT</pubDate>
-	<lastBuildDate>Tue, 30 Jun 2015 00:00:00 GMT</lastBuildDate>
+	<pubDate>Fri, 17 Jul 2015 00:00:00 GMT</pubDate>
+	<lastBuildDate>Fri, 17 Jul 2015 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 2.0.6 Released.</title>
+		<link>http://cgru.info/#changes_log.html#release206</link>
+		<guid>http://cgru.info/#changes_log.html#release206</guid>
+		<description>
+			Bugfixes from 2.0.5 (the main reason of this release).
+			Afanasy Auto NIMBY and Auto Free now can depend on MEM, SWAP, HDD and Network usage (was only CPU).
+			RULES dailies with sound.
+		</description>
+		<pubDate>Fri, 17 Jul 2015 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 2.0.5 Released.</title>
 		<link>http://cgru.info/#changes_log.html#release205</link>
