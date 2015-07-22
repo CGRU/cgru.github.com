@@ -333,10 +333,10 @@ block = af.Block('back', 'nuke')
 block.setWorkingDirectory('/projects/test/nuke')
 
 # Set block tasks command
-block.setCommand('nuke -i -X WriteBack -x scene.nk.tmp.nk %1,%2')
+block.setCommand('nuke -i -X WriteBack -x scene.nk.tmp.nk @#@,@#@')
 
 # Set block tasks preview command arguments
-block.setFiles(['jpg/img.%04d.jpg'])
+block.setFiles(['jpg/img.@####@.jpg'])
 
 # Set block to numeric type, providing first, last frame and frames per host
 block.setNumeric( 1, 100, 10)
