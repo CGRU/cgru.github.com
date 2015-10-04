@@ -1,0 +1,132 @@
+<h2>Natron CGRU</h2>
+
+<p>
+CGRU in Natron consists of <kbd>Afanasy</kbd> node (group) and menu items in main CGRU menu.
+</p>
+
+<p>
+<kbd>Afanasy</kbd> nodes need to render connected <kbd>Write</kbd> nodes and to store render settings.
+You can connect one <kbd>Afanasy</kbd> node to other <kbd>Afanasy</kbd> node to render other <kbd>Write</kbd> node with different settings at the same time.
+Each connected node will produce a block - an array of tasks (frames) to render.
+You can specify dependence between connected nodes.
+</p>
+
+<table width="99%" align="center">
+<tr>
+<td>
+	<p align="center">Node Graph:
+		<br/>
+		<img src="/images/natron/example_network.png" alt="network">
+	</p>
+</td>
+<td>
+	<p align="center">Job (Web GUI):
+		<br/>
+		<img src="/images/natron/example_job.png" alt="example_job">
+	</p>
+</td>
+</tr>
+</table>
+
+<h3>Afanasy parameters:</h3>
+
+<h4>General Tab:</h4>
+<img src="/images/natron/afanasy_general.png" alt="afanasy_general" style="float:right; margin: 10px;">
+<ul>
+<li><b>Job Name</b><br>
+	Name to add to job or blocks names. If empty, Afanasy node label will be used.</li>
+<li><b>Get Frame Range From Project Settings</b><br>
+	Set first and last frames to project settings.</li>
+<li><b>First Frame</b><br>
+	First frame to render.</li>
+<li><b>Last Frame</b><br>
+	Last frame to render.</li>
+<li><b>Increment</b><br>
+	Frames increment step.</li>
+<li><b>Frames Per Task</b><br>
+	Number of frames in task.</li>
+<li><b>Sequential</b><br>
+	<a href="/afanasy/job#block_sequential">Frames solving method</a>.</li>
+<li><b>Send Afanasy Job</b><br>
+	Constuct and send job to Afanasy server.</li>
+<li><b>Start Job Paused</b><br>
+	Job will be send paused.</li>
+</ul>
+
+<h4 style="clear: both;">Shceduling Tab:</h4>
+<img src="/images/natron/afanasy_shceduling.png" alt="afanasy_shceduling" style="float:right; margin: 10px;">
+<ul>
+<li><b>Platform</b><br>
+	OS type the job can launch tasks on: 'Any' - any OS, 'Native' - the same as the script was launched on.</li>
+<li><b>Capacity</b><br>
+	Tasks capacity. '-1' - use default value.</li>
+<li><b>Max Running Tasks</b><br>
+	Maximum number of running at the same time tasks. '-1' means no limit.</li>
+<li><b>Max Tasks Per Host</b><br>
+	Maximum number of running at the same time at the same host tasks. '-1' means no limit.</li>
+<li><b>Priority</b><br>
+	Job priority. '-1' - set default priority value.</li>
+<li><b>Hosts Mask</b><br>
+	Job will only on hosts which name matches this pattern.</li>
+<li><b>Exclude Hosts Mask</b><br>
+	Job will not run on hosts which name matches pattern.</li>
+<li><b>Depend mask</b><br>
+	Job will wait job(s) to be done, which name(s) matches pattern.</li>
+<li><b>Global Depend mask</b><br>
+	The same, but will wait for jobs from any user.</li>
+</ul>
+
+<h4 style="clear: both;">MultiWrite Tab:</h4>
+<img src="/images/natron/afanasy_multiwrite.png" alt="afanasy_multiwrite" style="float:right; margin: 10px;">
+<ul>
+<li>
+	<b>Connected Nodes Are Independent</b><br>
+	Nodes can run at the same time, they will not wait each other.
+</li>
+<li>
+	<b>Wait Whole Frame Range</b><br>
+	Down stream connected node(s) will wait until whole specified frame range will be rendered.
+	If not checked, each frame will be wait only corresponding frame(s) from this node.
+</li>
+<li>
+	<b>Force upstream frame settings</b><br>
+	All upstream connected Afanasy nodes will use this node frame range.
+</li>
+</ul>
+
+<h2>Complex example</h2>
+<p>
+	In this example Final Write waits Back and Front precomps to be rendered.
+</p>
+<img src="/images/nuke/complex_network.png" alt="complex_network">
+<img src="/images/nuke/complex_job.png" alt="complex_job">
+
+
+<h3>Example Scenes</h3>
+<p>
+	All examples are located in <code>cgru/examples/natron</code>.
+</p>
+
+
+<h2>Render Selected</h2>
+<p>
+	You can send selected Write and(or) Afanasy node(s) using a dialog.
+	Dialog can be raised from CGRU main menu.
+</p>
+
+<img src="/images/natron/render_selected_dialog.png" alt="render_selected_dialog" style="float: left; margin: 10px 40px;">
+
+<ul>
+<li><b>First Frame</b><br>
+	First frame to render.</li>
+<li><b>Last Frame</b><br>
+	Last frame to render.</li>
+<li><b>Per Task</b><br>
+	Number of frames in task.</li>
+<li><b>Send Job Paused</b><br>
+	Job will be paused.</li>
+</ul>
+
+<p style="clear: both;">
+<b><i>'1..5'</i></b> - two numbers, separated with two points means the lowest and highest value from all selected nodes. Type one number in input field to override frame settings on selected nodes.
+</p>
