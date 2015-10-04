@@ -98,8 +98,12 @@ You can specify dependence between connected nodes.
 <p>
 	In this example Final Write waits Back and Front precomps to be rendered.
 </p>
-<img src="/images/nuke/complex_network.png" alt="complex_network">
-<img src="/images/nuke/complex_job.png" alt="complex_job">
+<img src="/images/natron/complex_network.png" alt="complex_network" style="float:left">
+<img src="/images/natron/complex_job.png" alt="complex_job">
+<p>
+	First job block from "w_final" Write node has "af_pre.*" tasks depend mask.
+	This means that it will wait all Write nodes that connected to "af_pre" Afanasy group.
+</p>
 
 
 <h3>Example Scenes</h3>
