@@ -1,32 +1,26 @@
 <h2>Natron CGRU</h2>
-
 <p>
-CGRU in Natron consists of <kbd>Afanasy</kbd> node (group) and menu items in main CGRU menu.
+	CGRU in Natron consists of <kbd>Afanasy</kbd> node (group) and menu items in main CGRU menu.
+</p>
+<p>
+	<kbd>Afanasy</kbd> nodes need to render connected <kbd>Write</kbd> nodes and to store render settings.
+	You can connect one <kbd>Afanasy</kbd> node to other <kbd>Afanasy</kbd>
+	node to render other <kbd>Write</kbd> node with different settings at the same time.
+	Each connected node will produce a block - an array of tasks (frames) to render.
+	You can specify dependence between connected nodes.
 </p>
 
-<p>
-<kbd>Afanasy</kbd> nodes need to render connected <kbd>Write</kbd> nodes and to store render settings.
-You can connect one <kbd>Afanasy</kbd> node to other <kbd>Afanasy</kbd> node to render other <kbd>Write</kbd> node with different settings at the same time.
-Each connected node will produce a block - an array of tasks (frames) to render.
-You can specify dependence between connected nodes.
+<p style="float: left; text-align: center;">
+	Node Graph:
+	<br>
+	<img src="/images/natron/example_network.png" alt="network">
 </p>
-
-<table width="99%" align="center">
-<tr>
-<td>
-	<p align="center">Node Graph:
-		<br/>
-		<img src="/images/natron/example_network.png" alt="network">
-	</p>
-</td>
-<td>
-	<p align="center">Job (Web GUI):
-		<br/>
-		<img src="/images/natron/example_job.png" alt="example_job">
-	</p>
-</td>
-</tr>
-</table>
+<p style="float: left; text-align: center;">
+	Job (Web GUI):
+	<br>
+	<img src="/images/natron/example_job.png" alt="example_job">
+</p>
+<br style="clear:both">
 
 <h3>Afanasy parameters:</h3>
 
@@ -134,3 +128,19 @@ You can specify dependence between connected nodes.
 <p style="clear: both;">
 <b><i>'1..5'</i></b> - two numbers, separated with two points means the lowest and highest value from all selected nodes. Type one number in input field to override frame settings on selected nodes.
 </p>
+
+<h2>Setup</h2>
+<p>
+	If you start Natron from CGRU Keeper all should work automatically.
+</p>
+
+<h3>Manual Setup</h3>
+<p>
+	CGRU Natron plugins are located in<br/>
+	<code>cgru/plugins/natron</code>
+</p>
+<p>
+	Add this path in <kbd>NATRON_PLUGIN_PATH</kbd> environment variable.
+	To store several locations in this variable, use <kbd>;</kbd> separated list.
+</p>
+
