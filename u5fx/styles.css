@@ -22,7 +22,10 @@ text-decoration: none;
 -border: 1px solid #FFF;
 }
 a.visited { color: #AAAAAA; }
-a:hover   { color: #FFFFFF; text-shadow: -10px 0 10px #FFF, 10px 0 10px #FFF;; }
+a:hover {
+color: #FFFFFF;
+text-shadow: -10px 0 5px #FFF, 10px 0 5px #FFF, 0px 0 15px #FFF;
+}
 
 .navig.current a { color: #DDDDDD; }
 
@@ -45,7 +48,7 @@ box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
 
 #logo {
 font-size: 40px;
-margin: 40px;
+padding: 40px;
 }
 
 #navigation {
