@@ -590,6 +590,17 @@ Render will terminate(kill) task process and send "done" status to server (not a
  - Some string to inform user about task running stage.
 For example: Nuke current rendering view when stereo, Movie Maker convert or encode stage.
 </li>
+<li><b class="anchor" id="parser_log">self.log</b> (<kbd>string</kbd>)
+ - Some string to append to the task server log.
+For example when server or parser noticed some error, you can specify it here.
+</li>
+<li><b class="anchor" id="parser_report">self.report</b> (<kbd>string</kbd>)
+ - Some info string for an entire job.
+GUIs will show it a job item (not task).
+Some most important info should be here.
+Most suitable fo a job with one or several big tasks.
+For eample you can put big file on FTP and show speed here.
+</li>
 </ul>
 <p>
 	This method can return a string result.

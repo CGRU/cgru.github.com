@@ -227,6 +227,15 @@ You can user default <a href="/afanasy/user#user_time_life" class="local_link">l
 Job annotation. Does not influence anything. This string will be shown in a GUI item.
 </div></div>
 
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_report"><b>Report</b></div>
+<div class="json">report</div>
+<div class="python"><i>n/a</i></div>
+</div><div class="description">
+Job annotation. Does not influence anything. This string will be shown in a GUI item.
+It should be set from a task parser: <a href="/afanasy/render#parser_report" target="_blank">self.report</a>
+</div></div>
+
 
 </div>
 
@@ -301,14 +310,6 @@ The number of tasks in block.
 </div></div>
 
 <div class="parameter"><div class="caption">
-<div class="anchor" id="block_numeric"><b>Numeric</b></div>
-<div class="json">numeric</div>
-<div class="python">af.Block.setNumeric( start, end, pertask, inc)</div>
-</div><div class="description">
-Whether the block is numeric.
-</div></div>
-
-<div class="parameter"><div class="caption">
 <div class="anchor" id="block_frame_first"><b>Frame First</b></div>
 <div class="json">frame_first</div>
 <div class="python">af.Block.setNumeric( start, end, pertask, inc)</div>
@@ -343,15 +344,6 @@ When block is not numeric (has tasks with individual commands) used to compute b
 Negative values means sub-frame dependency.
 For example you can render tiles or generate shadows in one block and generate mantra 'ifd' files in another with 1 frame per task.
 And if task has 4 shadows or 2x2 tiles you can set -4 frames per task for depended block.
-</div></div>
-
-<div class="parameter"><div class="caption">
-<div class="anchor" id="block_depend_sub_task"><b>Sub Task Depend</b></div>
-<div class="json">depend_sub_task</div>
-<div class="python">af.Block.setDependSubTask(false/true)</div>
-</div><div class="description">
-For tasks with several frames calculate sub task dependence.
-Useful for simulation and render when not all frames simulated.
 </div></div>
 
 
@@ -706,6 +698,93 @@ Padding is specified by the number of "/" symbols between "@" symbols.
 
 </div>
 
+<h3 class="anchor" id="block_flags">Block Flags:</h3>
+
+<div class="parameters">
+
+BlockFlags = {
+	'varcapacity'        : 1  1,
+	'multihost'          : 1  2,
+	'masteronslave'      : 1  3,
+	'dependsubtask'      : 1  4,
+	'skipthumbnails'     : 1  5,
+	'skipexistingfiles'  : 1  6,
+	'checkrenderedfiles' : 1  7
+}
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_flag_numeric"><b>numeric</b></div>
+<div class="json">1 &lt;&lt; 0</div>
+<div class="python"><i>n/a</i></div>
+</div><div class="description">
+<a href="/afanasy/job#block_frame_first" target="_blank">Numeric</a>
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_flag_varcapacity"><b>varcapacity</b></div>
+<div class="json">1 &lt;&lt; 1</div>
+<div class="python">af.Block.setVariableCapacity(min, max)</div>
+</div><div class="description">
+<a href="/afanasy/job#block_variable_capacity" target="_blank">Variable Capacity</a>
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_flag_multihost"><b>multihost</b></div>
+<div class="json">1 &lt;&lt; 2</div>
+<div class="python">af.Block.setMultiHost(min, max, wait, master_on_slave=False, service=None, service_wait=-1)</div>
+</div><div class="description">
+<a href="/afanasy/job#block_multi_host_tasks" target="_blank">Multi Hosts Same Host Master</a>
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_flag_masteronslave"><b>masteronslave</b></div>
+<div class="json">1 &lt;&lt; 3</div>
+<div class="python">af.Block.setMultiHost(min, max, wait, master_on_slave=False, service=None, service_wait=-1)</div>
+</div><div class="description">
+<a href="/afanasy/job#block_multi_host_tasks" target="_blank">Multi Hosts Same Host Master</a>
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_flag_dependsubtask"><b>dependsubtask</b></div>
+<div class="json">1 &lt;&lt; 4</div>
+<div class="python">af.Block.setDependSubTask()</div>
+</div><div class="description">
+For tasks with several frames calculate sub task dependence.
+Useful for simulation and render when not all frames simulated.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_flag_skipthumbnails"><b>skipthumbnails</b></div>
+<div class="json">1 &lt;&lt; 5</div>
+<div class="python">af.Block.skipThumbnails()</div>
+</div><div class="description">
+Do not try to generate any thumbnails.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_flag_skipexistingfiles"><b>skipexistingfiles</b></div>
+<div class="json">1 &lt;&lt; 6</div>
+<div class="python">af.Block.skipExistingFiles( size_min = -1, size_max = -1)</div>
+</div><div class="description">
+AfRneder can check files on client just before task start (in a Python service class initialization).
+It can skip task command launch if file(s) are exist.
+If size_min or(and) size_max are positive, it will check size too.
+Block(task) files parameter should be set properly.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_flag_checkrenderedfiles"><b>checkrenderedfiles</b></div>
+<div class="json">1 &lt;&lt; 7</div>
+<div class="python">af.Block.checkRenderedFiles( size_min = -1, size_max = -1)</div>
+</div><div class="description">
+AfRneder can check files on client just after task finish (in a Python service class).
+It can set task as error if file(s) are not exist.
+If size_min or(and) size_max are positive, it will check size too.
+Block(task) files parameter should be set properly.
+</div></div>
+
+</div>
+
 
 <h3 class="anchor" id="block_state">Block State:</h3>
 <table class="state">
@@ -853,5 +932,17 @@ Activity can be parsed from task process output by Python parser class.
 <tr><td><b><i>Warning          </i></b></td><td><b><small><code>WRN</code></small></b></td><td>Warning from <a href="/afanasy/parsers" class="local_link">parser</a>.<td></tr>
 <tr><td><b><i>Parser Error     </i></b></td><td><b><small><code>PER</code></small></b></td><td>Error from <a href="/afanasy/parsers" class="local_link">parser</a>.<td></tr>
 <tr><td><b><i>Parser Bad Result</i></b></td><td><b><small><code>PBR</code></small></b></td><td>Bad result from <a href="/afanasy/parsers" class="local_link">parser</a>.<td></tr>
+
+<tr><td><b><i>Restated Error Ready</i></b></td><td><b><small><code>RER</code></small></b></td><td>
+	When task error was restarted it got RDY and new RER flag.
+	On next task start RER will be dropped (along with RDY) and it will be just RUN.
+	This flag needed just to for GUI to notify user about error occur.
+	Now GUIs will mask such task with a semi-red color (error is red).
+
+	Previously, when task restarts error (by default Afanasy retries error 3 times) artist can miss it.
+	Some times it can`t run start error task again because host avoid, NIMBY, Offline and so on.
+	And in this case task is just RDY, as the was not error at all.
+<td></tr>
+
 </table>
 
