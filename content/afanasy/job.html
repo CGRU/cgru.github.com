@@ -702,16 +702,6 @@ Padding is specified by the number of "/" symbols between "@" symbols.
 
 <div class="parameters">
 
-BlockFlags = {
-	'varcapacity'        : 1  1,
-	'multihost'          : 1  2,
-	'masteronslave'      : 1  3,
-	'dependsubtask'      : 1  4,
-	'skipthumbnails'     : 1  5,
-	'skipexistingfiles'  : 1  6,
-	'checkrenderedfiles' : 1  7
-}
-
 <div class="parameter"><div class="caption">
 <div class="anchor" id="block_flag_numeric"><b>numeric</b></div>
 <div class="json">1 &lt;&lt; 0</div>
@@ -781,6 +771,15 @@ AfRneder can check files on client just after task finish (in a Python service c
 It can set task as error if file(s) are not exist.
 If size_min or(and) size_max are positive, it will check size too.
 Block(task) files parameter should be set properly.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_flag_slavelostignore"><b>slavelostignore</b></div>
+<div class="json">1 &lt;&lt; 8</div>
+<div class="python">af.Block.setSlaveLostIgnore()</div>
+</div><div class="description">
+On a slave host missing, multi-host task will not restart.
+It will just ignore this.
 </div></div>
 
 </div>
