@@ -16,7 +16,7 @@
 <br/>
 
 
-<p><b id="release210" class="anchor">2.1.0</b> 2016.04.10 <i>(not released)</i> <b><i>New Afanasy network protocol version</i></b>.</p>
+<p><b id="release210" class="anchor">2.1.0</b> 2016.04.29 <b><i>New Afanasy network protocol version</i></b>.</p>
 <ul>
 <li><p>
 	Afanasy:
@@ -24,6 +24,18 @@
 	<li><p>
 		Clients does not listen any port (afrender and afwatch).
 		Server does not connects to clients itself.
+		This means that no local network needed any more.
+		Also it increases maximum clients quauntity.
+	</p></li>
+	<li><p>
+		MS Windows build now compiled with MSVC 2015.
+		You may needed to install <b>Redistributable 2015 x64</b> package to work,
+		if you have some old updated Windows OS.
+		It also it has Python 3.4.4 and Qt 5.6.0 versions.
+		<small>
+			<br> * Previous minimum required MSVC 2010SP1 version can't compile new Afanasy code.
+			<br> * Linux packages are using system Python and Qt versions as before.
+		</small>
 	</p></li>
 	<li><p>
 		WebGUI can listen job and task outputs.

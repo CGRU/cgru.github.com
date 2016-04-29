@@ -5,10 +5,25 @@
 	<atom:link href="http://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Sun, 6 Dec 2015 00:00:00 GMT</pubDate>
-	<lastBuildDate>Sun, 6 Dec 2015 00:00:00 GMT</lastBuildDate>
+	<pubDate>Fri, 29 Apr 2016 00:00:00 GMT</pubDate>
+	<lastBuildDate>Fri, 29 Apr 2016 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 2.1.0 Released.</title>
+		<link>http://cgru.info/#changes_log.html#release210</link>
+		<guid>http://cgru.info/#changes_log.html#release210</guid>
+		<description>
+			Afanasy clients does not listen port (and afrender and afwatch).
+			Server can serve much greater number of clients.
+			Client can work behind a firewall/router.
+			No local network needed.
+			Afrender can skip existing files and check rendered files.
+			Rules file buffer to move files and folders.
+			Bugfixes.
+		</description>
+		<pubDate>Fri, 6 Apr 2016 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 2.0.8 Released.</title>
 		<link>http://cgru.info/#changes_log.html#release208</link>
