@@ -16,39 +16,76 @@
 <br/>
 
 
-<p><b id="release211" class="anchor">2.1.1</b> 2016.05.10 <b><i>Not released</i></b>.</p>
+<p><b id="release211" class="anchor">2.2.0</b> 2016.08.10 <b><i>Not released</i></b>.</p>
 <ul>
 <li><p>
 	Afanasy:
 	<ul>
+	<li><p>
+		On server restart it reconnects running renders tasks.
+		New task "WaitForReconnect" state.
+	</p></li>
+	<li><p>
+		GUI got "task" window.
+		One place to view and manipulate job block task.
+	</p></li>
+	<li><p>
+		New render "Paused" state.
+		It is like "Nimby" but without "Auto Nimby".
+		Only admins can change this state.
+		Designed to disable render permanently while "Auto Nimby" is enabled.
+		So there is no need to turn it off temporary.
+	</p></li>
+	<li><p>
+		Parsers got "tagHTML" function.
+		It designed to mark task output for AfWatch gui.
+		For example replace terminal escape sequences, highlight errors.
+	</p></li>
+	<li><p>
+		AfWatch GUI nodes list has a second sorting parameter.
+	</p></li>
+	<li><p>
+		JOB_DELETED event added.
+	</p></li>
 	<li><p>
 		Houdini submission:
 		Added minimum memory and PPA settings, wedges support.
 	</p></li>
 	</ul>
 </p></li>
-<!--li><p>
+<li><p>
 	RULES:
 	<ul>
 	<li><p>
-		File buffer to move folders/files.
+		Files view: You can colorize and annotate any item.
 	</p></li>
 	</ul>
-</p></li-->
+</p></li>
 </ul>
 
-<!--p>Bugs Fixed:
+<p>Bugs Fixed:
 <ul>
 <li><p>
 	Afanasy:
 	<ul>
 	<li><p>
-		AfWatch: Turn off listening job/task fixed.
+		AfServer store folders removal fixed on some modern file systems.
+	</p></li>
+	<li><p>
+		AfServer on windows thumbnails serving fixed.
+	</p></li>
+	<li><p>
+		Mac OS X: AfRender memory resources detection fixed.
+	</p></li>
+	<li><p>
+		AfRender get CPU frequency each time it measures resources.
+		And stores its maximum.
+		Now most machines can change CPU frequency depending on load.
 	</p></li>
 	</ul>
 </p></li>
 </ul>
-</p-->
+</p>
 
 
 <br/>
