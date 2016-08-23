@@ -51,6 +51,10 @@
 		Houdini submission:
 		Added minimum memory and PPA settings, wedges support.
 	</p></li>
+	<li><p>
+		You can enable/disable services by a regular expression.
+		It is useful when you have several <i>houdini_.*</i> types services.
+	</p></li>
 	</ul>
 </p></li>
 <li><p>
@@ -73,6 +77,12 @@
 	</p></li>
 	<li><p>
 		AfServer on windows thumbnails serving fixed.
+	</p></li>
+	<li><p>
+		AfServer now reset depend state on a job block if it depend mask changes on empty string.
+	</p></li>
+	<li><p>
+		AfServer does not send job changed event every cycle if a job block has depend mask.
 	</p></li>
 	<li><p>
 		Mac OS X: AfRender memory resources detection fixed.
