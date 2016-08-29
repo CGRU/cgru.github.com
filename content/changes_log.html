@@ -16,7 +16,7 @@
 <br/>
 
 
-<p><b id="release211" class="anchor">2.2.0</b> 2016.08.10 <b><i>Not released</i></b>.</p>
+<p><b id="release211" class="anchor">2.2.0</b> 2016.08.29 <b><i>Not released</i></b>.</p>
 <ul>
 <li><p>
 	Afanasy:
@@ -24,6 +24,14 @@
 	<li><p>
 		On server restart it reconnects running renders tasks.
 		New task "WaitForReconnect" state.
+	</p></li>
+	<li><p>
+        New job flags designed for "Maintenance" added:
+        <a href="afanasy/job#job_maintenance" target="_blank"><i>maintenance</i></a>,
+        <a href="afanasy/job#job_ignorenimby" target="_blank"><i>ignorenimby</i></a> and
+        <a href="afanasy/job#job_ignorepaused" target="_blank"><i>ignorepaused</i></a>.
+        Now you can run some command once on each render (even if it is "Nimby").
+        For example you can install software this way.
 	</p></li>
 	<li><p>
 		GUI got "task" window.
@@ -62,6 +70,9 @@
 	<ul>
 	<li><p>
 		Files view: You can colorize and annotate any item.
+	</p></li>
+	<li><p>
+		Walk: Calculates and stores disk usage along with total files length.
 	</p></li>
 	</ul>
 </p></li>

@@ -165,8 +165,36 @@ This parameter plays role only when job block(s) has a <a href="#block_sequentia
 When PPA is turned on, job renders only non-sequential tasks (for example just each 10 frame).
 Then job state falls into PPA and it stops to solve any tasks.
 Artist can check each 10 job frames.
-And, depending on the results, conutinue job or not.
+And, depending on the results, continue job or not.
 To continue job, you can turn PPA parameter off.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_maintenance"><b>Maintenance</b></div>
+<div class="json">maintenance</div>
+<div class="python">af.Job.setMaintenance()</div>
+</div><div class="description">
+Job will run on tasks which name matches render name.
+Useful for "Maintenance" jobs, when you want some command run only once on each render.
+For example you can install software this way.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_ignorenimby"><b>Ignore Nimby</b></div>
+<div class="json">ignorenimby</div>
+<div class="python">af.Job.setIgnoreNimby()</div>
+</div><div class="description">
+Job tasks will run on render even it has "Nimby" state.
+Useful for "Maintenance" jobs.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="job_ignorepaused"><b>Ignore Paused</b></div>
+<div class="json">ignorepaused</div>
+<div class="python">af.Job.setIgnorePaused()</div>
+</div><div class="description">
+Job tasks will run on render even it has "Paused" state.
+Useful for "Maintenance" jobs.
 </div></div>
 
 <div class="parameter"><div class="caption">
