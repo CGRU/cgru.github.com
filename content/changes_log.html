@@ -2,9 +2,9 @@
 	If Afanasy <b>network protocol changed</b>, it became incompatible with old one.
 </p>
 <ol>
-	<li>The first number in version means some major changes in the project.</li>
-	<li>The second number means compatibility lost.
-		You should upgrade all clients and server at the same.</li>
+	<li>The first number in version means significant changes in the project.</li>
+	<li>The second number means major changes and compatibility lost.
+		You should upgrade all clients and server at once.</li>
 	<li>The third number versions are fully compatible.
 		You can upgrade only one client or server to check changes.</li>
 </ol>
@@ -16,7 +16,14 @@
 <br/>
 
 
-<p><b id="release211" class="anchor">2.2.0</b> 2016.08.29 <b><i>Not released</i></b>.</p>
+<p>
+    <b id="release211" class="anchor">2.2.0</b>
+    2016.10.26
+    <b><i>New Afanasy network protocol version.</i></b>
+</p>
+
+<b><i>Not released.</i></b>
+
 <ul>
 <li><p>
 	Afanasy:
@@ -42,7 +49,6 @@
 		It is like "Nimby" but without "Auto Nimby".
 		Only admins can change this state.
 		Designed to disable render permanently while "Auto Nimby" is enabled.
-		So there is no need to turn it off temporary.
 	</p></li>
 	<li><p>
 		Parsers got "tagHTML" function.
@@ -53,15 +59,25 @@
 		AfWatch GUI nodes list has a second sorting parameter.
 	</p></li>
 	<li><p>
-		JOB_DELETED event added.
+		Houdini submission:
+        <ul>
+    		<li>Added minimum memory, PPA settings, render temp HIP and wedges support.</li>
+    		<li><i>Separate Render</i> deletes ROP files not after render, but on job deletion (you can re-render w/o re-generation).</li>
+    		<li><b>Distributed simulations support.</b></li>
+        </ul>
 	</p></li>
 	<li><p>
-		Houdini submission:
-		Added minimum memory and PPA settings, wedges support.
+		Job Block
+        <a href="afanasy/job#block_environment" target="_blank"><i>environment</i></a>
+        parameter added.
+		Render can run task process with some extra environment.
 	</p></li>
 	<li><p>
 		You can enable/disable services by a regular expression.
 		It is useful when you have several <i>houdini_.*</i> types services.
+	</p></li>
+	<li><p>
+		JOB_DELETED event added.
 	</p></li>
 	</ul>
 </p></li>
@@ -69,10 +85,14 @@
 	RULES:
 	<ul>
 	<li><p>
+		Scenes/Shots asset: Export shots to HTML table.
+		You save/send this table. Print to PDF. Open in Exel/Word.
+	</p></li>
+	<li><p>
 		Files view: You can colorize and annotate any item.
 	</p></li>
 	<li><p>
-		Walk: Calculates and stores disk usage along with total files length.
+		Walk: Calculates and stores disk usage along with total files size.
 	</p></li>
 	</ul>
 </p></li>
