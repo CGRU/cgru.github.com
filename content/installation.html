@@ -13,6 +13,7 @@
 	<ul>
 	<li><a href="#config_files">Config Files</a></li>
 	<li><a href="#config_environment">Environment Variables</a></li>
+	<li><a href="#config_overrides">Config Overrides</a></li>
 	</ul>
 <li><a href="#examples">Run Examples</a></li>
 <li><a href="#manual_build">Manual Project Build</a>
@@ -325,6 +326,31 @@ $ source ./setup.sh
 	</ul>
 </li>
 </ul>
+
+
+<h3 id="config_overrides" class="anchor">Config Overrides</h3>
+<p>
+	You can override any config parameter.
+</p>
+<h4>By Command Argument:</h4>
+<p>
+	Use <code>--[param_name] param_value</code> argumets to an Afanasy executable.
+	For example to make afwatch to connect to other afanasy server type:
+</p>
+<pre>
+	$ afwarch --af_servername otherserver
+</pre>
+<h4>By Environment Variable:</h4>
+<p>
+	Set <code>CGRU_[PARAM_NAME]</code> environemt variable.
+	For example to setup console to use other server port type:
+</p>
+<pre>
+	$ export CGRU_AF_SERVERPORT=51111
+</pre>
+<p>
+	Python API will take environment overrides too.
+</p>
 
 
 <hr>
