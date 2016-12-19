@@ -1,12 +1,12 @@
 <h2>Afanasy in Clarisse iFX</h2>
 
-<h3>In-App Sibmission Script</h3>
+<h3>In-App Submission Script</h3>
 <p>
 	This a Python script.
 	It get some project attributes and creates a dialog.
 	In this dialog you can change parameters and send job to server.
-	By defaule script exports project to render archive with some temporary name.
-	And after rednder, when use deletes job, temporary archive will be deleted too.
+	By default script exports project to render archive with some temporary name.
+	And after render, when user deletes job, temporary archive will be deleted too.
 </p>
 
 <div style="float:left">
@@ -15,9 +15,12 @@
 </div>
 <div style="padding-left:20px">
 	<h4>Settings Tab:</h4>
-	<img width="300px" class="forontop" src="/images/clarisse/submit_dialog_b.png">
+	<div><img width="300px" class="forontop" src="/images/clarisse/submit_dialog_b.png"></div>
+	<div>Negative value means use default value.</div>
+
 	<h4>Conditions Tab:</h4>
-	<img width="300px" class="forontop" src="/images/clarisse/submit_dialog_c.png">
+	<div><img width="300px" class="forontop" src="/images/clarisse/submit_dialog_c.png"></div>
+	<div>Empty field disables condition.</div>
 </div>
 
 <br style="clear:both">
@@ -29,7 +32,7 @@
 	<li>
 		<b>clarisse_node</b>:
 		CGRU command used to launch Clarisse cnode.
-		By default it will launch the latest (alphabetially) version.
+		By default it will launch the latest (alphabetically) version.
 	</li>
 	<li>
 		<b>clarisse_render</b>:
@@ -37,11 +40,11 @@
 	</li>
 	<li>
 		<b>cnode</b>:
-		Sytem command will be searched in PATH environment.
+		System command will be searched in PATH environment.
 	</li>
 	<li>
 		<b>crender</b>:
-		Sytem command will be searched in PATH environment.
+		System command will be searched in PATH environment.
 	</li>
 	</ul>
 </li>
@@ -49,7 +52,7 @@
 
 <h3>GUI</h3>
 <div style="float:left">
-	<div style="text-align:center">Qt GUI AfWatch</div>
+	<div style="text-align:center">AfWatch (Qt GUI)</div>
 	<img src="/images/clarisse/gui_afwatch_jobs.png">
 </div>
 <p>
