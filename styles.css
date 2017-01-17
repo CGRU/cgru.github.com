@@ -75,12 +75,17 @@ background-color: rgba(0,0,0,.1);
 float: left;
 position: relative;
 top: -10px; bottom: -10px;
-width: 14%;
+width: 12%;
 text-align: center;
 text-transform: uppercase;
 text-align: center;
 padding-top: 18px;
 padding-bottom: 10px;
+}
+#header a.navig.external {
+	color: #000044;
+	font-style: italic;
+	text-decoration: underline;
 }
 
 a.navig {
