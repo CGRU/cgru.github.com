@@ -1100,10 +1100,7 @@ input.disabled {
 }
 
 .dropdown-extended .header {
-	background-color: #F1F8FF; /* Old browsers */ /* FF3.6+ */
-	background-image: -webkit-linear-gradient(top, #F1F8FF 0%, #CADCEB 100%);
-	background-image: linear-gradient(to bottom, #F1F8FF 0%,#CADCEB 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F1F8FF', endColorstr='#CADCEB',GradientType=0 ); /* IE6-9 */
+	background-color: #DDDDDD;
 }
 
 .dropdown .pointer {
