@@ -30,8 +30,6 @@
 }
 
 .panel-container .panel li.row {
-	border-bottom: 1px solid transparent;
-	border-top: 1px solid transparent;
 }
 
 ul.cplist {
@@ -260,7 +258,7 @@ ul.cplist {
 	max-height: 200px;
 	overflow-y: auto;
 	padding: 5px 10px;
-	border-radius: 7px;
+	border-radius: 2px;
 }
 
 dl.mini dt {
