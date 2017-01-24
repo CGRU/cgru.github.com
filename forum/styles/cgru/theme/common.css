@@ -177,8 +177,8 @@ a:hover	{ text-decoration: underline; }
 
 /* Site description and logo */
 .site-description {
-	float: left;
-	width: 65%;
+	-float: left;
+	-width: 65%;
 }
 
 .site-description h1 {

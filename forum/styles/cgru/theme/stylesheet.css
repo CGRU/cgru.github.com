@@ -1,9 +1,6 @@
 /*  phpBB3 Style Sheet
     --------------------------------------------------------------
-	Style name:			prosilver (the default phpBB 3.1.x style)
-	Based on style:
-	Original author:	Tom Beddard ( http://www.subblue.com/ )
-	Modified by:		phpBB Limited ( https://www.phpbb.com/ )
+	Style name:			cgru
     --------------------------------------------------------------
 */
 
@@ -19,3 +16,16 @@
 @import url("icons.css");
 @import url("colours.css");
 @import url("responsive.css");
+
+#cgru_header_links > div {
+	float: left;
+	margin: 2px;
+	margin-bottom: 0;
+	padding: 2px 8px;
+	font-weight: bold;
+	text-align: center;
+	width: 80px;
+	border-radius: 4px;
+	border: 1px solid #888888;
+	background-color: #AAAAAA;
+}
