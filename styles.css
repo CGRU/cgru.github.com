@@ -1,33 +1,34 @@
 body {
-background-color: #CCCCCC;
-font-family: Verdana, Arial, Helvetica, sans-serif;
-font-size: 16px;
-text-align: justify;
+	background-color: #CCCCCC;
+	color: #222222;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	text-align: justify;
 }
 
 div { margin: 0px; padding: 0px; overflow: hidden; }
 
 a:link {
-color: #006;
+color: #222266;
 }
 a:visited {
-color: #006;
+color: #222266;
 }
 a:hover {
-color: #500;
+color: #552222;
 }
 a:active {
-color: #D00;
+color: #D22222;
 }
 code, kbd {
 font-family: monospace;
 font-weight: bold;
 }
 code {
-color: #004;
+color: #222244;
 }
 kbd {
-color: #403;
+color: #442233;
 }
 pre {
 overflow: auto;
@@ -74,7 +75,7 @@ background-color: rgba(0,0,0,.1);
 #header a.navig {
 float: left;
 position: relative;
-top: -10px; bottom: -10px;
+top: -7px; bottom: -10px;
 width: 12%;
 text-align: center;
 text-transform: uppercase;
@@ -83,14 +84,14 @@ padding-top: 18px;
 padding-bottom: 10px;
 }
 #header a.navig.external {
-	color: #000044;
+	color: #222244;
 	font-style: italic;
 	text-decoration: underline;
 }
 
 a.navig {
 display:block;
-color: #000;
+color: #222222;
 text-decoration: none;
 outline: none;
 }
@@ -163,17 +164,20 @@ text-shadow: 0px 0px 10px rgba(255,255,255,.5), 0px 0px 1px rgba(255,255,255,.9)
 font-weight: bold;
 opacity: 0.8;
 }
+
 .cnavlink, .cnavblock {
-margin:10px 10px;
-padding:10px 20px;
-border-radius: 2px; box-shadow:0 0 4px #000 inset, 0 0 5px rgba(255,255,255,.3);}
-.cnavblock.red    { box-shadow:0 0 4px #200 inset, 0 0 5px rgba(255,255,255,.3);}
-.cnavblock.green  { box-shadow:0 0 4px #040 inset, 0 0 5px rgba(255,255,255,.3);}
-.cnavblock.blue   { box-shadow:0 0 4px #007 inset, 0 0 5px rgba(255,255,255,.3);}
-.cnavblock.magenta{ box-shadow:0 0 4px #407 inset, 0 0 5px rgba(255,255,255,.3);}
-.cnavblock.outer  { box-shadow:0 0 4px #000, 0 0 5px rgba(255,255,255,.3) inset, 0 0 5px rgba(0,0,0,.5) inset; }
-.cnavlink:hover   { background: rgba(200,255,255,.1);}
-.cnavabs { position:relative; overflow: visible; /*border:1px #000 solid;*/ }
+	margin:10px 10px;
+	padding:10px 20px;
+	border-radius: 4px;
+	border: 2px solid rgba(0,0,0,.3);
+}
+.cnavlink:hover {
+	background: rgba(200,255,255,.2);
+}
+
+.cnavabs {
+	position:relative; overflow: visible;
+}
 .cnavabs .cnavblock, .cnavabs .cnavlink {
 position: absolute;
 text-align:center;
