@@ -5,10 +5,23 @@
 	<atom:link href="http://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Wed, 23 Nov 2016 00:00:00 GMT</pubDate>
-	<lastBuildDate>Wed, 23 Nov 2016 00:00:00 GMT</lastBuildDate>
+	<pubDate>Sun, 29 Jan 2017 00:00:00 GMT</pubDate>
+	<lastBuildDate>Sun, 29 Jan 2017 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 2.2.1 Released.</title>
+		<link>http://cgru.info/#changes_log.html#release221</link>
+		<guid>http://cgru.info/#changes_log.html#release221</guid>
+		<description>
+			Isotropix Clarisse iFX support.
+			Keeper shows machine memory usage in a system tray icon.
+			AfServer solves jobs by running tasks total capacity (by default), not just by running tasks count.
+			Each new job acquires an unique serial number. You can get jobs from server by serial.
+			Rules artists got automatic bookmarks on assigned shots.
+		</description>
+		<pubDate>Sun, 29 Jan 2017 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 2.2.0 Released.</title>
 		<link>http://cgru.info/#changes_log.html#release220</link>
