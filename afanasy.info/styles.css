@@ -1,11 +1,11 @@
 body {
-background-color: #BBC088;
-color: #223311;
-font-weight: bold;
-font-size: 26px;
-font-family: sans-serif;
-text-shadow: #fff 0px 1px 0, #000 0 -1px 0;
-text-align: center;
+	background-color: #AAAA77;
+	color: #333333;
+	font-weight: bold;
+	font-size: 26px;
+	font-family: sans-serif;
+	text-shadow: 0 0 30px rgba(255,255,255,.5);
+	text-align: center;
 }
 
 a         { color: #113355; }
