@@ -628,7 +628,8 @@ But usually it happens at the morning, when artists come at work, and the whole 
 	<li>JOB_ERROR - Some job has an error task.</li>
 </ul>
 <p>
-	There is already some events.py service class.
+	There is already default Python service class:
+	<br><kbd>cgru/afanasy/python/services/events.py</kbd><br>
 	It designed to send emails.
 </p>
 <p>
@@ -648,6 +649,15 @@ But usually it happens at the morning, when artists come at work, and the whole 
 	User and job custom data objects are simple merged.
 	So user can have information about email and job about events.
 	If user will have and email and events all it jobs will send emails.
+</p>
+<h3>Events service customization</h3>
+<p>
+	You can write any custom Python service class, for example:
+	<br><kbd>cgru/afanasy/python/services/events_local.py</kbd><br>
+</p>
+<p>
+	And set it as System job events block service name in your configuration file:
+	<br><code>"af_sysjob_events_service":"events_local"</code>
 </p>
 
 
