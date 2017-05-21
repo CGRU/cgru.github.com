@@ -17,20 +17,27 @@
 
 
 <p>
-    <b id="release221" class="anchor">2.2.2</b>
-    2017.03.21
-	<i>Not released.</i>
+	<b id="release222" class="anchor">2.2.2</b>
+	2017.05.21
 </p>
 
 <ul>
 <li><p>
-
+	RULES:
+	<ul>
+	<li><p>
+		If status progress is 100% all its tasks are considered as done.
+	</p></li>
+	</ul>
 </p></li>
 <li><p>
 	Afanasy:
 	<ul>
 	<li><p>
-
+		Maya Redshift support.
+	</p></li>
+	<li><p>
+		Parser updates: Fusion, Redshift, Arnold, Redline, Rsync.
 	</p></li>
 	</ul>
 </p></li>
@@ -39,17 +46,19 @@
 <p>Bugs Fixed:
 <ul>
 <li><p>
-
-</p></li>
-<li><p>
 	Afanasy:
 	<ul>
 	<li><p>
 		MS Windows AfWatch and jpeg images (thumbnails) reading fixed.
+		Missing Qt5 dll added to the package release archive.
 	</p></li>
 	<li><p>
 		AfServer on some Linux distributions can hung when clients number over 100.
 		Fixed - reduced default (configurable) afserver client thread stack size.
+	</p></li>
+	<li><p>
+		Parser Error fixed.
+		Later on Parser Error, afrender can ignore its restart from afserver and task update/stop timeouts happen.
 	</p></li>
 	</ul>
 </p></li>
