@@ -1,66 +1,66 @@
-uf_default_path = 'about';
-uf_back_clr_min = 50;
-uf_back_clr_max = 60;
+g_default_path = 'about';
+g_back_clr_min = 50;
+g_back_clr_max = 60;
 
 var $ = function( id ) { return document.getElementById( id ); };
 
-uf_elContent = null;
-uf_elShake = [];
-uf_shake_cycle = 0;
+g_elContent = null;
+g_elShake = [];
+g_shake_cycle = 0;
 
-uf_body_w = 0;
-uf_body_h = 0;
-uf_ctx = null;
-uf_units = [];
-uf_draw_cycle = 0;
+g_body_w = 0;
+g_body_h = 0;
+g_ctx = null;
+g_units = [];
+g_draw_cycle = 0;
 
-function uf_Init()
+function g_Init()
 {
 	var canvas = $('canvas');
 
-	uf_body_w = $('back').clientWidth;
-	uf_body_h = $('back').clientHeight;
+	g_body_w = $('back').clientWidth;
+	g_body_h = $('back').clientHeight;
 
-	console.log( 'Resolution: ' + uf_body_h + ' x ' + uf_body_w);
+	console.log( 'Resolution: ' + g_body_h + ' x ' + g_body_w);
 
-	canvas.width = uf_body_w;
-	canvas.height = uf_body_h;
-	canvas.style.width = uf_body_w + 'px';
-	canvas.style.height = uf_body_h + 'px';
+	canvas.width = g_body_w;
+	canvas.height = g_body_h;
+	canvas.style.width = g_body_w + 'px';
+	canvas.style.height = g_body_h + 'px';
 
-	uf_ctx = canvas.getContext('2d');
-	uf_ctx.lineWidth = 1.0;
-	for( var i = 0; i < uf_body_h; i++)
+	g_ctx = canvas.getContext('2d');
+	g_ctx.lineWidth = 1.0;
+	for( var i = 0; i < g_body_h; i++)
 	{
-		var clr = Math.floor( uf_back_clr_min + .5*(uf_back_clr_max - uf_back_clr_min) * Math.random());
-		uf_ctx.strokeStyle = 'rgb('+clr+','+clr+','+clr+')';
+		var clr = Math.floor( g_back_clr_min + .5*(g_back_clr_max - g_back_clr_min) * Math.random());
+		g_ctx.strokeStyle = 'rgb('+clr+','+clr+','+clr+')';
 //continue;
-		uf_ctx.beginPath();
-		uf_ctx.moveTo( 0, i+.5);
-		uf_ctx.lineTo( uf_body_w, i+.5);
-		uf_ctx.stroke();
+		g_ctx.beginPath();
+		g_ctx.moveTo( 0, i+.5);
+		g_ctx.lineTo( g_body_w, i+.5);
+		g_ctx.stroke();
 	}
 
-	uf_elShake = document.getElementsByClassName('shake');
-	for( var i = 0; i < uf_elShake.length; i++)
+	g_elShake = document.getElementsByClassName('shake');
+	for( var i = 0; i < g_elShake.length; i++)
 	{
-		uf_elShake[i].onmouseover = uf_OnMouseOver;
-		uf_elShake[i].onmousemove = uf_OnMouseMove;
-		uf_elShake[i].onmouseout = uf_OnMouseOut;
+		g_elShake[i].onmouseover = g_OnMouseOver;
+		g_elShake[i].onmousemove = g_OnMouseMove;
+		g_elShake[i].onmouseout = g_OnMouseOut;
 	}
 
-	uf_Shake();
-	for( var i = 0; i < 100; i++ ) uf_Draw( true);
-	uf_Draw();
+	g_Shake();
+	for( var i = 0; i < 100; i++ ) g_Draw( true);
+	g_Draw();
 
-	document.body.onclick = uf_BodyOnClick;
-	document.body.onmousemove = uf_BodyOnMouseMove;
+	document.body.onclick = g_BodyOnClick;
+	document.body.onmousemove = g_BodyOnMouseMove;
 
-	window.onhashchange = uf_PathChanged;
-	uf_PathChanged();
+	window.onhashchange = g_PathChanged;
+	g_PathChanged();
 }
 
-function uf_PathChanged()
+function g_PathChanged()
 {
 	var path = document.location.hash;
 
@@ -68,7 +68,7 @@ function uf_PathChanged()
 		path = path.substr(1);
 
 	if( path == '' )
-		path = uf_default_path;
+		path = g_default_path;
 
 	var navigs = document.getElementsByClassName('navig');
 	for( var i = 0; i < navigs.length; i++)
@@ -95,36 +95,36 @@ function uf_PathChanged()
 		contents[i].style.right = '-100%';
 	}
 
-	uf_elContent = $('c_' + path);
-	if( uf_elContent == null )
+	g_elContent = $('c_' + path);
+	if( g_elContent == null )
 	{
 		console.log('Constent "' + path + '" not founded.');
 		return;
 	}
 	
-	uf_elContent.classList.add('current');
-//	uf_elContent.style.display = 'block';
-	uf_elContent.style.left = '-100%';
-	uf_elContent.style.right = '100%';
+	g_elContent.classList.add('current');
+//	g_elContent.style.display = 'block';
+	g_elContent.style.left = '-100%';
+	g_elContent.style.right = '100%';
 
-	uf_elContent.classList.remove('transition');
+	g_elContent.classList.remove('transition');
 
 //console.log( path);
 
-	setTimeout( uf_SetCurrent, 10);
-	uf_shake_cycle = 0;
-	uf_Shake();
+	setTimeout( g_SetCurrent, 10);
+	g_shake_cycle = 0;
+	g_Shake();
 
 }
 
-function uf_SetCurrent()
+function g_SetCurrent()
 {
-	uf_elContent.classList.add('transition');
-	uf_elContent.style.left = '0';
-	uf_elContent.style.right = '0';
+	g_elContent.classList.add('transition');
+	g_elContent.style.left = '0';
+	g_elContent.style.right = '0';
 }
 
-function uf_OnMouseMove(i_e)
+function g_OnMouseMove(i_e)
 {
 	i_e.currentTarget.m_shake = 1;
 
@@ -133,32 +133,32 @@ function uf_OnMouseMove(i_e)
 	var dx = 8;
 	var dy = 4;
 //	for( var i = 0; i < 4; i++)
-//	uf_units.push( uf_DrawCreateUnit( x-dx, x+dx, y-dy, y+dy, 4));
-	uf_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy,"clr_mult":4,"type":1}));
+//	g_units.push( g_DrawCreateUnit( x-dx, x+dx, y-dy, y+dy, 4));
+	g_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy,"clr_mult":4,"type":1}));
 //console.log( i_e.currentTarget.textContent + ' ' + i_e.currentTarget.m_shake);
 }
-function uf_OnMouseOver(i_e)
+function g_OnMouseOver(i_e)
 {
 	i_e.currentTarget.m_shake = 1;
 //console.log( i_e.currentTarget.textContent + ' ' + i_e.currentTarget.m_shake);
 }
-function uf_OnMouseOut(i_e)
+function g_OnMouseOut(i_e)
 {
 //	i_e.currentTarget.m_shake = 0;
 //console.log( i_e.currentTarget.textContent + ' ' + i_e.currentTarget.m_shake);
 }
 
-function uf_Shake()
+function g_Shake()
 {
-//console.log('shake ' + uf_shake);
-	var amp = 4.0 / ( 1 + .3*uf_shake_cycle );
-	var opa = 1.0 - 1.0 / ( 2 + .3*uf_shake_cycle );
-	uf_shake_cycle++;
+//console.log('shake ' + g_shake);
+	var amp = 4.0 / ( 1 + .3*g_shake_cycle );
+	var opa = 1.0 - 1.0 / ( 2 + .3*g_shake_cycle );
+	g_shake_cycle++;
 
-	for( var i = 0; i < uf_elShake.length; i++)
+	for( var i = 0; i < g_elShake.length; i++)
 	{
 //console.log(
-		var el = uf_elShake[i];
+		var el = g_elShake[i];
 
 		if(( el.m_shake == null ) || ( el.m_shake == 0 ))
 			continue;
@@ -180,21 +180,21 @@ function uf_Shake()
 		el.style.left = value;
 	}
 
-//	if( uf_shake_cycle < 100 )
-		setTimeout( uf_Shake, 50);
+//	if( g_shake_cycle < 100 )
+		setTimeout( g_Shake, 50);
 }
 
-function uf_BodyOnMouseMove( e )
+function g_BodyOnMouseMove( e )
 {
 return;
 	var x = e.clientX;
 	var y = e.clientY;
 	var dx = 4;
 	var dy = 4;
-	uf_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy}));
+	g_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy}));
 }
 
-function uf_BodyOnClick( e )
+function g_BodyOnClick( e )
 {
 return;
 	var x = e.clientX;
@@ -202,31 +202,31 @@ return;
 	var dx = 40;
 	var dy = 10;
 	for( var i = 0; i < 100; i++)
-		uf_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy}));
+		g_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy}));
 }
 
-function uf_Draw( i_no_timeout )
+function g_Draw( i_no_timeout )
 {
-//console.log(uf_units.length);
+//console.log(g_units.length);
 
-	uf_draw_cycle++;
+	g_draw_cycle++;
 
-	while( uf_units.length < 100 )
+	while( g_units.length < 100 )
 	{
-		uf_units.push( new Unit({"x_min":0,"x_max":uf_body_w,"y_min":0,"y_max":uf_body_h}));
+		g_units.push( new Unit({"x_min":0,"x_max":g_body_w,"y_min":0,"y_max":g_body_h}));
 	}
 
-	if(( uf_draw_cycle % 10 ) == 0 )
-		uf_units.shift();
+	if(( g_draw_cycle % 10 ) == 0 )
+		g_units.shift();
 
-	for( var i = 0; i < uf_units.length; i++)
+	for( var i = 0; i < g_units.length; i++)
 	{
-		uf_units[i].refresh();
-		uf_units[i].draw();
+		g_units[i].refresh();
+		g_units[i].draw();
 	}
 
 	if( i_no_timeout !== true )
-		setTimeout( uf_Draw, 100);
+		setTimeout( g_Draw, 100);
 }
 
 function Unit( i_args)
@@ -251,14 +251,14 @@ function Unit( i_args)
 		this.vy = ( Math.random() > .1 ) ? 1 : -1;;
 	}
 
-	this.img = uf_ctx.createImageData(2,2);
+	this.img = g_ctx.createImageData(2,2);
 
 	this.setColor( i_args.clr_mult);
 }
 Unit.prototype.setColor = function( i_mult)
 {
 	if( i_mult == null ) i_mult = 1;
-	var clr = uf_back_clr_min + i_mult * (uf_back_clr_max - uf_back_clr_min) * Math.random();
+	var clr = g_back_clr_min + i_mult * (g_back_clr_max - g_back_clr_min) * Math.random();
 	for( var i = 0; i < 4; i++)
 	{
 		this.img.data[i*4+0] = clr;
@@ -297,16 +297,16 @@ Unit.prototype.refresh = function()
 	this.x += this.vx;
 	this.y += this.vy;
 
-	if( this.x > uf_body_w ) this.x = 0;
-	if( this.y > uf_body_h ) this.y = 0;
+	if( this.x > g_body_w ) this.x = 0;
+	if( this.y > g_body_h ) this.y = 0;
 
-	if( this.x < 0 ) this.x = uf_body_w;
-	if( this.y < 0 ) this.y = uf_body_h;
+	if( this.x < 0 ) this.x = g_body_w;
+	if( this.y < 0 ) this.y = g_body_h;
 
 	this.cycle++;
 }
 Unit.prototype.draw = function()
 {
-	uf_ctx.putImageData( this.img, this.x, this.y );
+	g_ctx.putImageData( this.img, this.x, this.y );
 }
 
