@@ -1,13 +1,50 @@
 body {
 background-color: #444444;
 color: #AAAAAA;
-font-weight: bold;
 font-family: sans-serif;
 text-shadow: 0 0 4px #000;
 text-align: center;
 }
 
 div, span { margin: 0; padding: 0; overflow: hidden; }
+
+#header {
+position: absolute;
+left: 0; right: 0; top: 0;
+height: 70px;
+box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
+font-weight: bold;
+}
+
+#footer {
+-moz-user-select: none;
+-webkit-user-select: none;
+box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
+position: absolute;
+bottom: 0px;
+left: 0px;
+right: 0px;
+height: 32px;
+font-size: 12px;
+}
+
+#navig_div {
+position: absolute;
+left: 0;
+top: 70px;
+bottom: 32px;
+width: 200px;
+box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
+-border: 2px solid #0FF;
+}
+
+#content {
+position: absolute;
+left: 200px; right: 0;
+top: 70px;
+bottom: 32px;
+-border: 2px solid #00F;
+}
 
 a {
 cursor: pointer;
@@ -29,72 +66,35 @@ text-shadow: -10px 0 5px #FFF, 10px 0 5px #FFF, 0px 0 15px #FFF;
 
 .navig.current a { color: #DDDDDD; }
 
-table { border-collapse: collapse; }
--table.statistics td { border: 1px solid #777; border-right-width: 0; padding: 1px 8px; }
-
-table td {
-border: 2px solid rgba(255,255,255,.1);
--border-right-width: 0;
-box-shadow: 0 0 10px rgba(0,0,0,.3) inset;
-padding: 20px 0px;
-}
-
-#header {
-position: absolute;
-left: 0; right: 0; top: 0;
-height: 150px;
-box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
-}
-
-#logo {
-font-size: 40px;
-padding: 40px;
-}
-
-#navigation {
+#header_links {
 -moz-user-select: none;
 -webkit-user-select: none;
-font-size: 22px;
+font-size: 16px;
 position: absolute;
 left: 0; right: 0; bottom: 0;
-height: 60px;
 -border: 1px solid #FF0;
 }
 
-#navigation div {
+#header_links div {
 float: left;
 width: 25%;
 margin-top: 10px;
-padding: 10px 0;
+padding: 8px 0;
 -border: 1px solid #FF0;
 }
 
-#footer {
--moz-user-select: none;
--webkit-user-select: none;
-box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
-position: absolute;
-bottom: 0px;
-left: 0px;
-right: 0px;
-height: 50px;
-font-size: 18px;
+#logo {
+font-size: 20px;
+padding: 20px;
 }
 
 #footer div {
-padding: 15px 0;
+padding: 8px 0;
 float: left;
 width: 25%;
 -border: 1px solid #FF0;
 }
 
-#content {
-position: absolute;
-left: 0; right: 0;
-top: 150px;
-bottom: 50px;
--border: 2px solid #00F;
-}
 .content {
 text-align: justify;
 position: absolute;
@@ -128,3 +128,4 @@ position: relative;
 position: absolute;
 left: 0; right: 0; top: 0; bottom: 0;
 }
+
