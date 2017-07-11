@@ -1,4 +1,7 @@
-g_default_path = 'about';
+g_nav_cur_item = null;
+g_nav_old_item = null;
+g_nav_default_path = 'about';
+g_nav_items = {};
 
 var $ = function( id ) { return document.getElementById( id ); };
 
@@ -6,22 +9,72 @@ function g_Init()
 {
 	bg_Init();
 
-	window.onhashchange = g_PathChanged;
+	window.onhashchange = g_NavHashChanged;
 
 	var args = {};
 	args.path = "navigation.json";
 	args.func = g_NavCreateTree;
 	GET( args);
-
-	g_PathChanged();
 }
 
-function g_NavCreateTree( i_tree)
+function g_NavCreateTree( i_data)
 {
-console.log( JSON.stringify( i_tree));
+	var tree = null;
+	try { tree = JSON.parse( i_data);}
+	catch( err)
+	{
+		console.log( err.message+'\n'+i_data);
+		tree = null;
+	}
+	//console.log( JSON.stringify( tree));
+	if( tree == null )
+		return;
+
+	var items = tree.items;
+	if( items == null )
+	{
+		console.log('Navigation tree contains no items.')
+		return;
+	}
+
+	g_NavCreateItems( items, $('navig_items'),'/', 0);
+
+	g_NavHashChanged();
 }
 
-function g_PathChanged()
+function g_NavCreateItems( i_items, i_elParent, i_path, i_depth)
+{
+	for( var i = 0; i < i_items.length; i++)
+	{
+		var item = i_items[i];
+		var elItem = document.createElement('div');
+		i_elParent.appendChild( elItem);
+		elItem.classList.add('nav_item');
+
+		if( item.folder )
+		{
+			elItem.classList.add('nav_folder');
+			var elName = document.createElement('div');
+			elItem.appendChild( elName);
+			elName.classList.add('nav_name');
+			elName.textContent = item.name;
+
+			if( item.items )
+				g_NavCreateItems( item.items, elItem, i_path + item.folder + '/', i_depth+1);
+		}
+		else
+		{
+			elItem.classList.add('nav_link');
+			var elLink = document.createElement('a');
+			elItem.appendChild( elLink);
+			elLink.classList.add('nav_name');
+			elLink.textContent = item.name;
+			elLink.href = '#' + i_path + item.page;
+		}
+	}
+}
+
+function g_NavHashChanged()
 {
 	var path = document.location.hash;
 
@@ -29,52 +82,34 @@ function g_PathChanged()
 		path = path.substr(1);
 
 	if( path == '' )
-		path = g_default_path;
+		path = g_nav_default_path;
 
-	var navigs = document.getElementsByClassName('navig');
-	for( var i = 0; i < navigs.length; i++)
-		navigs[i].classList.remove('current');
+	if( path[0] != '/')
+		path = '/' + path;
 
-	var navig = $('n_' + path);
-	if( navig )
-		navig.classList.add('current');
+	var args = {};
+	args.path = 'content' + path + '.html';
+	args.func = g_NavPageLoaded;
+	GET( args);
+}
 
-	var contents = document.getElementsByClassName('content');
-	for( var i = 0; i < contents.length; i++)
+function g_NavPageLoaded( i_data)
+{
+	//console.log( i_data);
+	var div = document.createElement('div');
+	div.innerHTML = i_data;
+	$('content').appendChild( div);
+
+	if( g_nav_cur_item )
 	{
-		if( contents[i].classList.contains('current'))
-		{
-//			contents[i].style.left = '100%';
-			contents[i].classList.remove('current');
-		}
-		else
-		{
-//			contents[i].style.left = '-100%';
-//			contents[i].style.display = 'none';
-		}
-		contents[i].style.left = '100%';
-		contents[i].style.right = '-100%';
-	}
+		if( g_nav_old_item )
+			$('content').removeChild( g_nav_old_item);
 
-	g_elContent = $('c_' + path);
-	if( g_elContent == null )
-	{
-		console.log('Constent "' + path + '" not founded.');
-		return;
+		g_nav_old_item = g_nav_cur_item;
+		g_nav_old_item.classList.add('content_old');
 	}
 	
-	g_elContent.classList.add('current');
-//	g_elContent.style.display = 'block';
-	g_elContent.style.left = '-100%';
-	g_elContent.style.right = '100%';
-
-	g_elContent.classList.remove('transition');
-
-//console.log( path);
-
-	setTimeout( g_SetCurrent, 10);
-	g_shake_cycle = 0;
-
+	g_nav_cur_item = div;
 }
 
 function g_SetCurrent()
@@ -86,31 +121,19 @@ function g_SetCurrent()
 
 function GET( i_args)
 {
-	var path = i_args.path;
-//console.log('Get=' + path);
-
 	var xhr = new XMLHttpRequest();
-	xhr.overrideMimeType('text/html');
-//	xhr.overrideMimeType('application/json');
-	xhr.open('GET', path, true);
+	//xhr.overrideMimeType('text/html');
+	//xhr.overrideMimeType('application/json');
+	xhr.open('GET', i_args.path, true);
 	xhr.send(null);
 	xhr.m_args = i_args;
 
-	xhr.onload = g_XHR_OnLoad;
+	xhr.onload = g_XHR_OnLoad = function() {
+		this.m_args.func( this.responseText, this.m_args);
+	}
 	xhr.onerror = function() {
 		console.log(this);
 		console.log('ERROR: ' + this.m_args.path);
-		g_DisplayNotFound();
 	}
-}
-
-function g_XHR_OnLoad()
-{
-	if( this.responseText.indexOf('INDEX_MARKER') != -1 )
-	{
-		g_DisplayNotFound();
-		return;
-	}
-	this.m_args.func( this.responseText, this.m_args);
 }
 

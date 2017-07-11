@@ -1,0 +1,14 @@
+{
+	"items":[
+		{"name":"About","page":"about"},
+		{
+			"name":"H Tricks","folder":"htricks",
+			"items":[
+				{"name":"Htr 1","page":"htr1"},
+				{"name":"Htr 2","page":"htr2"}
+			]
+		},
+		{"name":"Contacts","page":"contacts"}
+	]
+}
+
