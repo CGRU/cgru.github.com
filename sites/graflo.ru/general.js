@@ -1,5 +1,6 @@
-g_nav_cur_item = null;
-g_nav_old_item = null;
+g_elContent_cur = null;
+g_elContent_new = null;
+g_elContent_old = null;
 g_nav_default_path = 'about';
 g_nav_items = {};
 
@@ -11,19 +12,27 @@ function g_Init()
 
 	window.onhashchange = g_NavHashChanged;
 
+	g_NavCreateNewDiv();
+
 	var args = {};
 	args.path = "navigation.json";
 	args.func = g_NavCreateTree;
 	GET( args);
 }
 
-function g_NavCreateTree( i_data)
+function g_NavCreateTree( i_httpRequest)
 {
+	if( i_httpRequest.status != 200 )
+	{
+		console.log('Navigation tree file not found.');
+		return;
+	}
+
 	var tree = null;
-	try { tree = JSON.parse( i_data);}
+	try { tree = JSON.parse( i_httpRequest.responseText);}
 	catch( err)
 	{
-		console.log( err.message+'\n'+i_data);
+		console.log( err.message+'\n'+i_httpRequest.responseText);
 		tree = null;
 	}
 	//console.log( JSON.stringify( tree));
@@ -50,6 +59,7 @@ function g_NavCreateItems( i_items, i_elParent, i_path, i_depth)
 		var elItem = document.createElement('div');
 		i_elParent.appendChild( elItem);
 		elItem.classList.add('nav_item');
+		elItem.style.marginLeft = i_depth * 16 + 'px';
 
 		if( item.folder )
 		{
@@ -70,6 +80,7 @@ function g_NavCreateItems( i_items, i_elParent, i_path, i_depth)
 			elLink.classList.add('nav_name');
 			elLink.textContent = item.name;
 			elLink.href = '#' + i_path + item.page;
+			elLink.onclick = function(){ this.blur();}
 		}
 	}
 }
@@ -93,30 +104,33 @@ function g_NavHashChanged()
 	GET( args);
 }
 
-function g_NavPageLoaded( i_data)
+function g_NavCreateNewDiv()
 {
-	//console.log( i_data);
 	var div = document.createElement('div');
-	div.innerHTML = i_data;
 	$('content').appendChild( div);
-
-	if( g_nav_cur_item )
-	{
-		if( g_nav_old_item )
-			$('content').removeChild( g_nav_old_item);
-
-		g_nav_old_item = g_nav_cur_item;
-		g_nav_old_item.classList.add('content_old');
-	}
-	
-	g_nav_cur_item = div;
+	div.classList.add('content_new');
+	g_elContent_new = div;
 }
 
-function g_SetCurrent()
+function g_NavPageLoaded( i_httpRequest)
 {
-	g_elContent.classList.add('transition');
-	g_elContent.style.left = '0';
-	g_elContent.style.right = '0';
+	g_elContent_new.innerHTML = i_httpRequest.responseText;
+	g_elContent_new.classList.remove('content_new');
+	if( i_httpRequest.status != 200 )
+		g_elContent_new.classList.add('content_error');
+
+	if( g_elContent_cur )
+	{
+		if( g_elContent_old )
+			$('content').removeChild( g_elContent_old);
+
+		g_elContent_old = g_elContent_cur;
+		g_elContent_old.classList.add('content_old');
+	}
+	
+	g_elContent_cur = g_elContent_new;
+
+	g_NavCreateNewDiv();
 }
 
 function GET( i_args)
@@ -129,7 +143,7 @@ function GET( i_args)
 	xhr.m_args = i_args;
 
 	xhr.onload = g_XHR_OnLoad = function() {
-		this.m_args.func( this.responseText, this.m_args);
+		this.m_args.func( this);
 	}
 	xhr.onerror = function() {
 		console.log(this);

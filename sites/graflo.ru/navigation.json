@@ -1,14 +1,11 @@
 {
 	"items":[
-		{"name":"About","page":"about"},
 		{
-			"name":"H Tricks","folder":"htricks",
+			"name":"Камера","folder":"camera",
 			"items":[
-				{"name":"Htr 1","page":"htr1"},
-				{"name":"Htr 2","page":"htr2"}
+				{"name":"Aperture-FOV","page":"apfov"}
 			]
-		},
-		{"name":"Contacts","page":"contacts"}
+		}
 	]
 }
 

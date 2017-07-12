@@ -10,7 +10,7 @@ div, span { margin: 0; padding: 0; overflow: hidden; }
 #header {
 position: absolute;
 left: 0; right: 0; top: 0;
-height: 70px;
+height: 48px;
 box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
 font-weight: bold;
 text-align: center;
@@ -26,24 +26,30 @@ left: 0px;
 right: 0px;
 height: 32px;
 font-size: 12px;
+font-weight: bold;
 text-align: center;
+}
+
+#middle {
+position: absolute;
+left: 0; right: 0;
+top: 48px;
+bottom: 32px;
 }
 
 #navigation {
 position: absolute;
-left: 0;
-top: 70px;
-bottom: 32px;
+left: 0; top: 0; bottom: 0;
 width: 200px;
 box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
+-padding: 16px;
 -border: 2px solid #0FF;
 }
 
 #content {
 position: absolute;
-left: 200px; right: 0;
-top: 70px;
-bottom: 32px;
+right: 0; top: 0; bottom: 0;
+left: 200px;
 -border: 2px solid #00F;
 }
 
@@ -61,34 +67,40 @@ color: #FFFFFF;
 text-shadow: -10px 0 5px #FFF, 10px 0 5px #FFF, 0px 0 15px #FFF;
 }
 
-.navig.current a { color: #DDDDDD; }
+#logo {
+float:left;
+font-size: 20px;
+padding: 12px 32px;
+}
 
 #header_links {
 -moz-user-select: none;
 -webkit-user-select: none;
-font-size: 16px;
-position: absolute;
+float: right;
 left: 0; right: 0; bottom: 0;
 -border: 1px solid #FF0;
 }
 
 #header_links div {
 float: left;
-width: 25%;
-margin-top: 10px;
-padding: 8px 0;
+padding: 16px;
 -border: 1px solid #FF0;
-}
-
-#logo {
-font-size: 20px;
-padding: 20px;
 }
 
 #footer div {
 padding: 8px 0;
 float: left;
-width: 25%;
+width: 33%;
+}
+
+#navig_items {
+margin: 8px;
+}
+#navig_items .nav_item {
+padding: 2px 12px;
+}
+#navig_items .nav_item.current a {
+color: #DDDDDD;
 }
 
 #content > div {
@@ -96,17 +108,22 @@ text-align: justify;
 position: absolute;
 top: 0; bottom: 0;
 left: 0%; right: 0%;
+padding: 24px;
 -o-transition: all .6s ease-in-out;
 -moz-transition: all .6s ease-in-out;
 -webkit-transition: all .6s ease-in-out;
+}
+#content > div.content_new {
+left: -100%;
+right: 100%;
 }
 #content > div.content_old {
 left: 100%;
 right: -100%;
 }
-.content.current {
-}
-.content.transition {
+#content > div.content_error {
+color: #BB5555;
+text-align: center;
 }
 
 .shake {
