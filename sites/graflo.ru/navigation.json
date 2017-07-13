@@ -3,7 +3,7 @@
 		{
 			"name":"Камера","folder":"camera",
 			"items":[
-				{"name":"Aperture-FOV","page":"apfov"}
+				{"name":"Lens-FOV","page":"lensfov"}
 			]
 		}
 	]

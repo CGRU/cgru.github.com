@@ -1,7 +1,7 @@
 g_elContent_cur = null;
 g_elContent_new = null;
 g_elContent_old = null;
-g_nav_default_path = 'about';
+g_nav_default_path = 'home';
 g_nav_items = {};
 
 var $ = function( id ) { return document.getElementById( id ); };
@@ -79,8 +79,11 @@ function g_NavCreateItems( i_items, i_elParent, i_path, i_depth)
 			elItem.appendChild( elLink);
 			elLink.classList.add('nav_name');
 			elLink.textContent = item.name;
-			elLink.href = '#' + i_path + item.page;
 			elLink.onclick = function(){ this.blur();}
+
+			var href = i_path + item.page;
+			elLink.href = '#' + href;
+			g_nav_items[href] = elItem;
 		}
 	}
 }
@@ -99,6 +102,7 @@ function g_NavHashChanged()
 		path = '/' + path;
 
 	var args = {};
+	args.navpath = path;
 	args.path = 'content' + path + '.html';
 	args.func = g_NavPageLoaded;
 	GET( args);
@@ -130,7 +134,28 @@ function g_NavPageLoaded( i_httpRequest)
 	
 	g_elContent_cur = g_elContent_new;
 
+	for( var p in g_nav_items)
+		g_nav_items[p].classList.remove('current');
+
+	var path = i_httpRequest.m_args.navpath;
+	if( g_nav_items[path])
+		g_nav_items[path].classList.add('current');
+
+	g_ContentProcess();
+
 	g_NavCreateNewDiv();
+}
+
+function g_ContentProcess()
+{
+	var arr = g_elContent_cur.getElementsByTagName('script')
+	for( var s = 0; s < arr.length; s++)
+	{
+		var script = document.createElement('script');
+		script.text = arr[s].textContent;
+		var docscripts = document.getElementsByTagName('script')[0];
+		docscripts.parentNode.insertBefore( script, docscripts);
+	}
 }
 
 function GET( i_args)

@@ -19,7 +19,7 @@ function bg_Init()
 	bg_body_w = $('back').clientWidth;
 	bg_body_h = $('back').clientHeight;
 
-	console.log( 'Resolution: ' + bg_body_h + ' x ' + bg_body_w);
+	console.log('Ininializing background canvas with resolution: ' + bg_body_h + ' x ' + bg_body_w);
 
 	canvas.width = bg_body_w;
 	canvas.height = bg_body_h;
@@ -32,7 +32,6 @@ function bg_Init()
 	{
 		var clr = Math.floor( bg_clr_min + .5*(bg_clr_max - bg_clr_min) * Math.random());
 		bg_ctx.strokeStyle = 'rgb('+clr+','+clr+','+clr+')';
-//continue;
 		bg_ctx.beginPath();
 		bg_ctx.moveTo( 0, i+.5);
 		bg_ctx.lineTo( bg_body_w, i+.5);
@@ -63,8 +62,6 @@ function bg_OnMouseMove(i_e)
 	var y = i_e.clientY;
 	var dx = 8;
 	var dy = 4;
-//	for( var i = 0; i < 4; i++)
-//	bg_units.push( g_DrawCreateUnit( x-dx, x+dx, y-dy, y+dy, 4));
 	bg_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy,"clr_mult":4,"type":1}));
 //console.log( i_e.currentTarget.textContent + ' ' + i_e.currentTarget.m_shake);
 }

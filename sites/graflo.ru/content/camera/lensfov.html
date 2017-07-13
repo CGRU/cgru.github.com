@@ -1,0 +1,97 @@
+<style type="text/css">
+#camera_lensfov {
+margin: 12px;
+float: left;
+}
+#camera_lensfov > div {
+width: 200px;
+}
+#camera_lensfov div {
+margin: 2px 4px;
+padding: 2px 4px;
+float: left;
+}
+#camera_lensfov .label {
+}
+#camera_lensfov .input {
+text-align: center;
+float: right;
+}
+</style>
+
+<script type="text/javascript">
+function camera_lensfov_do( i_res)
+{
+	var fov_str  = $('cam_fov' ).textContent;
+	var lens_str = $('cam_lens').textContent;
+	var back_str = $('cam_back').textContent;
+
+	var fov  = parseFloat( fov_str);
+	var lens = parseFloat( lens_str);
+	var back = parseFloat( back_str);
+
+	if( i_res == null ) i_res = 'fov';
+	if( isNaN( fov  ) ) i_res = 'fov';
+	if( isNaN( lens ) ) i_res = 'lens';
+	if( isNaN( back ) ) i_res = 'back';
+
+console.log('fov: ' + fov + ', lens: ' + lens + ', back: ' + back + ', res: "' + i_res + '"');
+/*
+							   FOV    =  2 * atan ( .5 * BACK / LENS )
+						  .5 * FOV    =      atan ( .5 * BACK / LENS )
+				     tan (.5 * FOV )  =             .5 * BACK / LENS
+			     2 * tan (.5 * FOV )  =                  BACK / LENS
+		  2 * LENS * tan (.5 * FOV )  =                  BACK
+		BACK / ( 2 * tan (.5 * FOV )) =                         LENS
+*/
+	var res = 0;
+	if( i_res == 'fov')
+	{
+		res = 2 * Math.atan( 0.5 * back / lens );
+		res = res * 180 / Math.PI;
+	}
+	else
+	{
+		fov = fov * Math.PI / 180;
+		if( i_res == 'back')
+		{
+			res = 2 * lens * Math.tan( 0.5 * fov );
+		}
+		if( i_res == 'lens')
+		{
+			res = back / ( 2 * Math.tan( 0.5 * fov ));
+		}
+	}
+	console.log(res);
+
+	res = Math.abs( res);
+	res = res.toFixed(2);
+
+	$('cam_' + i_res).textContent = res;
+}
+camera_lensfov_do();
+</script>
+
+<h2>Конвертор линзы и угла обзора камеры.</h2>
+<p>
+	Угол обзора камеры также называют Field Of View или сокращенно FOV.
+</p>
+<p>
+	Field Of View = 2 atan( 0.5 Back / Focal Length )
+</p>
+
+<div id="camera_lensfov" class="-border">
+	<div class="border">
+		<div class="label">FOV:</div>
+		<div class="input" contentEditable=true id="cam_fov" onkeyup="camera_lensfov_do('lens')">90</div>
+	</div>
+	<div class="border">
+		<div class="label">Lens:</div>
+		<div class="input" contentEditable=true id="cam_lens" onkeyup="camera_lensfov_do('back')">18</div>
+	</div>
+	<div class="border">
+		<div class="label">Film Back:</div>
+		<div class="input" contentEditable=true id="cam_back" onkeyup="camera_lensfov_do('lens')">27</div>
+	</div>
+<div>
+
