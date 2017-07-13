@@ -63,29 +63,24 @@ function bg_OnMouseMove(i_e)
 	var dx = 8;
 	var dy = 4;
 	bg_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy,"clr_mult":4,"type":1}));
-//console.log( i_e.currentTarget.textContent + ' ' + i_e.currentTarget.m_shake);
 }
 function bg_OnMouseOver(i_e)
 {
 	i_e.currentTarget.m_shake = 1;
-//console.log( i_e.currentTarget.textContent + ' ' + i_e.currentTarget.m_shake);
 }
 function bg_OnMouseOut(i_e)
 {
 //	i_e.currentTarget.m_shake = 0;
-//console.log( i_e.currentTarget.textContent + ' ' + i_e.currentTarget.m_shake);
 }
 
 function bg_Shake()
 {
-//console.log('shake ' + g_shake);
 	var amp = 4.0 / ( 1 + .3*bg_shake_cycle );
 	var opa = 1.0 - 1.0 / ( 2 + .3*bg_shake_cycle );
 	bg_shake_cycle++;
 
 	for( var i = 0; i < bg_elShake.length; i++)
 	{
-//console.log(
 		var el = bg_elShake[i];
 
 		if(( el.m_shake == null ) || ( el.m_shake == 0 ))
@@ -101,7 +96,6 @@ function bg_Shake()
 		}
 
 		var value = (Math.floor( amp * Math.random())) + 'px';
-//console.log( value);
 		el.style.top = value;
 
 		var value = (Math.floor( .5 * amp * Math.random())) + 'px';
@@ -114,7 +108,6 @@ function bg_Shake()
 
 function bg_BodyOnMouseMove( e )
 {
-return;
 	var x = e.clientX;
 	var y = e.clientY;
 	var dx = 4;
@@ -124,19 +117,16 @@ return;
 
 function bg_BodyOnClick( e )
 {
-return;
 	var x = e.clientX;
 	var y = e.clientY;
-	var dx = 40;
-	var dy = 10;
-	for( var i = 0; i < 100; i++)
-		bg_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy}));
+	var dx = 4;
+	var dy = 4;
+	for( var i = 0; i < 4; i++)
+		bg_units.push( new Unit({"x_min":x-dx,"x_max":x+dx,"y_min":y-dy,"y_max":y+dy,"clr_mult":4,"type":1}));
 }
 
 function bg_Draw( i_no_timeout )
 {
-//console.log(bg_units.length);
-
 	bg_draw_cycle++;
 
 	while( bg_units.length < 100 )

@@ -12,6 +12,9 @@ margin: 2px 4px;
 padding: 2px 4px;
 float: left;
 }
+#camera_lensfov .toggle {
+float: right;
+}
 #camera_lensfov .label {
 }
 #camera_lensfov .input {
@@ -28,6 +31,7 @@ function camera_lensfov_init()
 	{
 		var el = $('cam_' + params[p]);
 		el.m_par = params[p];
+		el.contentEditable = true; 
 		el.onkeyup = function(e){
 			camera_lensfov_Do( e.currentTarget.m_par);
 		}
@@ -58,6 +62,11 @@ function camera_lensfov_Do( i_par)
 	if( i_par == 'fov' ) o_par = 'lens';
 	if( i_par == 'lens') o_par = 'fov';
 	if( i_par == 'back') o_par = 'fov';
+	if( $('cam_fov_toggle').classList.contains('ON'))
+	{
+		if( i_par == 'lens' ) o_par = 'back';
+		if( i_par == 'back' ) o_par = 'lens';
+	}
 
 	if( isNaN( fov  )) o_par = 'fov';
 	if( isNaN( lens )) o_par = 'lens';
@@ -103,21 +112,22 @@ camera_lensfov_init();
 	Угол обзора камеры также называют Field Of View или сокращенно FOV.
 </p>
 <p>
-	Field Of View = 2 atan( 0.5 Back / Focal Length )
+	Field Of View = 2 atan( 0.5 Film Back / Focal Length )
 </p>
 
 <div id="camera_lensfov" class="border">
 	<div class="border">
 		<div class="label">FOV:</div>
-		<div class="input" contentEditable=true id="cam_fov">90</div>
+		<div class="toggle" id="cam_fov_toggle" onclick="this.classList.toggle('ON')">L</div>
+		<div class="input" id="cam_fov">90</div>
 	</div>
 	<div class="border">
 		<div class="label">Lens:</div>
-		<div class="input" contentEditable=true id="cam_lens">18</div>
+		<div class="input" id="cam_lens">18</div>
 	</div>
 	<div class="border">
 		<div class="label">Film Back:</div>
-		<div class="input" contentEditable=true id="cam_back">27.7</div>
+		<div class="input" id="cam_back">27.7</div>
 	</div>
 </div>
 
@@ -125,6 +135,10 @@ camera_lensfov_init();
 
 <p>
 	Стрелочками ввери и вниз можно изменить значение параметра на единицу.
+</p>
+<p>
+	Если вы хотите конвертировать линзу и размер сенсора (Film Back) при одном и том же FOV,
+	то нажмите кнопочку [L] слева от поля FOV, чтобы его "залочить".
 </p>
 
 <p>
