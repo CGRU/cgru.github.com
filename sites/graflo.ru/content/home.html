@@ -1,2 +1,51 @@
-Начальная страница.
+<style type="text/css">
+#home_video_div_parent {
+position: absolute;
+left: 5%; right: 5%; top: 5%; bottom: 5%;
+text-align: center;
+padding: 2% 5%;
+}
+#home_video_div {
+position: absolute;
+left: 0; right: 0; top: 0; bottom: 0;
+overflow: hidden;
+border: 3px solid rgba(200,200,200,0.5);
+border-radius: 8px;
+box-shadow: 0 0 16px rgba(200,200,200,0.3);
+opacity: 0.7;
+}
+</style>
+
+<script type="text/javascript">
+function home_VideoLoaded()
+{
+	var elVideo = $('home_video');
+	var pw = elVideo.parentNode.clientWidth;
+	var ph = elVideo.parentNode.clientHeight;
+	var vw = elVideo.videoWidth;
+	var vh = elVideo.videoHeight;
+
+	var vw_new = pw;
+//	var vh_new = Math.round( vh * vw_new / vw );
+
+//	var vh_d = Math.round(( vh_new - vh ) / 1);
+//	var mtop = -vh_d;
+//	elVideo.style.marginTop = mtop + 'px'
+//elVideo.style.marginTop = '-200px'
+
+	elVideo.width = vw_new;
+//	elVideo.height = vh_new;
+	elVideo.style.marginTop = -pw/5 + 'px'
+	elVideo.style.marginBottom = -pw/8 + 'px'
+console.log('p=' + pw+'x'+ph + ', v=' + vw+'x'+vh + ', nv=' + vw_new+'x'+vh_new + ', mtop=' + mtop);
+}
+</script>
+
+<div id="home_video_div_parent">
+<div id="home_video_div">
+	<video onloadeddata="home_VideoLoaded()" id="home_video" playsinline autoplay muted loop>
+		<source src="content/home.mp4" type="video/mp4">
+	</video>
+</div>
+</div>
 

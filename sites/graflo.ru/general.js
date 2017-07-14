@@ -2,6 +2,7 @@ g_elContent_cur = null;
 g_elContent_new = null;
 g_elContent_old = null;
 g_nav_default_path = 'home';
+g_nav_cur_path = null;
 g_nav_items = {};
 
 var $ = function( id ) { return document.getElementById( id ); };
@@ -95,11 +96,16 @@ function g_NavHashChanged()
 	if( path.indexOf('#') == 0 )
 		path = path.substr(1);
 
-	if( path == '' )
+	if(( path == '' ) || ( path == '/'))
 		path = g_nav_default_path;
 
 	if( path[0] != '/')
 		path = '/' + path;
+
+	if( g_nav_cur_path == path )
+		return;
+
+	g_nav_cur_path = path;
 
 	var args = {};
 	args.navpath = path;
