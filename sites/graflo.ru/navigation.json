@@ -1,9 +1,15 @@
 {
 	"items":[
 		{
-			"name":"Камера","folder":"camera",
+			"name":"RULES","folder":"rules",
 			"items":[
-				{"name":"Lens-FOV","page":"lensfov"}
+				{"name":"Обмен файлами","page":"files_exchange"}
+			]
+		},
+		{
+			"name":"Разное","folder":"various",
+			"items":[
+				{"name":"Camera Lens-FOV","page":"camlensfov"}
 			]
 		}
 	]

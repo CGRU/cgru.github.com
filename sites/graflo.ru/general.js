@@ -60,7 +60,6 @@ function g_NavCreateItems( i_items, i_elParent, i_path, i_depth)
 		var elItem = document.createElement('div');
 		i_elParent.appendChild( elItem);
 		elItem.classList.add('nav_item');
-		elItem.style.marginLeft = i_depth * 16 + 'px';
 
 		if( item.folder )
 		{

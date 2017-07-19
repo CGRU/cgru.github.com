@@ -93,15 +93,10 @@ float: left;
 width: 33%;
 }
 
-#navig_items {
-margin: 8px;
-}
-#navig_items .nav_item {
-padding: 2px 12px;
-}
-#navig_items .nav_item.current a {
-color: #DDDDDD;
-}
+#navig_items { margin: 8px; }
+#navig_items .nav_item { padding: 2px 12px; }
+#navig_items .nav_item.current a { color: #DDDDDD; }
+#navig_items .nav_link { font-size: 12px; }
 
 #content > div {
 text-align: justify;
@@ -112,6 +107,8 @@ padding: 24px;
 -o-transition: all .6s ease-in-out;
 -moz-transition: all .6s ease-in-out;
 -webkit-transition: all .6s ease-in-out;
+overflow-y: scroll;
+-border: 1px solid #F00;
 }
 #content > div.content_new {
 left: -100%;
@@ -139,21 +136,30 @@ left: 0; right: 0; top: 0; bottom: 0;
 min-height: 1.2em;
 min-width: 64px;
 background-color: rgba(0,0,0,.5);
-border: 1px solid #CCC;
+border: 1px solid rgba(255,255,255,.5);
 border-radius: 4px;
 }
-
+.toggle:hover, .input:hover { border: 1px solid rgba(255,255,255,.7); }
 .toggle {
-border: 1px solid #AAAAAA;
+border: 1px solid rgba(255,255,255,.5);
 border-radius: 4px;
 background-color: rgba(0,0,0,.1);
 cursor: pointer;
 }
-.toggle.ON {
-background-color: rgba(255,255,255,.1);
-}
+.toggle.ON { background-color: rgba(255,255,255,.1); }
 
 .border {
 border: 2px solid #777;
 border-radius: 4px;
 }
+
+.onforum {
+border-top: 1px solid rgba(255,255,255,.4);
+margin: 32px;
+padding: 32px;
+font-size: 12px;
+font-weight: bold;
+font-style: italic;
+text-decoration: underline;
+}
+
