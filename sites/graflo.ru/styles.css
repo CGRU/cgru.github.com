@@ -110,17 +110,15 @@ padding: 24px;
 overflow-y: scroll;
 -border: 1px solid #F00;
 }
-#content > div.content_new {
-left: -100%;
-right: 100%;
-}
-#content > div.content_old {
-left: 100%;
-right: -100%;
-}
-#content > div.content_error {
-color: #BB5555;
-text-align: center;
+#content > div.content_new { left: -100%; right: 100%; }
+#content > div.content_old { left: 100%; right: -100%; }
+#content > div.content_error { color: #BB5555; text-align: center; }
+
+#content img {
+margin: 16px;
+opacity: .8;
+border-radius: 6px;
+border: 2px solid rgba(255,255,255,.5);
 }
 
 .shake {
@@ -154,6 +152,7 @@ border-radius: 4px;
 }
 
 .onforum {
+clear: both;
 border-top: 1px solid rgba(255,255,255,.4);
 margin: 32px;
 padding: 32px;
