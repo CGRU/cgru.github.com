@@ -18,7 +18,7 @@
 
 <p>
 	<b id="release223" class="anchor">2.2.3</b>
-	2017.09.17
+	2017.09.20
 <i>(not released yet)</i>
 </p>
 
@@ -28,19 +28,26 @@
 	<ul>
 	<li><p>
 		Server creates all needed threads for network IO at start.
-		Later it has to create a thread for each incoming connection.
+		Networking threads pool size is <a href="afanasy/server#af_server_sockets_readwrite_threads_num" target="_blank">configurable</a>.
+		<br>Later it has to create a thread for each incoming connection.
 		<br><b>Now server can handle bigger amount of clients, consumes less system resources for it.</b>
 		<br><b style="color:darkred">Later on some systems afserver could even hung when clients count is more than about a hundred.</b><br>
-		As system can fail to create 100 threads per second for a long time (have no time to free all thread resources).
+		As system can fail to create 100 threads per second for a long time (have no time to free all thread resources every second).
 	</p></li>
 	<li><p>
 		Linux server can use not-blocking network IO based on Linux EPOLL facility.
-		This is configurable, by default Linux will use the same blocking (threading) IO, as on other platforms.
+		This is <a href="afanasy/server#af_server_linux_epoll" target="_blank">configurable</a>.
+		By default Linux will use the same blocking (threading) IO, as on other platforms.
 		Non-blocking IO consumes less system resources and can handle more connections at the same time.
 	</p></li>
 	<li><p>
 		AfWatch (libafqt) switched to non-blocking network IO based on Qt Signal-Slot mechanism.
 		Now it works better (less hangs) with afserver that has a big total amount on clients.
+	</p></li>
+	<li><p>
+		Farm setup allows new machines can be configured to <a href="afanasy/server#farm_register_nimby" target="_blank">register paused/nimby.</a>
+		<br>This can be useful for a just born machines to not to produce error tasks.
+		When a new afrender registers, but has not enough software installed yet.
 	</p></li>
 	</ul>
 </p></li>
@@ -52,7 +59,16 @@
 	Afanasy:
 	<ul>
 	<li><p>
-		MS Windows server restart make stating done tasks again fixed.
+		After server restart, reconnected tasks are not ignored by "Max Run Tasks Per Host" limit.
+	</p></li>
+	<li><p>
+		Multi-host task start and server hung fixed.
+		This bug appeared in 2.2.1.
+	</p></li>
+	<li><p>
+		MS Windows server tasks state storing fixed.
+		Later, after restart, it run done tasks again.
+		This bug appeared in 2.2.1.
 	</p></li>
 	<li><p>
 		<b style="color:darkred">Server memory leak fixed</b>.

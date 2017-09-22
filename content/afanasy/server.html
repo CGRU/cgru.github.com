@@ -9,6 +9,7 @@
 	<li><a href="#conf_client_server">Client &amp; Server</a></li>
 	<li><a href="#conf_user">User</a></li>
 	<li><a href="#conf_job">Job</a></li>
+	<li><a href="#conf_networking">Networking</a></li>
 	<li><a href="#conf_database">Database</a></li>
 	</ul>
 </li>
@@ -63,10 +64,6 @@ $ afserver
 	Port to listen to server.
 </p></li>
 <li><p>
-	<code id="af_clientport" class="anchor">af_clientport</code> = 51001<br/>
-	First port to listen to clients. Next client launched on the host will listen the next port.
-</p></li>
-<li><p>
 	<code id="af_serveripmask" class="anchor">af_serveripmask</code> = *.* 127.0.0.1 192.168.* *:* 0:0:0:0:0:0:0:1 FC00:* FD00:*<br/>
 	Acceptable connections IP addresses mask.
 	Connections form addresses not matching this masks will be ignored by server.
@@ -87,14 +84,6 @@ $ afserver
 	This can be useful not to let to server to start all tasks at once
 	on a big farm and a job with big tasks number.
 	As this can hung network or fileserver.
-</p></li>
-<li><p>
-	<code id="af_srv_so_rcvtimeo_sec" class="anchor">af_srv_so_rcvtimeo_sec</code> = 2<br/>
-	Set socket maximum time to wait for an input operation to complete (see <i>man setsockopt</i>).
-</p></li>
-<li><p>
-	<code id="af_srv_so_sndtimeo_sec" class="anchor">af_srv_so_sndtimeo_sec</code> = 2<br/>
-	Set socket maximum time to wait for an output operation to complete (see <i>man setsockopt</i>).
 </p></li>
 </ul>
 
@@ -171,6 +160,101 @@ $ afserver
 </p></li>
 </ul>
 
+
+
+<h4 id="conf_networking" class="anchor">Networking:</h4>
+<ul>
+<li><p>
+	<code id="af_server_sockets_processing_threads_num" class="anchor">af_server_sockets_processing_threads_num</code> = 10<br/>
+	Number of threads to process incoming messages.
+</p></li>
+<li><p>
+	<code id="af_server_sockets_processing_threads_stack" class="anchor">af_server_sockets_processing_threads_stack</code> = 0<br/>
+	Process incoming messages threads stack size in bytes.
+	If less or equal zero, threads stack size will be not set at all, your system will raise threads with a default stack size.
+	This parameter is mostly for tests and should not be configured.
+</p></li>
+<li><p>
+	<code id="af_server_sockets_readwrite_threads_num" class="anchor">af_server_sockets_readwrite_threads_num</code> = 10<br/>
+	Number of threads to read/write sockets.
+	Server network architecture based on blocking IO processed by threads pool.
+	Ten threads does not mean that server can handle only about 10 clients.
+	This only means that it can read/write to 10 clients at the same time.
+	Other clients will just wait in IO queue.
+	For a fast networks designed for rendering 10 IO threads should be enough for any farm size.
+</p></li>
+<li><p>
+	<code id="af_server_sockets_readwrite_threads_stack" class="anchor">af_server_sockets_readwrite_threads_stack</code> = 0<br/>
+	Read/write sockets threads stack size in bytes.
+	If less or equal zero, threads stack size will be not set at all, your system will raise threads with a default stack size.
+	This parameter is mostly for tests and should not be configured.
+</p></li>
+<li><p>
+	<code id="af_server_linux_epoll" class="anchor">af_server_linux_epoll</code> = 0<br/>
+	Use non-blocking network IO based on Linux EPOLL facility.
+	By default it is disabled, and server on Linux will use the same blocking (threading) IO, as on other platforms.
+	Non-blocking IO lets to handle more connections at the same time.
+</p></li>
+<li><p>
+	<b id="socket_options" class="anchor">Socket options</b> that can be set on server/client side to play with:<br>
+	<p>
+		<code id="af_so_server_RCVTIMEO_sec" class="anchor">af_so_server_RCVTIMEO_sec</code> = 12<br/>
+		<code id="af_so_server_SNDTIMEO_sec" class="anchor">af_so_server_SNDTIMEO_sec</code> = 12<br/>
+		<code id="af_so_server_TCP_NODELAY"  class="anchor">af_so_server_TCP_NODELAY</code> = -1<br/>
+		<code id="af_so_server_REUSEADDR"    class="anchor">af_so_server_REUSEADDR</code> = -1<br/>
+		<code id="af_so_server_TCP_CORK"     class="anchor">af_so_server_TCP_CORK</code> = -1<br/>
+		<code id="af_so_server_LINGER"       class="anchor">af_so_server_LINGER</code> = -1<br/>
+		<code id="af_so_client_RCVTIMEO_sec" class="anchor">af_so_client_RCVTIMEO_sec</code> = 12<br/>
+		<code id="af_so_client_SNDTIMEO_sec" class="anchor">af_so_client_SNDTIMEO_sec</code> = 12<br/>
+		<code id="af_so_client_TCP_NODELAY"  class="anchor">af_so_client_TCP_NODELAY</code> = -1<br/>
+		<code id="af_so_client_REUSEADDR"    class="anchor">af_so_client_REUSEADDR</code> = -1<br/>
+		<code id="af_so_client_TCP_CORK"     class="anchor">af_so_client_TCP_CORK</code> = -1<br/>
+		<code id="af_so_client_LINGER"       class="anchor">af_so_client_LINGER</code> = -1<br/>
+	</p>
+	-1 means that the option will not be set at all, default system value will be used.
+	<br>
+	See <kbd>man socket</kbd> for details.
+	<br>
+	Common reasonable options that can be configured are receiving and sending timeouts.
+	As default socket IO timeouts are too big for a network that designed for rendering.
+</p></li>
+<li><p>
+	<code id="af_server_http_wait_close" class="anchor">af_server_http_wait_close</code> = 1<br/>
+	Afanasy server waits for client to close connection first.
+	This is needed to prevent a big amount of sockets in <kbd>TIME-WAIT</kbd> state.
+	By default common web browser does not do it.
+	To ask browser to close socket after answer received we set an HTTP special header:
+	<br><kbd>Connection: close</kbd><br>
+	If you browser ignores this header, you can make server not to wait for client and close HTTP connection first.
+</p></li>
+</ul>
+
+<h4 id="socket_timewait" class="anchor">TIME-WAIT</h4>
+<p>
+	TIME-WAIT is a special socket state, needed to ensure that all packages will not be lost.
+	If server calls close() function first, its socket will fall into this state.
+	To ensure that the connection last package is processed, it will wait:
+</p>
+<p>
+	<kbd>TIME-WAIT = 2 * MSL (Maximum Segment Lifetime)</kbd>
+</p>
+<p>
+	This is the reason  why server should not call close() first.
+	On a big amount of clients (~1000), application can reach 2^16 ports limit.
+	Afanasy waits for about 2sec for client to close socket first.
+	To check socket connected state we just try to write in it.
+	<br> * <small><i>SIGPIPE is ignored by Afanasy</i></small>
+</p>
+<p>
+	To check sockets state you can:
+	<pre>
+netstat -nat | grep 51000 | wc -l
+netstat -nat | egrep ':51000.*:.*TIME_WAIT' | wc -l
+ss -tan state time-wait | wc -l
+ss -tan 'sport = :51000' | awk '{print $(NF)" "$(NF-1)}' | sed 's/:[^ ]*//g' | sort | uniq -c
+	</pre>
+</p>
+
 <h4 id="conf_database" class="anchor">Database:</h4>
 <ul>
 <li><p>
@@ -220,117 +304,127 @@ Farm object consists of a pattens and limits arrays.
 </p>
 <ul>
 <li><p>
-<code>patterns</code><br/>
+<code id="farm_patterns" class="anchor">patterns</code><br/>
 </p>
 <ul>
-   <li><p>
-   <code>name</code><br/>
-   Pattern name.
-   </p></li>
-   <li><p>
-   <code>mask</code><br/>
-   Hosts which names matches this A <a href="/regexp.html" class="local_link">mask</a> will take this pattern settings.
-   </p></li>
-   <li><p>
-   <code>description</code><br/>
-   Does not mean anything for sever, job or render host, only for humans.
-   </p></li>
-   <li><p>
-   <code>os</code><br/>
-   Operating system name. Can be matched by jobs.
-   </p></li>
-   <li><p>
-   <code>capacity</code><br/>
-   Running Tasks maximum capacity value.
-   </p></li>
-   <li><p>
-   <code>maxtasks</code><br/>
-   Maximum number of simultaneously running tasks.
-   </p></li>
-   <li><p>
-   <code>power</code><br/>
-   Some number which minimum can be needed by jobs.
-   </p></li>
-   <li><p>
-   <code>properties</code><br/>
-   Some string which matching can be needed by jobs.
-   </p></li>
-   <li><p>
-   <code>services</code>
+	<li><p>
+		<code id="farm_name" class="anchor">name</code><br/>
+		Pattern name.
+	</p></li>
+	<li><p>
+		<code id="farm_mask" class="anchor">mask</code><br/>
+		Hosts which names matches this A <a href="/regexp.html" class="local_link">mask</a> will take this pattern settings.
+	</p></li>
+	<li><p>
+		<code id="farm_description" class="anchor">description</code><br/>
+		Does not mean anything for sever, job or render host, only for humans.
+	</p></li>
+	<li><p>
+		<code id="farm_os" class="anchor">os</code><br/>
+		Operating system name. Can be matched by jobs.
+	</p></li>
+	<li><p>
+		<code id="farm_capacity" class="anchor">capacity</code><br/>
+		Running Tasks maximum capacity value.
+	</p></li>
+	<li><p>
+		<code id="farm_maxtasks" class="anchor">maxtasks</code><br/>
+		Maximum number of simultaneously running tasks.
+	</p></li>
+	<li><p>
+		<code id="farm_register_nimby" class="anchor">register_nimby</code><br/>
+		New machine will be registered with <i>nimby</i> state on.
+		This is useful when a new machine appears, but has not all needed soft installed yet.
+		With this option we do not let such machine to produce error tasks.
+	</p></li>
+	<li><p>
+		<code id="farm_register_paused" class="anchor">register_paused</code><br/>
+		New machine will be registered with <i>paused</i> state on. An alternative for a previous option.
+	</p></li>
+	<li><p>
+		<code id="farm_power" class="anchor">power</code><br/>
+		Some number which minimum can be needed by jobs.
+	</p></li>
+	<li><p>
+		<code id="farm_properties" class="anchor">properties</code><br/>
+		Some string which matching can be needed by jobs.
+	</p></li>
+	<li><p>
+		<code id="farm_service" class="anchor">services</code>
 		An array of available services.
 		<ul>
 			<li><code>name</code>: Service name.
 			<li><code>count</code>: (Optional) Limit per machine number.
 		</ul>
-   </p></li>
-   <li><p>
-   <code>remservices</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_remservices" class="anchor">remservices</code><br/>
 		An array on services names to remove.
 		If this array is empty, all services will be removed.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_idle_cpu" class="anchor">nimby_idle_cpu</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_idle_cpu" class="anchor">nimby_idle_cpu</code><br/>
 		CPU usage percentage machine considered as idle.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_busy_cpu" class="anchor">nimby_busy_cpu</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_busy_cpu" class="anchor">nimby_busy_cpu</code><br/>
 		CPU usage percentage machine considered as busy.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_idle_mem" class="anchor">nimby_idle_mem</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_idle_mem" class="anchor">nimby_idle_mem</code><br/>
 		Memory used percentage machine considered as idle.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_busy_mem" class="anchor">nimby_busy_mem</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_busy_mem" class="anchor">nimby_busy_mem</code><br/>
 		Memory used percentage machine considered as busy.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_idle_swp" class="anchor">nimby_idle_swp</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_idle_swp" class="anchor">nimby_idle_swp</code><br/>
 		Swap used percentage machine considered as idle.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_busy_swp" class="anchor">nimby_busy_swp</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_busy_swp" class="anchor">nimby_busy_swp</code><br/>
 		Swap used percentage machine considered as busy.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_idle_hddgb" class="anchor">nimby_idle_hddgb</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_idle_hddgb" class="anchor">nimby_idle_hddgb</code><br/>
 		Free disk space in Gigabytes machine considered as idle.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_busy_hddgb" class="anchor">nimby_busy_hddgb</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_busy_hddgb" class="anchor">nimby_busy_hddgb</code><br/>
 		Free disk space in Gigabytes machine considered as busy.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_idle_hddio" class="anchor">nimby_idle_hddio</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_idle_hddio" class="anchor">nimby_idle_hddio</code><br/>
 		Disk I/O usage percentage machine considered as idle.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_busy_hddio" class="anchor">nimby_busy_hddio</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_busy_hddio" class="anchor">nimby_busy_hddio</code><br/>
 		Disk I/O usage percentage machine considered as busy.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_idle_netmbs" class="anchor">nimby_idle_netmbs</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_idle_netmbs" class="anchor">nimby_idle_netmbs</code><br/>
 		Network send plus receive speed in Megabytes per second machine considered as idle.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_busy_netmbs" class="anchor">nimby_busy_netmbs</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_busy_netmbs" class="anchor">nimby_busy_netmbs</code><br/>
 		Network send plus receive speed in Megabytes per second machine considered as busy.
-   </p></li>
-   <li><p>
-   <code id="farm_wol_idlesleep_time" class="anchor">wol_idlesleep_time</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_wol_idlesleep_time" class="anchor">wol_idlesleep_time</code><br/>
 		Time in seconds to put an idle machine to sleep.<br>
 		If this value is set to zero, machines will never put to sleep automatically.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_idlefree_time" class="anchor">nimby_idlefree_time</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_idlefree_time" class="anchor">nimby_idlefree_time</code><br/>
 		Time in seconds set an idle Nimby machine to free.<br>
 		If this value is set to zero, machines will never put to sleep automatically.
-   </p></li>
-   <li><p>
-   <code id="farm_nimby_busyfree_time" class="anchor">nimby_busyfree_time</code><br/>
+	</p></li>
+	<li><p>
+		<code id="farm_nimby_busyfree_time" class="anchor">nimby_busyfree_time</code><br/>
 		Time in seconds set a machine with busy CPU and no Afanasy task to Nimby.<br>
 		If this value is set to zero, machines will never put to sleep automatically.
-   </p></li>
+	</p></li>
 </ul>
 </li>
 <li>
