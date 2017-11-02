@@ -5,10 +5,20 @@
 	<atom:link href="http://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Sun, 21 May 2017 00:00:00 GMT</pubDate>
-	<lastBuildDate>Sun, 21 May 2017 00:00:00 GMT</lastBuildDate>
+	<pubDate>Thu, 2 Nov 2017 00:00:00 GMT</pubDate>
+	<lastBuildDate>Thu, 2 Nov 2017 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 2.2.3 Released.</title>
+		<link>http://cgru.info/#changes_log.html#release223</link>
+		<guid>http://cgru.info/#changes_log.html#release223</guid>
+		<description>
+			Afanasy server new networking architecture allows bigger amount of clients.
+			Bug fixes.
+		</description>
+		<pubDate>Thu, 2 Nov 2017 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 2.2.2 Released.</title>
 		<link>http://cgru.info/#changes_log.html#release222</link>
