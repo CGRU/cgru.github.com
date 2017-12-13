@@ -1,0 +1,35 @@
+:set noexpandtab
+:set tabstop=4
+:set shiftwidth=4
+:autocmd FileType python set expandtab
+
+:set autoindent
+:set smartindent
+:set cindent
+
+:map <F7> :tabnew<CR>
+:imap <F7> :tabnew<CR>
+
+:map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+:set wildmode=longest,list,full
+:set wildmenu
+
+:map <F4> :tabe %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+:imap <F4> :tabe %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
+
+"Syntax Highlighting
+:syn clear
+:color desert
+
+:autocmd Syntax * syn match _bracket "[(){}\[\]]"
+:autocmd Syntax * syn match _symbol "[~!@$%^&<>,\.:;=\-?\+\*]"
+
+:hi Number ctermfg=DarkMagenta
+:hi cNumber ctermfg=DarkMagenta
+:hi String ctermfg=Gray
+:hi cString ctermfg=Gray
+:hi _bracket ctermfg=DarkRed
+:hi _symbol ctermfg=DarkGreen
+
