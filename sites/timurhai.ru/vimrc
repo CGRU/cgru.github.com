@@ -24,7 +24,7 @@
 :color desert
 
 :autocmd Syntax * syn match _bracket "[(){}\[\]]"
-:autocmd Syntax * syn match _symbol "[~!@$%^&<>,\.:;=\-?\+\*]"
+:autocmd Syntax cpp syn match _symbol "[~!@$%^&<>,\.:;=\-?\+\*]"
 
 :hi Number ctermfg=DarkMagenta
 :hi cNumber ctermfg=DarkMagenta
