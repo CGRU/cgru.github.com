@@ -1,0 +1,45 @@
+<h2 class="anchor" id="branch">Afanasy Branch</h2>
+<p>
+	Branch is like a folder in a filesystem.
+	Branch contains child branches (folders) and jobs (files),
+	so there is a hierarchy of a branches (folders) and jobs (files).
+	Branches are designed to combine and manipulate a set of similar (department, project, scene, asset) jobs.
+</p>
+
+<h3 class="anchor" id="branch_creation">Branches Creation</h3>
+<p>
+	The first <i>ROOT</i> branch will be created by the system job.
+</p>
+<p>
+	Any job has a sting attribute <kbd>branch</kbd>.
+	When job comes to server, it looks whether the job branch exists.
+	If branch exists, this branch becomes a new job parent.
+	If branch does not exist, server ties to find the parent branch of a new job branch.
+	And it tries to find a parent of a parent in a cycle (recursion).
+	When it find matching parent branch (it must do it, as a root branch always exists),
+	It tries to create a child branch if <i>Auto Create Child</i> <kbd>ACC</kbd> flag is set.
+	If the flag is not set, job will be parented to the most base branch in the branches hierarchy.
+	And job <kbd>branch</kbd> will be updated to the actual parent that server could found/created.
+</p>
+
+<h3 class="anchor" id="user_attributes">User Attributes:</h3>
+
+<div class="parameters">
+</div>
+
+<h3 class="anchor" id="user_parameters">User Editable Parameters:</h3>
+
+<div class="parameters">
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="branch_parent_path"><b>Parent Path</b></div>
+			<div class="json">parent_path</div>
+		</div>
+		<div class="description">
+		Each user should have an unique name.
+		If not some reason artists has the same login name,
+		you can user AF_USERNAME environment variable to override it.
+		</div>
+	</div>
+</div>
+

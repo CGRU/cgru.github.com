@@ -33,5 +33,5 @@
 :hi _bracket ctermfg=DarkRed
 :hi _symbol ctermfg=DarkGreen
 
-:syntax on
+":syntax on
 
