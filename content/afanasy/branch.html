@@ -22,23 +22,222 @@
 	And job <kbd>branch</kbd> will be updated to the actual parent that server could found/created.
 </p>
 
-<h3 class="anchor" id="user_attributes">User Attributes:</h3>
+<h3 class="anchor" id="branch_example">Branches Example</h3>
+<p>
+	For example you have projects mounted in <kbd>/prj</kbd> folder.
+	So, you have such folders structure:
+	<ul>
+		<li>
+			/prj
+			<ul>
+				<li>/prj/bus</li>
+				<li>/prj/car</li>
+				<li>/prj/plane</li>
+				<li>/prj/train</li>
+			</ul>
+		</li>
+	</ul>
+	Lets imagine that you have some scene file to render:<br>
+
+	<kbd>/prj/train/shots/scene_a/work/scene.sc</kbd><br>
+
+	When you will render that scene for the first time,
+	<kbd>/prj</kbd> branch will be created.
+	As the root branch has <i>Auto Create Child</i> <kbd>ACC</kbd> flag set by default.
+	No more deeper branch(es) will created on this stage.
+	As a not root branch does not have <kbd>ACC</kbd> flag set.
+	At this stage jobs solving will be the same as there are no branches in Afanasy at all.
+	But if you set <kbd>ACC</kbd> flag on a new <kbd>/prj</kbd> branch, each project will create an own branch.
+	So you can manipulate jobs that belongs to some project.
+	For example give some project(s) more priority.
+</p>
+
+<h3 class="anchor" id="branch_attributes">Branch Attributes:</h3>
 
 <div class="parameters">
-</div>
-
-<h3 class="anchor" id="user_parameters">User Editable Parameters:</h3>
-
-<div class="parameters">
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="branch_name"><b>Name (Path)</b></div>
+			<div class="json">name</div>
+		</div>
+		<div class="description">
+			Branch name, that represents branch full path.
+			It is <kbd></kbd> fot the root branch.
+		</div>
+	</div>
 	<div class="parameter">
 		<div class="caption">
 			<div class="anchor" id="branch_parent_path"><b>Parent Path</b></div>
 			<div class="json">parent_path</div>
 		</div>
 		<div class="description">
-		Each user should have an unique name.
-		If not some reason artists has the same login name,
-		you can user AF_USERNAME environment variable to override it.
+			Parent branch path (name).
+			It is an empty string fot the root branch.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="branch_time_creation"><b>Time Creation</b></div>
+			<div class="json">time_creation</div>
+		</div>
+		<div class="description">
+			Time when branch was created.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="branch_branches_num"><b>Branches Number</b></div>
+			<div class="json">branches_num</div>
+		</div>
+		<div class="description">
+			Number of child brinches (direct childs, not childs of childs).
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="branch_branches_total"><b>Branches Total</b></div>
+			<div class="json">branches_total</div>
+		</div>
+		<div class="description">
+			Total number of child branches and all their sub-childs.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="branch_jobs_num"><b>Jobs Number</b></div>
+			<div class="json">jobs_num</div>
+		</div>
+		<div class="description">
+			Number of child jobs (direct childs, not childs of childs).
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="branch_jobs_total"><b>Jobs Total</b></div>
+			<div class="json">jobs_total</div>
+		</div>
+		<div class="description">
+			Total number of child jobs and all sub-child branches jobs.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_running_taks_num"><b>Running Taks Number</b></div>
+			<div class="json">running_tasks_num</div>
+		</div>
+		<div class="description">
+			Number of tasks that all (total) branch jobs running.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_running_capacity_total"><b>Running Capacity Total</b></div>
+			<div class="json">running_capacity_total</div>
+		</div>
+		<div class="description">
+			Total capacity of all (total) running of tasks.
+		</div>
+	</div>
+</div>
+
+<h3 class="anchor" id="branch_parameters">Branch Editable Parameters:</h3>
+
+<div class="parameters">
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_priority"><b>Priority</b></div>
+			<div class="json">priority</div>
+		</div>
+		<div class="description">
+			Branch solving priority.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_max_tasks_per_second"><b>Max Tasks Per Second</b></div>
+			<div class="json">max_tasks_per_second</div>
+		</div>
+		<div class="description">
+			Maximum tasks limit that branch can procude per second.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_max_running_tasks"><b>Max Running Tasks</b></div>
+			<div class="json">max_running_tasks</div>
+		</div>
+		<div class="description">
+			Maximum tasks limit that branch can run at the same time.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_max_running_tasks_per_host"><b>Max Running Tasks Per Host</b></div>
+			<div class="json">max_running_tasks_per_host</div>
+		</div>
+		<div class="description">
+			Maximum tasks limit that branch can run at the same time on the same host.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_hosts_mask"><b>Hosts Mask</b></div>
+			<div class="json">hosts_mask</div>
+		</div>
+		<div class="description">
+			Branch can be solved only on machines that name matches this mask (regular expression).
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_hosts_mask_exclude"><b>Exclude Hosts Mask</b></div>
+			<div class="json">hosts_mask_exclude</div>
+		</div>
+		<div class="description">
+			Branch can not be solved on machines that name matches this mask (regular expression).
+		</div>
+	</div>
+</div>
+
+
+<h3 class="anchor" id="branch_flags">Branch Flags:</h3>
+
+<div class="parameters">
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_create_childs"><b>Auto Create Child</b></div>
+			<div class="json">create_childs</div>
+		</div>
+		<div class="description">
+			Branch will create a child branch automatically, when a new job asks for it.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_"><b>Solve Jobs</b></div>
+			<div class="json">solve_jobs</div>
+		</div>
+		<div class="description">
+			By default, branch solves its jobs users by priority.
+			But if this flag is set, branch will solve its jobs directly.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_solve_method"><b>Solve Method</b></div>
+			<div class="json">solve_method</div>
+		</div>
+		<div class="description">
+			Solve child nodes by priority or order.
+		</div>
+	</div>
+	<div class="parameter">
+		<div class="caption">
+			<div class="anchor" id="work_solve_need"><b>Solve Need</b></div>
+			<div class="json">solve_need</div>
+		</div>
+		<div class="description">
+			Solve child nodes by running capacity total or tasks number.
 		</div>
 	</div>
 </div>
