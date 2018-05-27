@@ -17,6 +17,56 @@
 
 
 <p>
+	<b id="release230" class="anchor">2.3.0</b>
+	2018.05.27
+    <b><i>New Afanasy network protocol version.</i></b>
+	<i>Not released</i>
+</p>
+
+<ul>
+<li><p>
+	Afanasy:
+	<ul>
+	<li><p>
+		<b>
+		Generally new class <a href="afanasy/branch" target="_blank">Branch</a> appeared.
+		Now jobs solving is going within branches hierarchy.
+		Branches can represent departments/projects/assets and you can vary their priorities.
+		</b>
+	</p></li>
+	<li><p>
+		Task <a href="afanasy/job#block_task_min_run_time" target="_blank">minimum run time</a> limit appeared.
+	</p></li>
+	<li><p>
+		Houdini submission:
+		<ul>
+			<li>Wait Time job option added.</li>
+		</ul>
+	</p></li>
+	</ul>
+</p></li>
+</ul>
+
+<p>Bugs Fixed:
+<ul>
+<li><p>
+	Afanasy:
+	<ul>
+	<li><p>
+		Server -&gt; Python API communitation invalid JSON answer fixed:<br>
+		1. Server JSON answer will never contain extra 'A' character after JSON object finish (latest '}').<br>
+		2. Python API will never try to read JSON data over message size.<br>
+	</p></li>
+	</ul>
+</p></li>
+</ul>
+</p>
+
+
+<br/>
+
+
+<p>
 	<b id="release223" class="anchor">2.2.3</b>
 	2017.11.02
 </p>

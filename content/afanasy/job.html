@@ -586,13 +586,32 @@ Value '-1' means take this value from user settings.
 </div></div>
 
 <div class="parameter"><div class="caption">
-<div class="anchor" id="block_tasks_max_run_time"><b>Tasks Maximum Run Time</b></div>
-<div class="json">tasks_max_run_time</div>
-<div class="python">af.Block.setTasksMaxRunTime(int)</div>
+<div class="anchor" id="block_task_max_run_time"><b>Task Maximum Run Time</b></div>
+<div class="json">task_max_run_time</div>
+<div class="python">af.Block.setTaskMaxRunTime(int)</div>
 </div><div class="description">
-Tasks maximum time to run.
+Task maximum time to run.
 After this time task will be set to error ( and may be automatically restarted according to <var>Error Retries</var> value).
-If this value equals zero, no task run time limit exists.
+If this value equals or less than zero, no task run time limit exists.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_task_min_run_time"><b>Task Minimum Run Time</b></div>
+<div class="json">task_min_run_time</div>
+<div class="python">af.Block.setTaskMinRunTime(int)</div>
+</div><div class="description">
+Task minimum time to run.
+If task will finished with success for a time less this value, it will be treated as an error.
+If this value equals or less than zero, this limit will be disabled.
+</div></div>
+
+<div class="parameter"><div class="caption">
+<div class="anchor" id="block_task_progress_change_timeout"><b>Task Progress Change Timeout</b></div>
+<div class="json">task_progress_change_timeout</div>
+<div class="python">af.Block.setTaskProgressChangeTimeout(int)</div>
+</div><div class="description">
+If running task progress (percentage) will be the same for this time, task will be stopped with error.
+If this value equals or less that zero, no such limit exists.
 </div></div>
 
 <div class="parameter"><div class="caption">
