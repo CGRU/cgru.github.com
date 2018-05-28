@@ -60,6 +60,10 @@
 		1. Server JSON answer will never contain extra 'A' character after JSON object finish (latest '}').<br>
 		2. Python API will never try to read JSON data over message size.<br>
 	</p></li>
+	<li><p>
+		Server JSON answer <i>task_files</i> fixed, now it escape file names.
+		Later when server was running on windows, '\' slashes produced JSON syntax error.
+	</p></li>
 	</ul>
 </p></li>
 </ul>
