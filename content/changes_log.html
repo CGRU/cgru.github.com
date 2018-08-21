@@ -18,7 +18,7 @@
 
 <p>
 	<b id="release230" class="anchor">2.3.0</b>
-	2018.05.27
+	2018.08.21
     <b><i>New Afanasy network protocol version.</i></b>
 	<i>Not released</i>
 </p>
@@ -41,10 +41,29 @@
 		Task <a href="afanasy/job#block_task_min_run_time" target="_blank">minimum run time</a> job block parameter.
 	</p></li>
 	<li><p>
+		New user max_run_tasks_per_host and jobs_life_time default values are configurable.
+	</p></li>
+	<li><p>
+		Some config parameters renamed:
+			<br><i>af_maxrunningtasks -&gt; af_max_running_tasks</i>
+			<br><i>filenamesizemax -&gt; file_name_size_max</i>
+	</p></li>
+	<li><p>
 		Houdini submission:
 		<ul>
 			<li>Job Branch, Wait Time and Task Minimum Run Time parameters added.</li>
 		</ul>
+	</p></li>
+	</ul>
+</p></li>
+<li><p>
+	RULES:
+	<ul>
+	<li><p>
+		Each playlist item has an own delete button.
+	</p></li>
+	<li><p>
+		Shots export to table <i>frames_num</i> column added.
 	</p></li>
 	</ul>
 </p></li>
@@ -63,6 +82,9 @@
 	<li><p>
 		Server JSON answer <i>task_files</i> fixed, now it escape file names.
 		Later when server was running on windows, '\' slashes produced JSON syntax error.
+	</p></li>
+	<li><p>
+		<b style="color:darkred">Server hung on incoming JSON with invalid syntax fixed.</b>
 	</p></li>
 	</ul>
 </p></li>
