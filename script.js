@@ -185,7 +185,7 @@ function g_ProcessContent()
 	{
 		var el = sources[i];
 		var src = src_addr + el.getAttribute('source');
-		GET({'path':src,'func':g_SetSource,'el':el,'section':el.getAttribute('section')});
+		GET({'path':src,'func':g_SetSource,'el':el,'section':el.getAttribute('section'),'display_not_found':false});
 	}
 
 
@@ -318,12 +318,15 @@ function g_Error( i_msg)
 	g_Info('Error: '+i_msg);
 }
 
-function g_DisplayNotFound( i_display)
+function g_DisplayNotFound(i_display, i_path)
 {
 	if( i_display == null ) i_display = true;
 	if( i_display ) g_SetContent('');
 	document.getElementById('notfound').style.display = i_display ? 'block':'none';
-	document.getElementById('notfound_file').innerHTML = '<b>'+document.location.pathname+'</b>';
+	var path = i_path;
+	if (null == i_path)
+		i_path = document.location.pathname;
+	document.getElementById('notfound_file').innerHTML = '<b>'+path+'</b>';
 }
 
 function GET( i_args)
@@ -340,16 +343,26 @@ function GET( i_args)
 
 	var xhr = new XMLHttpRequest();
 	xhr.overrideMimeType('text/html');
-//	xhr.overrideMimeType('application/json');
+	//xhr.overrideMimeType('application/json');
 	xhr.open('GET', path, true);
+//xhr.setRequestHeader('Access-Control-Allow-Origin','*');
 	xhr.send(null);
 	xhr.m_args = i_args;
 
 	xhr.onload = g_XHR_OnLoad;
 	xhr.onerror = function() {
 		console.log(this);
-		console.log('ERROR: ' + this.m_args.path);
-		g_DisplayNotFound();
+		console.log('ERROR. Can`t get: ' + this.m_args.path);
+		if (this.m_args.display_not_found === false)
+		{
+			if (this.m_args.el)
+			{
+				this.m_args.el.textContent = 'ERROR. Can`t get: ' + this.m_args.path;
+				this.m_args.el.classList.add('error');
+			}
+		}
+		else
+			g_DisplayNotFound(true, this.m_args.path);
 	}
 }
 

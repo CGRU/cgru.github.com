@@ -35,6 +35,15 @@
 		</b>
 	</p></li>
 	<li><p>
+		Job block/task command and files pattern frame replacement is processed in a Python service class.
+		Later it was coded in libafanasy and processed by afserver, and you could not alter it.
+		Now you can use custom frame patterns.
+		Afrender receives a pattern and frame settings (first, last, increment) instead of a ready command/files.
+		This is much more flexible.
+		For example, now in a Python service class we can check all numeric task files for existence and size.
+		And decide to skip task execution if all files are fine.
+	</p></li>
+	<li><p>
 		Task <a href="afanasy/job#block_task_progress_change_timeout" target="_blank">progress change timeout</a> job block parameter.
 	</p></li>
 	<li><p>
