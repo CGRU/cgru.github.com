@@ -298,13 +298,19 @@ function g_ForOnTopClicked( i_el)
 function g_DisplayOnTop( i_msg)
 {
 	var display = false;
-	if( i_msg == null ) display = false;
-	else if( i_msg.length )
+	if (i_msg == null)
+	{
+		display = false;
+	}
+	else if (i_msg.length)
 	{
 		g_elTop.innerHTML = i_msg;
 		display = true;
 	}
-	else display = false;
+	else
+	{
+		display = false;
+	}
 	
 	g_elTop.style.display = display ? 'block':'none';
 }

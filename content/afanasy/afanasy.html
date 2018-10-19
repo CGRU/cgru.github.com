@@ -21,259 +21,10 @@ You can see what kind of resource (CPU, memory, network etc.) is more needed to 
 It is very useful to know what are farm hosts doing.
 </p>
 <p>
-Afanasy engine simple runs different command lines on hosts and controls processes running.
-You can use Afanasy to parallel calculate anything you can describe (split) through command lines.
+Afanasy engine simple runs different commands on hosts and controls processes running.
+You can use Afanasy to distribute calculation of anything you can describe with (split into) commands.
 </p>
 
-
-<div class="_cnavblock" style="overflow:visible;width:1000px;height:750px;margin:0;padding:0;">
-<h2>Schema</h2>
-
-<div class="cnavabs" style="left:0px;top:-100px;width:1000px;height:750px;">
-
-<div class="arrows" style="position:absolute;opacity:0.5;width:1000px;height:750px;/*border:1px solid #000;*/"
-arrows="{[
-[[0,0,0,2],[300,200],[300,380]],
-[[0,0,0,2],[320,380],[320,200]],
-[[0,0,200,2],[430,200],[430,380]],
-[[0,0,200,2],[450,380],[450,200]],
-[[0,0,200,2],[490,680],[560,680],[560,200]],
-[[0,100,0,2],[660,200],[660,420]],
-[[0,100,0,2],[680,420],[680,200]],
-[[0,100,0,2],[650,550],[650,500]],
-
-[[0,0,0,2],[50,200],[50,180]],
-[[0,100,0,2],[50,320],[50,270]],
-[[0,0,0,2],[150,310],[150,400],[270,400]],
-[[0,0,0,2],[150,180],[150,280]],
-[[0,0,0,2],[270,410],[50,410],[50,360]],
-
-[[100,0,200,2],[420,410],[420,440]],
-[[100,0,200,2],[440,440],[440,410]],
-[[100,0,200,2],[480,460],[580,460]],
-[[100,0,200,2],[580,480],[480,480]],
-[[100,0,0,2],[370,510],[370,550]],
-[[100,0,0,2],[390,550],[390,510]],
-[[100,0,0,2],[380,590],[380,630]],
-
-[[0,100,0,2],[820,270],[740,270],[740,460],[710,460]],
-[[0,0,0,2],[820,420],[760,420],[760,570],[700,570]],
-[[0,0,0,2],[810,590],[700,590]],
-[[0,100,0,2],[810,680],[740,680],[740,480],[710,480]],
-
-[[0,0,0,2],[70,530],[70,510],[200,430],[270,430]],
-[[0,0,0,2],[270,440],[200,440],[90,510],[90,530]],
-[[100,0,200,2],[110,530],[110,510],[200,460],[380,460]],
-[[100,0,200,2],[380,480],[200,480],[130,510],[130,530]],
-[[100,0,0,2],[150,565],[260,565]],
-[[100,0,0,2],[260,580],[150,580]]
-
-]}">
-</div>
-
-<div style="left:240px;top:100px;width:510px;height:100px;" class="cnavblock outer">
-<b>GUI</b>
-
-<div style="left:10px;top:60px;width:100px;height:20px;" class="cnavblock info" info="
-<a href=''/afanasy/gui#watch'' target=''_blank''>Afanasy Watch</a> opens and listens a port.<br/>
-If you have firewall turned on,<br/>
-you  should allow it.<br/>
-This GUI uses Qt graphics library.<br/>
-">
-<b>AfWatch</b></div>
-
-<div style="left:140px;top:40px;width:100px;height:40px;" class="cnavblock blue info" info="
-It is beta for now.<br/>
-It will be CGRU 2.0
-">
-<b>Web<br/>Browser</b></div>
-
-<div style="left:270px;top:40px;width:100px;height:40px;" class="cnavblock blue info" info="
-You can view database <a href=''/afanasy/server#statistics'' target=''_blank''>statistics</a>.<br/>
-Site can't change database data.<br/>
-Site does know nothing about Afanasy<br/>
-server and whether it's running or not.<br/>
-">
-<b>Web<br/>Browser</b></div>
-
-<div style="left:400px;top:60px;width:100px;height:20px;" class="cnavblock info" info="
-<a href=''/keeper'' target=''_blank''>CGRU Keeper</a> opens and listens a port.<br/>
-If you have firewall turned on,<br/>
-you  should allow it.<br/>
-This GUI is simple system tray icon with menu.<br/>
-It is written on Python and uses<br/>
-PyQt graphics library.<br/>
-">
-<b>Keeper</b></div>
-
-</div>
-
-<div style="left:0px;top:100px;width:200px;height:260px;" class="cnavblock outer">
-<b>Render</b>
-
-<div style="left:10px;top:40px;width:180px;height:20px;" class="cnavblock info" info="
-It is a task command.<br/>
-The final goal is to run it.<br/>
-">
-<b>command</b></div>
-
-<div style="left:10px;top:100px;width:180px;height:140px;" class="cnavblock">
-<b>AfRender</b>
-
-<div style="left:10px;top:40px;width:100px;height:20px;padding:5px;" class="cnavblock green info" info="
-On render client <a href=''/afanasy/render#paths_map'' target=''_blank''>Pathsmap</a> module<br/>
-maps paths from server to client.<br/>
-">
-<b>pathsmap</b></div>
-
-<div style="left:60px;top:80px;width:100px;height:20px;padding:5px;" class="cnavblock green info" info="
-<a href=''/afanasy/render#parsers'' target=''_blank''>Parser</a> is a Python class.<br/>
-It parsers command output and<br/>
-calculates percentage, frame.<br/>
-It can stop a tast.<br/>
-">
-<b>parser</b></div>
-
-<div style="left:10px;top:120px;width:100px;height:20px;padding:5px;" class="cnavblock green info" info="
-<a href=''/afanasy/render#services'' target=''_blank''>Service</a> is a Python class.<br/>
-It can manipulate task<br/>
-command, working directory.<br/>
-">
-<b>service</b></div>
-
-</div>
-</div>
-
-<div style="left:240px;top:300px;width:270px;height:420px;" class="cnavblock outer">
-<b>Server</b>
-
-<div style="left:10px;top:40px;width:250px;height:150px;" class="cnavblock">
-<b>AfServer</b>
-
-<div style="left:20px;top:40px;width:100px;height:50px;" class="cnavblock info" info="
-Binary protocol.<br/>
-<b>libafanasy</b> is needed.<br/>
-">
-<b>binary</b></div>
-
-<div style="left:130px;top:40px;width:90px;height:20px;padding:5px" class="cnavblock blue info" info="
-Simple adds or removes<br/>
-HTTP header to JSON text.<br/>
-">
-<b>HTTP</b></div>
-
-<div style="left:130px;top:100px;width:100px;height:40px;" class="cnavblock magenta info" info="
-<a href=''http://json.org'' target=''_blank''>JavaScript Object Notation</a><br/>
-Simple way to pack and unpack objects.<br/>
-Most languages has JSON libraries.<br/>
-Python has a native <b>json</b> module<br/>
-that writes and reads <b>dict</b> to string.
-">
-<b>JSON</b></div>
-
-</div>
-
-<div style="left:20px;top:250px;width:230px;height:20px;" class="cnavblock red info" info="
-Afanasy uses <a href=''http://www.postgresql.org'' target=''_blank''>PostgreSQL</a>.<br/>
-SQL database needed for statistics storing only.<br/>
-It uses libpq c library.<br/>
-Easier to install PostgreSQL server<br/>
-on the same machine as Afanasy server.<br/>
-But it can be anywhere.<br/>
-">
-<b>SQL Database</b></div>
-
-<div style="left:20px;top:330px;width:230px;height:70px;" class="cnavblock blue info" info="
-<a href=''/afanasy/server#statistics'' target=''_blank''>Statistics</a> is a set of PHP scripts.<br/>
-It desiged to gather statistics from SQL database.<br/>
-Notice that it is only one direction connection.<br/>
-It does not change database data.<br/>
-It does know nothing about Afanasy<br/>
-server and whether it is running.<br/>
-">
-<b>Statistics</b><br/>
-HTTP Server<br/>
-PHP with SQL lib<br/>
-</div>
-
-</div>
-
-<div style="left:50px;top:530px;width:100px;height:40px;" class="cnavblock info" info="
-<a href=''/afanasy/cli'' target=''_blank''>afcmd</a> is a multi-purpose<br/>command line interface.<br/>
-">
-<b>AfCmd<br/>CLI</b></div>
-
-<div style="left:580px;top:420px;width:130px;height:60px;" class="cnavblock green info" info="
-Use Python <a href=''/afanasy/api#python'' target=''_blank''>module classes</a> to construct<br/>
-a valid JSON data and send it to server.<br/>
-Commands, working directories and files for preview<br/>
-paths are automatically mapped.
-">
-<b>Python API</b>
-
-<div style="left:10px;top:40px;width:100px;height:20px;padding:5px;" class="cnavblock green info" info="
-When client constructs a job,<br/>
-<a href=''/afanasy/render#paths_map'' target=''_blank''>Pathsmap</a> module<br/>
-maps paths from client to server.<br/>
-">
-<b>pathsmap</b></div>
-</div>
-
-<div style="left:600px;top:550px;width:100px;height:40px;" class="cnavblock info" info="
-Python script that constructs a job<br/>from command line arguments.
-">
-<b>afjob.py<br/>CLI</b></div>
-
-<div style="left:790px;top:100px;width:210px;height:620px;" class="cnavblock outer">
-<b>Job Submission GUI</b>
-<div style="left:10px;top:40px;width:190px;height:340px;" class="cnavblock">
-<b>Software<br/>Integration</b>
-
-<div style="left:20px;top:60px;width:150px;height:110px;" class="cnavblock info" info="
-Software with Python<br/>
-internal scripting language.<br/>
-It is the best way to<br/>communicate and with scene and with<br/>Afanasy with in the same script.<br/>
-">
-<b>python</b><br/>
-is internal:<br/>
-Blender, Nuke, Houdini, XSI ...<br/>
-</div>
-
-<div style="left:20px;top:210px;width:150px;height:110px;" class="cnavblock info" info="
-Use software scripting to constuct<br/>
-a command (string) and to launch it.<br/>
-">
-<b>script</b><br/>
-construct and launch a system command:<br/>
-Max, AE ...<br/>
-</div>
-
-</div>
-
-<div style="left:20px;top:420px;width:170px;height:70px;" class="cnavblock info" info="
-<a href=''/afstarter'' target=''_blank''>Afanasy Starter</a><br/>
-It is a GUI to submit a job.<br/>
-It is a Python script that uses<br/>
-PyQt graphics library.<br/>
-">
-<b>AfStarter</b><br/>
-Stand Alone<br/>Submitter Dialog<br/>
-</div>
-
-<div style="left:20px;top:530px;width:170px;height:70px;" class="cnavblock info" info="
-<a href=''/moviemaker'' target=''_blank''>Move Maker</a><br/>
-It is a set of utilities to encode sequences.<br/>
-It is a Python scripts that uses<br/>
-PyQt graphics library.<br/>
-">
-<b>Movie Maker</b><br/>
-Dailies<br/>Scan Scan<br/>
-</div>
-
-</div>
-
-</div>
-</div>
 
 
 <div style="float:right;text-align:center;margin:10px;">
@@ -612,3 +363,252 @@ You can write any custom job directly in python, or use some GUI to generate job
 When some machine registers on server, it finds last pattern with mask that match it's hostname. So '.*' first mask put at the top to give any machine some properties.
 </p>
 
+
+<div class="_cnavblock" style="overflow:visible;width:1000px;height:750px;margin:0;padding:0;">
+<h2>Schema</h2>
+
+<div class="cnavabs" style="left:0px;top:-100px;width:1000px;height:750px;">
+
+<div class="arrows" style="position:absolute;opacity:0.5;width:1000px;height:750px;/*border:1px solid #000;*/"
+arrows="{[
+[[0,0,0,2],[300,200],[300,380]],
+[[0,0,0,2],[320,380],[320,200]],
+[[0,0,200,2],[430,200],[430,380]],
+[[0,0,200,2],[450,380],[450,200]],
+[[0,0,200,2],[490,680],[560,680],[560,200]],
+[[0,100,0,2],[660,200],[660,420]],
+[[0,100,0,2],[680,420],[680,200]],
+[[0,100,0,2],[650,550],[650,500]],
+
+[[0,0,0,2],[50,200],[50,180]],
+[[0,100,0,2],[50,320],[50,270]],
+[[0,0,0,2],[150,310],[150,400],[270,400]],
+[[0,0,0,2],[150,180],[150,280]],
+[[0,0,0,2],[270,410],[50,410],[50,360]],
+
+[[100,0,200,2],[420,410],[420,440]],
+[[100,0,200,2],[440,440],[440,410]],
+[[100,0,200,2],[480,460],[580,460]],
+[[100,0,200,2],[580,480],[480,480]],
+[[100,0,0,2],[370,510],[370,550]],
+[[100,0,0,2],[390,550],[390,510]],
+[[100,0,0,2],[380,590],[380,630]],
+
+[[0,100,0,2],[820,270],[740,270],[740,460],[710,460]],
+[[0,0,0,2],[820,420],[760,420],[760,570],[700,570]],
+[[0,0,0,2],[810,590],[700,590]],
+[[0,100,0,2],[810,680],[740,680],[740,480],[710,480]],
+
+[[0,0,0,2],[70,530],[70,510],[200,430],[270,430]],
+[[0,0,0,2],[270,440],[200,440],[90,510],[90,530]],
+[[100,0,200,2],[110,530],[110,510],[200,460],[380,460]],
+[[100,0,200,2],[380,480],[200,480],[130,510],[130,530]],
+[[100,0,0,2],[150,565],[260,565]],
+[[100,0,0,2],[260,580],[150,580]]
+
+]}">
+</div>
+
+<div style="left:240px;top:100px;width:510px;height:100px;" class="cnavblock outer">
+<b>GUI</b>
+
+<div style="left:10px;top:60px;width:100px;height:20px;" class="cnavblock info" info="
+<a href=''/afanasy/gui#watch'' target=''_blank''>Afanasy Watch</a> opens and listens a port.<br/>
+If you have firewall turned on,<br/>
+you  should allow it.<br/>
+This GUI uses Qt graphics library.<br/>
+">
+<b>AfWatch</b></div>
+
+<div style="left:140px;top:40px;width:100px;height:40px;" class="cnavblock blue info" info="
+It is beta for now.<br/>
+It will be CGRU 2.0
+">
+<b>Web<br/>Browser</b></div>
+
+<div style="left:270px;top:40px;width:100px;height:40px;" class="cnavblock blue info" info="
+You can view database <a href=''/afanasy/server#statistics'' target=''_blank''>statistics</a>.<br/>
+Site can't change database data.<br/>
+Site does know nothing about Afanasy<br/>
+server and whether it's running or not.<br/>
+">
+<b>Web<br/>Browser</b></div>
+
+<div style="left:400px;top:60px;width:100px;height:20px;" class="cnavblock info" info="
+<a href=''/keeper'' target=''_blank''>CGRU Keeper</a> opens and listens a port.<br/>
+If you have firewall turned on,<br/>
+you  should allow it.<br/>
+This GUI is simple system tray icon with menu.<br/>
+It is written on Python and uses<br/>
+PyQt graphics library.<br/>
+">
+<b>Keeper</b></div>
+
+</div>
+
+<div style="left:0px;top:100px;width:200px;height:260px;" class="cnavblock outer">
+<b>Render</b>
+
+<div style="left:10px;top:40px;width:180px;height:20px;" class="cnavblock info" info="
+It is a task command.<br/>
+The final goal is to run it.<br/>
+">
+<b>command</b></div>
+
+<div style="left:10px;top:100px;width:180px;height:140px;" class="cnavblock">
+<b>AfRender</b>
+
+<div style="left:10px;top:40px;width:100px;height:20px;padding:5px;" class="cnavblock green info" info="
+On render client <a href=''/afanasy/render#paths_map'' target=''_blank''>Pathsmap</a> module<br/>
+maps paths from server to client.<br/>
+">
+<b>pathsmap</b></div>
+
+<div style="left:60px;top:80px;width:100px;height:20px;padding:5px;" class="cnavblock green info" info="
+<a href=''/afanasy/render#parsers'' target=''_blank''>Parser</a> is a Python class.<br/>
+It parsers command output and<br/>
+calculates percentage, frame.<br/>
+It can stop a tast.<br/>
+">
+<b>parser</b></div>
+
+<div style="left:10px;top:120px;width:100px;height:20px;padding:5px;" class="cnavblock green info" info="
+<a href=''/afanasy/render#services'' target=''_blank''>Service</a> is a Python class.<br/>
+It can manipulate task<br/>
+command, working directory.<br/>
+">
+<b>service</b></div>
+
+</div>
+</div>
+
+<div style="left:240px;top:300px;width:270px;height:420px;" class="cnavblock outer">
+<b>Server</b>
+
+<div style="left:10px;top:40px;width:250px;height:150px;" class="cnavblock">
+<b>AfServer</b>
+
+<div style="left:20px;top:40px;width:100px;height:50px;" class="cnavblock info" info="
+Binary protocol.<br/>
+<b>libafanasy</b> is needed.<br/>
+">
+<b>binary</b></div>
+
+<div style="left:130px;top:40px;width:90px;height:20px;padding:5px" class="cnavblock blue info" info="
+Simple adds or removes<br/>
+HTTP header to JSON text.<br/>
+">
+<b>HTTP</b></div>
+
+<div style="left:130px;top:100px;width:100px;height:40px;" class="cnavblock magenta info" info="
+<a href=''http://json.org'' target=''_blank''>JavaScript Object Notation</a><br/>
+Simple way to pack and unpack objects.<br/>
+Most languages has JSON libraries.<br/>
+Python has a native <b>json</b> module<br/>
+that writes and reads <b>dict</b> to string.
+">
+<b>JSON</b></div>
+
+</div>
+
+<div style="left:20px;top:250px;width:230px;height:20px;" class="cnavblock red info" info="
+Afanasy uses <a href=''http://www.postgresql.org'' target=''_blank''>PostgreSQL</a>.<br/>
+SQL database needed for statistics storing only.<br/>
+It uses libpq c library.<br/>
+Easier to install PostgreSQL server<br/>
+on the same machine as Afanasy server.<br/>
+But it can be anywhere.<br/>
+">
+<b>SQL Database</b></div>
+
+<div style="left:20px;top:330px;width:230px;height:70px;" class="cnavblock blue info" info="
+<a href=''/afanasy/server#statistics'' target=''_blank''>Statistics</a> is a set of PHP scripts.<br/>
+It desiged to gather statistics from SQL database.<br/>
+Notice that it is only one direction connection.<br/>
+It does not change database data.<br/>
+It does know nothing about Afanasy<br/>
+server and whether it is running.<br/>
+">
+<b>Statistics</b><br/>
+HTTP Server<br/>
+PHP with SQL lib<br/>
+</div>
+
+</div>
+
+<div style="left:50px;top:530px;width:100px;height:40px;" class="cnavblock info" info="
+<a href=''/afanasy/cli'' target=''_blank''>afcmd</a> is a multi-purpose<br/>command line interface.<br/>
+">
+<b>AfCmd<br/>CLI</b></div>
+
+<div style="left:580px;top:420px;width:130px;height:60px;" class="cnavblock green info" info="
+Use Python <a href=''/afanasy/api#python'' target=''_blank''>module classes</a> to construct<br/>
+a valid JSON data and send it to server.<br/>
+Commands, working directories and files for preview<br/>
+paths are automatically mapped.
+">
+<b>Python API</b>
+
+<div style="left:10px;top:40px;width:100px;height:20px;padding:5px;" class="cnavblock green info" info="
+When client constructs a job,<br/>
+<a href=''/afanasy/render#paths_map'' target=''_blank''>Pathsmap</a> module<br/>
+maps paths from client to server.<br/>
+">
+<b>pathsmap</b></div>
+</div>
+
+<div style="left:600px;top:550px;width:100px;height:40px;" class="cnavblock info" info="
+Python script that constructs a job<br/>from command line arguments.
+">
+<b>afjob.py<br/>CLI</b></div>
+
+<div style="left:790px;top:100px;width:210px;height:620px;" class="cnavblock outer">
+<b>Job Submission GUI</b>
+<div style="left:10px;top:40px;width:190px;height:340px;" class="cnavblock">
+<b>Software<br/>Integration</b>
+
+<div style="left:20px;top:60px;width:150px;height:110px;" class="cnavblock info" info="
+Software with Python<br/>
+internal scripting language.<br/>
+It is the best way to<br/>communicate and with scene and with<br/>Afanasy with in the same script.<br/>
+">
+<b>python</b><br/>
+is internal:<br/>
+Blender, Nuke, Houdini, XSI ...<br/>
+</div>
+
+<div style="left:20px;top:210px;width:150px;height:110px;" class="cnavblock info" info="
+Use software scripting to constuct<br/>
+a command (string) and to launch it.<br/>
+">
+<b>script</b><br/>
+construct and launch a system command:<br/>
+Max, AE ...<br/>
+</div>
+
+</div>
+
+<div style="left:20px;top:420px;width:170px;height:70px;" class="cnavblock info" info="
+<a href=''/afstarter'' target=''_blank''>Afanasy Starter</a><br/>
+It is a GUI to submit a job.<br/>
+It is a Python script that uses<br/>
+PyQt graphics library.<br/>
+">
+<b>AfStarter</b><br/>
+Stand Alone<br/>Submitter Dialog<br/>
+</div>
+
+<div style="left:20px;top:530px;width:170px;height:70px;" class="cnavblock info" info="
+<a href=''/moviemaker'' target=''_blank''>Move Maker</a><br/>
+It is a set of utilities to encode sequences.<br/>
+It is a Python scripts that uses<br/>
+PyQt graphics library.<br/>
+">
+<b>Movie Maker</b><br/>
+Dailies<br/>Scan Scan<br/>
+</div>
+
+</div>
+
+</div>
+</div>
