@@ -70,11 +70,9 @@
 <h3 id="keeper_https" class="anchor">HTTPS Server.</h3>
 <p>
 	Keeper uses <code>HTTPServer</code> module and a <code>ssl</code> module to wrap its socket.
-	On start it checks <code>cgru/utilities/serverhttps.pem</code> certificate file for existence.
+	On start it checks <code>cgru/utilities/keeper/serverhttps.pem</code> certificate file for existence.
 	To generate it you can execute:
-	<pre>
-	openssl req -new -x509 -keyout serverhttps.pem -out serverhttps.pem -days 3656 -nodes
-	</pre>
+	<pre>openssl req -new -x509 -keyout serverhttps.pem -out serverhttps.pem -days 3656 -nodes</pre>
 	If this file exists, Keeper starts to listen <code>44443</code> port.
 </p>
 <p>
