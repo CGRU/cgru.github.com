@@ -23,8 +23,13 @@
 <h4>Example:</h4>
 <pre>
 
-// Function with long parameters list:
-bool someFunction(
+void someFunction(const SomeClass & i_some_class, int i_some_type)
+{
+	...
+}
+
+// Function with a long parameters list:
+bool someOtherFunction(
 		std::string & o_status,
 		const std::string & i_param1,
 		const std::string & i_param2,
@@ -33,11 +38,13 @@ bool someFunction(
 	)
 {
 	...
-	if( false == variable_name )
+
+	if (false == variable_name )
 	{
 		o_status = "error";
 		return false;
 	}
+
 	return true;
 }
 
