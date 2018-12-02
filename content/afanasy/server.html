@@ -29,24 +29,26 @@
 
 <h2 id="launch" class="anchor">Launch Methods</h2>
 <ul>
-</li>
-<li>MS Windows script<br/>
+<li><p>
+	MS Windows script<br/>
 	<code>start\AFANASY\_afserver.cmd</code>
-</li>
-<li>UNIX script<br/>
+</p></li>
+<li><p>
+	UNIX script<br/>
 	<code>start/AFANASY/_afserver.sh</code>
-</li>
-<li>Linux daemon<br/>
-	<code>/etc/init.d/afserver start</code><br/>
-	If CGRU Linux packages installed.
-</li>
-<li>Setup CGRU environment and launch a command:<br/>
-<pre>
-$ cd cgru
-$ source ./setup.sh
-$ afserver
-</pre>
-</li>
+</p></li>
+<li><p>
+	Linux daemon when linux packages are installed<br/>
+	<code>sudo systemctrl start afserver</code><br/>
+</p></li>
+<li><p>
+	Setup CGRU environment and launch a command:<br/>
+	<pre>
+	$ cd cgru
+	$ source ./setup.sh
+	$ afserver
+	</pre>
+</p></li>
 </ul>
 
 

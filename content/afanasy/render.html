@@ -29,25 +29,32 @@
 
 <h2 id="launch" class="anchor">Launch Methods</h2>
 <ul>
-<li>Keeper AFANASY menu - on MS Windows only.
-</li>
-<li>MS Windows script<br/>
+<li><p>
+	MS Windows Keeper AFANASY menu.
+</p></li>
+<li><p>
+	MS Windows script<br/>
 	<code>start\AFANASY\render.cmd</code>
-</li>
-<li>UNIX script<br/>
+</p></li>
+<li><p>
+	MS Windows service if installed.
+</p></li>
+<li><p>
+	UNIX script<br/>
 	<code>start/AFANASY/_afrender.sh</code>
-</li>
-<li>Linux daemon<br/>
-	<code>/etc/init.d/afrender start</code><br/>
-	If CGRU Linux packages installed.
-</li>
-<li>Setup CGRU environment and launch a command:<br/>
-<pre>
-$ cd cgru
-$ source ./setup.sh
-$ afrender
-</pre>
-</li>
+</p></li>
+<li><p>
+	Linux daemon when linux packages are installed<br/>
+	<code>sudo systemctrl start afrender</code><br/>
+</p></li>
+<li><p>
+	Setup CGRU environment and launch a command:<br/>
+	<pre>
+	$ cd cgru
+	$ source ./setup.sh
+	$ afrender
+	</pre>
+</p></li>
 </ul>
 
 
