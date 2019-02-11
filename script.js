@@ -176,15 +176,11 @@ function g_ProcessContent()
 
 
 	// Process sources:
-	var src_addr = 'http://127.0.0.1/cgru/';
-	var locals = ['localhost','127.0.0.1'];
-	if( locals.indexOf( document.location.hostname) == -1 )
-		src_addr = 'http://data.cgru.info/cgru/';
 	var sources = g_elContent.getElementsByClassName('source');
 	for( var i = 0; i < sources.length; i++)
 	{
 		var el = sources[i];
-		var src = src_addr + el.getAttribute('source');
+		var src = g_path_prefix + '/' + el.getAttribute('source');
 		GET({'path':src,'func':g_SetSource,'el':el,'section':el.getAttribute('section'),'display_not_found':false});
 	}
 
@@ -351,7 +347,7 @@ function GET( i_args)
 	xhr.overrideMimeType('text/html');
 	//xhr.overrideMimeType('application/json');
 	xhr.open('GET', path, true);
-//xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+	//xhr.setRequestHeader('Access-Control-Allow-Origin','*');
 	xhr.send(null);
 	xhr.m_args = i_args;
 
@@ -376,7 +372,19 @@ function g_XHR_OnLoad()
 {
 	if( this.responseText.indexOf('INDEX_MARKER') != -1 )
 	{
-		g_DisplayNotFound();
+		console.log(this);
+		console.log('ERROR. Can`t get: ' + this.m_args.path);
+		if (this.m_args.display_not_found === false)
+		{
+			if (this.m_args.el)
+			{
+				this.m_args.el.textContent = 'ERROR. Can`t get: ' + this.m_args.path;
+				this.m_args.el.classList.add('error');
+			}
+		}
+		else
+			g_DisplayNotFound(true, this.m_args.path);
+		
 		return;
 	}
 	this.m_args.func( this.responseText, this.m_args);
