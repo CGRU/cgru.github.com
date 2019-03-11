@@ -5,10 +5,22 @@
 	<atom:link href="http://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Thu, 18 Oct 2017 00:00:00 GMT</pubDate>
-	<lastBuildDate>Thu, 18 Oct 2017 00:00:00 GMT</lastBuildDate>
+	<pubDate>Thu, 11 Mar 2019 00:00:00 GMT</pubDate>
+	<lastBuildDate>Thu, 11 Mar 2019 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 2.3.1 Released.</title>
+		<link>http://cgru.info/#changes_log.html#release231</link>
+		<guid>http://cgru.info/#changes_log.html#release231</guid>
+		<description>
+			Linux packages moved on SystemD.
+			Windows services.
+			NVidia GPU monitoring Python custom resurce class.
+			Bug fixes.
+		</description>
+		<pubDate>Thu, 11 Mar 2019 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 2.3.0 Released.</title>
 		<link>http://cgru.info/#changes_log.html#release230</link>
@@ -18,7 +30,7 @@
 			Now jobs solving is going within branches hierarchy.
 			Branches can represent departments/projects/assets and you can vary their priorities.
 		</description>
-		<pubDate>Thu, 18 Oct 2017 00:00:00 GMT</pubDate>
+		<pubDate>Thu, 18 Oct 2018 00:00:00 GMT</pubDate>
 	</item>
 	<item>
 		<title>CGRU Version 2.2.3 Released.</title>
