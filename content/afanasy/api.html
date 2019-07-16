@@ -200,6 +200,89 @@ JSON protocol is not finished. Only job structure is final - to remove python bi
 </tr>
 </table>
 
+<h3 id="json_get" class="anchor">Update Examples:</h3>
+<table border="1" width="99%">
+<tr>
+   <th size="50%">Append blocks to job</th>
+   <th size="50%">Append tasks to block</th>
+</tr>
+<tr>
+<td><pre>
+{
+ "action":
+ {
+  "user_name"  : "elie",
+  "host_name"  : "my_pc",
+  "type"       : "jobs",
+  "ids"        : [3],
+  "operation"  :
+  {
+   "type"      : "append_blocks",
+   "blocks"    :[
+    {
+      "name"              : "New numeric block",
+      "tasks_name"        : "frames @#@-@#@",
+      "service"           : "generic",
+      "parser"            : "generic",
+      "flags"             : 1,
+      "frame_first"       : 1,
+      "frame_last"        : 100,
+      "frames_per_task"   : 10,
+      "frames_inc"        : 2,
+      "command"           : "python -c \"print('Process frames @#@-@#@')\"",
+      "working_directory" : "E:\\tmp"
+    },
+    {
+      "name"              : "New non numeric block",
+      "tasks_name"        : "frames @#@-@#@",
+      "service"           : "generic",
+      "parser"            : "generic",
+      "working_directory" : "E:\\tmp",
+      "tasks"             : [
+      {
+        "command" : "python -c \"print('Process task A')\""
+      },
+      {
+        "command" : "python -c \"print('Process task B')\""
+      }
+      ]
+    }
+    ]
+  }
+ }
+}
+
+</pre></td>
+<td><pre>
+{
+ "action":
+ {
+  "user_name"  : "elie",
+  "host_name"  : "my_pc",
+  "type"       : "jobs",
+  "ids"        : [3],
+  "block_ids"  : [0],
+  "operation"  :
+  {
+   "type"      : "append_tasks",
+   "tasks"     :[
+    {
+        "name"    : "Extra Process A",
+        "command" : "python -c \"print('Process EXTRA task A')\""
+    },
+    {
+        "name"    : "Extra Process B",
+        "command" : "python -c \"print('Process EXTRA task B')\""
+    }
+    ]
+  }
+ }
+}
+
+</pre></td>
+</tr>
+</table>
+
 <h3 id="json_job_max" class="anchor">Job Maximum:</h3>
 <pre/>
 
@@ -424,6 +507,53 @@ Construct a new task and return it.
 <p>
 	Functions to set <a href="/afanasy/job#block_parameters">parameters</a>.
 </p>
+
+<h2 id="python_class_task" class="anchor">Cmd Object</h2>
+<h3>Constructor:</h3>
+<ul>
+<li>cmd = af.<b>Cmd()</b>
+<p>
+Construct a new command and return it. A command object can be used to query the server for some operation.
+</p></li>
+</ul>
+
+<h3>Examples:</h3>
+
+<p>
+	Get the current list of jobs:
+</p>
+
+<pre>
+cmd = af.Cmd()
+jobs = cmd.getJobList()
+print(jobs)
+</pre>
+
+<p>
+	Add a new block to the job with id #3:
+</p>
+
+<pre>
+block = af.Block('generic', 'generic')
+block.setCommand("python -c \"print('Process frames @#@-@#@')\"")
+block.setNumeric(1, 100, 10)
+
+cmd = af.Cmd()
+print(cmd.appendBlocks(3, [block]))
+</pre>
+
+<p>
+	Add a new task to the block #1 of the job with id #2:
+</p>
+
+<pre>
+task = af.Task('test')
+task.setCommand("python -c \"print('Process task A')\"")
+
+cmd = af.Cmd()
+print(cmd.appendTasks(2, 1, [task]))
+</pre>
+
 
 <h2 id="python_afjob" class="anchor">afjob.py - CLI Job Interface</h2>
 <p>This is a python program. It constructs job from command line arguments and send to server.</p>
