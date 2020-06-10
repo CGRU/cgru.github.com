@@ -15,7 +15,7 @@ function g_Init()
 {
 //g_Info('Initializing...');
 	if( document.location.host.indexOf( g_site) != -1 )
-		$('sflogo').innerHTML = '<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=178692&amp;type=12" width="120" height="30" border="0" alt="SourceForge.net"/>';
+		$('sflogo').innerHTML = '<img src="https://sflogo.sourceforge.net/sflogo.php?group_id=178692&amp;type=12" width="120" height="30" border="0" alt="SourceForge.net"/>';
 
 	document.body.onkeydown = g_OnKeyDown;
 
