@@ -1,0 +1,215 @@
+/* phpBB3 Style Sheet
+	--------------------------------------------------------
+	Style name:			cgru
+	Based on style: prosilver
+	Original author:	Timur Hairulin ( https://cgru.info )
+	--------------------------------------------------------
+*/
+
+html, body {
+	color: #555555;
+	background-color: #AAAAAA;
+	font-size: 12px;
+	padding: 0px;
+} 
+
+.wrap {
+	border-radius: 6px;
+	margin: 4px 24px;
+	max-width: none;
+}
+
+h1 {
+	color: #EEEEEE;
+}
+
+h2 {
+	color: #333333;
+}
+
+h3 {
+	border-bottom-color: #BBBBBB;
+	color: #333333;
+}
+
+a { color: #444444; }
+
+.wrap {
+	background-color: #DDDDDD;
+	margin: 8px;
+}
+
+.headerbar, .forumbg {
+	background-color: #999999;
+	background-image: none;
+}
+
+.forabg {
+	background-color: #777777;
+	background-image: none;
+}
+
+.navbar {
+	background-color: #DDDDDD;
+}
+
+.panel {
+	background-color: #CCCCCC;
+	color: #333333;
+}
+
+.bg1 {
+	background-color: #EAEAEA;
+}
+
+table.zebra-list tr:nth-child(odd) td, ul.zebra-list li:nth-child(odd) {
+	background-color: #EEEEEE;
+}
+
+.bg2 {
+	background-color: #EFEFEF;
+}
+
+table.zebra-list tr:nth-child(even) td, ul.zebra-list li:nth-child(even) {
+	background-color: #BBBBBB;
+}
+
+.bg3 {
+	background-color: #CCCCCC;
+}
+
+.ucprowbg {
+	background-color: #DDDDDD;
+}
+
+.fieldsbg {
+	background-color: #EEEEEE;
+}
+
+table.table1 tbody tr:hover, table.table1 tbody tr.hover {
+	background-color: #CCCCCC;
+}
+
+table.table1 td {
+	color: #777777;
+
+}
+
+ul.forums {
+	background-color: #EEEEEE;
+	background-image: none;
+}
+
+li.row {
+	background-color: #EEEEEE;
+}
+
+.button {
+	background-color: #EEEEEE;
+	background-image: none;
+}
+
+.button:hover,
+.button:focus {
+	background-color: #FFFFFF;
+	background-image: none;
+	border-color: #AAAAAA;
+}
+
+.tabs .tab > a {
+	background: #CCCCCC;
+	color: #555555;
+}
+
+.tabs .tab > a:hover {
+	background: #EEEEEE;
+}
+
+.tabs .activetab > a,
+.tabs .activetab > a:hover {
+	background-color: #CCCCCC;
+	background-image: none;
+	border-color: #CCCCCC;
+}
+
+.navigation a {
+	color: #555555;
+	background: #BBBBBB;
+	background-image: none;
+}
+
+.rtl .navigation a {
+	background: #CCCCCC;
+	background-image: none;
+}
+
+.navigation a:hover {
+	background: #EEEEEE;
+}
+
+.navigation .active-subsection a {
+	background: #DDDDDD;
+}
+
+.panel-container .panel {
+	background-color: #DDDDDD;
+}
+
+.cp-main .pm {
+	background-color: #DDDDDD;
+}
+
+.cp-mini {
+	background-color: #DDDDDD;
+}
+
+.dropdown-extended .header {
+	background-color: #DDDDDD;
+	background-image: none;
+}
+
+/* CGRU header: */
+
+.search-header {
+	box-shadow: 0 0 4px #FFFFFF;
+	margin-top: 10px;
+}
+
+#site-description {
+	float: left;
+}
+
+#site-description > h1 {
+	margin-top: 0px;
+}
+
+#site-description > p {
+	margin-bottom: 0px;
+}
+
+#logo {
+	float: left;
+	display: block;
+	opacity: 0.5;
+	padding: 12px 12px;
+}
+
+#logo .site_logo { display: none; }
+
+#cgru_header_links {
+	float: left;
+}
+
+#cgru_header_links > div {
+	float: left;
+	margin: 2px;
+	margin-bottom: 0;
+	padding: 2px 8px;
+	font-weight: bold;
+	text-align: center;
+	width: 80px;
+	border-radius: 4px;
+	border: 1px solid #888888;
+	background-color: #AAAAAA;
+}
+
