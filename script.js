@@ -40,10 +40,6 @@ function g_Init()
 	g_elTop = $('ontop');
 	g_elTop.onclick = function(e){ g_DisplayOnTop(false);};
 
-    var barW = $('navig').offsetWidth - $('navig').clientWidth;
-	$('navig').style.right = (-barW)+'px';
-	$('content').style.right = (-barW)+'px';
-
 	window.onpopstate = g_Navigate;
 
 	g_Navigate();

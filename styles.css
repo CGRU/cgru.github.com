@@ -56,11 +56,11 @@ text-shadow: 0px 0px 16px #372;
 
 .state td { padding: 2px 20px; }
 
-#footer, #framenavig, #framecontent {
+#footer, #framecontent {
 position: absolute;
 /*box-shadow: 0px 0px 4px #341 inset;*/
 }
-#header, #footer, #framenavig {
+#header, #footer {
 border: 2px solid #777;
 background-color: rgba(0,0,0,.1);
 -o-select: none;
@@ -70,15 +70,14 @@ background-color: rgba(0,0,0,.1);
 
 #header { height: 36px; right: 0; left: 0; top: 0;}
 #footer { height: 36px; right: 0; left: 0; bottom: 0;}
-#framenavig { width: 166px; left: 0; top: 38px; bottom: 38px;}
-#framecontent { top: 38px; bottom: 38px; left: 168px; right: 0; }
-#header, #footer, #navig, #content { position: absolute;}
+#framecontent { top: 38px; bottom: 38px; left: 0; right: 0; }
+#header, #footer, #content { position: absolute;}
 
 #header a.navig {
 float: left;
 position: relative;
 top: -7px; bottom: -10px;
-width: 8%;
+width: 14%;
 text-align: center;
 text-transform: uppercase;
 text-align: center;
@@ -98,11 +97,6 @@ text-decoration: none;
 outline: none;
 }
 
-#navig .navig {
-padding: 2px 16px;
-margin-left: -3px;
-}
-
 .navig, .cnavlink, .anchor, .forontop { cursor: pointer;}
 .navig:hover {
 background: rgba(200,255,255,.2);
@@ -113,16 +107,9 @@ background: rgba(200,255,255,.4);
 box-shadow: 0px 0px 6px rgba(200,255,255,.8);
 }
 
-#navig, #content  {
+#content  {
 top: 0px; bottom: 0px; left: 0px; right: 0px;
 }
-
-#navig { overflow-y: scroll; font-size: 14px; padding: 4px 0px; }
-
-.navgrp { padding: 4px 0px; }
-#navig .navgrp > * { padding-left: 24px; }
-#navig .navgrp > *:first-child { padding-left: 14px; }
-
 
 #footer > * {
 display: block;
@@ -134,10 +121,18 @@ padding: 7px 0px;
 }
 #footer > *:hover {opacity: 0.9;}
 
+#footer a {
+width: 26%;
+}
+
+#footer img {
+height: 26px;
+}
+
 #content {
 overflow-y: scroll;
 overflow-x: auto;
-padding: 20px;
+padding: 20px 40px;
 }
 
 #loading {
