@@ -20,14 +20,14 @@ function g_Init()
 	document.body.onkeydown = g_OnKeyDown;
 
 	var navs = document.body.getElementsByClassName('navig');
-	for( var i = 0; i < navs.length; i++ )
+	for (let i = 0; i < navs.length; i++)
 	{
-		if( navs[i].id == 'rules') continue;
+		if (navs[i].classList.contains('external')) continue;
 
 		// Replace cgru.info to local site, if needed:
-		if( document.location.host.indexOf( g_site) == -1 )
+		if (document.location.host.indexOf( g_site) == -1)
 		{
-			var href = navs[i].getAttribute('href');
+			let href = navs[i].getAttribute('href');
 			href = href.replace( g_site, document.location.host);
 			navs[i].setAttribute('href', href);
 		}
