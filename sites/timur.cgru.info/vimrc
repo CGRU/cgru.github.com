@@ -32,6 +32,7 @@
 :hi cString ctermfg=Gray
 :hi _bracket ctermfg=DarkRed
 :hi _symbol ctermfg=DarkGreen
+:hi SpellBad ctermbg=DarkRed
 
 ":syntax on
 
