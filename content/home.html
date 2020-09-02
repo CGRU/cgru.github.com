@@ -11,53 +11,72 @@
 </div>
 
 <div style="padding:20px;">
-
-<div style="position:relative;width:100%;height:100px;overflow-x:auto;">
-<img width="200px" style="position:absolute;left:10px;top:0px;" class="forontop" src="images/home/watch_jobs.png">
-<img width="200px" style="position:absolute;left:220px;top:0px;" class="forontop" src="images/home/watch_renders.png">
-<img width="200px" style="position:absolute;left:430px;top:0px;" class="forontop" src="images/home/stat_projects.png">
-<img width="200px" style="position:absolute;left:640px;top:0px;" class="forontop" src="images/home/webgui_jobs.png">
-<img width="200px" style="position:absolute;left:850px;top:0px;" class="forontop" src="images/home/rules_scene.png">
-</div>
-
-</div>
-
-<div class="cnavblock">
-
-	<h2>AFANASY</h2>
-
-	<div onclick="GO('/afanasy')" class="cnavlink">
-	<h3>Render Farm Manager</h3>
-	<ul style="left: 500px;/*border:1px solid #000*/">
-		<li>Flexible: JSON protocol, Python API.</li>
-		<li>Farm Resources Monitoring: CPU (System,User), RAM, HDD, SWAP, I/O, Net and <i>Custom (Python)</i>.</li>
-		<li>Generic: Can do anything that can be described via commands.</li>
-		<li>Statistics: SQL database and a ready Web GUI (PHP) to browse it.</li>
-		<li>Multi-Task Hosts: One host can run several tasks.</li>
-		<li>Multi-Host Tasks: One task can run on several hosts (master service and slaves).</li>
-		<li>Software Licenses Limits.</li>
-		<li>Dependences, Priorities, Services, Parsers, Wake-On-Lan, Mixed-Os, Qt GUI, Web GUI, CLI, Nimby (automatic and schedule).</li>
-	</ul>
+	<div style="position:relative;width:100%;height:100px;overflow-x:auto;">
+		<img width="200px" style="position:absolute;left:10px;top:0px;" class="forontop" src="images/home/watch_jobs.png">
+		<img width="200px" style="position:absolute;left:220px;top:0px;" class="forontop" src="images/home/watch_renders.png">
+		<img width="200px" style="position:absolute;left:430px;top:0px;" class="forontop" src="images/home/stat_projects.png">
+		<img width="200px" style="position:absolute;left:640px;top:0px;" class="forontop" src="images/home/webgui_jobs.png">
+		<img width="200px" style="position:absolute;left:850px;top:0px;" class="forontop" src="images/home/rules_scene.png">
 	</div>
-
-	<div class="cnavblock">
-	<h3>Software Integration:</h3>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/afterfx')"><b>AE</b></div>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/blender')"><b>Blender</b></div>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/cinema4d')"><b>Cinema4D</b></div>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/clarisse')"><b>Clarisse</b></div>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/fusion')"><b>Fusion</b></div>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/houdini')"><b>Houdini</b></div>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/max')"><b>Max</b></div>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/maya')"><b>Maya</b></div>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/natron')"><b>Natron</b></div>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/nuke')"><b>Nuke</b></div>
-		<div style="float:left;text-align:center;" class="cnavlink" onclick="GO('/software/xsi')"><b>XSI</b></div>
-	</div>
-
 </div>
 
-<div onclick="GO('/rules')" class="cnavlink">
+<h2>AFANASY Render Farm Manager</h2>
+
+<h3>Render Farm Manager</h3>
+<ul style="left: 500px;/*border:1px solid #000*/">
+	<li>Flexible: JSON protocol, Python API.</li>
+	<li>Pools&amp;Tickets: Describe what different machines can do and how much.</li>
+	<li>Farm Resources Monitoring: CPU (System,User), RAM, HDD, SWAP, I/O, Net and <i>Custom (Python)</i>.</li>
+	<li>Generic: Can do anything that can be described via commands.</li>
+	<li>Statistics: SQL database and a ready Web GUI (PHP) to browse it.</li>
+	<li>Multi-Task Hosts: One host can run several tasks.</li>
+	<li>Multi-Host Tasks: One task can run on several hosts (master service and slaves).</li>
+	<li>Software Licenses Limits.</li>
+	<li>Dependences, Priorities, Services, Parsers, Wake-On-LAN, Mixed-Os, Qt GUI, Web GUI, CLI, Nimby (automatic and schedule).</li>
+</ul>
+
+<h3>Software Integration:</h3>
+<ul>
+	<li><b>3ds Max</b> | Autodesk</li>
+	<li><b>After Effects</b> | Adobe</li>
+	<li><b>Blender</b></li>
+	<li><b>Cinema 4D</b> | Maxon</li>
+	<li><b>Clarisse iFX</b> | Isotropix</li>
+	<li><b>Fusion</b> | Blackmagic</li>
+	<li><b>Houdini</b> | SideFX
+		<ul>
+			<li>Alembic</li>
+			<li>Arnold</li>
+			<li><i><b>Distributed simulations</b> (htracker)</i></li>
+			<li>Mantra</li>
+			<li><i>Parsing ROP network for a complex job with dependences</i></li>
+			<li>RenderMan</li>
+			<li>Redshift</li>
+			<li><i>Wedges</i></li>
+		</ul>
+	</li>
+	<li><b>Maya</b> | Autodesk
+		<ul>
+			<li>3Delight</li>
+			<li>Arnold</li>
+			<li>Mental Ray</li>
+			<li>Redshift</li>
+			<li>VRay</li>
+		</ul>
+	</li>
+	<li><b>Natron</b>
+		<ul>
+			<li>Render several precomps with dependencies as one job.</li>
+		</ul>
+	</li>
+	<li><b>Nuke</b> | The Foundry
+		<ul>
+			<li>Render several precomps with dependencies as one job.</li>
+		</ul>
+	</li>
+	<li><b>Softimage</b> | Autodesk</li>
+</ul>
+
 <h3>RULES</h3>
 WEB engine to view/modify folders structure, designed for CG projects tracking.
 <ul>
@@ -71,8 +90,6 @@ WEB engine to view/modify folders structure, designed for CG projects tracking.
 	<li>Create/extract archives and put files on FTP via Afanasy.</li>
 	<li>You can try it online.</li>
 </ul>
-</div>
 
 </div>
-
 
