@@ -75,9 +75,6 @@ Useful for "powerful" hosts with several CPUs.
 Render and Task has a capacity attribute, each task checks available capacity on render, and if its enough,
 task launches and take its capacity value from render.<br/>
 </p>
-<h5>Tasks can variate capacity 'on-the-fly'</h5>
-Capacity variation can be described through its minimum and maximum coefficients.
-</p>
 
 <h4>Paths Map</h4>
 <p>
@@ -115,14 +112,6 @@ Tasks Maximum Run Time - the time after running considered as an error task.
 Errors Forgive Time - time from last host error to forgive all it's errors (remove from error hosts list).
 </p><p>
 User define this default values for his new jobs and can to override them in each job, watch and reset any error hosts list.
-</p>
-
-<h4>Services Limits - Software Licenses Setup</h4>
-<p>
-You can describe various services (tasks) limits:<br/>
-- Maximum number of total service starts on an entire farm.<br/>
-- Maximum number of hosts which started a service (each host can start several tasks of a service).<br/>
-- Maximum number of service starts on each host.<br/>
 </p>
 
 <h4>Priorities</h4>
@@ -202,7 +191,7 @@ Web interface to Afanasy SQL database to show various statistics.
 
 <h4>SQL Statistics</h4>
 <p>
-	Afanasy stores done jobs and finished tasks in adatabase.
+	Afanasy stores done jobs and finished tasks in database.
 	There is some ready Web GUI to show it.
 	And you can type any SQL query to get some information.
 </p>
@@ -217,8 +206,6 @@ Query users, jobs, hosts attributes and traffic statistics.
 
 <h4>Python Job Example</h4>
 <pre>
-#!/usr/bin/env python
-
 import af
 
 job = af.Job('example job')
@@ -273,96 +260,6 @@ By such "on-the-fly" tasks creation way Afanasy can handle jobs with a huge task
 <p>
 You can write any custom job directly in python, or use some GUI to generate jobs. Use some already written job generators (see <i>'Software Integration'</i> chapter) or write your own.
 </p>
-
-<h4>Farm Patterns Example</h4>
-<pre>
-{"farm":{
-   "":"Copy this file into 'farm.json' and describe you own",
-
-   "":"You can limit service on your farm:",
-   "":"'maxhosts' - maximum number if various hosts (renders) service can run on",
-   "":"'maxcount' - total maximum number of service starts, no matter on the same host or not",
-   "limits":[
-      {"service":"service_a", "maxhosts":10, "maxcount":20},
-      {"service":"service_b", "maxhosts":10, "maxcount":20}
-   ],
-
-   "patterns":[
-   {
-      "name":"Some Host",
-      "mask":".*",
-         "":"Mask '.*' will match any render name. So here defined some default settings for any host.",
-
-      "description":"Default machine",
-      "capacity":1100,
-      "maxtasks":10,
-      "power":1000,
-
-      "services":[
-         {"name":"generic"},
-         {"name":"system"},
-         {"name":"wakeonlan"},
-         {"name":"postcmd"},
-
-         {"name":"afterfx"},
-         {"name":"blender"},
-         {"name":"blender"},
-         {"name":"c4d"},
-         {"name":"hbatch"},
-         {"name":"hbatch_prman"},
-         {"name":"hbatch_mantra"},
-         {"name":"mantra"},
-         {"name":"max"},
-         {"name":"maya"},
-         {"name":"maya_delight"},
-         {"name":"maya_mental"},
-         {"name":"mentalray"},
-         {"name":"movgen"},
-         {"name":"nuke"},
-         {"name":"prman"},
-         {"name":"shake"},
-         {"name":"xsi"},
-         {"name":"yafray"}
-      ],
-
-         "":"Comment it if you agree with build in os detection (names)",
-      "-os":"linux mac windows",
-         "":"You can specify several platforms, if host can take tasks for different platforms."
-
-   },{
-
-      "name":"Render",
-      "mask":"lrf.*",
-      "description":"Linux render farm.",
-      "capacity":8800,
-      "maxtasks":80,
-      "power":8000,
-      "remservices":["afterfx","max","xsi"]
-
-   },{
-
-      "name":"Server",
-      "mask":"server.*|srv.*|cap.*",
-      "description":"Captain.",
-      "capacity":1100,
-      "maxtasks":2,
-      "power":1000,
-      "remservices":[],
-      "services":[
-         {"name":"generic","count":1},
-         {"name":"system"},
-         {"name":"movgen"},
-         {"name":"wakeonlan"},
-         {"name":"postcmd"}
-      ]
-
-   }]
-}}
-</pre>
-<p>
-When some machine registers on server, it finds last pattern with mask that match it's hostname. So '.*' first mask put at the top to give any machine some properties.
-</p>
-
 
 <div class="_cnavblock" style="overflow:visible;width:1000px;height:750px;margin:0;padding:0;">
 <h2>Schema</h2>
