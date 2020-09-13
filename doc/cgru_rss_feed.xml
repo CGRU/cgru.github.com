@@ -1,14 +1,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
 	<title>CGRU - AFANASY</title>
-	<link>http://cgru.info/</link>
-	<atom:link href="http://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
+	<link>https://cgru.info/</link>
+	<atom:link href="https://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Thu, 11 Mar 2019 00:00:00 GMT</pubDate>
-	<lastBuildDate>Thu, 11 Mar 2019 00:00:00 GMT</lastBuildDate>
+	<pubDate>Sun, 13 Sep 2020 00:00:00 GMT</pubDate>
+	<lastBuildDate>Sun, 13 Sep 2020 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 3.0.0 Released.</title>
+		<link>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-0-0</link>
+		<guid>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-0-0</guid>
+		<description>
+			Pool and Tickets.
+		</description>
+		<pubDate>Sun, 13 Sep 2020 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 2.3.1 Released.</title>
 		<link>http://cgru.info/#changes_log.html#release231</link>
