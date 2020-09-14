@@ -47,15 +47,6 @@ text-shadow: 0px 0px 16px #372;
 
 .error { color: #F52; }
 
-.parameters .parameter { border-top: 1px solid #555; padding-top: 16px; }
-.parameters .caption div { float: left; min-width: 30%; }
-.parameters .caption .json   { color: #525; }
-.parameters .caption .python { color: #338; }
-.parameters .parameter .caption div { font-weight: bold; }
-.parameters .description  { margin-left: 30px; padding: 8px; }
-
-.state td { padding: 2px 20px; }
-
 #footer, #framecontent {
 position: absolute;
 /*box-shadow: 0px 0px 4px #341 inset;*/
@@ -96,7 +87,9 @@ text-decoration: none;
 outline: none;
 }
 
-.navig, .cnavlink, .anchor, .forontop { cursor: pointer;}
+.navig, .anchor, .forontop {
+cursor: pointer;
+}
 .navig:hover {
 background: rgba(200,255,255,.2);
 box-shadow: 0px 0px 6px rgba(200,255,255,.4);
@@ -160,25 +153,6 @@ font-weight: bold;
 opacity: 0.9;
 }
 
-.cnavlink, .cnavblock {
-	margin:10px 10px;
-	padding:10px 20px;
-	border-radius: 4px;
-	border: 2px solid rgba(0,0,0,.3);
-}
-.cnavlink:hover {
-	background: rgba(200,255,255,.2);
-}
-
-.cnavabs {
-	position:relative; overflow: visible;
-}
-.cnavabs .cnavblock, .cnavabs .cnavlink {
-position: absolute;
-text-align:center;
-margin: 0; padding:10px 0px;
-}
-
 #content img {
 margin: 4px 8px;
 }
@@ -213,55 +187,7 @@ text-align: center;
 border: 2px solid #777;
 border-radius: 4px;
 }
+
 #notfound_file {
 }
 
-.info { cursor: pointer;}
-.info:hover { background: rgba(255,255,100,0.1);}
-.info.opened {
-cursor: auto;
-background: rgba(255,255,100,0.1);
-}
-.wndinfo {
-position: absolute;
-box-shadow: 0px 0px 10px #000;
-border-radius: 4px;
-}
-.wndinfo, .wndinfo .close { background-color: #AAA;}
-.wndinfo .text {            background-color: #AA9;
-box-shadow: 0px 0px 3px #000 inset;
-border-radius: 2px;
-margin: 4px;
-padding: 10px;
-}
-.wndinfo .close {
-position: absolute;
-cursor: pointer;
-right: 0px; top: 0px;
-box-shadow: 0px 0px 3px #000;
-border-radius: 2px;
-padding: 2px;
-}
-/*
-#rules {
-font: 20px monospace;
-display: block;
-text-align: center;
-font-weight: bold;
-padding: 4px 0px;
-text-shadow: 0 0 4px #FFFFFF;
-}
-*/
-#content .player_examples a {
-padding: 0px;
-margin: 8px;
-float: left;
-display: block;
-border: 2px solid #000;
-border-radius: 8px;
-box-shadow: 0 0 4px #FFF;
-overflow: hidden;
-height: 90px;
-}
-#content .player_examples a:hover { border: 2px solid #AAA; box-shadow: 0 0 12px #FFF; }
-#content .player_examples a img { padding: 0px; margin: 0px; }
