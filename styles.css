@@ -49,7 +49,6 @@ text-shadow: 0px 0px 16px #372;
 
 #footer, #framecontent {
 position: absolute;
-/*box-shadow: 0px 0px 4px #341 inset;*/
 }
 #header, #footer {
 border: 2px solid #777;
@@ -65,31 +64,20 @@ background-color: rgba(0,0,0,.1);
 #header, #footer, #content { position: absolute;}
 
 #header a.navig {
+color: #222244;
 float: left;
 position: relative;
+padding-top: 18px;
+padding-bottom: 10px;
 top: -7px; bottom: -10px;
-width: 16%;
+width: 20%;
 text-align: center;
 text-transform: uppercase;
 text-align: center;
-padding-top: 18px;
-padding-bottom: 10px;
-}
-#header a.navig.external {
-	color: #222244;
-	text-decoration: underline;
-}
-
-a.navig {
-display:block;
-color: #222222;
-text-decoration: none;
-outline: none;
-}
-
-.navig, .anchor, .forontop {
+text-decoration: underline;
 cursor: pointer;
 }
+
 .navig:hover {
 background: rgba(200,255,255,.2);
 box-shadow: 0px 0px 6px rgba(200,255,255,.4);
@@ -127,26 +115,6 @@ overflow-x: auto;
 padding: 20px 40px;
 }
 
-#loading {
-background-color: #AAA;
-border: 2px #777 solid;
-position: absolute;
-top: 40%;
-left: 40%;
-box-shadow: 0px 0px 8px #000;
-border-radius: 4px;
-padding: 6px;
-text-align: center;
-}
-#loading div {
-background-color: #CCC;
-border: 2px #777 solid;
-border-radius: 2px;
-padding: 6px 8px;
-font-weight: bold;
-text-align: center;
-}
-
 .navig, h1, h2, h3, h4, h5, b, code, kbd {
 text-shadow: 0px 0px 10px rgba(255,255,255,.5), 0px 0px 1px rgba(255,255,255,.9);
 font-weight: bold;
@@ -163,6 +131,7 @@ margin: 20px;
 .forontop {
 opacity: 0.8;
 border: 1px #000 dashed;
+cursor: pointer;
 }
 .forontop:hover {
 opacity: 1.0;
@@ -178,16 +147,3 @@ text-align: center;
 top: 0; bottom: 0; left: 0; right: 0;
 display: none;
 }
-
-#notfound {
-margin: 50px;
-padding: 20px;
-display: none;
-text-align: center;
-border: 2px solid #777;
-border-radius: 4px;
-}
-
-#notfound_file {
-}
-
