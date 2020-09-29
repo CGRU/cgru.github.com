@@ -28,7 +28,7 @@ function g_OnKeyDown(i_evt)
 
 function g_ForOnTopClicked(i_el)
 {
-	g_DisplayOnTop('<img src="'+i_el.getAttribute('src')+'"/>');
+	g_DisplayOnTop('<img src="'+i_el.getAttribute('img')+'"/>');
 }
 
 function g_DisplayOnTop(i_msg)
