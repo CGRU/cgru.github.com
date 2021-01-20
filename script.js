@@ -1,5 +1,8 @@
 var $ = function(id) { return document.getElementById(id); };
 
+var show_IntervalSec = 10;
+var show_MonitorHeight = 127;
+
 function g_Init()
 {
 	if (document.location.host.indexOf('cgru.info') != -1)
@@ -14,6 +17,16 @@ function g_Init()
 	let forontops = $('content').getElementsByClassName('forontop');
 	for (let i = 0; i < forontops.length; i++)
 		forontops[i].onclick = function(e){ g_ForOnTopClicked(e.currentTarget);};
+
+	// Calculate show monitors count:
+	let monitors_count = Math.ceil($('show').clientHeight / show_MonitorHeight);
+	console.log('Show height:' + $('show').clientHeight + ', count:' + monitors_count);
+	if (monitors_count >= ShowData.length)
+		monitors_count = ShowData.length - 1;
+	console.log('Show height:' + $('show').clientHeight + ', count:' + monitors_count);
+
+	for (let i = 0; i < monitors_count; i++)
+		new ShowMonitor();
 }
 
 function g_OnKeyDown(i_evt)
@@ -51,3 +64,76 @@ function g_DisplayOnTop(i_msg)
 	$('ontop').style.display = display ? 'block':'none';
 }
 
+function ShowMonitor()
+{
+	this.elShow = $('show');
+
+	this.elMon = document.createElement('div');
+	this.elMon.classList.add('show_monitor');
+	this.elShow.appendChild(this.elMon);
+
+	this.elDivs = [];
+	for (let i = 0; i < 2; i++)
+	{
+		let elDiv = document.createElement('div');
+		this.elMon.appendChild(elDiv);
+		elDiv.classList.add('show_div');
+		elDiv.onclick = function(e) {g_ForOnTopClicked(e.currentTarget);};
+		this.elDivs.push(elDiv);
+	}
+
+	this.index = 0;
+	this.imgNum = -1;
+
+	this.update(true);
+}
+
+show_ImageNums = [];
+ShowMonitor.prototype.update = function(i_first_time) {
+	let next = 1 - this.index;
+	if (i_first_time)
+		next = 0;
+
+	// We should not display the same images in the same time.
+	// Find a new image number that is not displayed now.
+	let new_img_num = -1;
+	do
+	{
+		new_img_num = Math.floor(Math.random() * ShowData.length);
+	}
+	while (show_ImageNums.indexOf(new_img_num) != -1);
+
+	// Remove previous image number from an array
+	let prev_num_index = show_ImageNums.indexOf(this.imgNum);
+	if (prev_num_index != -1)
+		show_ImageNums.splice(prev_num_index, 1);
+
+	// Apply a new image number and to store it in array
+	this.imgNum = new_img_num;
+	show_ImageNums.push(this.imgNum);
+
+	let item = ShowData[this.imgNum];
+	let img = item.image;
+	let thumb = item.thumbnail;
+
+	this.elDivs[next].style.backgroundImage = 'url(' + thumb + ')';
+	this.elDivs[next].setAttribute('img', img);
+
+	// Set a timeout to call this function again
+	setTimeout(ShowMonitorUpdate, 1000 * show_IntervalSec * (1+Math.random()), this);
+
+	if (i_first_time)
+		return;
+
+	if (this.index)
+	{
+		this.elMon.classList.remove('shifted');
+	}
+	else
+	{
+		this.elMon.classList.add('shifted');
+	}
+
+	this.index = 1 - this.index;
+};
+function ShowMonitorUpdate(i_monitor){i_monitor.update()}

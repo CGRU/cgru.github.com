@@ -63,32 +63,25 @@ background-color: rgba(0,0,0,.1);
 #framecontent { top: 38px; bottom: 38px; left: 0; right: 0; }
 #header, #footer, #content { position: absolute;}
 
-#header a.navig {
+#content  {
+top: 0px; bottom: 0px; left: 0px; right: 300px;
+}
+
+#header .navig {
 color: #222244;
 float: left;
 position: relative;
-padding-top: 18px;
-padding-bottom: 10px;
-top: -7px; bottom: -10px;
 width: 20%;
-text-align: center;
+padding: 10px 0px 10px 0px;
 text-transform: uppercase;
 text-align: center;
 text-decoration: underline;
 cursor: pointer;
 }
 
-.navig:hover {
+#header .navig:hover {
 background: rgba(200,255,255,.2);
 box-shadow: 0px 0px 6px rgba(200,255,255,.4);
-}
-a.navig.current {
-background: rgba(200,255,255,.4);
-box-shadow: 0px 0px 6px rgba(200,255,255,.8);
-}
-
-#content  {
-top: 0px; bottom: 0px; left: 0px; right: 0px;
 }
 
 #footer > * {
@@ -124,10 +117,6 @@ opacity: 0.9;
 #content img {
 margin: 4px 8px;
 }
-#ontop img {
-margin: 20px;
-}
-
 .forontop {
 opacity: 0.8;
 border: 1px #000 dashed;
@@ -147,3 +136,42 @@ text-align: center;
 top: 0; bottom: 0; left: 0; right: 0;
 display: none;
 }
+#ontop img {
+margin: 20px;
+width: 90%;
+}
+
+#show {
+position: absolute;
+top: 0px; bottom: 0px; width: 300px; right: 0px;
+background-color: #BBC;
+}
+
+.show_monitor {
+width: 200%;
+position: relative;
+-o-transition: margin 1s ease-out;
+-moz-transition: margin 1s ease-out;
+-webkit-transition: margin 1s ease-out;
+}
+
+.show_monitor.shifted {
+margin-left: -100%;
+}
+
+.show_div {
+cursor: pointer;
+opacity: 0.7;
+background-position: center;
+float: left;
+width: 50%;
+height: 127px;
+filter: grayscale(50%) contrast(120%);
+border-top: 5px solid #999;
+}
+
+.show_div:hover {
+opacity: 1.0;
+filter: none;
+}
+
