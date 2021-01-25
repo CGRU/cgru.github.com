@@ -1,7 +1,7 @@
 var $ = function(id) { return document.getElementById(id); };
 
 var show_IntervalSec = 10;
-var show_MonitorHeight = 127;
+var show_MonitorHeight = 120;
 
 function g_Init()
 {

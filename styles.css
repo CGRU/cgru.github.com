@@ -167,7 +167,7 @@ opacity: 0.7;
 background-position: center;
 float: left;
 width: 50%;
-height: 127px;
+height: 120px;
 filter: grayscale(50%) contrast(120%);
 border-top: 5px solid #999;
 }
