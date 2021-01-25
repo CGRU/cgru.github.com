@@ -19,14 +19,16 @@ function g_Init()
 		forontops[i].onclick = function(e){ g_ForOnTopClicked(e.currentTarget);};
 
 	// Calculate show monitors count:
-	let monitors_count = Math.ceil($('show').clientHeight / show_MonitorHeight);
-	console.log('Show height:' + $('show').clientHeight + ', count:' + monitors_count);
-	if (monitors_count >= ShowData.length)
-		monitors_count = ShowData.length - 1;
-	console.log('Show height:' + $('show').clientHeight + ', count:' + monitors_count);
+	let monitors_count = Math.ceil($('show_right').clientHeight / show_MonitorHeight);
+	if (monitors_count >= ShowData.length/2)
+		monitors_count = ShowData.length/2 - 1;
+	console.log('Show height:' + $('show_right').clientHeight + ', count:' + monitors_count);
 
 	for (let i = 0; i < monitors_count; i++)
-		new ShowMonitor();
+	{
+		new ShowMonitor($('show_left'));
+		new ShowMonitor($('show_right'));
+	}
 }
 
 function g_OnKeyDown(i_evt)
@@ -64,9 +66,9 @@ function g_DisplayOnTop(i_msg)
 	$('ontop').style.display = display ? 'block':'none';
 }
 
-function ShowMonitor()
+function ShowMonitor(i_elShow)
 {
-	this.elShow = $('show');
+	this.elShow = i_elShow;
 
 	this.elMon = document.createElement('div');
 	this.elMon.classList.add('show_monitor');

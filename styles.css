@@ -64,7 +64,7 @@ background-color: rgba(0,0,0,.1);
 #header, #footer, #content { position: absolute;}
 
 #content  {
-top: 0px; bottom: 0px; left: 0px; right: 300px;
+top: 0px; bottom: 0px; left: 300px; right: 300px;
 }
 
 #header .navig {
@@ -141,11 +141,13 @@ margin: 20px;
 width: 90%;
 }
 
-#show {
+#show_left, #show_right {
 position: absolute;
-top: 0px; bottom: 0px; width: 300px; right: 0px;
+top: 0px; bottom: 0px; width: 300px;
 background-color: #BBC;
 }
+#show_left {left: 0px;}
+#show_right {right: 0px;}
 
 .show_monitor {
 width: 200%;
