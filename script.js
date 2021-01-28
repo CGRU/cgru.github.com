@@ -23,7 +23,7 @@ function g_Init()
 	let monitors_count = Math.ceil($('show_right').clientHeight / show_MonitorHeight);
 	if (monitors_count >= ShowData.length/2)
 		monitors_count = ShowData.length/2 - 1;
-	console.log('Show height:' + $('show_right').clientHeight + ', count:' + monitors_count);
+	//console.log('Show height:' + $('show_right').clientHeight + ', count:' + monitors_count);
 	// Create monitors
 	for (let i = 0; i < monitors_count; i++)
 	{
@@ -51,7 +51,7 @@ function g_Init()
 
 		$('software_icons').appendChild(el);
 	}
-return;
+
 	// Create studios logos
 	for (let i = 0; i < StudioLogosData.length; i++)
 	{
@@ -60,12 +60,38 @@ return;
 		let el = document.createElement('div');
 
 		let elImg = document.createElement('img');
-		el.appendChild(elImg);
+		elImg.m_el = el;
 		elImg.src = path;
-		elImg.height = 128;
+		elImg.onload = g_StudioLogoOnLoad;
 
 		$('logos_studios').appendChild(el);
 	}
+}
+
+function g_StudioLogoOnLoad(i_evt)
+{
+	let img = i_evt.currentTarget;
+	let width = img.naturalWidth;
+	let height = img.naturalHeight;
+	let aspect = width / height;
+	let el = img.m_el;
+
+	height = 64;
+	width = 256;
+
+	if (aspect > 1.5)
+	{
+		el.style.width = width + 'px';
+	}
+	else
+	{
+		el.style.width = height * aspect + 'px';
+	}
+
+	el.style.height = height + 'px';
+	el.style.backgroundImage = 'url(' + img.src + ')';
+
+	//console.log(img.src.split('/').pop() + ' ' + width + 'x' + height + ' ~ ' + aspect);
 }
 
 function g_OnKeyDown(i_evt)

@@ -184,6 +184,9 @@ text-align: center;
 margin: 8px;
 padding: 8px;
 float: left;
+background-position: center;
+background-size: 90%;
+background-repeat: no-repeat;
 }
 
 #software_icons > div {
