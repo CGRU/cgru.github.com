@@ -64,7 +64,7 @@ background-color: rgba(0,0,0,.1);
 #header, #footer, #content { position: absolute;}
 
 #content  {
-top: 0px; bottom: 0px; left: 300px; right: 300px;
+top: 0px; bottom: 0px; left: 303px; right: 303px;
 }
 
 #header .navig {
@@ -146,8 +146,8 @@ position: absolute;
 top: 0px; bottom: 0px; width: 300px;
 background-color: #BBC;
 }
-#show_left {left: 0px;}
-#show_right {right: 0px;}
+#show_left  {left:  0px; border-right: 3px solid #999;}
+#show_right {right: 0px; border-left:  3px solid #999;}
 
 .show_monitor {
 width: 200%;
@@ -175,5 +175,23 @@ border-top: 5px solid #999;
 .show_div:hover {
 opacity: 1.0;
 filter: none;
+}
+
+#logos_studios > div {
+border: 1px solid rgba(0,0,0,.1);
+border-radius: 4px;
+text-align: center;
+margin: 8px;
+padding: 8px;
+float: left;
+}
+
+#software_icons > div {
+border: 1px solid rgba(0,0,0,.1);
+border-radius: 4px;
+text-align: center;
+margin: 8px;
+padding: 8px;
+float: left;
 }
 

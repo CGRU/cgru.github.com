@@ -4,14 +4,14 @@ import os
 import sys
 import time
 
-InputFolder = 'icons_software'
-OutputFile = 'icons_software_data.js'
+InputFolder = 'software_icons'
+OutputFile  = 'data_software_icons.js'
 
 Data = '// ' + time.ctime();
-Data += '\nvar IconsSoftwareData = [\n'
+Data += '\nvar SoftwareIconsData = [\n'
 
 IconsCount = 0
-for fname in os.listdir(InputFolder):
+for fname in sorted(os.listdir(InputFolder)):
 
     fpath = os.path.join(InputFolder, fname)
     if not os.path.isfile(fpath):

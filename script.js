@@ -18,16 +18,53 @@ function g_Init()
 	for (let i = 0; i < forontops.length; i++)
 		forontops[i].onclick = function(e){ g_ForOnTopClicked(e.currentTarget);};
 
-	// Calculate show monitors count:
+	// Show famous project images
+	// Calculate show monitors count
 	let monitors_count = Math.ceil($('show_right').clientHeight / show_MonitorHeight);
 	if (monitors_count >= ShowData.length/2)
 		monitors_count = ShowData.length/2 - 1;
 	console.log('Show height:' + $('show_right').clientHeight + ', count:' + monitors_count);
-
+	// Create monitors
 	for (let i = 0; i < monitors_count; i++)
 	{
 		new ShowMonitor($('show_left'));
 		new ShowMonitor($('show_right'));
+	}
+
+	// Create software icons
+	for (let i = 0; i < SoftwareIconsData.length; i++)
+	{
+		let path = SoftwareIconsData[i].icon;
+		let name = path.split('/').pop();
+		name = name.split('.')[0];
+
+		let el = document.createElement('div');
+
+		let elImg = document.createElement('img');
+		el.appendChild(elImg);
+		elImg.src = path;
+		elImg.height = 64;
+
+		let elName = document.createElement('div');
+		el.appendChild(elName);
+		elName.textContent = name;
+
+		$('software_icons').appendChild(el);
+	}
+return;
+	// Create studios logos
+	for (let i = 0; i < StudioLogosData.length; i++)
+	{
+		let path = StudioLogosData[i].logo;
+
+		let el = document.createElement('div');
+
+		let elImg = document.createElement('img');
+		el.appendChild(elImg);
+		elImg.src = path;
+		elImg.height = 128;
+
+		$('logos_studios').appendChild(el);
 	}
 }
 

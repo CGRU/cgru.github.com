@@ -5,7 +5,7 @@ import sys
 import time
 
 InputFolder = 'show'
-OutputFile = 'show_data.js'
+OutputFile  = 'data_show.js'
 ThumbnailSuffix = '_thumbnail.jpg'
 
 ImgFiles = []
@@ -21,6 +21,8 @@ def isFileNewer(i_file, i_other):
 
 ImgCount = 0
 for root, dirs, files in os.walk(InputFolder):
+    dirs.sort()
+    files.sort()
     for fname in files:
 
         fpath = os.path.join(root, fname)
