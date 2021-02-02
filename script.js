@@ -56,8 +56,10 @@ function g_Init()
 	for (let i = 0; i < StudioLogosData.length; i++)
 	{
 		let path = StudioLogosData[i].logo;
-
-		let el = document.createElement('div');
+		let link = 'https://' + path.replace('.png','').replace(/.*___/,'');
+		let el = document.createElement('a');
+		el.href = link;
+		el.target = '_blank';
 
 		let elImg = document.createElement('img');
 		elImg.m_el = el;

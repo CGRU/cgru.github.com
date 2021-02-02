@@ -177,7 +177,7 @@ opacity: 1.0;
 filter: none;
 }
 
-#logos_studios > div {
+#logos_studios > a {
 border: 1px solid rgba(0,0,0,.1);
 border-radius: 4px;
 text-align: center;
