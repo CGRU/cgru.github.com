@@ -66,7 +66,7 @@ function g_Init()
 		elImg.src = path;
 		elImg.onload = g_StudioLogoOnLoad;
 
-		$('logos_studios').appendChild(el);
+		$('studios').appendChild(el);
 	}
 }
 
@@ -94,6 +94,7 @@ function g_StudioLogoOnLoad(i_evt)
 	el.style.backgroundImage = 'url(' + img.src + ')';
 
 	//console.log(img.src.split('/').pop() + ' ' + width + 'x' + height + ' ~ ' + aspect);
+	$('studios').classList.add('loaded');
 }
 
 function g_OnKeyDown(i_evt)

@@ -47,8 +47,8 @@ text-shadow: 0px 0px 16px #372;
 
 .error { color: #F52; }
 
-h1 a.anchor {display: none;}
-_h1:hover a.anchor {display: inline;}
+h1 a.anchor {display: none; font-size: 16px;}
+h1:hover a.anchor {display: inline;}
 a.anchor {text-decoration: none;}
 
 #footer, #framecontent {
@@ -181,7 +181,10 @@ opacity: 1.0;
 filter: none;
 }
 
-#logos_studios > a {
+#studios {height: 50%;}
+#studios.loaded {height: auto;}
+
+#studios > a {
 border: 1px solid rgba(0,0,0,.1);
 border-radius: 4px;
 text-align: center;
