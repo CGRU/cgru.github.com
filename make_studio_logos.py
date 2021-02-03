@@ -6,6 +6,7 @@ import time
 
 InputFolder = 'studio_logos'
 OutputFile  = 'data_studio_logos.js'
+Extensions  = ['png','svg']
 
 Data = '// ' + time.ctime();
 Data += '\nvar StudioLogosData = [\n'
@@ -19,8 +20,8 @@ for fname in sorted(os.listdir(InputFolder)):
         continue
 
     name, ext = os.path.splitext(fname)
-    if ext != '.png':
-        print('Not a ".png" file "%s", skipping...' % fname)
+    if len(ext) < 2 or not ext[1:] in Extensions:
+        print('File "%s" is not in "%s", skipping...' % (fname, str(Extensions)))
         continue
 
     if LogosCount:

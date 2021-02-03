@@ -56,7 +56,7 @@ function g_Init()
 	for (let i = 0; i < StudioLogosData.length; i++)
 	{
 		let path = StudioLogosData[i].logo;
-		let link = 'https://' + path.replace('.png','').replace(/.*___/,'');
+		let link = 'https://' + path.replace(/\.(png|svg)/,'').replace(/.*___/,'');
 		let el = document.createElement('a');
 		el.href = link;
 		el.target = '_blank';
@@ -73,13 +73,11 @@ function g_Init()
 function g_StudioLogoOnLoad(i_evt)
 {
 	let img = i_evt.currentTarget;
-	let width = img.naturalWidth;
-	let height = img.naturalHeight;
-	let aspect = width / height;
+	let aspect = img.naturalWidth / img.naturalHeight;
 	let el = img.m_el;
 
-	height = 64;
-	width = 256;
+	let height = 64;
+	let width = 256;
 
 	if (aspect > 1.5)
 	{
@@ -93,7 +91,6 @@ function g_StudioLogoOnLoad(i_evt)
 	el.style.height = height + 'px';
 	el.style.backgroundImage = 'url(' + img.src + ')';
 
-	//console.log(img.src.split('/').pop() + ' ' + width + 'x' + height + ' ~ ' + aspect);
 	$('studios').classList.add('loaded');
 }
 
