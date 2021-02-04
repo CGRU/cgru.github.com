@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   class="SVGInline-svg logo-svg"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 500 100"
+   xml:space="preserve"
+   sodipodi:docname="ghostlogo.svg"
+   width="500"
+   height="100"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"><metadata
+   id="metadata911"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs909" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2560"
+   inkscape:window-height="1371"
+   id="namedview907"
+   showgrid="false"
+   inkscape:zoom="1.2993087"
+   inkscape:cx="370.70807"
+   inkscape:cy="2.9693276"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+
+<g
+   opacity="0"
+   class="logo-ghost"
+   style="opacity:1"
+   data-svg-origin="0.1999988555908203 26.29999542236328"
+   id="g900"
+   transform="translate(19.674017,0.42925846)">
+	<!-- Generator: Adobe Illustrator 24.1.3, SVG Export Plug-In  -->
+
+<g
+   id="g898">
+	<path
+   d="m 26,55.7 h 8.3 v 5.6 c -0.6,0.6 -3.7,3.3 -9.6,3.3 -8.2,0 -13.9,-6.2 -13.9,-14.4 0,-8.2 5.7,-14.4 13.9,-14.4 8.1,0 12,6.2 12.1,6.3 l 0.3,0.4 6.7,-6.7 -0.2,-0.3 c -0.1,-0.1 -6.2,-9.2 -18.9,-9.2 -14,0 -24.5,10.5 -24.5,24 0,13.4 10.5,24 24.5,24 13,0 19.9,-8.8 20,-8.9 l 0.1,-0.1 V 47.8 H 26 Z"
+   id="path882" />
+	<polygon
+   points="97,73.1 107.5,73.1 107.5,27.1 97,27.1 97,45.2 78,45.2 78,27.1 67.5,27.1 67.5,73.1 78,73.1 78,54.7 97,54.7 "
+   style="opacity:1"
+   data-svg-origin="67.5 27.100000381469727"
+   id="polygon884" />
+	<path
+   d="m 152.8,26.1 c -14,0 -24.5,10.5 -24.5,24 0,13.4 10.5,24 24.5,24 14,0 24.5,-10.5 24.5,-24 0,-13.4 -10.5,-24 -24.5,-24 m 0,38.4 c -7.9,0 -13.9,-6.3 -13.9,-14.4 0,-8.1 6,-14.4 13.9,-14.4 7.9,0 13.9,6.3 13.9,14.4 0,8.1 -5.9,14.4 -13.9,14.4"
+   style="opacity:1"
+   data-svg-origin="128.3000030517578 26.100000381469727"
+   id="path886" />
+	
+	<path
+   d="m 217.2,45.5 c -4.9,-1.3 -8.2,-2.3 -8.2,-5.7 0,-2.3 1.8,-4.4 5.7,-4.4 5.6,0 8.5,4.2 8.6,4.4 l 0.3,0.3 6.4,-6.7 -0.2,-0.3 c -0.4,-0.5 -5.2,-6.9 -15.7,-6.9 -9.2,0 -16.2,6.2 -16.2,13.6 0,8.5 7.1,12.3 14.1,14.1 4.8,1.2 8.4,2.1 8.4,5.7 0,3.5 -3,5.4 -7.2,5.4 -6.8,0 -10.6,-5 -10.6,-5.1 l -0.3,-0.4 -6.4,6.4 0.2,0.3 c 0.1,0.1 6,8 17.7,8 10.6,0 17.5,-5.7 17.5,-14.6 0,-9.8 -7.7,-12.4 -14.1,-14.1"
+   style="opacity:1"
+   data-svg-origin="195.90000915527344 26.19999885559082"
+   id="path888" />
+		<polygon
+   points="251.5,36.6 264.8,36.6 264.8,73.1 275.3,73.1 275.3,36.6 288.7,36.6 288.7,27.1 251.5,27.1 "
+   style="opacity:1"
+   data-svg-origin="251.5 27.100000381469727"
+   id="polygon890" />
+	<polygon
+   points="311.1,27.1 305.8,27.1 323.9,73.1 328.5,73.1 346.6,27.1 341.3,27.1 326.2,66.2 "
+   style="opacity:1"
+   data-svg-origin="305.79998779296875 27.100000381469727"
+   id="polygon892" />
+	<polygon
+   points="369.7,31.7 396,31.7 396,27.1 364.8,27.1 364.8,73.1 369.7,73.1 369.7,52.1 390.7,52.1 390.7,47.5 369.7,47.5 "
+   style="opacity:1"
+   data-svg-origin="364.79998779296875 27.100000381469727"
+   id="polygon894" />
+	<polygon
+   points="416.1,73.1 430.2,53.1 444.4,73.1 450.3,73.1 433.2,49.1 449,27.1 443,27.1 430.2,45.2 417.4,27.1 411.5,27.1 427.3,49.1 410.2,73.1 "
+   style="opacity:1"
+   data-svg-origin="410.20001220703125 27.100000381469727"
+   id="polygon896" />
+</g>
+
+
+</g>
+
+
+</svg>
