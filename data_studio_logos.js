@@ -1,5 +1,6 @@
-// Sat Feb  6 12:58:10 2021
+// Mon Feb  8 19:21:46 2021
 var StudioLogosData = [
+{"logo":"studio_logos/artjail___www.artjail.com.png"},
 {"logo":"studio_logos/cgf___www.cgfww.com.png"},
 {"logo":"studio_logos/ghostvfx___ghost.dk.svg"},
 {"logo":"studio_logos/mrp___mrpost.ru.png"},
