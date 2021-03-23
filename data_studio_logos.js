@@ -1,9 +1,10 @@
-// Mon Feb  8 19:21:46 2021
+// Tue Mar 23 21:26:38 2021
 var StudioLogosData = [
 {"logo":"studio_logos/artjail___www.artjail.com.png"},
 {"logo":"studio_logos/cgf___www.cgfww.com.png"},
 {"logo":"studio_logos/ghostvfx___ghost.dk.svg"},
 {"logo":"studio_logos/mrp___mrpost.ru.png"},
+{"logo":"studio_logos/parovoz___parovoz.tv.png"},
 {"logo":"studio_logos/platigeimage___www.platige.com.svg"},
 {"logo":"studio_logos/postkino___postkino.ru.png"},
 {"logo":"studio_logos/redchilliesvfx___redchilliesvfx.com.png"},
