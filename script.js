@@ -42,7 +42,7 @@ function g_Init()
 
 		let elImg = document.createElement('img');
 		el.appendChild(elImg);
-		elImg.src = path;
+		elImg.src = '/' + path;
 		elImg.height = 64;
 
 		let elName = document.createElement('div');
@@ -63,7 +63,7 @@ function g_Init()
 
 		let elImg = document.createElement('img');
 		elImg.m_el = el;
-		elImg.src = path;
+		elImg.src = '/' + path;
 		elImg.onload = g_StudioLogoOnLoad;
 
 		$('studios').appendChild(el);
@@ -178,8 +178,8 @@ ShowMonitor.prototype.update = function(i_first_time) {
 	show_ImageNums.push(this.imgNum);
 
 	let item = ShowData[this.imgNum];
-	let img = item.image;
-	let thumb = item.thumbnail;
+	let img   = '/' + item.image;
+	let thumb = '/' + item.thumbnail;
 
 	this.elDivs[next].style.backgroundImage = 'url(' + thumb + ')';
 	this.elDivs[next].setAttribute('img', img);
