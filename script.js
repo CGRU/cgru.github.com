@@ -79,7 +79,7 @@ function g_StudioLogoOnLoad(i_evt)
 	let height = 64;
 	let width = 256;
 
-	if (aspect > 1.5)
+	if (aspect > 2.0)
 	{
 		el.style.width = width + 'px';
 	}
