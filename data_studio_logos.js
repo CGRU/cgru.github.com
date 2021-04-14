@@ -1,5 +1,6 @@
-// Wed Mar 24 19:45:27 2021
+// Wed Apr 14 19:25:57 2021
 var StudioLogosData = [
+{"logo":"studio_logos/algous___www.algousstudio.ru.png"},
 {"logo":"studio_logos/artjail___www.artjail.com.png"},
 {"logo":"studio_logos/asymmetric___a-vfx.ru.png"},
 {"logo":"studio_logos/cgf___www.cgfww.com.png"},

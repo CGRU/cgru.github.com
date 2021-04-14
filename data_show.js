@@ -1,5 +1,10 @@
-// Sun Mar 28 21:58:13 2021
+// Wed Apr 14 22:23:15 2021
 var ShowData = [
+{"image":"show/algous/salyut-7/01.jpg","thumbnail":"show/algous/salyut-7/01.jpg_thumbnail.jpg"},
+{"image":"show/algous/salyut-7/02.jpg","thumbnail":"show/algous/salyut-7/02.jpg_thumbnail.jpg"},
+{"image":"show/algous/salyut-7/03.jpg","thumbnail":"show/algous/salyut-7/03.jpg_thumbnail.jpg"},
+{"image":"show/algous/salyut-7/04.jpg","thumbnail":"show/algous/salyut-7/04.jpg_thumbnail.jpg"},
+{"image":"show/algous/z/01.jpg","thumbnail":"show/algous/z/01.jpg_thumbnail.jpg"},
 {"image":"show/asymmetric/dragon/00.jpg","thumbnail":"show/asymmetric/dragon/00.jpg_thumbnail.jpg"},
 {"image":"show/asymmetric/dragon/01.jpg","thumbnail":"show/asymmetric/dragon/01.jpg_thumbnail.jpg"},
 {"image":"show/asymmetric/dragon/02.jpg","thumbnail":"show/asymmetric/dragon/02.jpg_thumbnail.jpg"},
