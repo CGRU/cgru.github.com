@@ -5,10 +5,26 @@
 	<atom:link href="https://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Tue, 2 Feb 2021 00:00:00 GMT</pubDate>
-	<lastBuildDate>Tue, 2 Feb 2021 00:00:00 GMT</lastBuildDate>
+	<pubDate>Sun, 18 Apr 2021 00:00:00 GMT</pubDate>
+	<lastBuildDate>Sun, 18 Apr 2021 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 3.2.0 Released.</title>
+		<link>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-2-0</link>
+		<guid>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-2-0</guid>
+		<description>
+			- Some configuration parameters are pool parameters now.
+				So now it is more easy to setup each pool individually.
+				It is especially useful, if your farm has a remote pool(s).
+			- Parsers can return information about task process resources, server stores it, GUIs can show.
+			- RENDER_NO_TASK and RENDER_OVERLOAD events added.
+			- Server HTTP configuration extended.
+				Now it is more easy to make server to serve some custom or even several WebGUIs.
+			- Several AfWatch bugfixes.
+		</description>
+		<pubDate>Sun, 18 Apr 2021 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 3.1.1 Released.</title>
 		<link>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-1-1</link>
