@@ -1,4 +1,4 @@
-// Thu Jan 28 10:39:03 2021
+// Wed Aug 18 20:32:46 2021
 var SoftwareIconsData = [
 {"icon":"software_icons/3dsmax.png"},
 {"icon":"software_icons/afterfx.png"},
@@ -17,6 +17,7 @@ var SoftwareIconsData = [
 {"icon":"software_icons/generic.png"},
 {"icon":"software_icons/hbatch.png"},
 {"icon":"software_icons/hbatch_mantra.png"},
+{"icon":"software_icons/hbatch_pdg.png"},
 {"icon":"software_icons/hbatch_prman.png"},
 {"icon":"software_icons/hbatch_redshift.png"},
 {"icon":"software_icons/houdini.png"},

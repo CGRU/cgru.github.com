@@ -34,5 +34,7 @@
 :hi _symbol ctermfg=DarkGreen
 :hi SpellBad ctermbg=DarkRed
 
+"let g:syntastic_rst_checkers=['sphinx']
+
 ":syntax on
 
