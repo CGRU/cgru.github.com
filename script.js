@@ -56,7 +56,15 @@ function g_Init()
 	for (let i = 0; i < StudioLogosData.length; i++)
 	{
 		let path = StudioLogosData[i].logo;
-		let link = 'https://' + path.replace(/\.(png|svg)/,'').replace(/.*___/,'');
+
+		let link = path;
+		link = link.replace(/\.(png|svg)/,'')
+		link = link.replace(/.*___/,'');
+		if (path.indexOf('___http___') != -1)
+			link = 'http://' + link;
+		else
+			link = 'https://' + link;
+
 		let el = document.createElement('a');
 		el.href = link;
 		el.target = '_blank';

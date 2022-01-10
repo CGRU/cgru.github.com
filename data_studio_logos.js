@@ -1,4 +1,4 @@
-// Tue Nov 16 11:44:29 2021
+// Mon Jan 10 15:43:50 2022
 var StudioLogosData = [
 {"logo":"studio_logos/algous___www.algousstudio.ru.png"},
 {"logo":"studio_logos/artjail___www.artjail.com.png"},
@@ -11,6 +11,7 @@ var StudioLogosData = [
 {"logo":"studio_logos/parovoz___parovoz.tv.png"},
 {"logo":"studio_logos/platigeimage___www.platige.com.svg"},
 {"logo":"studio_logos/postkino___postkino.ru.png"},
+{"logo":"studio_logos/rebelunit___http___rebelunit.no.png"},
 {"logo":"studio_logos/redchilliesvfx___redchilliesvfx.com.png"},
 {"logo":"studio_logos/risefx___risefx.com.png"},
 {"logo":"studio_logos/terminalfx___www.terminalfx.com.svg"},
