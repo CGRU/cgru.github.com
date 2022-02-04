@@ -3,9 +3,13 @@
 :set shiftwidth=4
 :autocmd FileType python set expandtab
 
+" Indentation
 :set autoindent
-:set smartindent
+":set smartindent
 :set cindent
+" Prevent # to be indented
+:set cinkeys-=0#
+:set indentkeys-=0#
 
 :map <F7> :tabnew<CR>
 :imap <F7> :tabnew<CR>
