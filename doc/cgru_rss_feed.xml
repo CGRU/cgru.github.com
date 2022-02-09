@@ -5,10 +5,19 @@
 	<atom:link href="https://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Thu, 19 Aug 2021 00:00:00 GMT</pubDate>
-	<lastBuildDate>Thu, 19 Aug 2021 00:00:00 GMT</lastBuildDate>
+	<pubDate>Wed, 9 Feb 2022 00:00:00 GMT</pubDate>
+	<lastBuildDate>Wed, 9 Feb 2022 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 3.2.2 Released.</title>
+		<link>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-2-2</link>
+		<guid>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-2-2</guid>
+		<description>
+			- Just lots of minor enchancements and bugfixes accumulated.
+		</description>
+		<pubDate>Thu, 19 Aug 2021 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 3.2.1 Released.</title>
 		<link>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-2-1</link>
