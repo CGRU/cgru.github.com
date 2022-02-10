@@ -1,7 +1,8 @@
 var $ = function(id) { return document.getElementById(id); };
 
 var show_IntervalSec = 10;
-var show_MonitorHeight = 120;
+var show_MonitorWidth = 101;
+var show_MonitorHeight = 99;
 
 function g_Init()
 {
@@ -19,6 +20,14 @@ function g_Init()
 		forontops[i].onclick = function(e){ g_ForOnTopClicked(e.currentTarget);};
 
 	// Show famous project images
+	// Calculate sizes
+	show_MonitorWidth = Math.round($('framecontent').clientWidth / 5);
+	show_MonitorHeight = Math.round(show_MonitorWidth / 2.5);
+	$('show_left').style.width  = show_MonitorWidth + 'px';
+	$('show_right').style.width = show_MonitorWidth + 'px';
+	$('content').style.left  = (show_MonitorWidth + 3) + 'px';
+	$('content').style.right = (show_MonitorWidth + 3) + 'px';
+
 	// Calculate show monitors count
 	let monitors_count = Math.ceil($('show_right').clientHeight / show_MonitorHeight);
 	if (monitors_count >= ShowData.length/2)
@@ -151,6 +160,9 @@ function ShowMonitor(i_elShow)
 		let elDiv = document.createElement('div');
 		this.elMon.appendChild(elDiv);
 		elDiv.classList.add('show_div');
+		//elDiv.style.backgroundSize = 'auto 120%';
+		elDiv.style.backgroundSize = 'cover';
+		elDiv.style.height = show_MonitorHeight + 'px';
 		elDiv.onclick = function(e) {g_ForOnTopClicked(e.currentTarget);};
 		this.elDivs.push(elDiv);
 	}

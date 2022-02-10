@@ -68,7 +68,7 @@ background-color: rgba(0,0,0,.1);
 #header, #footer, #content { position: absolute;}
 
 #content  {
-top: 0px; bottom: 0px; left: 303px; right: 303px;
+top: 0px; bottom: 0px; left: 101px; right: 101px;
 }
 
 #header .navig {
@@ -166,7 +166,7 @@ text-decoration: none;
 
 #show_left, #show_right {
 position: absolute;
-top: 0px; bottom: 0px; width: 300px;
+top: 0px; bottom: 0px; width: 101px;
 background-color: #BBC;
 }
 #show_left  {left:  0px; border-right: 3px solid #999;}
@@ -190,7 +190,7 @@ opacity: 0.7;
 background-position: center;
 float: left;
 width: 50%;
-height: 120px;
+height: 99px;
 filter: grayscale(50%) contrast(120%);
 border-top: 5px solid #999;
 }
