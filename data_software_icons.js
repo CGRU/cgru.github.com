@@ -1,4 +1,4 @@
-// Wed Aug 18 20:32:46 2021
+// Thu Feb 10 08:49:12 2022
 var SoftwareIconsData = [
 {"icon":"software_icons/3dsmax.png"},
 {"icon":"software_icons/afterfx.png"},
@@ -13,6 +13,7 @@ var SoftwareIconsData = [
 {"icon":"software_icons/events.png"},
 {"icon":"software_icons/ffmpeg.png"},
 {"icon":"software_icons/ftp.png"},
+{"icon":"software_icons/ftrack.png"},
 {"icon":"software_icons/fusion.png"},
 {"icon":"software_icons/generic.png"},
 {"icon":"software_icons/hbatch.png"},
@@ -42,6 +43,7 @@ var SoftwareIconsData = [
 {"icon":"software_icons/prman.png"},
 {"icon":"software_icons/put.png"},
 {"icon":"software_icons/shake.png"},
+{"icon":"software_icons/shotgun.png"},
 {"icon":"software_icons/softimage.png"},
 {"icon":"software_icons/system.png"},
 {"icon":"software_icons/test.png"},
