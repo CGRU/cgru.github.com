@@ -1,3 +1,19 @@
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+Plug 'preservim/tagbar'
+Plug 'preservim/nerdtree'
+"Plug 'Shougo/deoplete.nvim'
+Plug 'valloric/youcompleteme'
+Plug 'kien/rainbow_parentheses.vim'
+call plug#end()
+
+let g:deoplete#enable_at_startup = 1
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+
 :set noexpandtab
 :set tabstop=4
 :set shiftwidth=4
@@ -27,7 +43,7 @@
 :syn clear
 :color desert
 
-:autocmd Syntax * syn match _bracket "[(){}\[\]]"
+":autocmd Syntax * syn match _bracket "[(){}\[\]]"
 :autocmd Syntax cpp syn match _symbol "[~!@$%^&<>,\.:;=\-?\+\*]"
 
 :hi Number ctermfg=DarkMagenta
