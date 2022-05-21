@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd /cgru
+source ./setup.sh
+catchsegv afrender "$@"
+

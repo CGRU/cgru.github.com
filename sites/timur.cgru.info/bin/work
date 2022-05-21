@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sudo /etc/init.d/foundryrlmserver start
+
+sudo sshfs -o IdentityFile=/home/timurhai/.ssh/id_rsa,port=20221,allow_other,default_permissions,umask=0000 timurhai@u5fx.ru:/ /mnt/TANK
+
+/cg/apps/_keeper.sh &
+
+ssh -i /home/timurhai/.ssh/id_rsa -L 52000:10.77.12.4:51000 -L 3690:10.77.12.4:3690 u5fx.ru -p 20221
+
