@@ -2,5 +2,5 @@
 
 cd /cgru
 source ./setup.sh
-afwatch --af_serverport 52000 "$@"
+afwatch --af_serverport 52000 "$@" &
 
