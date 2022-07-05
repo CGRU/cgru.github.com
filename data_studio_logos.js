@@ -1,4 +1,4 @@
-// Mon Feb 14 14:15:50 2022
+// Tue Jun 28 20:39:47 2022
 var StudioLogosData = [
 {"logo":"studio_logos/algous___www.algousstudio.ru.png"},
 {"logo":"studio_logos/artjail___www.artjail.com.png"},
@@ -6,6 +6,7 @@ var StudioLogosData = [
 {"logo":"studio_logos/cgf___www.cgfww.com.png"},
 {"logo":"studio_logos/dobro___dobroccs.com.png"},
 {"logo":"studio_logos/ghostvfx___ghost.dk.svg"},
+{"logo":"studio_logos/islandvfx___islandvfx.it.png"},
 {"logo":"studio_logos/mrp___mrpost.ru.png"},
 {"logo":"studio_logos/not_just_music___www.not-just-music.it.png"},
 {"logo":"studio_logos/overmindstudios___www.overmind-studios.de.png"},
@@ -15,6 +16,7 @@ var StudioLogosData = [
 {"logo":"studio_logos/rebelunit___http___rebelunit.no.png"},
 {"logo":"studio_logos/redchilliesvfx___redchilliesvfx.com.png"},
 {"logo":"studio_logos/risefx___risefx.com.png"},
+{"logo":"studio_logos/smf_animation___smfanimation.com.png"},
 {"logo":"studio_logos/terminalfx___www.terminalfx.com.svg"},
 {"logo":"studio_logos/turborender___turborender.com.png"},
 {"logo":"studio_logos/unitfive___u5fx.ru.png"},
