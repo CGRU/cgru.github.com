@@ -5,10 +5,21 @@
 	<atom:link href="https://cgru.info/doc/cgru_rss_feed.xml" rel="self" type="application/rss+xml" />
 	<description>CGRU: CG Tools&amp;Rules. Afanasy Free Open Source Render Farm Manager.</description>
 	<language>en-us</language>
-	<pubDate>Wed, 9 Feb 2022 00:00:00 GMT</pubDate>
-	<lastBuildDate>Wed, 9 Feb 2022 00:00:00 GMT</lastBuildDate>
+	<pubDate>Mon, 25 Jul 2022 00:00:00 GMT</pubDate>
+	<lastBuildDate>Mon, 25 Jul 2022 00:00:00 GMT</lastBuildDate>
 	<managingEditor>timurhai@gmail.com (Timur Hairulin)</managingEditor>
 	<webMaster>timurhai@gmail.com (Timur Hairulin)</webMaster>
+	<item>
+		<title>CGRU Version 3.3.0 Released.</title>
+		<link>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-3-0</link>
+		<guid>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-3-0</guid>
+		<description>
+			- GPU resources monitoring.
+			- CPU and GPU job block needs.
+			- Task depend mask causes new Waiting Dependencies task state.
+		</description>
+		<pubDate>Mon, 25 Jul 2022 00:00:00 GMT</pubDate>
+	</item>
 	<item>
 		<title>CGRU Version 3.2.2 Released.</title>
 		<link>https://cgru.readthedocs.io/en/latest/changes_log/changes_log.html#v3-2-2</link>
