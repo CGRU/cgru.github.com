@@ -1,4 +1,4 @@
-// Tue Jun 28 20:39:47 2022
+// Mon Jul 25 12:35:01 2022
 var StudioLogosData = [
 {"logo":"studio_logos/algous___www.algousstudio.ru.png"},
 {"logo":"studio_logos/artjail___www.artjail.com.png"},
@@ -6,6 +6,7 @@ var StudioLogosData = [
 {"logo":"studio_logos/cgf___www.cgfww.com.png"},
 {"logo":"studio_logos/dobro___dobroccs.com.png"},
 {"logo":"studio_logos/ghostvfx___ghost.dk.svg"},
+{"logo":"studio_logos/hqvfx___www.hqvfx.com.png"},
 {"logo":"studio_logos/islandvfx___islandvfx.it.png"},
 {"logo":"studio_logos/mrp___mrpost.ru.png"},
 {"logo":"studio_logos/not_just_music___www.not-just-music.it.png"},
