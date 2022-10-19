@@ -1,8 +1,12 @@
 #!/bin/bash
 
+tank_mount="/mnt/TANK"
+
 sudo /etc/init.d/foundryrlmserver start
 
-sudo sshfs -o IdentityFile=/home/timurhai/.ssh/id_rsa,port=20221,allow_other,default_permissions,umask=0000 timurhai@u5fx.ru:/ /mnt/TANK
+[ -d "${tank_mount}" ] || sudo mkdir "${tank_mount}"
+
+sudo sshfs -o IdentityFile=/home/timurhai/.ssh/id_rsa,port=20221,allow_other,default_permissions,umask=0000 timurhai@u5fx.ru:/ "${tank_mount}"
 
 /cg/apps/_keeper.sh &
 
