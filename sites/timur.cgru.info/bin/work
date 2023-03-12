@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo umount -f /mnt/TANK
+
 sudo /etc/init.d/foundryrlmserver start
 
 sudo sshfs -o IdentityFile=/home/timurhai/.ssh/id_rsa,port=20221,allow_other,default_permissions,umask=0000 timurhai@u5fx.ru:/ /mnt/TANK
