@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /cgru
+cd /data/cgru
 source ./setup.sh
 catchsegv afserver "$@"
 
