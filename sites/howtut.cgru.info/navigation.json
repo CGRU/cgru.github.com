@@ -3,7 +3,8 @@
 		{
 			"name":"RULES","folder":"rules",
 			"items":[
-				{"name":"Обмен файлами","page":"files_exchange"}
+				{"name":"Обмен файлами","page":"files_exchange"},
+				{"name":"Очистить Кэш Браузера","page":"clear_browser_cache"}
 			]
 		},
 		{

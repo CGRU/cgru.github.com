@@ -40,7 +40,7 @@ bottom: 32px;
 #navigation {
 position: absolute;
 left: 0; top: 0; bottom: 0;
-width: 200px;
+width: 220px;
 box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
 -padding: 16px;
 -border: 2px solid #0FF;
@@ -49,7 +49,7 @@ box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
 #content {
 position: absolute;
 right: 0; top: 0; bottom: 0;
-left: 200px;
+left: 220px;
 -border: 2px solid #00F;
 }
 
