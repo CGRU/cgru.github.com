@@ -1,5 +1,6 @@
 ###########################
-# source from "~/.bashrc"
+# edit "~/.bashrc"
+# source /data/info.cgru/sites/timur.cgru.info/bashrc
 
 umask 0000
 

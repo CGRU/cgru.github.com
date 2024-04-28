@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /cg/cgru
+source /cg/sys/setup.sh
+
+export AF_HOSTNAME=kraken
+
+exec start/AFANASY/_afrender.sh
+
