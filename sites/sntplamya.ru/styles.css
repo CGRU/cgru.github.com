@@ -1,0 +1,14 @@
+body {
+	background-color: #223322;
+	color: #999999;
+	font-weight: bold;
+	font-size: 26px;
+	font-family: sans-serif;
+	text-shadow: 0 0 30px rgba(255,255,255,.3);
+	text-align: center;
+}
+
+a         { color: #8888AA; }
+a.visited { color: #88AAAA; }
+a:hover   { color: #AA8888; }
+
