@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cd /data/repo/lin/cgru
+source ./setup.sh
+afwatch --af_serverport 52000 --af_servername localhost "$@" &
