@@ -20,6 +20,6 @@ alias nv='nvim'
 
 # TANK
 alias sst='ssh -i /home/timurhai/.ssh/id_rsa u5fx.ru -p 20221'
-alias sstp='ssh -i /home/timurhai/.ssh/id_rsa -L 52000:10.77.12.4:51000 -L 3690:10.77.12.4:3690 u5fx.ru -p 20221'
+alias sstp='ssh -i /home/timurhai/.ssh/id_rsa -L 52000:10.77.30.4:51000 -L 3690:10.77.30.4:3690 u5fx.ru -p 20221'
 
 
