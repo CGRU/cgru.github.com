@@ -12,5 +12,5 @@ sshfs -o IdentityFile=/home/timurhai/.ssh/id_rsa,port=20221,allow_other timurhai
 
 /cg/apps/_keeper.sh &
 
-ssh -i /home/timurhai/.ssh/id_rsa -L 52000:10.77.30.4:51000 -L 3690:10.77.30.4:3690 u5fx.ru -p 20221
+ssh -i /home/timurhai/.ssh/id_rsa -L 52000:10.77.30.4:51000 -L 3690:10.77.30.4:3690 -L 1715:10.77.20.11:1715 u5fx.ru -p 20221
 
