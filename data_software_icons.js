@@ -1,4 +1,4 @@
-// Thu Feb 10 08:49:12 2022
+// Mon Feb  3 20:57:35 2025
 var SoftwareIconsData = [
 {"icon":"software_icons/3dsmax.png"},
 {"icon":"software_icons/afterfx.png"},
@@ -17,6 +17,7 @@ var SoftwareIconsData = [
 {"icon":"software_icons/fusion.png"},
 {"icon":"software_icons/generic.png"},
 {"icon":"software_icons/hbatch.png"},
+{"icon":"software_icons/hbatch_karma.png"},
 {"icon":"software_icons/hbatch_mantra.png"},
 {"icon":"software_icons/hbatch_pdg.png"},
 {"icon":"software_icons/hbatch_prman.png"},
@@ -24,6 +25,8 @@ var SoftwareIconsData = [
 {"icon":"software_icons/houdini.png"},
 {"icon":"software_icons/houdinitoarnold.png"},
 {"icon":"software_icons/htracker.png"},
+{"icon":"software_icons/karma.png"},
+{"icon":"software_icons/lightwave.png"},
 {"icon":"software_icons/mantra.png"},
 {"icon":"software_icons/max.png"},
 {"icon":"software_icons/maya.png"},
