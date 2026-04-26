@@ -2,15 +2,20 @@
 
 tank_mount="/mnt/TANK"
 
+echo "Unmounting TANK..."
 sudo umount -f "${tank_mount}"
 
+echo "Starting foundryrlmserver..."
 sudo /etc/init.d/foundryrlmserver start
 
+echo "Checking TANK mount point..."
 [ -d "${tank_mount}" ] || sudo mkdir "${tank_mount}"
 
+echo "Mounting TANK..."
 sshfs -o IdentityFile=/home/timurhai/.ssh/id_rsa,port=20221,allow_other timurhai@u5fx.ru:/ "${tank_mount}"
 
-/cg/apps/_keeper.sh &
+#/cg/apps/_keeper.sh &
 
+echo "Connecting SSH with forwarding ports..."
 ssh -i /home/timurhai/.ssh/id_rsa -L 52000:10.77.30.4:51000 -L 3690:10.77.30.4:3690 -L 1715:10.77.20.11:1715 u5fx.ru -p 20221
 
