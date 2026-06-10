@@ -1,0 +1,25 @@
+<style type="text/css">
+</style>
+
+<script type="text/javascript">
+
+function history_hotkovo_load_photos()
+{
+	const elParent = $('history_hotkovo_images_div');
+
+	for (let obj of HistoryHotkovoData)
+	{
+		const elDiv = document.createElement('div');
+		const elImg = document.createElement('img');
+		elImg.src = obj.src;
+		elDiv.appendChild(elImg);
+		elParent.appendChild(elDiv);
+	}
+}
+
+history_hotkovo_load_photos();
+
+</script>
+
+<h2>Исторические фотографии Хотьково.</h2>
+<div id="history_hotkovo_images_div"></div>

@@ -2,19 +2,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>СНТ "ПЛАМЯ"</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>СНТ ПЛАМЯ</title>
+<link rel="shortcut icon" href="favicon.ico"/>
 <link type="text/css" rel="stylesheet" href="styles.css">
-<script type="text/javascript" src="data_images_history.js"></script>
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="content/various/history_hotkovo/history_hotkovo_data.js"></script>
+<script type="text/javascript" src="navigation.js"></script>
+<script type="text/javascript" src="general.js"></script>
 </head>
 <body onload="g_Init()">
 
-<p style="font-size: 40px; margin: 50px; color: #FF9933">
-	СНТ "ПЛАМЯ"
-</p>
+<div id="back">
+	<canvas id="canvas"></canvas>
+</div>
 
-<div id="images_history"></div>
+<div id="middle">
+	<div id="navigation">
+		<div id="navig_items"></div>
+	</div>
+	<div id="content">
+	</div>
+</div>
+
+<div id="header">
+	<div id="logo">
+		<a href="" class="navig shake" onclick="this.blur()">СНТ ПЛАМЯ</a>
+	</div>
+	<div id="header_links">
+		<div><a href="#/contacts/contacts" class="navig shake" onclick="this.blur()">КОНТАКТЫ</a></div>
+	</div>
+</div>
+
+<div id="footer">
+	<div><a class="navig shake" target="_blank" href="https://yandex.ru/maps/?ll=38.015219%2C56.255889&mode=routes&rtext=~56.256704%2C38.011341&rtt=auto&ruri=~&source=serp_navig&z=17">Яндекс Карты</a></div>
+</div>
 
 </body>
 </html>

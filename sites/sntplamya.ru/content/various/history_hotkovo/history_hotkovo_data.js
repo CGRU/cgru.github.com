@@ -1,5 +1,5 @@
 // Tue Jan 21 19:38:43 2025
-var DataImagesHistory = [
+const HistoryHotkovoData = [
 {"src":"photos/history/h1895-vokzal01.jpg","tbn":"photos/history/thumbnails/h1895-vokzal01.jpg.jpg"},
 {"src":"photos/history/h1907-mon01.webp","tbn":"photos/history/thumbnails/h1907-mon01.webp.jpg"},
 {"src":"photos/history/h1907-mon02.webp","tbn":"photos/history/thumbnails/h1907-mon02.webp.jpg"},
