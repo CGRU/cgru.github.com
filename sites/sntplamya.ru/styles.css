@@ -1,19 +1,29 @@
 body {
-	background-color: #333322;
+	background-color: #303322;
 	color: #BBBBBB;
 	font-family: sans-serif;
 	text-shadow: 0 0 4px #000;
+}
+
+#back {
+	position: absolute;
+	opacity: 0.03;
+	left: 0; right: 0; top: 0; bottom: 0;
+	background-image: url("plamya.png");
 }
 
 div, span {
 	margin: 0; padding: 0; overflow: hidden;
 }
 
+#header, #footer, #navigation {
+	box-shadow: 0 0 10px #000, 0 0 5px #A86 inset;
+}
+
 #header {
 	position: absolute;
 	left: 0; right: 0; top: 0;
 	height: 48px;
-	box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
 	font-weight: bold;
 	text-align: center;
 }
@@ -21,7 +31,6 @@ div, span {
 #footer {
 	-moz-user-select: none;
 	-webkit-user-select: none;
-	box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
@@ -43,7 +52,6 @@ div, span {
 	position: absolute;
 	left: 0; top: 0; bottom: 0;
 	width: 220px;
-	box-shadow: 0 0 10px #000, 0 0 5px #AAA inset;
 	-padding: 16px;
 	-border: 2px solid #0FF;
 }
@@ -114,7 +122,7 @@ a:hover {
 
 #content img {
 	margin: 16px;
-	opacity: .8;
+	opacity: .9;
 	border-radius: 6px;
 	border: 2px solid rgba(255,255,255,.5);
 	width: 90%;
@@ -127,11 +135,6 @@ a:hover {
 .shake:hover {
 	color: rgba(255,200,100,1.0);
 	text-shadow: -10px -5px 8px rgba(200,120,50,1.0), 0px -10px 8px rgba(200,120,50,1.0), 0px 0px 8px rgba(200,120,50,1.0), 10px -5px 8px rgba(200,120,50,1.0);
-}
-
-#back {
-	position: absolute;
-	left: 0; right: 0; top: 0; bottom: 0;
 }
 
 .input {
