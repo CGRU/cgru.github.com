@@ -12,7 +12,7 @@ echo "Checking TANK mount point..."
 [ -d "${tank_mount}" ] || sudo mkdir "${tank_mount}"
 
 echo "Mounting TANK..."
-sshfs -o IdentityFile=/home/timurhai/.ssh/id_rsa,port=20221,allow_other timurhai@u5fx.ru:/ "${tank_mount}"
+sshfs -o IdentityFile=/home/timurhai/.ssh/id_rsa,port=20221,allow_other,umask=0000,fmask=0000,dmask=0000 timurhai@u5fx.ru:/ "${tank_mount}"
 
 #/cg/apps/_keeper.sh &
 
