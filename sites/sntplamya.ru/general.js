@@ -8,6 +8,8 @@ var g_nav_items = {};
 var g_elShake = [];
 var g_shake_cycle = 0;
 
+var g_catalog_visible = false;
+
 var $ = function(id) { return document.getElementById(id); };
 
 function g_Init()
@@ -59,6 +61,25 @@ function g_ElShake()
 
 //	if (bg_shake_cycle < 100)
 		setTimeout(g_ElShake, 50);
+}
+
+function g_CatalogClicked()
+{
+	if (g_catalog_visible)
+		g_CatalogHide();
+	else
+		g_CatalogShow();
+}
+
+function g_CatalogShow()
+{
+	$('navigation').style.display = 'block';
+	g_catalog_visible = true;
+}
+function g_CatalogHide()
+{
+	$('navigation').style.display = 'none';
+	g_catalog_visible = false;
 }
 
 function g_NavCreateTree()
@@ -181,6 +202,8 @@ function g_NavPageLoaded(i_httpRequest)
 
 function g_ContentProcess()
 {
+	g_CatalogHide();
+
 	for (let sctxt of g_elContent_cur.getElementsByTagName('script'))
 	{
 		const script = document.createElement('script');

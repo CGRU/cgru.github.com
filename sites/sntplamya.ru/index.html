@@ -11,13 +11,13 @@
 </head>
 <body onload="g_Init()">
 
-<div id="back"></div>
+<div class="back_image"></div>
 
 <div id="middle">
-	<div id="navigation">
+	<div id="content"></div>
+	<div id="navigation" style="display: none;">
+		<div class="back_image"></div>
 		<div id="navig_items"></div>
-	</div>
-	<div id="content">
 	</div>
 </div>
 
@@ -25,13 +25,12 @@
 	<div id="logo">
 		<a href="" class="navig shake" onclick="this.blur()">СНТ ПЛАМЯ</a>
 	</div>
-	<div id="header_links">
-		<div><a href="#/contacts/contacts" class="navig shake" onclick="this.blur()">КОНТАКТЫ</a></div>
-	</div>
+	<div id="catalog_button" class="navig shake" onclick="g_CatalogClicked()">КАТАЛОГ</div>
 </div>
 
 <div id="footer">
 	<div><a class="navig shake" target="_blank" href="https://yandex.ru/maps/?ll=38.015219%2C56.255889&mode=routes&rtext=~56.256704%2C38.011341&rtt=auto&ruri=~&source=serp_navig&z=17">Яндекс Карты</a></div>
+	<div><a href="#/contacts/contacts" class="navig shake" onclick="this.blur()">КОНТАКТЫ</a></div>
 </div>
 
 </body>

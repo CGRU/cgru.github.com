@@ -5,7 +5,7 @@ body {
 	text-shadow: 0 0 4px #000;
 }
 
-#back {
+.back_image {
 	position: absolute;
 	opacity: 0.03;
 	left: 0; right: 0; top: 0; bottom: 0;
@@ -49,9 +49,11 @@ div, span {
 }
 
 #navigation {
+	background-color: #303322;
 	position: absolute;
 	left: 0; top: 0; bottom: 0;
 	width: 220px;
+	-background-image: url("plamya.png");
 	-padding: 16px;
 	-border: 2px solid #0FF;
 }
@@ -59,7 +61,7 @@ div, span {
 #content {
 	position: absolute;
 	right: 0; top: 0; bottom: 0;
-	left: 220px;
+	left: 0px;
 	-border: 2px solid #00F;
 }
 
@@ -83,13 +85,9 @@ a:hover {
 	padding: 12px 32px;
 }
 
-#header_links {
+#catalog_button {
 	float: right;
 	left: 0; right: 0; bottom: 0;
-}
-
-#header_links div {
-	float: left;
 	padding: 16px;
 }
 
@@ -129,6 +127,8 @@ a:hover {
 }
 
 .shake {
+	cursor: pointer;
+	user-select: none;
 	position: relative;
 	color: #CC9966;
 }
