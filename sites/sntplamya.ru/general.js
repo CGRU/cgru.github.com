@@ -117,12 +117,14 @@ function g_NavCreateItems(i_items, i_elParent, i_path, i_depth)
 			elItem.appendChild(elName);
 			elName.classList.add('nav_name');
 			elName.textContent = item.name;
+console.log('folder = ' + item.name);
 
 			if (item.items)
 				g_NavCreateItems(item.items, elItem, i_path + item.folder + '/', i_depth+1);
 		}
 		else
 		{
+console.log('nav_link = ' + item.name);
 			elItem.classList.add('nav_link');
 			const elLink = document.createElement('a');
 			elItem.appendChild(elLink);

@@ -1,6 +1,7 @@
 body {
 	background-color: #303322;
 	color: #BBBBBB;
+	font-size: 36px;
 	font-family: sans-serif;
 	text-shadow: 0 0 4px #000;
 }
@@ -23,7 +24,7 @@ div, span {
 #header {
 	position: absolute;
 	left: 0; right: 0; top: 0;
-	height: 48px;
+	height: 64px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -35,8 +36,7 @@ div, span {
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
-	height: 32px;
-	font-size: 12px;
+	height: 48px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -44,18 +44,15 @@ div, span {
 #middle {
 	position: absolute;
 	left: 0; right: 0;
-	top: 48px;
-	bottom: 32px;
+	top: 64px;
+	bottom: 48px;
 }
 
 #navigation {
 	background-color: #303322;
 	position: absolute;
 	left: 0; top: 0; bottom: 0;
-	width: 220px;
-	-background-image: url("plamya.png");
-	-padding: 16px;
-	-border: 2px solid #0FF;
+	width: 512px;
 }
 
 #content {
@@ -81,8 +78,8 @@ a:hover {
 
 #logo {
 	float:left;
-	font-size: 20px;
-	padding: 12px 32px;
+	font-size: 42px;
+	padding: 5px 32px;
 }
 
 #catalog_button {
@@ -92,15 +89,18 @@ a:hover {
 }
 
 #footer div {
-	padding: 8px 0;
 	float: left;
 	width: 50%;
 }
 
-#navig_items { margin: 8px; }
+#navig_items {
+	margin: 8px;
+	position: absolute;
+	left: 0; right: 0; top: 0; bottom: 0;
+}
 #navig_items .nav_item { padding: 2px 12px; }
 #navig_items .nav_item.current a { color: #DDDDDD; }
-#navig_items .nav_link { font-size: 12px; }
+#navig_items .nav_link { }
 
 #content > div {
 	text-align: justify;
