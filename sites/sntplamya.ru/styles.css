@@ -1,7 +1,7 @@
 body {
 	background-color: #303322;
 	color: #BBBBBB;
-	font-size: 36px;
+	font-size: 48px;
 	font-family: sans-serif;
 	text-shadow: 0 0 4px #000;
 }
@@ -17,26 +17,14 @@ div, span {
 	margin: 0; padding: 0; overflow: hidden;
 }
 
-#header, #footer, #navigation {
+#header {
 	box-shadow: 0 0 10px #000, 0 0 5px #A86 inset;
 }
 
 #header {
 	position: absolute;
 	left: 0; right: 0; top: 0;
-	height: 64px;
-	font-weight: bold;
-	text-align: center;
-}
-
-#footer {
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-	height: 48px;
+	height: 128px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -44,15 +32,8 @@ div, span {
 #middle {
 	position: absolute;
 	left: 0; right: 0;
-	top: 64px;
-	bottom: 48px;
-}
-
-#navigation {
-	background-color: #303322;
-	position: absolute;
-	left: 0; top: 0; bottom: 0;
-	width: 512px;
+	top: 128px;
+	bottom: 0px;
 }
 
 #content {
@@ -64,43 +45,35 @@ div, span {
 
 a {
 	cursor: pointer;
-	color: #AAAAAA;
+	color: #CCCCCC;
 	text-decoration: none;
 	-o-transition: color .3s ease-in-out;
 	-moz-transition: color .3s ease-in-out;
 	-webkit-transition: color .3s ease-in-out;
 }
-a.visited { color: #AAAAAA; }
+a.visited { color: #CCCCCC; }
 a:hover {
 	color: rgba(255,255,255,1);
 	text-shadow: -5px 0 5px rgba(255,255,255,.5), 5px 0 5px rgba(255,255,255,.5), 0px 0 8px rgba(255,255,255,.5);
 }
 
 #logo {
-	float:left;
-	font-size: 42px;
+	font-family: serif;
+	font-size: 84px;
 	padding: 5px 32px;
 }
 
-#catalog_button {
-	float: right;
-	left: 0; right: 0; bottom: 0;
-	padding: 16px;
-}
-
-#footer div {
+#home_links div {
+	text-align: center;
 	float: left;
 	width: 50%;
 }
 
-#navig_items {
-	margin: 8px;
-	position: absolute;
-	left: 0; right: 0; top: 0; bottom: 0;
-}
-#navig_items .nav_item { padding: 2px 12px; }
-#navig_items .nav_item.current a { color: #DDDDDD; }
-#navig_items .nav_link { }
+#navigation { margin: 8px;}
+#navigation .nav_folder { font-style: italic; color: #AAAAAA;}
+#navigation .nav_item { padding: 2px 12px; }
+#navigation .nav_item.current a { color: #DDDDDD; }
+#navigation .nav_link { font-style: normal;}
 
 #content > div {
 	text-align: justify;
@@ -123,7 +96,7 @@ a:hover {
 	opacity: .9;
 	border-radius: 6px;
 	border: 2px solid rgba(255,255,255,.5);
-	width: 90%;
+	width: 97%;
 }
 
 .shake {

@@ -8,7 +8,7 @@ var g_nav_items = {};
 var g_elShake = [];
 var g_shake_cycle = 0;
 
-var g_catalog_visible = false;
+var g_ElNavigRoot = null;
 
 var $ = function(id) { return document.getElementById(id); };
 
@@ -24,7 +24,7 @@ function g_Init()
 
 	window.onhashchange = g_NavHashChanged;
 
-	g_NavCreateNewDiv();
+	g_ContentCreateNewDiv();
 
 	g_NavCreateTree();
 }
@@ -63,25 +63,6 @@ function g_ElShake()
 		setTimeout(g_ElShake, 50);
 }
 
-function g_CatalogClicked()
-{
-	if (g_catalog_visible)
-		g_CatalogHide();
-	else
-		g_CatalogShow();
-}
-
-function g_CatalogShow()
-{
-	$('navigation').style.display = 'block';
-	g_catalog_visible = true;
-}
-function g_CatalogHide()
-{
-	$('navigation').style.display = 'none';
-	g_catalog_visible = false;
-}
-
 function g_NavCreateTree()
 {
 	if (NavTree == null)
@@ -97,7 +78,9 @@ function g_NavCreateTree()
 		return;
 	}
 
-	g_NavCreateItems(items, $('navig_items'),'/', 0);
+	g_ElNavigRoot = document.createElement('div');
+
+	g_NavCreateItems(items, g_ElNavigRoot,'/', 0);
 
 	g_NavHashChanged();
 }
@@ -117,14 +100,12 @@ function g_NavCreateItems(i_items, i_elParent, i_path, i_depth)
 			elItem.appendChild(elName);
 			elName.classList.add('nav_name');
 			elName.textContent = item.name;
-console.log('folder = ' + item.name);
 
 			if (item.items)
 				g_NavCreateItems(item.items, elItem, i_path + item.folder + '/', i_depth+1);
 		}
 		else
 		{
-console.log('nav_link = ' + item.name);
 			elItem.classList.add('nav_link');
 			const elLink = document.createElement('a');
 			elItem.appendChild(elLink);
@@ -164,7 +145,7 @@ function g_NavHashChanged()
 	GET(args);
 }
 
-function g_NavCreateNewDiv()
+function g_ContentCreateNewDiv()
 {
 	const div = document.createElement('div');
 	$('content').appendChild(div);
@@ -199,12 +180,16 @@ function g_NavPageLoaded(i_httpRequest)
 
 	g_ContentProcess();
 
-	g_NavCreateNewDiv();
+	g_ContentCreateNewDiv();
 }
 
 function g_ContentProcess()
 {
-	g_CatalogHide();
+	if (g_nav_cur_path.indexOf('home') != -1)
+	{
+		$("navigation").appendChild(g_ElNavigRoot);
+		console.log(g_nav_cur_path);
+	}
 
 	for (let sctxt of g_elContent_cur.getElementsByTagName('script'))
 	{
